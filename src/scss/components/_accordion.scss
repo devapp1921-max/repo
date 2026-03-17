@@ -1,15 +1,7 @@
 @use "../breakpoints" as *;
 
-/* 4) Components: paccordion */
 
 .paccordion {
-  /* Horizontal rhythm:
-   * - `--rp-gutter` is page gutter for the whole block
-   * - `--rp-step` is indentation delta per nesting level
-   *
-   * Indent is computed per item so both button and panel align:
-   *   indent = gutter + (level - 1) * step
-   */
   --rp-gutter: 16px;
   --rp-step: 16px;
 
@@ -21,7 +13,6 @@
   }
 
   &--nested {
-    /* Panel already provides the separator line. */
     border-top: 0;
   }
 
@@ -142,10 +133,41 @@
 
   &__panel {
     padding: 0 var(--rp-gutter) 16px var(--rp-indent);
-    transition: height 220ms ease, opacity 160ms ease;
+    transition: height 220ms ease;
   }
 
-  &__item:not(:last-child) > &__heading > &__button::after {
+  &__item {
+    position: relative;
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    left: var(--rp-gutter);
+    right: var(--rp-gutter);
+    top: 0;
+    height: 1px;
+    background: var(--c-line);
+  }
+
+  /* Avoid double line at the top edge of framed container */
+  &--framed > &__item:first-child::before {
+    content: none;
+  }
+
+  /* Avoid double line where nested accordion starts */
+  &__panel > .paccordion > &__item:first-child::before {
+    content: none;
+  }
+
+  /* Avoid double line when parent is open and draws its separator */
+  &__item--open > &__panel > .paccordion > &__item:first-child::before {
+    content: none;
+  }
+
+
+  /* Stable separator between heading and content (only when open) */
+  &__button[aria-expanded="true"]::after {
     content: "";
     position: absolute;
     left: var(--rp-gutter);

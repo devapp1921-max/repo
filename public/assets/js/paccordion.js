@@ -70,7 +70,6 @@
     panel._revealTransitionEnd = null;
     panel.style.removeProperty("height");
     panel.style.removeProperty("overflow");
-    panel.style.removeProperty("opacity");
     panel.style.removeProperty("will-change");
     delete panel.dataset.animating;
   };
@@ -83,23 +82,20 @@
     if (prefersReducedMotion()) {
       panel.style.removeProperty("height");
       panel.style.removeProperty("overflow");
-      panel.style.removeProperty("opacity");
       panel.style.removeProperty("will-change");
       delete panel.dataset.animating;
       return;
     }
 
-    panel.style.willChange = "height, opacity";
+    panel.style.willChange = "height";
     panel.style.overflow = "hidden";
     panel.style.height = "0px";
-    panel.style.opacity = "0";
     const target = panel.scrollHeight;
 
     panel.getBoundingClientRect();
 
     requestAnimationFrame(() => {
       panel.style.height = `${target}px`;
-      panel.style.opacity = "1";
     });
 
     panel._revealTransitionEnd = (ev) => {
@@ -117,23 +113,20 @@
       panel.hidden = true;
       panel.style.removeProperty("height");
       panel.style.removeProperty("overflow");
-      panel.style.removeProperty("opacity");
       panel.style.removeProperty("will-change");
       delete panel.dataset.animating;
       return;
     }
 
-    panel.style.willChange = "height, opacity";
+    panel.style.willChange = "height";
     panel.style.overflow = "hidden";
     const start = panel.scrollHeight;
     panel.style.height = `${start}px`;
-    panel.style.opacity = "1";
 
     panel.getBoundingClientRect();
 
     requestAnimationFrame(() => {
       panel.style.height = "0px";
-      panel.style.opacity = "0";
     });
 
     panel._revealTransitionEnd = (ev) => {
@@ -149,6 +142,7 @@
     if (!button || !panel) return;
     if (isOpen(itemEl)) return;
     setExpanded(button, true);
+    itemEl.classList.add("paccordion__item--open");
     animateOpen(panel);
   };
 
@@ -157,6 +151,7 @@
     if (!button || !panel) return;
     if (!isOpen(itemEl)) return;
     setExpanded(button, false);
+    itemEl.classList.remove("paccordion__item--open");
     animateClose(panel);
   };
 
@@ -179,6 +174,7 @@
     const { button, panel } = getParts(itemEl);
     if (!button || !panel) return;
     setExpanded(button, true);
+    itemEl.classList.add("paccordion__item--open");
     panel.hidden = false;
     panel.style.removeProperty("height");
     panel.style.removeProperty("overflow");
