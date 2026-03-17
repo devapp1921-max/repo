@@ -382,9 +382,6 @@ a {
   padding: 0;
   background: #ffffff;
 }
-.paccordion-container--wide {
-  --pc-max: 1120px;
-}
 .paccordion-container__section {
   background: transparent;
   padding: 0 0 48px;
