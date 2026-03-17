@@ -169,7 +169,7 @@ a {
   opacity: 0;
 }
 .paccordion__panel {
-  padding: 0 var(--rp-gutter) 16px var(--rp-indent);
+  padding: 12px var(--rp-gutter) 16px var(--rp-indent);
   transition: height 220ms ease;
 }
 .paccordion__item {
@@ -212,6 +212,23 @@ a {
 }
 .paccordion__richtext p {
   margin: 14px 0 0 0;
+}
+.paccordion__richtext p:first-child {
+  margin-top: 0;
+}
+.paccordion__richtext ul,
+.paccordion__richtext ol {
+  margin: 12px 0 12px 20px;
+  padding: 0;
+}
+.paccordion__richtext li {
+  margin: 6px 0;
+}
+.paccordion__richtext li::marker {
+  color: var(--c-accent);
+}
+.paccordion__richtext strong {
+  font-weight: 650;
 }
 .paccordion__file-list {
   list-style: none;
