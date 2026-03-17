@@ -1,10 +1,8 @@
 @use "../breakpoints" as *;
 
-
 .paccordion {
   --rp-gutter: 16px;
   --rp-step: 16px;
-
   width: 100%;
 
   &--framed {
@@ -79,7 +77,6 @@
     &--startIcon {
       justify-content: flex-start;
     }
-
   }
 
   &__label {
@@ -150,23 +147,18 @@
     background: var(--c-line);
   }
 
-  /* Avoid double line at the top edge of framed container */
   &--framed > &__item:first-child::before {
     content: none;
   }
 
-  /* Avoid double line where nested accordion starts */
   &__panel > .paccordion > &__item:first-child::before {
     content: none;
   }
 
-  /* Avoid double line when parent is open and draws its separator */
   &__item--open > &__panel > .paccordion > &__item:first-child::before {
     content: none;
   }
 
-
-  /* Stable separator between heading and content (only when open) */
   &__button[aria-expanded="true"]::after {
     content: "";
     position: absolute;
@@ -177,13 +169,77 @@
     background: var(--c-line);
   }
 
-  /* Nested paccordion should align separators to full width */
   &__panel > .paccordion {
     margin-left: calc(-1 * var(--rp-indent));
     margin-right: calc(-1 * var(--rp-gutter));
     width: calc(100% + var(--rp-indent) + var(--rp-gutter));
   }
 
+  &__richtext {
+    color: var(--c-text);
+
+    p {
+      margin: 14px 0 0 0;
+    }
+  }
+
+  &__file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &--cols-1 {
+      grid-template-columns: 1fr;
+    }
+
+    &--cols-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__file-item {
+  }
+
+  &__file-link {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 18px 0;
+    text-decoration: none;
+    color: #6f6f6f;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: block;
+      color: var(--c-accent);
+      background: currentColor;
+      -webkit-mask: linear-gradient(#000 0 0) center/16px 2px no-repeat,
+        linear-gradient(#000 0 0) center 12px/2px 10px no-repeat,
+        linear-gradient(#000 0 0) center 18px/14px 2px no-repeat;
+      mask: linear-gradient(#000 0 0) center/16px 2px no-repeat,
+        linear-gradient(#000 0 0) center 12px/2px 10px no-repeat,
+        linear-gradient(#000 0 0) center 18px/14px 2px no-repeat;
+    }
+
+    &:hover {
+      color: var(--c-text);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--c-focus);
+      outline-offset: 2px;
+      border-radius: var(--r-1);
+    }
+  }
+
+  &__file-text {
+    font-size: 16px;
+  }
 }
 
 @include mobile- {
@@ -195,5 +251,23 @@
 @include tablet- {
   .paccordion {
     --rp-step: 20px;
+  }
+
+  .paccordion {
+    &__file-list {
+      &--cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

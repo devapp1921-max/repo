@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Przejdz do tresci</a>
+    <a class="paccordion-container__skip-link" href="#main">Przejdz do tresci</a>
 
-    <main id="main" class="page">
-      <header class="page__header">
-        <h1 class="page__title">Strona produktowa</h1>
+    <main id="main" class="paccordion-container">
+      <header class="paccordion-container__header">
+        <h1 class="paccordion-container__title">Strona produktowa</h1>
       </header>
 
-      <section class="page__section" aria-label="Sekcje">
+      <section class="paccordion-container__section" aria-label="Sekcje">
         <div class="paccordion paccordion--framed" data-paccordion-group>
           <div class="paccordion__item paccordion__item--l1" id="faq">
             <h2 class="paccordion__heading">
@@ -58,7 +58,7 @@
                     itemscope
                     itemtype="https://schema.org/Answer"
                   >
-                    <div class="richtext" itemprop="text">
+                    <div class="paccordion__richtext" itemprop="text">
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                   </div>
@@ -85,7 +85,7 @@
                     itemscope
                     itemtype="https://schema.org/Answer"
                   >
-                    <div class="richtext" itemprop="text">
+                    <div class="paccordion__richtext" itemprop="text">
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                   </div>
@@ -112,7 +112,7 @@
                     itemscope
                     itemtype="https://schema.org/Answer"
                   >
-                    <div class="richtext" itemprop="text">
+                    <div class="paccordion__richtext" itemprop="text">
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                   </div>
@@ -135,10 +135,10 @@
               </button>
             </h2>
             <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
-              <ul class="file-list file-list--cols-1">
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#">
-                    <span class="file-list__text">
+              <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">
                       Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                       1.02.2025 r.do 31.07.2025 r.
                     </span>
@@ -162,34 +162,34 @@
               </button>
             </h2>
             <div class="paccordion__panel" id="panel-oplaty-i-prowizje" role="region" aria-labelledby="button-oplaty-i-prowizje" hidden>
-              <ul class="file-list file-list--cols-1">
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#" id="tabela-oplat-1">
-                    <span class="file-list__text">
+              <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#" id="tabela-oplat-1">
+                    <span class="paccordion__file-text">
                       Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                       1.02.2025 r.do 31.07.2025 r.
                     </span>
                   </a>
                 </li>
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#">
-                    <span class="file-list__text">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">
                       Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                       1.02.2025 r.do 31.07.2025 r.
                     </span>
                   </a>
                 </li>
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#">
-                    <span class="file-list__text">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">
                       Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                       1.02.2025 r.do 31.07.2025 r.
                     </span>
                   </a>
                 </li>
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#">
-                    <span class="file-list__text">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">
                       Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                       1.02.2025 r.do 31.07.2025 r.
                     </span>
@@ -213,10 +213,10 @@
               </button>
             </h2>
             <div class="paccordion__panel" id="panel-regulaminy" role="region" aria-labelledby="button-regulaminy" hidden>
-              <ul class="file-list file-list--cols-1">
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#">
-                    <span class="file-list__text">Placeholder: regulamin (PDF)</span>
+              <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Placeholder: regulamin (PDF)</span>
                   </a>
                 </li>
               </ul>
@@ -237,10 +237,10 @@
               </button>
             </h2>
             <div class="paccordion__panel" id="panel-archiwum" role="region" aria-labelledby="button-archiwum" hidden>
-              <ul class="file-list file-list--cols-1">
-                <li class="file-list__item">
-                  <a class="file-list__link" href="#">
-                    <span class="file-list__text">Placeholder: archiwum (PDF)</span>
+              <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Placeholder: archiwum (PDF)</span>
                   </a>
                 </li>
               </ul>

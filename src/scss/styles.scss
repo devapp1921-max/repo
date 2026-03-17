@@ -2,9 +2,5 @@
 
 @use "settings/tokens";
 @use "base/base";
-@use "layout/page";
-@use "components/skip-link";
-@use "components/accordion";
-@use "components/file-list";
-@use "components/richtext";
-@use "base/motion";
+@use "components/paccordion";
+@use "components/paccordion-container";

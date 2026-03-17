@@ -1,5 +1,5 @@
 [#--
-<section class="page__section" aria-label="Sekcje">
+<section class="paccordion-container__section" aria-label="Sekcje">
   <div class="paccordion paccordion--framed" data-paccordion-group>
     <div class="paccordion__item paccordion__item--l1" id="faq">
       <h2 class="paccordion__heading">
@@ -30,7 +30,7 @@
               </button>
             </h3>
             <div class="paccordion__panel" id="panel-pytanie-1" hidden>
-              <div class="richtext">
+              <div class="paccordion__richtext">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
@@ -50,7 +50,7 @@
               </button>
             </h3>
             <div class="paccordion__panel" id="panel-pytanie-2" hidden>
-              <div class="richtext">
+              <div class="paccordion__richtext">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
@@ -73,10 +73,10 @@
         </button>
       </h2>
       <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
-        <ul class="file-list file-list--cols-1">
-          <li class="file-list__item">
-            <a class="file-list__link" href="#">
-              <span class="file-list__text">
+        <ul class="paccordion__file-list paccordion__file-list--cols-1">
+          <li class="paccordion__file-item">
+            <a class="paccordion__file-link" href="#">
+              <span class="paccordion__file-text">
                 Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                 1.02.2025 r.do 31.07.2025 r.
               </span>
@@ -89,7 +89,7 @@
 </section>
 --]
 
-<section class="page__section" aria-label="Sekcje">
+<section class="paccordion-container__section" aria-label="Sekcje">
   <div class="paccordion paccordion--framed" data-paccordion-group>
     <div class="paccordion__item paccordion__item--l1" id="faq">
       <h2 class="paccordion__heading">
@@ -120,7 +120,7 @@
               </button>
             </h3>
             <div class="paccordion__panel" id="panel-pytanie-1" hidden>
-              <div class="richtext">
+              <div class="paccordion__richtext">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
@@ -140,7 +140,7 @@
               </button>
             </h3>
             <div class="paccordion__panel" id="panel-pytanie-2" hidden>
-              <div class="richtext">
+              <div class="paccordion__richtext">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
@@ -163,10 +163,10 @@
         </button>
       </h2>
       <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
-        <ul class="file-list file-list--cols-1">
-          <li class="file-list__item">
-            <a class="file-list__link" href="#">
-              <span class="file-list__text">
+        <ul class="paccordion__file-list paccordion__file-list--cols-1">
+          <li class="paccordion__file-item">
+            <a class="paccordion__file-link" href="#">
+              <span class="paccordion__file-text">
                 Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
                 1.02.2025 r.do 31.07.2025 r.
               </span>

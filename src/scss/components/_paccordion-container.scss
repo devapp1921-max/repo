@@ -1,0 +1,70 @@
+@use "../breakpoints" as *;
+
+.paccordion-container {
+  --pc-max: 980px;
+  width: min(var(--pc-max), calc(100% - 2 * var(--space-3)));
+  margin: 0 auto;
+  padding: var(--space-6) 0;
+
+  &--wide {
+    --pc-max: 1120px;
+  }
+
+  &__section {
+    background: transparent;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+
+    &--spaced {
+      margin-top: 64px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  &__skip-link {
+    position: absolute;
+    left: var(--space-3);
+    top: var(--space-3);
+    padding: 10px 12px;
+    background: #fff;
+    border: 1px solid var(--c-line);
+    border-radius: var(--r-1);
+    transform: translateY(-160%);
+    transition: transform 180ms ease;
+    z-index: 999;
+
+    &:focus {
+      transform: translateY(0);
+      outline: 3px solid var(--c-focus);
+      outline-offset: 2px;
+    }
+  }
+}
+
+@include tablet- {
+  .paccordion-container {
+    &__title {
+      font-size: 56px;
+    }
+
+    &__subtitle {
+      font-size: 40px;
+    }
+  }
+}
