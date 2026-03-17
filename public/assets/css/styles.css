@@ -213,12 +213,6 @@ a {
 .paccordion--framed > .paccordion__item:first-child::before {
   content: none;
 }
-.paccordion--framed > .paccordion__item:first-child .paccordion__button {
-  padding-top: 25px;
-  padding-bottom: 9px;
-  padding-left: 28px;
-  padding-right: 28px;
-}
 .paccordion #faq .paccordion--nested .paccordion__button.paccordion__button--startIcon {
   padding: 9px calc(var(--rp-gutter) + 8px) 9px calc(var(--rp-gutter) + 4px);
 }
@@ -341,13 +335,62 @@ a {
   .paccordion {
     --rp-gutter: 20px;
   }
+  .paccordion--framed > .paccordion__item:first-child .paccordion__button {
+    padding-top: 25px;
+    padding-bottom: 9px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
 }
 @media (min-width: 960px) {
   .paccordion {
     --rp-step: 20px;
+    --rp-gutter: 30px;
+  }
+  .paccordion__button {
+    padding: 25px 16px;
+    padding-left: calc(var(--rp-gutter) + 16px);
+    padding-right: calc(var(--rp-gutter) + 16px);
+  }
+  .paccordion--framed > .paccordion__item:first-child .paccordion__button {
+    padding: 49px 16px 25px;
+    padding-left: calc(var(--rp-gutter) + 16px);
+    padding-right: calc(var(--rp-gutter) + 16px);
+  }
+  .paccordion__label {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 300;
+    letter-spacing: 0;
+    color: #656565;
+  }
+  .paccordion__button[aria-expanded=true] {
+    padding-top: 21px;
+    padding-bottom: 21px;
   }
   .paccordion__file-list--cols-2 {
     grid-template-columns: 1fr 1fr;
+  }
+  .paccordion__file-list {
+    border-bottom: 1px solid var(--c-line);
+  }
+  .paccordion__file-link {
+    padding: 24px 16px 8px;
+    gap: 10px;
+    border-bottom: 0;
+  }
+  .paccordion__file-item:last-child .paccordion__file-link {
+    padding: 24px 16px;
+  }
+  .paccordion__item:last-child .paccordion__file-list {
+    border-bottom: 0;
+  }
+  .paccordion__file-text {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 300;
+    letter-spacing: 0;
+    color: #656565;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -459,6 +502,13 @@ a {
 }
 
 @media (min-width: 960px) {
+  .paccordion-container__section {
+    padding: 0 0 48px;
+  }
+  .paccordion-container__header {
+    padding-top: 72px;
+    padding-bottom: 60px;
+  }
   .paccordion-container__title {
     font-size: 60px;
     line-height: 60px;
