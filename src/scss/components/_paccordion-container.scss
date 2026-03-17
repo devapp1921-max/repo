@@ -2,10 +2,10 @@
 
 :root {
   --c-bg: #ffffff;
-  --c-text: #222222;
-  --c-muted: #7a7a7a;
-  --c-line: #d7d7d7;
-  --c-accent: #e4002b;
+  --c-text: #000000;
+  --c-muted: #656565;
+  --c-line: #c0c0c0;
+  --c-accent: #d11e25;
   --c-focus: #0b5fff;
   --space-1: 8px;
   --space-2: 12px;
@@ -17,10 +17,11 @@
 }
 
 .paccordion-container {
-  --pc-max: 980px;
-  width: min(var(--pc-max), calc(100% - 2 * var(--space-3)));
-  margin: 0 auto;
-  padding: var(--space-6) 0;
+  --pc-max: 356px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
 
   &--wide {
     --pc-max: 1120px;
@@ -28,11 +29,25 @@
 
   &__section {
     background: transparent;
+    padding: 0 0 48px;
+    margin: 0;
+    width: 100%;
+  }
+
+  &__section > .paccordion {
+    max-width: none;
+    margin: 0;
   }
 
   &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 0 24px;
+    gap: 10px;
     text-align: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: 0;
 
     &--spaced {
       margin-top: 64px;
@@ -41,9 +56,12 @@
 
   &__title {
     margin: 0;
-    font-size: 32px;
-    font-weight: 750;
-    letter-spacing: -0.01em;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 30px;
+    color: #656565;
+    font-family: "SofiaPro-Bold", sans-serif;
 
     &--none,
     &--hide {
@@ -56,6 +74,7 @@
 
     &--big {
       font-size: 40px;
+      line-height: 48px;
     }
   }
 
@@ -64,6 +83,7 @@
     font-size: 28px;
     font-weight: 750;
     letter-spacing: -0.01em;
+    font-family: "SofiaPro-Bold", sans-serif;
 
     &--none,
     &--hide {
@@ -102,7 +122,10 @@
 @include tablet- {
   .paccordion-container {
     &__title {
-      font-size: 56px;
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -0.04em;
+      color: #000000;
 
       &--small {
         font-size: 36px;
@@ -123,6 +146,21 @@
       &--big {
         font-size: 48px;
       }
+    }
+  }
+}
+
+@include desktop- {
+  .paccordion-container {
+    --pc-max: 1632px;
+    padding-top: 72px;
+    padding-bottom: 60px;
+
+    &__title {
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -0.04em;
+      color: #000000;
     }
   }
 }

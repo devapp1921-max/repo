@@ -85,14 +85,13 @@ export class Accordion {
 
       panel.style.willChange = "height";
       panel.style.overflow = "hidden";
-      panel.style.height = "0px";
-      const target = panel.scrollHeight;
+    panel.style.height = "0px";
 
-      panel.getBoundingClientRect();
-
+    requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        panel.style.height = `${target}px`;
+        panel.style.height = `${panel.scrollHeight}px`;
       });
+    });
 
       panel._revealTransitionEnd = (ev) => {
         if (ev.target !== panel) return;
@@ -116,14 +115,11 @@ export class Accordion {
 
       panel.style.willChange = "height";
       panel.style.overflow = "hidden";
-      const start = panel.scrollHeight;
-      panel.style.height = `${start}px`;
+    panel.style.height = `${panel.scrollHeight}px`;
 
-      panel.getBoundingClientRect();
-
-      requestAnimationFrame(() => {
-        panel.style.height = "0px";
-      });
+    requestAnimationFrame(() => {
+      panel.style.height = "0px";
+    });
 
       panel._revealTransitionEnd = (ev) => {
         if (ev.target !== panel) return;
