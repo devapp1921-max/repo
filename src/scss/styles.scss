@@ -1,6 +1,5 @@
 /* Entry point: imports in strict order (mobile-first). */
 
-@use "settings/tokens";
 @use "base/base";
 @use "components/paccordion";
 @use "components/paccordion-container";

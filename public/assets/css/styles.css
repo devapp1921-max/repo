@@ -1,22 +1,5 @@
 @charset "UTF-8";
 /* Entry point: imports in strict order (mobile-first). */
-/* 1) Settings: design tokens (CSS custom properties) */
-:root {
-  --c-bg: #ffffff;
-  --c-text: #222222;
-  --c-muted: #7a7a7a;
-  --c-line: #d7d7d7;
-  --c-accent: #e4002b;
-  --c-focus: #0b5fff;
-  --space-1: 8px;
-  --space-2: 12px;
-  --space-3: 16px;
-  --space-4: 20px;
-  --space-5: 28px;
-  --space-6: 40px;
-  --r-1: 6px;
-}
-
 /* 2) Base: reset + global elements */
 *,
 *::before,
@@ -63,6 +46,22 @@ a {
 * big, big-     | 1680 | ∞  | big i większe
 *
 */
+:root {
+  --c-bg: #ffffff;
+  --c-text: #222222;
+  --c-muted: #7a7a7a;
+  --c-line: #d7d7d7;
+  --c-accent: #e4002b;
+  --c-focus: #0b5fff;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 28px;
+  --space-6: 40px;
+  --r-1: 6px;
+}
+
 .paccordion {
   --rp-gutter: 16px;
   --rp-step: 16px;
@@ -280,6 +279,22 @@ a {
     animation-duration: 0.01ms !important;
   }
 }
+:root {
+  --c-bg: #ffffff;
+  --c-text: #222222;
+  --c-muted: #7a7a7a;
+  --c-line: #d7d7d7;
+  --c-accent: #e4002b;
+  --c-focus: #0b5fff;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 28px;
+  --space-6: 40px;
+  --r-1: 6px;
+}
+
 .paccordion-container {
   --pc-max: 980px;
   width: min(var(--pc-max), 100% - 2 * var(--space-3));

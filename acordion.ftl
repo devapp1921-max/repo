@@ -7,7 +7,7 @@
      paccordion--framed (na .paccordion) = obramowanie kontenera (zgodne z content.border: show/hide)
 --]
 
-[#-- PRZYKŁADY (statyczne):
+[#-- PRZYKŁADY:
      data-open:
      <div class="paccordion__item paccordion__item--l1" data-open>...</div>
 
