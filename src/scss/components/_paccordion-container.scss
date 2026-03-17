@@ -28,6 +28,19 @@
     font-size: 32px;
     font-weight: 750;
     letter-spacing: -0.01em;
+
+    &--none,
+    &--hide {
+      display: none;
+    }
+
+    &--small {
+      font-size: 24px;
+    }
+
+    &--big {
+      font-size: 40px;
+    }
   }
 
   &__subtitle {
@@ -35,6 +48,19 @@
     font-size: 28px;
     font-weight: 750;
     letter-spacing: -0.01em;
+
+    &--none,
+    &--hide {
+      display: none;
+    }
+
+    &--small {
+      font-size: 20px;
+    }
+
+    &--big {
+      font-size: 32px;
+    }
   }
 
   &__skip-link {
@@ -61,10 +87,26 @@
   .paccordion-container {
     &__title {
       font-size: 56px;
+
+      &--small {
+        font-size: 36px;
+      }
+
+      &--big {
+        font-size: 72px;
+      }
     }
 
     &__subtitle {
       font-size: 40px;
+
+      &--small {
+        font-size: 28px;
+      }
+
+      &--big {
+        font-size: 48px;
+      }
     }
   }
 }

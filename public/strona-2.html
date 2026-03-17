@@ -337,6 +337,26 @@
         </div>
       </section>
 
+      <section class="paccordion-container__section" aria-label="Przykłady CMS">
+        <header class="paccordion-container__header paccordion-container__header--spaced">
+          <h2 class="paccordion-container__title paccordion-container__title--small">Przykład: title--small</h2>
+          <h3 class="paccordion-container__subtitle paccordion-container__subtitle--big">Przykład: subtitle--big</h3>
+        </header>
+        <div class="paccordion paccordion--framed" data-paccordion-group>
+          <div class="paccordion__item paccordion__item--l1" id="example-closed">
+            <h3 class="paccordion__heading">
+              <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-example-closed" id="button-example-closed">
+                <span class="paccordion__label">Przykład: domyślnie zamknięty</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="paccordion__panel" id="panel-example-closed" role="region" aria-labelledby="button-example-closed" hidden>
+              <div class="paccordion__richtext"><p>Przykład treści richtext.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <script src="./assets/js/paccordion.js" defer></script>

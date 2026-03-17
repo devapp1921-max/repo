@@ -305,11 +305,29 @@ a {
   font-weight: 750;
   letter-spacing: -0.01em;
 }
+.paccordion-container__title--none, .paccordion-container__title--hide {
+  display: none;
+}
+.paccordion-container__title--small {
+  font-size: 24px;
+}
+.paccordion-container__title--big {
+  font-size: 40px;
+}
 .paccordion-container__subtitle {
   margin: 0;
   font-size: 28px;
   font-weight: 750;
   letter-spacing: -0.01em;
+}
+.paccordion-container__subtitle--none, .paccordion-container__subtitle--hide {
+  display: none;
+}
+.paccordion-container__subtitle--small {
+  font-size: 20px;
+}
+.paccordion-container__subtitle--big {
+  font-size: 32px;
 }
 .paccordion-container__skip-link {
   position: absolute;
@@ -333,8 +351,20 @@ a {
   .paccordion-container__title {
     font-size: 56px;
   }
+  .paccordion-container__title--small {
+    font-size: 36px;
+  }
+  .paccordion-container__title--big {
+    font-size: 72px;
+  }
   .paccordion-container__subtitle {
     font-size: 40px;
+  }
+  .paccordion-container__subtitle--small {
+    font-size: 28px;
+  }
+  .paccordion-container__subtitle--big {
+    font-size: 48px;
   }
 }
 

@@ -1,179 +1,70 @@
-[#--
-<section class="paccordion-container__section" aria-label="Sekcje">
-  <div class="paccordion paccordion--framed" data-paccordion-group>
-    <div class="paccordion__item paccordion__item--l1" id="faq">
-      <h2 class="paccordion__heading">
-        <button
-          class="paccordion__button"
-          type="button"
-          aria-expanded="false"
-          aria-controls="panel-faq"
-          id="button-faq"
-        >
-          <span class="paccordion__label">Pytania i odpowiedzi</span>
-          <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
-        </button>
-      </h2>
-      <div class="paccordion__panel" id="panel-faq" role="region" aria-labelledby="button-faq" hidden>
-        <div class="paccordion paccordion--nested" data-paccordion-group>
-          <div class="paccordion__item paccordion__item--l2" id="pytanie-1">
-            <h3 class="paccordion__heading">
-              <button
-                class="paccordion__button paccordion__button--startIcon"
-                type="button"
-                aria-expanded="false"
-                aria-controls="panel-pytanie-1"
-                id="button-pytanie-1"
-              >
-                <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
-                <span class="paccordion__label">Pytanie 1</span>
-              </button>
-            </h3>
-            <div class="paccordion__panel" id="panel-pytanie-1" hidden>
-              <div class="paccordion__richtext">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
+[#assign content = cmsfn.decode(content)]
 
-          <div class="paccordion__item paccordion__item--l2" id="pytanie-2">
-            <h3 class="paccordion__heading">
-              <button
-                class="paccordion__button paccordion__button--startIcon"
-                type="button"
-                aria-expanded="false"
-                aria-controls="panel-pytanie-2"
-                id="button-pytanie-2"
-              >
-                <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
-                <span class="paccordion__label">Pytanie 2</span>
-              </button>
-            </h3>
-            <div class="paccordion__panel" id="panel-pytanie-2" hidden>
-              <div class="paccordion__richtext">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="paccordion__item paccordion__item--l1" id="downloads">
-      <h2 class="paccordion__heading">
-        <button
-          class="paccordion__button"
-          type="button"
-          aria-expanded="false"
-          aria-controls="panel-downloads"
-          id="button-downloads"
-        >
-          <span class="paccordion__label">Pliki do pobrania</span>
-          <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
-        </button>
-      </h2>
-      <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
-        <ul class="paccordion__file-list paccordion__file-list--cols-1">
-          <li class="paccordion__file-item">
-            <a class="paccordion__file-link" href="#">
-              <span class="paccordion__file-text">
-                Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
-                1.02.2025 r.do 31.07.2025 r.
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+[#-- content.border:
+     show - pokaz (domyślnie); jak w figu cenówki / strony produktowe
+     hide - nie dodawaj; jak w figu cenówki / cenówki z regulaminy i nagłówek z marginesy subtitle? - prośba o ustawienie własnej property :) 
 --]
 
-<section class="paccordion-container__section" aria-label="Sekcje">
-  <div class="paccordion paccordion--framed" data-paccordion-group>
-    <div class="paccordion__item paccordion__item--l1" id="faq">
-      <h2 class="paccordion__heading">
-        <button
-          class="paccordion__button"
-          type="button"
-          aria-expanded="false"
-          aria-controls="panel-faq"
-          id="button-faq"
-        >
-          <span class="paccordion__label">Pytania i odpowiedzi</span>
-          <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
-        </button>
-      </h2>
-      <div class="paccordion__panel" id="panel-faq" role="region" aria-labelledby="button-faq" hidden>
-        <div class="paccordion paccordion--nested" data-paccordion-group>
-          <div class="paccordion__item paccordion__item--l2" id="pytanie-1">
-            <h3 class="paccordion__heading">
-              <button
-                class="paccordion__button paccordion__button--startIcon"
-                type="button"
-                aria-expanded="false"
-                aria-controls="panel-pytanie-1"
-                id="button-pytanie-1"
-              >
-                <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
-                <span class="paccordion__label">Pytanie 1</span>
-              </button>
-            </h3>
-            <div class="paccordion__panel" id="panel-pytanie-1" hidden>
-              <div class="paccordion__richtext">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
+[#if content.border?has_content && content.border == "show"]
+    [#assign borderClass = "accordion-container--border"]
+[/#if]
 
-          <div class="paccordion__item paccordion__item--l2" id="pytanie-2">
-            <h3 class="paccordion__heading">
-              <button
-                class="paccordion__button paccordion__button--startIcon"
-                type="button"
-                aria-expanded="false"
-                aria-controls="panel-pytanie-2"
-                id="button-pytanie-2"
-              >
-                <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
-                <span class="paccordion__label">Pytanie 2</span>
-              </button>
-            </h3>
-            <div class="paccordion__panel" id="panel-pytanie-2" hidden>
-              <div class="paccordion__richtext">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
+<div class="p-accordions-container ${borderClass!}">
+
+    [#-- content.headerVisibility:
+         none - brak (domyślnie)
+         big - jak w figu cenówki / cenówki z regulaminy (duży wielki tytuł z marginesy subtitle? - prośba o ustawienie własnej property)
+         small - jak w figu inna sekcja
+    --]
+
+    [#-- KLASY (CMS -> HTML):
+         paccordion-container__title--none | --hide | --small | --big
+         paccordion-container__subtitle--none | --hide | --small | --big
+         przykład:
+         <h1 class="paccordion-container__title paccordion-container__title--big">Tytuł</h1>
+         <h2 class="paccordion-container__subtitle paccordion-container__subtitle--small">Podtytuł</h2>
+    --]
+
+    [#-- DODATKOWE ATRYBUTY / KLASY:
+         data-open (na .paccordion__item) = domyślnie otwarty
+         paccordion--framed (na .paccordion) = obramowanie kontenera (zgodne z content.border: show/hide)
+         paccordion--nested (na .paccordion) = akordeon zagnieżdżony
+         paccordion__item--l1/--l2/--l3/--l4 = poziom zagnieżdżenia
+         paccordion__file-list--cols-1 / --cols-2 = układ listy plików
+    --]
+
+    [#-- PRZYKŁADY:
+         border:
+         <div class="paccordion paccordion--framed" data-paccordion-group>...</div>
+
+         headerVisibility:
+         <header class="paccordion-container__header">
+           <h1 class="paccordion-container__title paccordion-container__title--big">Tytuł</h1>
+           <h2 class="paccordion-container__subtitle paccordion-container__subtitle--small">Podtytuł</h2>
+         </header>
+
+         data-open:
+         <div class="paccordion__item paccordion__item--l1" data-open>...</div>
+
+         poziomy:
+         <div class="paccordion__item paccordion__item--l2">...</div>
+
+         file list:
+         <ul class="paccordion__file-list paccordion__file-list--cols-2">
+           <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Plik</span></a></li>
+         </ul>
+    --]
+
+    [#if content.headerVisibility?has_content && content.headerVisibility != "none"]
+        <div class="p-accordions-container-header p-accordions-container-header-${content.headerVisibility}">
+            <h3>${content.title!}</h3>
+            [#if content.subtitle?has_content]
+                <span>${content.subtitle!}</span>
+            [/#if]
         </div>
-      </div>
-    </div>
+    [/#if]
 
-    <div class="paccordion__item paccordion__item--l1" id="downloads">
-      <h2 class="paccordion__heading">
-        <button
-          class="paccordion__button"
-          type="button"
-          aria-expanded="false"
-          aria-controls="panel-downloads"
-          id="button-downloads"
-        >
-          <span class="paccordion__label">Pliki do pobrania</span>
-          <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
-        </button>
-      </h2>
-      <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
-        <ul class="paccordion__file-list paccordion__file-list--cols-1">
-          <li class="paccordion__file-item">
-            <a class="paccordion__file-link" href="#">
-              <span class="paccordion__file-text">
-                Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
-                1.02.2025 r.do 31.07.2025 r.
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    [#-- accordions list --]
+    [@cms.area name="accordions-container"/]
+
+</div>

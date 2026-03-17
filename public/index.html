@@ -249,6 +249,43 @@
         </div>
       </section>
 
+      <section class="paccordion-container__section" aria-label="Przykłady CMS">
+        <header class="paccordion-container__header paccordion-container__header--spaced">
+          <h2 class="paccordion-container__title paccordion-container__title--big">Przykład: title--big</h2>
+          <h3 class="paccordion-container__subtitle paccordion-container__subtitle--small">Przykład: subtitle--small</h3>
+        </header>
+        <div class="paccordion paccordion--framed" data-paccordion-group>
+          <div class="paccordion__item paccordion__item--l1" id="example-open" data-open>
+            <h2 class="paccordion__heading">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-example-open"
+                id="button-example-open"
+              >
+                <span class="paccordion__label">Przykład: data-open</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="paccordion__panel" id="panel-example-open" role="region" aria-labelledby="button-example-open" hidden>
+              <ul class="paccordion__file-list paccordion__file-list--cols-2">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Plik A (cols-2)</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Plik B (cols-2)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <script src="./assets/js/paccordion.js" defer></script>
