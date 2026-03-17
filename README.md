@@ -1,4 +1,4 @@
-# Pekao Innowacje (static)
+# Innowacje (static)
 
 Założenia:
 - Tylko HTML + SCSS (BEM) + JS.
