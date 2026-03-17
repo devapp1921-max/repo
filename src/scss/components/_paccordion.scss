@@ -1,0 +1,177 @@
+@use "../breakpoints" as *;
+
+/* 4) Components: paccordion */
+
+.paccordion {
+  /* Horizontal rhythm:
+   * - `--rp-gutter` is page gutter for the whole block
+   * - `--rp-step` is indentation delta per nesting level
+   *
+   * Indent is computed per item so both button and panel align:
+   *   indent = gutter + (level - 1) * step
+   */
+  --rp-gutter: 16px;
+  --rp-step: 16px;
+
+  width: 100%;
+
+  &--framed {
+    border: 1px solid var(--c-line);
+    background: #fff;
+  }
+
+  &--nested {
+    /* Panel already provides the separator line. */
+    border-top: 0;
+  }
+
+  &__item {
+    --rp-lvl: 1;
+    --rp-indent: calc(var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step));
+
+    &--l1 {
+      --rp-lvl: 1;
+
+      .paccordion__button {
+        padding-top: 22px;
+        padding-bottom: 22px;
+      }
+
+      .paccordion__label {
+        font-size: 20px;
+      }
+    }
+
+    &--l2 {
+      --rp-lvl: 2;
+    }
+
+    &--l3 {
+      --rp-lvl: 3;
+    }
+
+    &--l4 {
+      --rp-lvl: 4;
+    }
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    background: transparent;
+    border: 0;
+    padding: 20px var(--rp-gutter);
+    padding-left: var(--rp-indent);
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    color: var(--c-muted);
+    position: relative;
+
+    &[aria-expanded="true"] {
+      color: var(--c-text);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--c-focus);
+      outline-offset: 2px;
+      border-radius: var(--r-1);
+    }
+
+    &--startIcon {
+      justify-content: flex-start;
+    }
+
+  }
+
+  &__label {
+    font-size: 18px;
+    font-weight: 450;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    color: var(--c-accent);
+    position: relative;
+
+    &--chevron {
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 160ms ease;
+    }
+
+    &--plusminus::before,
+    &--plusminus::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 14px;
+      height: 2px;
+      background: currentColor;
+      transform: translate(-50%, -50%);
+      border-radius: 99px;
+    }
+
+    &--plusminus::after {
+      width: 2px;
+      height: 14px;
+      transition: opacity 140ms ease;
+    }
+  }
+
+  &__button[aria-expanded="true"] &__icon--chevron {
+    transform: rotate(225deg);
+  }
+
+  &__button[aria-expanded="true"] &__icon--plusminus::after {
+    opacity: 0;
+  }
+
+  &__panel {
+    padding: 0 var(--rp-gutter) 16px var(--rp-indent);
+    transition: height 220ms ease, opacity 160ms ease;
+  }
+
+  &__item:not(:last-child) > &__heading > &__button::after {
+    content: "";
+    position: absolute;
+    left: var(--rp-gutter);
+    right: var(--rp-gutter);
+    bottom: 0;
+    height: 1px;
+    background: var(--c-line);
+  }
+
+  /* Nested paccordion should align separators to full width */
+  &__panel > .paccordion {
+    margin-left: calc(-1 * var(--rp-indent));
+    margin-right: calc(-1 * var(--rp-gutter));
+    width: calc(100% + var(--rp-indent) + var(--rp-gutter));
+  }
+
+}
+
+@include mobile- {
+  .paccordion {
+    --rp-gutter: 28px;
+  }
+}
+
+@include tablet- {
+  .paccordion {
+    --rp-step: 20px;
+  }
+}

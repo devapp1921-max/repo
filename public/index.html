@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strona produktowa</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdz do tresci</a>
+
+    <main id="main" class="page">
+      <header class="page__header">
+        <h1 class="page__title">Strona produktowa</h1>
+      </header>
+
+      <section class="page__section" aria-label="Sekcje">
+        <div class="paccordion paccordion--framed" data-paccordion-group>
+          <div class="paccordion__item paccordion__item--l1" id="faq">
+            <h2 class="paccordion__heading">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-faq"
+                id="button-faq"
+              >
+                <span class="paccordion__label">Pytania i odpowiedzi</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div
+              class="paccordion__panel"
+              id="panel-faq"
+              role="region"
+              aria-labelledby="button-faq"
+              hidden
+            >
+              <div class="paccordion paccordion--nested" data-paccordion-group itemscope itemtype="https://schema.org/FAQPage">
+                <div class="paccordion__item paccordion__item--l2" id="pytanie-1" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
+                  <h3 class="paccordion__heading">
+                    <button
+                      class="paccordion__button paccordion__button--startIcon"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls="panel-pytanie-1"
+                      id="button-pytanie-1"
+                    >
+                      <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                      <span class="paccordion__label" itemprop="name">Pytanie 1</span>
+                    </button>
+                  </h3>
+                  <div
+                    class="paccordion__panel"
+                    id="panel-pytanie-1"
+                    hidden
+                    itemprop="acceptedAnswer"
+                    itemscope
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div class="richtext" itemprop="text">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l2" id="pytanie-2" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
+                  <h3 class="paccordion__heading">
+                    <button
+                      class="paccordion__button paccordion__button--startIcon"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls="panel-pytanie-2"
+                      id="button-pytanie-2"
+                    >
+                      <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                      <span class="paccordion__label" itemprop="name">Pytanie 2</span>
+                    </button>
+                  </h3>
+                  <div
+                    class="paccordion__panel"
+                    id="panel-pytanie-2"
+                    hidden
+                    itemprop="acceptedAnswer"
+                    itemscope
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div class="richtext" itemprop="text">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l2" id="pytanie-3" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
+                  <h3 class="paccordion__heading">
+                    <button
+                      class="paccordion__button paccordion__button--startIcon"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls="panel-pytanie-3"
+                      id="button-pytanie-3"
+                    >
+                      <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                      <span class="paccordion__label" itemprop="name">Pytanie 3</span>
+                    </button>
+                  </h3>
+                  <div
+                    class="paccordion__panel"
+                    id="panel-pytanie-3"
+                    hidden
+                    itemprop="acceptedAnswer"
+                    itemscope
+                    itemtype="https://schema.org/Answer"
+                  >
+                    <div class="richtext" itemprop="text">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="paccordion__item paccordion__item--l1" id="downloads">
+            <h2 class="paccordion__heading">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-downloads"
+                id="button-downloads"
+              >
+                <span class="paccordion__label">Pliki do pobrania</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
+              <ul class="file-list file-list--cols-1">
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#">
+                    <span class="file-list__text">
+                      Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
+                      1.02.2025 r.do 31.07.2025 r.
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="paccordion__item paccordion__item--l1" id="oplaty-i-prowizje" data-open>
+            <h2 class="paccordion__heading">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-oplaty-i-prowizje"
+                id="button-oplaty-i-prowizje"
+              >
+                <span class="paccordion__label">Opłaty i prowizje</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="paccordion__panel" id="panel-oplaty-i-prowizje" role="region" aria-labelledby="button-oplaty-i-prowizje" hidden>
+              <ul class="file-list file-list--cols-1">
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#" id="tabela-oplat-1">
+                    <span class="file-list__text">
+                      Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
+                      1.02.2025 r.do 31.07.2025 r.
+                    </span>
+                  </a>
+                </li>
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#">
+                    <span class="file-list__text">
+                      Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
+                      1.02.2025 r.do 31.07.2025 r.
+                    </span>
+                  </a>
+                </li>
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#">
+                    <span class="file-list__text">
+                      Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
+                      1.02.2025 r.do 31.07.2025 r.
+                    </span>
+                  </a>
+                </li>
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#">
+                    <span class="file-list__text">
+                      Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes obowiazujaca od
+                      1.02.2025 r.do 31.07.2025 r.
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="paccordion__item paccordion__item--l1" id="regulaminy">
+            <h2 class="paccordion__heading">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-regulaminy"
+                id="button-regulaminy"
+              >
+                <span class="paccordion__label">Regulaminy</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="paccordion__panel" id="panel-regulaminy" role="region" aria-labelledby="button-regulaminy" hidden>
+              <ul class="file-list file-list--cols-1">
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#">
+                    <span class="file-list__text">Placeholder: regulamin (PDF)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="paccordion__item paccordion__item--l1" id="archiwum">
+            <h2 class="paccordion__heading">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-archiwum"
+                id="button-archiwum"
+              >
+                <span class="paccordion__label">Archiwum</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="paccordion__panel" id="panel-archiwum" role="region" aria-labelledby="button-archiwum" hidden>
+              <ul class="file-list file-list--cols-1">
+                <li class="file-list__item">
+                  <a class="file-list__link" href="#">
+                    <span class="file-list__text">Placeholder: archiwum (PDF)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="./assets/js/paccordion.js" defer></script>
+  </body>
+</html>

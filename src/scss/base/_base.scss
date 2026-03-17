@@ -1,0 +1,29 @@
+/* 2) Base: reset + global elements */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+*[id] {
+  scroll-margin-top: 16px;
+}
+

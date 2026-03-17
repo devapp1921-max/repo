@@ -1,0 +1,54 @@
+@use "../breakpoints" as *;
+
+/* 3) Layout: page wrapper */
+
+.page {
+  --page-max: 980px;
+  width: min(var(--page-max), calc(100% - 2 * var(--space-3)));
+  margin: 0 auto;
+  padding: var(--space-6) 0;
+
+  &--wide {
+    --page-max: 1120px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+
+    &--spaced {
+      margin-top: 64px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  &__section {
+    background: transparent;
+  }
+
+}
+
+@include tablet- {
+  .page {
+    &__title {
+      font-size: 56px;
+    }
+
+    &__subtitle {
+      font-size: 40px;
+    }
+  }
+}
