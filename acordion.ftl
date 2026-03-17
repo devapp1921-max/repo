@@ -20,6 +20,13 @@
      </ul>
 --]
 
+[#-- SEO dla akordeonów FAQ:
+     itemscope itemtype="https://schema.org/Question" itemprop="mainEntity" na .paccordion__item
+     itemprop="name" na .paccordion__label
+     itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer" na .paccordion__panel
+     itemprop="text" na .paccordion__richtext lub .paccordion__file-list
+--]
+
 [#if content.defaultOpened?has_content && content.defaultOpened]
     [#assign openClass = " opened"]
 [/#if]

@@ -33,6 +33,13 @@
          paccordion__file-list--cols-1 / --cols-2 = układ listy plików
     --]
 
+    [#-- SEO dla akordeonów FAQ:
+        itemscope itemtype="https://schema.org/Question" itemprop="mainEntity" na .paccordion__item
+        itemprop="name" na .paccordion__label
+        itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer" na .paccordion__panel
+        itemprop="text" na .paccordion__richtext lub .paccordion__file-list
+    --]
+
     [#-- PRZYKŁADY:
          border:
          <div class="paccordion paccordion--framed" data-paccordion-group>...</div>
