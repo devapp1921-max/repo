@@ -9,15 +9,15 @@
   <body>
     <a class="paccordion-container__skip-link" href="#main">Przejdz do tresci</a>
 
-    <main id="main" class="paccordion-container">
+    <div id="main" class="paccordion-container">
       <header class="paccordion-container__header">
-        <h1 class="paccordion-container__title">Strona produktowa</h1>
+        <span class="paccordion-container__title" role="heading" aria-level="1">Strona produktowa</span>
       </header>
 
       <section class="paccordion-container__section" aria-label="Sekcje">
         <div class="paccordion paccordion--framed" data-paccordion-group>
           <div class="paccordion__item paccordion__item--l1" id="faq">
-            <h2 class="paccordion__heading">
+            <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
@@ -28,7 +28,7 @@
                 <span class="paccordion__label">Pytania i odpowiedzi</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
-            </h2>
+            </div>
             <div
               class="paccordion__panel"
               id="panel-faq"
@@ -38,7 +38,7 @@
             >
               <div class="paccordion paccordion--nested" data-paccordion-group itemscope itemtype="https://schema.org/FAQPage">
                 <div class="paccordion__item paccordion__item--l2" id="pytanie-1" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
-                  <h3 class="paccordion__heading">
+                  <div class="paccordion__heading" role="heading" aria-level="3">
                     <button
                       class="paccordion__button paccordion__button--startIcon"
                       type="button"
@@ -49,7 +49,7 @@
                       <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
                       <span class="paccordion__label" itemprop="name">Kto może otworzyć Konto Przekorzystne?</span>
                     </button>
-                  </h3>
+                  </div>
                   <div
                     class="paccordion__panel"
                     id="panel-pytanie-1"
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="paccordion__item paccordion__item--l2" id="pytanie-2" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
-                  <h3 class="paccordion__heading">
+                  <div class="paccordion__heading" role="heading" aria-level="3">
                     <button
                       class="paccordion__button paccordion__button--startIcon"
                       type="button"
@@ -88,7 +88,7 @@
                       <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
                       <span class="paccordion__label" itemprop="name">Pytanie 2</span>
                     </button>
-                  </h3>
+                  </div>
                   <div
                     class="paccordion__panel"
                     id="panel-pytanie-2"
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="paccordion__item paccordion__item--l2" id="pytanie-3" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
-                  <h3 class="paccordion__heading">
+                  <div class="paccordion__heading" role="heading" aria-level="3">
                     <button
                       class="paccordion__button paccordion__button--startIcon"
                       type="button"
@@ -115,7 +115,7 @@
                       <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
                       <span class="paccordion__label" itemprop="name">Pytanie 3</span>
                     </button>
-                  </h3>
+                  </div>
                   <div
                     class="paccordion__panel"
                     id="panel-pytanie-3"
@@ -134,7 +134,7 @@
           </div>
 
           <div class="paccordion__item paccordion__item--l1" id="downloads">
-            <h2 class="paccordion__heading">
+            <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
@@ -145,7 +145,7 @@
                 <span class="paccordion__label">Pliki do pobrania</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
-            </h2>
+            </div>
             <div class="paccordion__panel" id="panel-downloads" role="region" aria-labelledby="button-downloads" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-1">
                 <li class="paccordion__file-item">
@@ -161,7 +161,7 @@
           </div>
 
           <div class="paccordion__item paccordion__item--l1" id="oplaty-i-prowizje" data-open>
-            <h2 class="paccordion__heading">
+            <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
@@ -172,7 +172,7 @@
                 <span class="paccordion__label">Opłaty i prowizje</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
-            </h2>
+            </div>
             <div class="paccordion__panel" id="panel-oplaty-i-prowizje" role="region" aria-labelledby="button-oplaty-i-prowizje" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-1">
                 <li class="paccordion__file-item">
@@ -212,7 +212,7 @@
           </div>
 
           <div class="paccordion__item paccordion__item--l1" id="regulaminy">
-            <h2 class="paccordion__heading">
+            <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
@@ -223,7 +223,7 @@
                 <span class="paccordion__label">Regulaminy</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
-            </h2>
+            </div>
             <div class="paccordion__panel" id="panel-regulaminy" role="region" aria-labelledby="button-regulaminy" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-1">
                 <li class="paccordion__file-item">
@@ -236,7 +236,7 @@
           </div>
 
           <div class="paccordion__item paccordion__item--l1" id="archiwum">
-            <h2 class="paccordion__heading">
+            <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
@@ -247,7 +247,7 @@
                 <span class="paccordion__label">Archiwum</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
-            </h2>
+            </div>
             <div class="paccordion__panel" id="panel-archiwum" role="region" aria-labelledby="button-archiwum" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-1">
                 <li class="paccordion__file-item">
@@ -263,12 +263,12 @@
 
       <section class="paccordion-container__section" aria-label="Przykłady CMS">
         <header class="paccordion-container__header paccordion-container__header--spaced">
-          <h2 class="paccordion-container__title paccordion-container__title--big">Przykład: title--big</h2>
-          <h3 class="paccordion-container__subtitle paccordion-container__subtitle--small">Przykład: subtitle--small</h3>
+          <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Przykład: title--big</span>
+          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Przykład: subtitle--small</span>
         </header>
         <div class="paccordion paccordion--framed" data-paccordion-group>
           <div class="paccordion__item paccordion__item--l1" id="example-open" data-open>
-            <h2 class="paccordion__heading">
+            <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
@@ -279,7 +279,7 @@
                 <span class="paccordion__label">Przykład: data-open</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
-            </h2>
+            </div>
             <div class="paccordion__panel" id="panel-example-open" role="region" aria-labelledby="button-example-open" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-2">
                 <li class="paccordion__file-item">
@@ -298,7 +298,7 @@
         </div>
       </section>
 
-    </main>
+    </div>
 
     <script src="./assets/js/paccordion.js" type="module"></script>
   </body>

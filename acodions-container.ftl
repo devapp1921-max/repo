@@ -20,9 +20,24 @@
     [#-- KLASY (CMS -> HTML):
          paccordion-container__title--none | --hide | --small | --big
          paccordion-container__subtitle--none | --hide | --small | --big
-         przykład:
-         <h1 class="paccordion-container__title paccordion-container__title--big">Tytuł</h1>
-         <h2 class="paccordion-container__subtitle paccordion-container__subtitle--small">Podtytuł</h2>
+
+        przykład:
+        <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Tytuł</span>
+        <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Podtytuł</span>
+
+        tytul/podtytul:
+        - Tytul nagłówek ustalany przez redaktora h1-h5, 
+          jesli tytul to span, trzeba dodać role="heading" + aria-level chyba jakieś domyślne.
+        - Podtytul jako span: jesli pod SEO, wtedy role="heading" + aria-level = titleLevel + 1.
+          Jesli to tylko opis, zwykly span bez role/aria-level.
+
+        akordeon:
+        - Dla naglowkow akordeonu uzywamy <div class="paccordion__heading"> zamiast h2/h3.
+        - W takim <div> DODAJEMY role="heading" + aria-level (np. 2, 3, 4, 5 w zaleznosci od poziomu).
+
+        głowny div:
+        - jeśli to samodzielna strona to możemy dodać role="main", ale może być tylko raz na stronie
+        
     --]
 
     [#-- DODATKOWE ATRYBUTY / KLASY:
@@ -44,11 +59,11 @@
          border:
          <div class="paccordion paccordion--framed" data-paccordion-group>...</div>
 
-         headerVisibility:
-         <header class="paccordion-container__header">
-           <h1 class="paccordion-container__title paccordion-container__title--big">Tytuł</h1>
-           <h2 class="paccordion-container__subtitle paccordion-container__subtitle--small">Podtytuł</h2>
-         </header>
+        headerVisibility:
+        <header class="paccordion-container__header">
+          <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Tytuł</span>
+          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Podtytuł</span>
+        </header>
 
          data-open:
          <div class="paccordion__item paccordion__item--l1" data-open>...</div>
@@ -64,9 +79,9 @@
 
     [#if content.headerVisibility?has_content && content.headerVisibility != "none"]
         <div class="p-accordions-container-header p-accordions-container-header-${content.headerVisibility}">
-            <h3>${content.title!}</h3>
+            <span class="paccordion-container__title" role="heading" aria-level="${content.titleLevel!1}">${content.title!}</span>
             [#if content.subtitle?has_content]
-                <span>${content.subtitle!}</span>
+                <span class="paccordion-container__subtitle" role="heading" aria-level="${content.subtitleLevel!2}">${content.subtitle!}</span>
             [/#if]
         </div>
     [/#if]
