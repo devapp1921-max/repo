@@ -16,7 +16,7 @@
   --r-1: 6px;
 }
 
-.paccordion {
+.paccordion.paccordion {
   --rp-gutter: 20px;
   --rp-step: 16px;
   width: 100%;
@@ -318,8 +318,15 @@
   }
 }
 
+.paccordion.paccordion,
+.paccordion.paccordion *,
+.paccordion.paccordion *::before,
+.paccordion.paccordion *::after {
+  box-sizing: border-box;
+}
+
 @include mobile- {
-  .paccordion {
+  .paccordion.paccordion {
     --rp-gutter: 20px;
 
     &--framed > &__item:first-child .paccordion__button {
@@ -333,15 +340,16 @@
       padding: 9px calc(var(--rp-gutter) + 8px) 9px calc(var(--rp-gutter) + 4px);
     }
   }
+
 }
 
 @include tablet- {
-  .paccordion {
+  .paccordion.paccordion {
     --rp-step: 20px;
     --rp-gutter: 30px;
   }
 
-  .paccordion {
+  .paccordion.paccordion {
     &__button {
       padding: 25px 16px;
       padding-left: calc(var(--rp-gutter) + 16px);
@@ -417,6 +425,7 @@
       padding-right: calc(var(--rp-gutter) + 16px);
     }
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

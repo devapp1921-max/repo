@@ -127,44 +127,44 @@ a {
   --r-1: 6px;
 }
 
-.paccordion {
+.paccordion.paccordion {
   --rp-gutter: 20px;
   --rp-step: 16px;
   width: 100%;
 }
-.paccordion--framed {
+.paccordion.paccordion--framed {
   border: 1px solid var(--c-line);
   background: #fff;
 }
-.paccordion--nested {
+.paccordion.paccordion--nested {
   border-top: 0;
 }
-.paccordion__item {
+.paccordion.paccordion__item {
   --rp-lvl: 1;
   --rp-indent: calc(var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step));
 }
-.paccordion__item--l1 {
+.paccordion.paccordion__item--l1 {
   --rp-lvl: 1;
 }
-.paccordion__item--l2 {
+.paccordion.paccordion__item--l2 {
   --rp-lvl: 2;
 }
-.paccordion__item--l2 .paccordion__label {
+.paccordion.paccordion__item--l2 .paccordion__label {
   font-size: 18px;
   line-height: 18px;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
-.paccordion__item--l3 {
+.paccordion.paccordion__item--l3 {
   --rp-lvl: 3;
 }
-.paccordion__item--l4 {
+.paccordion.paccordion__item--l4 {
   --rp-lvl: 4;
 }
-.paccordion__heading {
+.paccordion.paccordion__heading {
   margin: 0;
 }
-.paccordion__button {
+.paccordion.paccordion__button {
   width: 100%;
   display: flex;
   align-items: center;
@@ -179,31 +179,31 @@ a {
   color: var(--c-muted);
   position: relative;
 }
-.paccordion__button[aria-expanded=true] {
+.paccordion.paccordion__button[aria-expanded=true] {
   color: var(--c-text);
 }
-.paccordion__button:focus-visible {
+.paccordion.paccordion__button:focus-visible {
   outline: 3px solid var(--c-focus);
   outline-offset: 2px;
   border-radius: var(--r-1);
 }
-.paccordion__button--startIcon {
+.paccordion.paccordion__button--startIcon {
   justify-content: flex-start;
 }
-.paccordion__label {
+.paccordion.paccordion__label {
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
   font-family: "SofiaPro-Regular", sans-serif;
 }
-.paccordion__icon {
+.paccordion.paccordion__icon {
   width: 24px;
   height: 24px;
   flex: none;
   color: var(--c-accent);
   position: relative;
 }
-.paccordion__icon--chevron {
+.paccordion.paccordion__icon--chevron {
   width: 24px;
   height: 24px;
   transition: transform 160ms ease;
@@ -212,7 +212,7 @@ a {
   justify-content: center;
   position: relative;
 }
-.paccordion__icon--chevron::before {
+.paccordion.paccordion__icon--chevron::before {
   content: "";
   width: 15px;
   height: 9px;
@@ -220,7 +220,7 @@ a {
   -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='9' viewBox='0 0 15 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41406 1.41418L7.41406 7.41418L13.4141 1.41418' stroke='black' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E") center/15px 9px no-repeat;
   mask: url("data:image/svg+xml,%3Csvg width='15' height='9' viewBox='0 0 15 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41406 1.41418L7.41406 7.41418L13.4141 1.41418' stroke='black' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E") center/15px 9px no-repeat;
 }
-.paccordion__icon--plusminus::before, .paccordion__icon--plusminus::after {
+.paccordion.paccordion__icon--plusminus::before, .paccordion.paccordion__icon--plusminus::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -231,25 +231,25 @@ a {
   transform: translate(-50%, -50%);
   border-radius: 99px;
 }
-.paccordion__icon--plusminus::after {
+.paccordion.paccordion__icon--plusminus::after {
   width: 2px;
   height: 14px;
   transition: opacity 140ms ease;
 }
-.paccordion__button[aria-expanded=true] .paccordion__icon--chevron {
+.paccordion.paccordion__button[aria-expanded=true] .paccordion.paccordion__icon--chevron {
   transform: rotate(180deg);
 }
-.paccordion__button[aria-expanded=true] .paccordion__icon--plusminus::after {
+.paccordion.paccordion__button[aria-expanded=true] .paccordion.paccordion__icon--plusminus::after {
   opacity: 0;
 }
-.paccordion__panel {
+.paccordion.paccordion__panel {
   padding: 0 var(--rp-gutter) 0 var(--rp-indent);
   transition: height 220ms ease;
 }
-.paccordion__item {
+.paccordion.paccordion__item {
   position: relative;
 }
-.paccordion__item::before {
+.paccordion.paccordion__item::before {
   content: "";
   position: absolute;
   left: var(--rp-gutter);
@@ -258,19 +258,19 @@ a {
   height: 1px;
   background: var(--c-line);
 }
-.paccordion__item--open + .paccordion__item::before {
+.paccordion.paccordion__item--open + .paccordion.paccordion__item::before {
   content: none;
 }
-.paccordion--framed > .paccordion__item:first-child::before {
+.paccordion.paccordion--framed > .paccordion.paccordion__item:first-child::before {
   content: none;
 }
-.paccordion__panel > .paccordion > .paccordion__item:first-child::before {
+.paccordion.paccordion__panel > .paccordion > .paccordion.paccordion__item:first-child::before {
   content: none;
 }
-.paccordion__item--open > .paccordion__panel > .paccordion > .paccordion__item:first-child::before {
+.paccordion.paccordion__item--open > .paccordion.paccordion__panel > .paccordion > .paccordion.paccordion__item:first-child::before {
   content: none;
 }
-.paccordion__button[aria-expanded=true]::after {
+.paccordion.paccordion__button[aria-expanded=true]::after {
   content: "";
   position: absolute;
   left: var(--rp-gutter);
@@ -279,13 +279,13 @@ a {
   height: 1px;
   background: var(--c-line);
 }
-.paccordion__panel > .paccordion {
+.paccordion.paccordion__panel > .paccordion {
   margin-left: calc(-1 * var(--rp-indent));
   margin-right: calc(-1 * var(--rp-gutter));
   width: calc(100% + var(--rp-indent) + var(--rp-gutter));
   padding: 0;
 }
-.paccordion__richtext {
+.paccordion.paccordion__richtext {
   color: var(--c-text);
   font-family: "SofiaPro-Regular", sans-serif;
   padding: 16px 0;
@@ -296,40 +296,40 @@ a {
   margin-left: calc(-1 * (var(--rp-indent) - var(--rp-gutter)));
   padding-left: calc(var(--rp-indent) - var(--rp-gutter));
 }
-.paccordion__richtext p {
+.paccordion.paccordion__richtext p {
   margin: 14px 0 0 0;
 }
-.paccordion__richtext p:first-child {
+.paccordion.paccordion__richtext p:first-child {
   margin-top: 0;
 }
-.paccordion__richtext ul,
-.paccordion__richtext ol {
+.paccordion.paccordion__richtext ul,
+.paccordion.paccordion__richtext ol {
   margin: 12px 0 12px 20px;
   padding: 0;
 }
-.paccordion__richtext li {
+.paccordion.paccordion__richtext li {
   margin: 6px 0;
 }
-.paccordion__richtext li::marker {
+.paccordion.paccordion__richtext li::marker {
   color: var(--c-accent);
 }
-.paccordion__richtext strong {
+.paccordion.paccordion__richtext strong {
   font-weight: 650;
 }
-.paccordion__file-list {
+.paccordion.paccordion__file-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: 1fr;
 }
-.paccordion__file-list--cols-1 {
+.paccordion.paccordion__file-list--cols-1 {
   grid-template-columns: 1fr;
 }
-.paccordion__file-list--cols-2 {
+.paccordion.paccordion__file-list--cols-2 {
   grid-template-columns: 1fr;
 }
-.paccordion__file-link {
+.paccordion.paccordion__file-link {
   display: grid;
   grid-template-columns: 20px 1fr;
   gap: 10px;
@@ -339,7 +339,7 @@ a {
   color: #656565;
   border-bottom: 1px solid var(--c-line);
 }
-.paccordion__file-link::before {
+.paccordion.paccordion__file-link::before {
   content: "";
   width: 24px;
   height: 24px;
@@ -349,18 +349,18 @@ a {
   -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
   mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
 }
-.paccordion__file-link:hover {
+.paccordion.paccordion__file-link:hover {
   color: var(--c-text);
 }
-.paccordion__file-link:focus-visible {
+.paccordion.paccordion__file-link:focus-visible {
   outline: 3px solid var(--c-focus);
   outline-offset: 2px;
   border-radius: var(--r-1);
 }
-.paccordion__item:last-child .paccordion__file-item:last-child .paccordion__file-link {
+.paccordion.paccordion__item:last-child .paccordion.paccordion__file-item:last-child .paccordion.paccordion__file-link {
   border-bottom: 0;
 }
-.paccordion__panel > .paccordion .paccordion__item:last-child::after {
+.paccordion.paccordion__panel > .paccordion .paccordion__item:last-child::after {
   content: "";
   position: absolute;
   left: var(--rp-gutter);
@@ -369,88 +369,95 @@ a {
   height: 1px;
   background: var(--c-line);
 }
-.paccordion__file-text {
+.paccordion.paccordion__file-text {
   font-size: 18px;
   line-height: 18px;
   font-weight: 300;
   font-family: "SofiaPro-Regular", sans-serif;
 }
 
+.paccordion.paccordion,
+.paccordion.paccordion *,
+.paccordion.paccordion *::before,
+.paccordion.paccordion *::after {
+  box-sizing: border-box;
+}
+
 @media (min-width: 640px) {
-  .paccordion {
+  .paccordion.paccordion {
     --rp-gutter: 20px;
   }
-  .paccordion--framed > .paccordion__item:first-child .paccordion__button {
+  .paccordion.paccordion--framed > .paccordion.paccordion__item:first-child .paccordion__button {
     padding-top: 25px;
     padding-bottom: 9px;
     padding-left: 28px;
     padding-right: 28px;
   }
-  .paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
+  .paccordion.paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
     padding: 9px calc(var(--rp-gutter) + 8px) 9px calc(var(--rp-gutter) + 4px);
   }
 }
 @media (min-width: 960px) {
-  .paccordion {
+  .paccordion.paccordion {
     --rp-step: 20px;
     --rp-gutter: 30px;
   }
-  .paccordion__button {
+  .paccordion.paccordion__button {
     padding: 25px 16px;
     padding-left: calc(var(--rp-gutter) + 16px);
     padding-right: calc(var(--rp-gutter) + 16px);
   }
-  .paccordion--framed > .paccordion__item:first-child .paccordion__button {
+  .paccordion.paccordion--framed > .paccordion.paccordion__item:first-child .paccordion__button {
     padding: 49px 16px 25px;
     padding-left: calc(var(--rp-gutter) + 16px);
     padding-right: calc(var(--rp-gutter) + 16px);
   }
-  .paccordion__label {
+  .paccordion.paccordion__label {
     font-size: 18px;
     line-height: 18px;
     font-weight: 300;
     letter-spacing: 0;
     color: #656565;
   }
-  .paccordion__button[aria-expanded=true] {
+  .paccordion.paccordion__button[aria-expanded=true] {
     padding-top: 21px;
     padding-bottom: 21px;
   }
-  .paccordion__file-list--cols-2 {
+  .paccordion.paccordion__file-list--cols-2 {
     grid-template-columns: 1fr 1fr;
   }
-  .paccordion__file-list {
+  .paccordion.paccordion__file-list {
     border-bottom: 1px solid var(--c-line);
   }
-  .paccordion__file-link {
+  .paccordion.paccordion__file-link {
     padding: 24px 16px 8px;
     gap: 10px;
     border-bottom: 0;
   }
-  .paccordion__file-item:last-child .paccordion__file-link {
+  .paccordion.paccordion__file-item:last-child .paccordion__file-link {
     padding: 24px 16px;
   }
-  .paccordion__item:last-child .paccordion__file-list {
+  .paccordion.paccordion__item:last-child .paccordion__file-list {
     border-bottom: 0;
   }
-  .paccordion__file-text {
+  .paccordion.paccordion__file-text {
     font-size: 18px;
     line-height: 18px;
     font-weight: 300;
     letter-spacing: 0;
     color: #656565;
   }
-  .paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
+  .paccordion.paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
     padding: 25px 16px;
     padding-left: calc(var(--rp-gutter) + 16px);
     padding-right: calc(var(--rp-gutter) + 16px);
   }
-  .paccordion .paccordion__panel > .paccordion .paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
+  .paccordion.paccordion .paccordion__panel > .paccordion .paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
     padding: 25px 16px;
     padding-left: calc(var(--rp-gutter) + 16px);
     padding-right: calc(var(--rp-gutter) + 16px);
   }
-  .paccordion .paccordion__panel > .paccordion .paccordion__item--l2:first-child .paccordion__button.paccordion__button--startIcon {
+  .paccordion.paccordion .paccordion__panel > .paccordion .paccordion__item--l2:first-child .paccordion__button.paccordion__button--startIcon {
     padding: 25px 16px;
     padding-left: calc(var(--rp-gutter) + 16px);
     padding-right: calc(var(--rp-gutter) + 16px);
