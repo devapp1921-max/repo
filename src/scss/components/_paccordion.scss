@@ -62,7 +62,7 @@
     margin: 0;
   }
 
-  &__button {
+  & button.paccordion__button.paccordion__button.paccordion__button {
     width: 100%;
     display: flex;
     align-items: center;
@@ -92,14 +92,14 @@
     }
   }
 
-  &__label {
+  & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
     font-size: 18px;
     font-weight: 700;
     line-height: 22px;
     font-family: "SofiaPro-Regular", sans-serif;
   }
 
-  &__icon {
+  & .paccordion__button.paccordion__button.paccordion__button .paccordion__icon.paccordion__icon {
     width: 24px;
     height: 24px;
     flex: none;
@@ -145,15 +145,15 @@
     }
   }
 
-  &__button[aria-expanded="true"] &__icon--chevron {
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] .paccordion__icon--chevron {
     transform: rotate(180deg);
   }
 
-  &__button[aria-expanded="true"] &__icon--plusminus::after {
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] .paccordion__icon--plusminus::after {
     opacity: 0;
   }
 
-  &__panel {
+  & .paccordion__panel.paccordion__panel.paccordion__panel {
     padding: 0 var(--rp-gutter) 0 var(--rp-indent);
     transition: height 220ms ease;
   }
@@ -189,7 +189,7 @@
     content: none;
   }
 
-  &__button[aria-expanded="true"]::after {
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]::after {
     content: "";
     position: absolute;
     left: var(--rp-gutter);
@@ -322,14 +322,14 @@
   .paccordion {
     --rp-gutter: 20px;
 
-    &--framed > &__item:first-child .paccordion__button {
+    &--framed > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
       padding-top: 25px;
       padding-bottom: 9px;
       padding-left: 28px;
       padding-right: 28px;
     }
 
-    &__item--l2 .paccordion__button.paccordion__button--startIcon {
+    & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
       padding: 9px calc(var(--rp-gutter) + 8px) 9px calc(var(--rp-gutter) + 4px);
     }
   }
@@ -342,20 +342,20 @@
   }
 
   .paccordion {
-    &__button {
+    & button.paccordion__button.paccordion__button.paccordion__button {
       padding: 25px 16px;
       padding-left: calc(var(--rp-gutter) + 16px);
       padding-right: calc(var(--rp-gutter) + 16px);
     }
 
-    &--framed > &__item:first-child .paccordion__button {
+    &--framed > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
       padding: 49px 16px 25px;
       padding-left: calc(var(--rp-gutter) + 16px);
       padding-right: calc(var(--rp-gutter) + 16px);
     }
 
 
-    &__label {
+    & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
       font-size: 18px;
       line-height: 18px;
       font-weight: 300;
@@ -363,7 +363,7 @@
       color: #656565;
     }
 
-    &__button[aria-expanded="true"] {
+    & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
       padding-top: 21px;
       padding-bottom: 21px;
     }
@@ -398,20 +398,20 @@
       color: #656565;
     }
 
-    &__item--l2 {
-      .paccordion__button.paccordion__button--startIcon {
+    & .paccordion__item--l2 {
+      button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
         padding: 25px 16px;
         padding-left: calc(var(--rp-gutter) + 16px);
         padding-right: calc(var(--rp-gutter) + 16px);
       }
     }
 
-    .paccordion__panel > .paccordion .paccordion__item--l2 .paccordion__button.paccordion__button--startIcon {
+    & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
       padding: 25px 16px;
       padding-left: calc(var(--rp-gutter) + 16px);
       padding-right: calc(var(--rp-gutter) + 16px);
     }
-    .paccordion__panel > .paccordion .paccordion__item--l2:first-child .paccordion__button.paccordion__button--startIcon {
+    & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
       padding: 25px 16px;
       padding-left: calc(var(--rp-gutter) + 16px);
       padding-right: calc(var(--rp-gutter) + 16px);
