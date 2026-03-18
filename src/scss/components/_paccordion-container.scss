@@ -96,24 +96,6 @@
     }
   }
 
-  &__skip-link {
-    position: absolute;
-    left: var(--space-3);
-    top: var(--space-3);
-    padding: 10px 12px;
-    background: #fff;
-    border: 1px solid var(--c-line);
-    border-radius: var(--r-1);
-    transform: translateY(-160%);
-    transition: transform 180ms ease;
-    z-index: 999;
-
-    &:focus {
-      transform: translateY(0);
-      outline: 3px solid var(--c-focus);
-      outline-offset: 2px;
-    }
-  }
 }
 
 @include tablet- {
