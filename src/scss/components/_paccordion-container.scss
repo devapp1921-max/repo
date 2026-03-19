@@ -13,7 +13,7 @@
 
   @include desktop- {
     --paccordion-gutter: 48px;
-    width: calc(100% - 288px);
+    width: 1632px;
     margin: 0 auto;
   }
 
@@ -181,6 +181,42 @@
     @include desktop- {
       width: 1328px;
       margin: 0 auto;
+    }
+
+    .paccordion-container__header {
+      align-items: flex-start;
+      text-align: left;
+      gap: 5px;
+      padding: 48px var(--paccordion-gutter) 0;
+
+      @include -mobile {
+        align-items: flex-start;
+        text-align: left;
+        gap: 5px;
+        padding: 48px var(--paccordion-gutter) 0;
+      }
+    }
+
+    .paccordion-container__title {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #000000;
+      font-family: "SofiaPro-Medium", sans-serif;
+
+      @include tablet- {
+        line-height: 1;
+      }
+    }
+
+    .paccordion-container__subtitle {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: #656565;
+      font-family: "SofiaPro-Light", sans-serif;
     }
   }
 }

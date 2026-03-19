@@ -18,12 +18,12 @@
     --]
 
     [#-- KLASY (CMS -> HTML):
-         paccordion-container__title--none | --hide | --small | --big
-         paccordion-container__subtitle--none | --hide | --small | --big
+        paccordion-container__title--none | --hide | --big
+        paccordion-container__subtitle--none | --hide | --big
 
         przykład:
         <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Tytuł</span>
-        <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Podtytuł</span>
+        <span class="paccordion-container__subtitle" role="heading" aria-level="2">Podtytuł</span>
 
         tytul/podtytul:
         - Tytul nagłówek ustalany przez redaktora h1-h5, 
@@ -62,7 +62,7 @@
         headerVisibility:
         <header class="paccordion-container__header">
           <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Tytuł</span>
-          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Podtytuł</span>
+          <span class="paccordion-container__subtitle" role="heading" aria-level="2">Podtytuł</span>
         </header>
 
          data-open:
