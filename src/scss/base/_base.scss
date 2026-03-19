@@ -1,11 +1,5 @@
 /* 2) Base: reset + global elements */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 html,
 body {
   height: 100%;
@@ -21,8 +15,4 @@ body {
 
 a {
   color: inherit;
-}
-
-*[id] {
-  scroll-margin-top: 16px;
 }

@@ -108,6 +108,10 @@
     }
   }
 
+  [id] {
+    scroll-margin-top: 16px;
+  }
+
   & > &__item:first-child::before {
     content: none;
   }

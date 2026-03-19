@@ -1,12 +1,6 @@
 @charset "UTF-8";
 /* Entry point: imports in strict order (mobile-first). */
 /* 2) Base: reset + global elements */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 html,
 body {
   height: 100%;
@@ -22,10 +16,6 @@ body {
 
 a {
   color: inherit;
-}
-
-*[id] {
-  scroll-margin-top: 16px;
 }
 
 @font-face {
@@ -211,6 +201,9 @@ a {
 }
 .paccordion__item--open + .paccordion__item::before {
   content: none;
+}
+.paccordion [id] {
+  scroll-margin-top: 16px;
 }
 .paccordion > .paccordion__item:first-child::before {
   content: none;
