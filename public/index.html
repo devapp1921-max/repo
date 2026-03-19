@@ -13,7 +13,7 @@
       </header>
 
       <section class="paccordion-container__section" aria-label="Sekcje">
-        <div class="paccordion paccordion--framed" data-paccordion-group>
+        <div class="paccordion paccordion--framed">
           <div class="paccordion__item paccordion__item--l1" id="faq">
             <div class="paccordion__heading" role="heading" aria-level="2">
               <button
@@ -34,7 +34,7 @@
               aria-labelledby="button-faq"
               hidden
             >
-              <div class="paccordion paccordion--nested" data-paccordion-group itemscope itemtype="https://schema.org/FAQPage">
+              <div class="paccordion paccordion--nested" itemscope itemtype="https://schema.org/FAQPage">
                 <div class="paccordion__item paccordion__item--l2" id="pytanie-1" itemscope itemtype="https://schema.org/Question" itemprop="mainEntity">
                   <div class="paccordion__heading" role="heading" aria-level="3">
                     <button
@@ -259,35 +259,124 @@
         </div>
       </section>
 
+    </div>
+
+    <div class="paccordion-container paccordion-container--thin">
       <section class="paccordion-container__section" aria-label="Przykłady CMS">
         <header class="paccordion-container__header paccordion-container__header--spaced">
-          <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Przykład: title--big</span>
-          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Przykład: subtitle--small</span>
+          <span class="paccordion-container__title paccordion-container__title--small" role="heading" aria-level="1">Raport dostępnosci dla Idea Bank</span>
+          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">(raporty publikowane z wiązku z przejęciem z dniem ...)</span>
         </header>
-        <div class="paccordion paccordion--framed" data-paccordion-group>
-          <div class="paccordion__item paccordion__item--l1" id="example-open" data-open>
+        <div class="paccordion paccordion--framed">
+          <div class="paccordion__item paccordion__item--l1" id="report-2024" data-open>
             <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
                 aria-expanded="false"
-                aria-controls="panel-example-open"
-                id="button-example-open"
+                aria-controls="panel-report-2024"
+                id="button-report-2024"
               >
-                <span class="paccordion__label">Przykład: data-open</span>
+                <span class="paccordion__label">2024</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
             </div>
-            <div class="paccordion__panel" id="panel-example-open" role="region" aria-labelledby="button-example-open" hidden>
+            <div class="paccordion__panel" id="panel-report-2024" role="region" aria-labelledby="button-report-2024" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-2">
                 <li class="paccordion__file-item">
                   <a class="paccordion__file-link" href="#">
-                    <span class="paccordion__file-text">Plik A (cols-2)</span>
+                    <span class="paccordion__file-text">Raport dostępności za I kw. 2024</span>
                   </a>
                 </li>
                 <li class="paccordion__file-item">
                   <a class="paccordion__file-link" href="#">
-                    <span class="paccordion__file-text">Plik B (cols-2)</span>
+                    <span class="paccordion__file-text">Raport dostępności za II kw. 2024</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za III kw. 2024</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za IV kw. 2024</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="paccordion__item paccordion__item--l1" id="report-2025">
+            <div class="paccordion__heading" role="heading" aria-level="2">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-report-2025"
+                id="button-report-2025"
+              >
+                <span class="paccordion__label">2025</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="paccordion__panel" id="panel-report-2025" role="region" aria-labelledby="button-report-2025" hidden>
+              <ul class="paccordion__file-list paccordion__file-list--cols-2">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za I kw. 2025</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za II kw. 2025</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za III kw. 2025</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za IV kw. 2025</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="paccordion__item paccordion__item--l1" id="report-2026">
+            <div class="paccordion__heading" role="heading" aria-level="2">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-report-2026"
+                id="button-report-2026"
+              >
+                <span class="paccordion__label">2026</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="paccordion__panel" id="panel-report-2026" role="region" aria-labelledby="button-report-2026" hidden>
+              <ul class="paccordion__file-list paccordion__file-list--cols-2">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za I kw. 2026</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za II kw. 2026</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za III kw. 2026</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za IV kw. 2026</span>
                   </a>
                 </li>
               </ul>
@@ -298,33 +387,119 @@
 
       <section class="paccordion-container__section" aria-label="Przykłady CMS bez obramowania">
         <header class="paccordion-container__header paccordion-container__header--spaced">
-          <span class="paccordion-container__title paccordion-container__title--big" role="heading" aria-level="1">Przykład: title--big (bez obramowania)</span>
-          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">Przykład: subtitle--small</span>
+          <span class="paccordion-container__title paccordion-container__title--small" role="heading" aria-level="1">Raport dostępnosci dla Idea Bank</span>
+          <span class="paccordion-container__subtitle paccordion-container__subtitle--small" role="heading" aria-level="2">(raporty publikowane z wiązku z przejęciem z dniem ...)</span>
         </header>
-        <div class="paccordion" data-paccordion-group>
-          <div class="paccordion__item paccordion__item--l1" id="example-open-unframed" data-open>
+        <div class="paccordion">
+          <div class="paccordion__item paccordion__item--l1" id="report-2024-unframed" data-open>
             <div class="paccordion__heading" role="heading" aria-level="2">
               <button
                 class="paccordion__button"
                 type="button"
                 aria-expanded="false"
-                aria-controls="panel-example-open-unframed"
-                id="button-example-open-unframed"
+                aria-controls="panel-report-2024-unframed"
+                id="button-report-2024-unframed"
               >
-                <span class="paccordion__label">Przykład: data-open</span>
+                <span class="paccordion__label">2024</span>
                 <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
               </button>
             </div>
-            <div class="paccordion__panel" id="panel-example-open-unframed" role="region" aria-labelledby="button-example-open-unframed" hidden>
+            <div class="paccordion__panel" id="panel-report-2024-unframed" role="region" aria-labelledby="button-report-2024-unframed" hidden>
               <ul class="paccordion__file-list paccordion__file-list--cols-2">
                 <li class="paccordion__file-item">
                   <a class="paccordion__file-link" href="#">
-                    <span class="paccordion__file-text">Plik A (cols-2)</span>
+                    <span class="paccordion__file-text">Raport dostępności za I kw. 2024</span>
                   </a>
                 </li>
                 <li class="paccordion__file-item">
                   <a class="paccordion__file-link" href="#">
-                    <span class="paccordion__file-text">Plik B (cols-2)</span>
+                    <span class="paccordion__file-text">Raport dostępności za II kw. 2024</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za III kw. 2024</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za IV kw. 2024</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="paccordion__item paccordion__item--l1" id="report-2025-unframed">
+            <div class="paccordion__heading" role="heading" aria-level="2">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-report-2025-unframed"
+                id="button-report-2025-unframed"
+              >
+                <span class="paccordion__label">2025</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="paccordion__panel" id="panel-report-2025-unframed" role="region" aria-labelledby="button-report-2025-unframed" hidden>
+              <ul class="paccordion__file-list paccordion__file-list--cols-2">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za I kw. 2025</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za II kw. 2025</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za III kw. 2025</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za IV kw. 2025</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="paccordion__item paccordion__item--l1" id="report-2026-unframed">
+            <div class="paccordion__heading" role="heading" aria-level="2">
+              <button
+                class="paccordion__button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-report-2026-unframed"
+                id="button-report-2026-unframed"
+              >
+                <span class="paccordion__label">2026</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="paccordion__panel" id="panel-report-2026-unframed" role="region" aria-labelledby="button-report-2026-unframed" hidden>
+              <ul class="paccordion__file-list paccordion__file-list--cols-2">
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za I kw. 2026</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za II kw. 2026</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za III kw. 2026</span>
+                  </a>
+                </li>
+                <li class="paccordion__file-item">
+                  <a class="paccordion__file-link" href="#">
+                    <span class="paccordion__file-text">Raport dostępności za IV kw. 2026</span>
                   </a>
                 </li>
               </ul>

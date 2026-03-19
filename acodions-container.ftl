@@ -57,7 +57,7 @@
 
     [#-- PRZYKŁADY:
          border:
-         <div class="paccordion paccordion--framed" data-paccordion-group>...</div>
+         <div class="paccordion paccordion--framed">...</div>
 
         headerVisibility:
         <header class="paccordion-container__header">

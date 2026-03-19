@@ -1,25 +1,35 @@
 @import "../breakpoints";
 
-:root {
-  --c-bg: #ffffff;
+.paccordion {
   --c-text: #000000;
   --c-muted: #656565;
   --c-line: #c0c0c0;
   --c-accent: #d11e25;
-  --c-focus: #0b5fff;
-  --space-1: 8px;
-  --space-2: 12px;
-  --space-3: 16px;
-  --space-4: 20px;
-  --space-5: 28px;
-  --space-6: 40px;
-  --r-1: 6px;
-}
-
-.paccordion {
   --rp-gutter: 20px;
   --rp-step: 16px;
   width: 100%;
+
+  @include -mobile {
+    --rp-step: 0px;
+    padding: 8px var(--rp-gutter) 0;
+  }
+
+  @include tablet- {
+    --rp-step: 20px;
+    --rp-gutter: 30px;
+    padding: 24px var(--rp-gutter) 0;
+  }
+
+  @include desktop- {
+    &.paccordion.paccordion {
+      --rp-gutter: 48px;
+      padding: 24px 48px 0;
+    }
+
+    &.paccordion.paccordion.paccordion--nested {
+      padding: 0;
+    }
+  }
 
   &--framed {
     border: 1px solid var(--c-line);
@@ -37,6 +47,7 @@
   &__item {
     --rp-lvl: 1;
     --rp-indent: calc(var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step));
+    position: relative;
 
     &--l1 {
       --rp-lvl: 1;
@@ -50,6 +61,12 @@
         line-height: 18px;
         font-weight: 400;
         letter-spacing: -0.01em;
+
+        @include -mobile {
+          font-weight: 400;
+          line-height: 1;
+          letter-spacing: -0.01em;
+        }
       }
     }
 
@@ -60,10 +77,61 @@
     &--l4 {
       --rp-lvl: 4;
     }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: var(--rp-gutter);
+      right: var(--rp-gutter);
+      top: 0;
+      height: 1px;
+      background: var(--c-line);
+
+      @include -mobile {
+        left: 0;
+        right: 0;
+      }
+
+      @include tablet- {
+        left: 0;
+        right: 0;
+      }
+
+      @include desktop- {
+        left: 0;
+        right: 0;
+      }
+    }
+
+    &--open + &::before {
+      content: none;
+    }
+  }
+
+  & > &__item:first-child::before {
+    content: none;
+  }
+
+  &__panel > .paccordion > &__item:first-child::before {
+    content: none;
+  }
+
+  &__item--open > &__panel > .paccordion > &__item:first-child::before {
+    content: none;
   }
 
   &__heading {
     margin: 0;
+
+    @include -mobile {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include tablet- {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   & button.paccordion__button.paccordion__button.paccordion__button {
@@ -85,14 +153,61 @@
       color: var(--c-text);
     }
 
-    // &:focus-visible {
-    //   outline: 3px solid var(--c-focus);
-    //   outline-offset: 2px;     
-    //   // border-radius: var(--r-1); 
-    // }
-
     &--startIcon {
       justify-content: flex-start;
+    }
+
+    @include -mobile {
+      padding: 8px 8px;
+    }
+
+    @include tablet- {
+      padding: 24px 16px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    @include desktop- {
+      padding: 24px 16px;
+    }
+  }
+
+  & > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
+    @include desktop- {
+      padding: 24px 16px;
+    }
+  }
+
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]::after {
+    content: "";
+    position: absolute;
+    left: var(--rp-gutter);
+    right: var(--rp-gutter);
+    bottom: 0;
+    height: 1px;
+    background: var(--c-line);
+
+    @include -mobile {
+      left: 0;
+      right: 0;
+    }
+
+    @include tablet- {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+    @include tablet- {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    @include desktop- {
+      padding-top: 24px;
+      padding-bottom: 24px;
+      color: #000000;
     }
   }
 
@@ -101,6 +216,22 @@
     font-weight: 700;
     line-height: 22px;
     font-family: "SofiaPro-Regular", sans-serif;
+
+    @include tablet- {
+      font-size: 18px;
+      line-height: 18px;
+      font-weight: 300;
+      letter-spacing: 0;
+      color: #656565;
+    }
+
+    @include desktop- {
+      font-size: 18px;
+      line-height: 18px;
+      font-weight: 300;
+      letter-spacing: 0;
+      color: #656565;
+    }
   }
 
   & .paccordion__button.paccordion__button.paccordion__button .paccordion__icon.paccordion__icon {
@@ -160,47 +291,21 @@
   & .paccordion__panel.paccordion__panel.paccordion__panel {
     padding: 0 var(--rp-gutter) 0 var(--rp-indent);
     transition: height 220ms ease;
-  }
 
+    @include -mobile {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
-  &__item {
-    position: relative;
-  }
+    @include tablet- {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
-  &__item::before {
-    content: "";
-    position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
-    top: 0;
-    height: 1px;
-    background: var(--c-line);
-  }
-
-  &__item--open + &__item::before {
-    content: none;
-  }
-
-  & > &__item:first-child::before {
-    content: none;
-  }
-
-  &__panel > .paccordion > &__item:first-child::before {
-    content: none;
-  }
-
-  &__item--open > &__panel > .paccordion > &__item:first-child::before {
-    content: none;
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]::after {
-    content: "";
-    position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
-    bottom: 0;
-    height: 1px;
-    background: var(--c-line);
+    @include desktop- {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   &__panel > .paccordion {
@@ -208,6 +313,26 @@
     margin-right: calc(-1 * var(--rp-gutter));
     width: calc(100% + var(--rp-indent) + var(--rp-gutter));
     padding: 0;
+
+    @include -mobile {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
+
+    @include tablet- {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+
+  &__panel > .paccordion.paccordion--nested.paccordion--nested {
+    @include desktop- {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
   }
 
   &__richtext {
@@ -246,6 +371,48 @@
     strong {
       font-weight: 650;
     }
+
+    @include -mobile {
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-left: 0;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    @include tablet- {
+      font-family: "SofiaPro-Light", sans-serif;
+      font-size: 18px;
+      line-height: 1.5em;
+      font-weight: 100;
+      color: #656565;
+      padding-left: calc(var(--rp-indent) - var(--rp-gutter) + 34px);
+    }
+
+    @include desktop- {
+      font-family: "SofiaPro-Light", sans-serif;
+      font-size: 18px;
+      line-height: 1.5em;
+      font-weight: 100;
+      color: #656565;
+      padding-left: calc(var(--rp-indent) - var(--rp-gutter) + 34px);
+      position: relative;
+      margin-left: 0;
+      padding-right: 0;
+      border-bottom: 0;
+    }
+  }
+
+  &__richtext::after {
+    @include desktop- {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--c-line);
+    }
   }
 
   &__file-list {
@@ -261,10 +428,15 @@
 
     &--cols-2 {
       grid-template-columns: 1fr;
-    }
-  }
 
-  &__file-item {
+      @include tablet- {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @include tablet- {
+      border-bottom: 1px solid var(--c-line);
+    }
   }
 
   &__file-link {
@@ -288,19 +460,48 @@
       mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
     }
 
-    // &:hover {
-    //   color: var(--c-text);
-    // }
+    @include -mobile {
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      padding: 16px 16px 16px 4px;
+    }
 
-    // &:focus-visible {
-    //   outline: 3px solid var(--c-focus);
-    //   outline-offset: 2px;
-    //   border-radius: var(--r-1);
-    // }
+    @include tablet- {
+      padding: 24px 16px 8px;
+      gap: 10px;
+      border-bottom: 0;
+    }
+
+    @include desktop- {
+      padding: 24px 16px 8px;
+    }
+  }
+
+  & .paccordion__panel .paccordion__file-link.paccordion__file-link {
+    text-decoration: none;
+    color: #656565;
+  }
+
+  & .paccordion__panel .paccordion__file-link.paccordion__file-link:hover,
+  & .paccordion__panel .paccordion__file-link.paccordion__file-link:focus-visible {
+    text-decoration: none;
+    color: #656565;
+  }
+
+  &__file-item:last-child .paccordion__file-link {
+    @include tablet- {
+      padding: 24px 16px;
+    }
   }
 
   &__item:last-child &__file-item:last-child &__file-link {
     border-bottom: 0;
+  }
+
+  &__item:last-child .paccordion__file-list {
+    @include tablet- {
+      border-bottom: 0;
+    }
   }
 
   &__panel > .paccordion .paccordion__item:last-child::after {
@@ -311,349 +512,192 @@
     bottom: 0;
     height: 1px;
     background: var(--c-line);
-  }
 
+    @include -mobile {
+      left: 0;
+      right: 0;
+    }
+
+    @include tablet- {
+      left: 0;
+      right: 0;
+    }
+  }
 
   &__file-text {
     font-size: 18px;
     line-height: 18px;
     font-weight: 300;
     font-family: "SofiaPro-Regular", sans-serif;
-  }
-}
 
-@include mobile- {
-  .paccordion {
-    --rp-gutter: 20px;
-
-    .paccordion-container__section > .paccordion > &__item--l1:first-child button.paccordion__button.paccordion__button.paccordion__button:not(.paccordion__button--startIcon) {
-      padding-top: 25px;
-      padding-bottom: 9px;
-      padding-left: 28px;
-      padding-right: 28px;
-    }
-
-  }
-}
-
-@include -mobile {
-  .paccordion {
-    --rp-step: 0px;
-
-    & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-      padding: 9px calc(var(--rp-gutter) + 8px) 9px calc(var(--rp-gutter) + 4px);
-    }
-
-    & .paccordion__item--l2 .paccordion__label {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1;
-      letter-spacing: -0.01em;
-    }
-
-    &__file-link {
-      grid-template-columns: 24px 1fr;
-      gap: 10px;
-      padding: 16px 16px 16px 4px;
-    }
-
-    &__richtext {
-      padding-left: 8px;
-      padding-right: 8px;
-      margin-left: 0;
-      padding-top: 16px;
-      padding-bottom: 16px;
-    }
-
-    .paccordion-container__header--spaced + .paccordion-container__section > &.paccordion--framed > &__item:last-child &__panel > &__richtext {
-      border-bottom: 0;
-    }
-
-    .paccordion-container__section > .paccordion-container__header--spaced + &.paccordion--framed > &__item:last-child &__panel > &__richtext {
-      border-bottom: 0;
-    }
-
-    // .paccordion-container__header--spaced + .paccordion-container__section > & > &__item:firs-child &__panel  {
-    //   border-top: 0;
-    // }
-
-    .paccordion-container__section:first-of-type:has(+ .paccordion-container__header) > &.paccordion--framed > &__item:last-child &__panel > &__richtext {
-      border-bottom: 1px solid var(--c-line);
-    }
-
-    .paccordion-container__section:has(+ .paccordion-container__header) > &.paccordion--framed > &__item:last-child::after {
-      content: "";
-      position: absolute;
-      left: var(--rp-gutter);
-      right: var(--rp-gutter);
-      bottom: 0;
-      height: 1px;
-      background: var(--c-line);
-    }
-
-    .paccordion-container__section > &:not(.paccordion--framed) > &__item:last-child::after {
-      content: "";
-      position: absolute;
-      left: var(--rp-gutter);
-      right: var(--rp-gutter);
-      bottom: 0;
-      height: 1px;
-      background: var(--c-line);
-    }
-
-    .paccordion-container__section > .paccordion-container__header--spaced + &.paccordion--framed > &__item:last-child::after {
-      content: none;
-    }
-
-    .paccordion-container__header--spaced + .paccordion-container__section > & > &__item:first-child::before {
-      content: none;
-      background: none;
-    }
-
-    .paccordion-container__header--spaced + .paccordion-container__section .paccordion__item:first-child::before {
-      content: none;
-      background: none;
-    }
-
-
-
-    .paccordion-container__section > .paccordion > &__item--l1:first-child button.paccordion__button.paccordion__button.paccordion__button:not(.paccordion__button--startIcon) {
-      padding: 25px calc(var(--rp-gutter) + 8px) 9px;
-    }
-
-    .paccordion-container__section > &.paccordion--framed > &__item:last-child &__file-link {
-      border-bottom: 0;
-    }
-
-  }
-}
-
-  @include tablet- {
-    .paccordion {
-    --rp-step: 20px;
-    --rp-gutter: 30px;
-  }
-
-  .paccordion {
-    & button.paccordion__button.paccordion__button.paccordion__button {
-      padding: 25px 16px;
-      padding-left: calc(var(--rp-gutter) + 16px);
-      padding-right: calc(var(--rp-gutter) + 16px);
-    }
-
-    & > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
-      padding: 49px 16px 25px;
-      padding-left: calc(var(--rp-gutter) + 16px);
-      padding-right: calc(var(--rp-gutter) + 16px);
-    }
-
-
-    & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
-      font-size: 18px;
-      line-height: 18px;
+    @include tablet- {
       font-weight: 300;
       letter-spacing: 0;
       color: #656565;
     }
+  }
 
-    & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-      padding-top: 21px;
-      padding-bottom: 21px;
+  & .paccordion__item--l1 > .paccordion__panel .paccordion__file-link {
+    @include tablet- {
+      padding-left: 20px;
+    }
+  }
+
+  & .paccordion__item--l2 > .paccordion__panel .paccordion__file-link {
+    @include tablet- {
+      padding-left: 20px;
+    }
+  }
+
+  & .paccordion__item--l3 > .paccordion__panel .paccordion__file-link {
+    @include tablet- {
+      padding-left: 54px;
+    }
+  }
+
+  & .paccordion__item--l4 > .paccordion__panel .paccordion__file-link {
+    @include tablet- {
+      padding-left: 88px;
+    }
+  }
+
+  & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include -mobile {
+      padding: 8px 8px 8px 4px;
     }
 
-    &__file-list {
-      &--cols-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      border-bottom: 1px solid var(--c-line);
-    }
-
-    &__file-link {
-      padding: 24px 16px 8px;
-      gap: 10px;
-      border-bottom: 0;
-    }
-
-    &__file-item:last-child .paccordion__file-link {
+    @include tablet- {
       padding: 24px 16px;
     }
 
-    &__item:last-child .paccordion__file-list {
-      border-bottom: 0;
-    }
-
-    &__file-text {
-      font-size: 18px;
-      line-height: 18px;
-      font-weight: 300;
-      letter-spacing: 0;
+    @include desktop- {
+      padding: 24px 16px;
       color: #656565;
     }
+  }
 
-    & .paccordion__item--l2 {
-      button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-        padding: 25px 16px;
-        padding-left: calc(var(--rp-gutter) + 16px);
-        padding-right: calc(var(--rp-gutter) + 16px);
-      }
-    }
-
-    & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-      padding: 25px 16px;
-      padding-left: calc(var(--rp-gutter) + 16px);
-      padding-right: calc(var(--rp-gutter) + 16px);
-    }
-    & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-      padding: 25px 16px;
-      padding-left: calc(var(--rp-gutter) + 16px);
-      padding-right: calc(var(--rp-gutter) + 16px);
-    }
-
-    &__richtext {
-      font-family: "SofiaPro-Light", sans-serif;
-      font-size: 18px;
-      line-height: 1.5em;
-      font-weight: 100;
+  & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+    @include desktop- {
+      padding: 24px 16px;
       color: #656565;
-      padding-left: calc(var(--rp-indent) - var(--rp-gutter) + 34px);
+    }
+  }
+
+  & .paccordion__item--l3 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include tablet- {
+      padding-top: 24px;
+      padding-bottom: 24px;
+      padding-left: 50px;
+      padding-right: 16px;
+    }
+  }
+
+  & .paccordion__item--l4 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include tablet- {
+      padding-top: 24px;
+      padding-bottom: 24px;
+      padding-left: 84px;
+      padding-right: 16px;
+    }
+  }
+
+  & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include tablet- {
+      padding: 24px 16px;
+    }
+
+    @include desktop- {
+      padding: 24px 16px;
+      color: #656565;
+    }
+  }
+
+  & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+    @include desktop- {
+      padding: 24px 16px;
+      color: #656565;
+    }
+  }
+
+  & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include desktop- {
+      padding: 24px 16px;
+      color: #656565;
+    }
+  }
+
+  & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+    @include desktop- {
+      padding: 24px 16px;
+      color: #656565;
     }
   }
 }
 
-  @include desktop- {
-  .paccordion {
-    &__item::before {
-      left: 0;
-      right: 0;
-    }
-
-    & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]::after {
-      left: 0;
-      right: 0;
-    }
-
-    &__panel > .paccordion .paccordion__item:last-child::after {
-      left: 0;
-      right: 0;
-    }
-  }
-
-  .paccordion.paccordion.paccordion {
-    --rp-gutter: 48px;
-    padding: 48px 48px 0;
-  }
-
-  .paccordion.paccordion.paccordion.paccordion--nested {
-    padding: 0;
-  }
-
-  .paccordion__panel > .paccordion.paccordion--nested.paccordion--nested {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-
-  .paccordion {
-    & button.paccordion__button.paccordion__button.paccordion__button {
-      padding: 25px 16px;
-    }
-
-    & > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
-      padding: 25px 16px;
-    }
-
-    & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
-      font-size: 18px;
-      line-height: 18px;
-      font-weight: 300;
-      letter-spacing: 0;
-      color: #656565;
-    }
-
-    & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-      padding-top: 21px;
-      padding-bottom: 21px;
-      color: #000000;
-    }
-
-    &__file-link {
-      padding: 24px 16px 8px;
-    }
-
-    & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-      padding: 25px 16px;
-      color: #656565;
-    }
-
-    & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
-      padding: 25px 16px;
-      color: #656565;
-    }
-
-    & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-      padding: 25px 16px;
-      color: #656565;
-    }
-
-    & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
-      padding: 25px 16px;
-      color: #656565;
-    }
-
-    & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-      padding: 25px 16px;
-      color: #656565;
-    }
-
-    & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
-      padding: 25px 16px;
-      color: #656565;
-    }
-
-    &__richtext {
-      font-family: "SofiaPro-Light", sans-serif;
-      font-size: 18px;
-      line-height: 1.5em;
-      font-weight: 100;
-      color: #656565;
-      padding-left: calc(var(--rp-indent) - var(--rp-gutter) + 34px);
-    }
-  }
-
-  .paccordion {
-    &__richtext {
-      position: relative;
-      margin-left: 0;
-      padding-right: 0;
-      border-bottom: 0;
-    }
-
-    &__richtext::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: var(--c-line);
-    }
-  }
-
-  .paccordion {
-    & .paccordion__panel.paccordion__panel.paccordion__panel {
-      padding-left: 0;
-      padding-right: 0;
-    }
+.paccordion-container__header--spaced + .paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
+  @include -mobile {
+    border-bottom: 0;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+.paccordion-container__section > .paccordion-container__header--spaced + .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
+  @include -mobile {
+    border-bottom: 0;
+  }
+}
+
+.paccordion-container__section:first-of-type:has(+ .paccordion-container__header) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
+  @include -mobile {
+    border-bottom: 1px solid var(--c-line);
+  }
+}
+
+.paccordion-container__section:has(+ .paccordion-container__header) > .paccordion.paccordion--framed > .paccordion__item:last-child::after {
+  @include -mobile {
+    content: "";
+    position: absolute;
+    left: var(--rp-gutter);
+    right: var(--rp-gutter);
+    bottom: 0;
+    height: 1px;
+    background: var(--c-line);
+  }
+}
+
+.paccordion-container__section > .paccordion:not(.paccordion--framed) > .paccordion__item:last-child::after {
+  @include -mobile {
+    content: "";
+    position: absolute;
+    left: var(--rp-gutter);
+    right: var(--rp-gutter);
+    bottom: 0;
+    height: 1px;
+    background: var(--c-line);
+  }
+}
+
+.paccordion-container__section > .paccordion-container__header--spaced + .paccordion.paccordion--framed > .paccordion__item:last-child::after {
+  @include -mobile {
+    content: none;
+  }
+}
+
+.paccordion-container__header--spaced + .paccordion-container__section > .paccordion > .paccordion__item:first-child::before {
+  @include -mobile {
+    content: none;
+    background: none;
+  }
+}
+
+.paccordion-container__header--spaced + .paccordion-container__section .paccordion__item:first-child::before {
+  @include -mobile {
+    content: none;
+    background: none;
+  }
+}
+
+.paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-link {
+  @include -mobile {
+    border-bottom: 0;
   }
 }
