@@ -136,6 +136,7 @@ export class Accordion {
       setExpanded(button, true);
       itemEl.classList.add("paccordion__item--open");
       animateOpen(panel);
+      updateOpenTree();
     };
 
     const closeItem = (itemEl) => {
@@ -145,6 +146,7 @@ export class Accordion {
       setExpanded(button, false);
       itemEl.classList.remove("paccordion__item--open");
       animateClose(panel);
+      updateOpenTree();
     };
 
     const toggleItem = (itemEl) => {
@@ -161,6 +163,7 @@ export class Accordion {
       panel.style.removeProperty("height");
       panel.style.removeProperty("overflow");
       delete panel.dataset.animating;
+      updateOpenTree();
     };
 
     const openAncestorsImmediate = (itemEl) => {
@@ -281,7 +284,17 @@ export class Accordion {
       setupRegions();
       applyDefaultOpen();
       openFromHash();
+      updateOpenTree();
       document.addEventListener("keydown", handleKeydown);
+    };
+
+    const updateOpenTree = () => {
+      const items = Array.from(document.querySelectorAll(".paccordion__item"));
+      items.forEach((item) => {
+        const openDescendant = item.querySelector(".paccordion__item--open");
+        const hasOpenChild = !!openDescendant && openDescendant !== item;
+        item.classList.toggle("paccordion__item--has-open-child", hasOpenChild);
+      });
     };
 
     init();

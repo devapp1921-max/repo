@@ -7,11 +7,11 @@
   --c-accent: #d11e25;
   --rp-gutter: 20px;
   --rp-step: 16px;
-  width: 100%;
+  // width: 100%;
 
   @include -mobile {
     --rp-step: 0px;
-    padding: 8px var(--rp-gutter) 0;
+    padding: 16px var(--rp-gutter) 0;
   }
 
   @include tablet- {
@@ -23,7 +23,7 @@
   @include desktop- {
     &.paccordion.paccordion {
       --rp-gutter: 48px;
-      padding: 24px 48px 0;
+      padding: 48px 48px 0;
     }
 
     &.paccordion.paccordion.paccordion--nested {
@@ -40,6 +40,10 @@
     border-top: 0;
   }
 
+  .paccordion-container__section:has(+ .paccordion-container__header) > &--framed {
+    border-bottom: 0;
+  }
+
   &--nested {
     border-top: 0;
   }
@@ -51,6 +55,16 @@
 
     &--l1 {
       --rp-lvl: 1;
+
+      @include -mobile {
+        .paccordion__label {
+          font-family: "SofiaPro-SemiBold", sans-serif;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 1;
+          letter-spacing: 0;
+        }
+      }
     }
 
     &--l2 {
@@ -63,7 +77,9 @@
         letter-spacing: -0.01em;
 
         @include -mobile {
+          font-family: "SofiaPro-Regular", sans-serif;
           font-weight: 400;
+          font-size: 18px;
           line-height: 1;
           letter-spacing: -0.01em;
         }
@@ -72,10 +88,30 @@
 
     &--l3 {
       --rp-lvl: 3;
+
+      @include -mobile {
+        .paccordion__label {
+          font-family: "SofiaPro-Regular", sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 1;
+          letter-spacing: -0.01em;
+        }
+      }
     }
 
     &--l4 {
       --rp-lvl: 4;
+
+      @include -mobile {
+        .paccordion__label {
+          font-family: "SofiaPro-Regular", sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 1;
+          letter-spacing: -0.01em;
+        }
+      }
     }
 
     &::before {
@@ -150,12 +186,7 @@
     cursor: pointer;
     font: inherit;
     text-align: left;
-    color: var(--c-muted);
     position: relative;
-
-    &[aria-expanded="true"] {
-      color: var(--c-text);
-    }
 
     &--startIcon {
       justify-content: flex-start;
@@ -211,30 +242,53 @@
     @include desktop- {
       padding-top: 24px;
       padding-bottom: 24px;
-      color: #000000;
     }
   }
 
   & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
     font-size: 18px;
     font-weight: 700;
-    line-height: 22px;
-    font-family: "SofiaPro-Regular", sans-serif;
+    line-height: 100%;
+    font-family: "SofiaPro-SemiBold", sans-serif;
+    color: inherit;
+    letter-spacing: 0;
 
     @include tablet- {
-      font-size: 18px;
-      line-height: 18px;
+      font-family: "SofiaPro-Light", sans-serif;
       font-weight: 300;
+      font-size: 18px;
+      line-height: 1;
       letter-spacing: 0;
-      color: #656565;
     }
 
     @include desktop- {
-      font-size: 18px;
-      line-height: 18px;
+      font-family: "SofiaPro-Light", sans-serif;
       font-weight: 300;
+      font-size: 18px;
+      line-height: 1;
       letter-spacing: 0;
-      color: #656565;
+    }
+  }
+
+  & .paccordion__item.paccordion__item--l1 > .paccordion__heading > .paccordion__button .paccordion__label {
+    @include -mobile {
+      font-family: "SofiaPro-SemiBold", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+  }
+
+  & .paccordion__item.paccordion__item--l2 > .paccordion__heading > .paccordion__button .paccordion__label,
+  & .paccordion__item.paccordion__item--l3 > .paccordion__heading > .paccordion__button .paccordion__label,
+  & .paccordion__item.paccordion__item--l4 > .paccordion__heading > .paccordion__button .paccordion__label {
+    @include -mobile {
+      font-family: "SofiaPro-Regular", sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -0.01em;
     }
   }
 
@@ -282,6 +336,26 @@
       height: 14px;
       transition: opacity 140ms ease;
     }
+  }
+
+  &__item > &__heading > .paccordion__button {
+    color: var(--c-muted);
+  }
+
+  &__item--open > &__heading > .paccordion__button {
+    color: var(--c-text);
+  }
+
+  & .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+    color: var(--c-text);
+  }
+
+  &__item--has-open-child > &__heading > .paccordion__button {
+    color: var(--c-muted);
+  }
+
+  &__item--has-open-child > &__heading > button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+    color: var(--c-muted);
   }
 
   & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] .paccordion__icon--chevron {
@@ -343,7 +417,7 @@
     color: var(--c-text);
     font-family: "SofiaPro-Regular", sans-serif;
     padding: 16px 0;
-    border-bottom: 1px solid var(--c-line);
+    // border-bottom: 1px solid var(--c-line);
     font-size: 18px;
     line-height: 18px;
     font-weight: 300;
@@ -467,7 +541,7 @@
     @include -mobile {
       grid-template-columns: 24px 1fr;
       gap: 10px;
-      padding: 16px 16px 16px 4px;
+      padding: 16px 0 16px 4px;
     }
 
     @include tablet- {
@@ -478,6 +552,12 @@
 
     @include desktop- {
       padding: 24px 16px 8px;
+    }
+  }
+
+  & .paccordion__item--l1 > .paccordion__panel > .paccordion__file-list .paccordion__file-link {
+    @include -mobile {
+      padding-left: 0;
     }
   }
 
@@ -498,13 +578,23 @@
     }
   }
 
-  &__item:last-child &__file-item:last-child &__file-link {
-    border-bottom: 0;
-  }
+  // &__item:last-child &__file-item:last-child &__file-link {
+  //   border-bottom: 0;
+  // }
 
   &__item:last-child .paccordion__file-list {
     @include tablet- {
       border-bottom: 0;
+    }
+  }
+
+  &:not(.paccordion--framed) > &__item:last-child .paccordion__file-list {
+    @include tablet- {
+      border-bottom: 1px solid var(--c-line);
+    }
+
+    @include desktop- {
+      border-bottom: 1px solid var(--c-line);
     }
   }
 
@@ -528,23 +618,39 @@
     }
   }
 
-  &__file-text {
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 300;
-    font-family: "SofiaPro-Regular", sans-serif;
+  &.paccordion:not(.paccordion--framed) > &__item:last-child::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--c-line);
+  }
 
-    @include tablet- {
-      font-weight: 300;
-      letter-spacing: 0;
-      color: #656565;
+  &.paccordion:not(.paccordion--framed) > &__item:last-child > &__panel > &__file-list {
+    border-bottom: 1px solid var(--c-line);
+
+
+  }
+
+  &.paccordion:not(.paccordion--framed) > &__item:last-child .paccordion__file-item:last-child .paccordion__file-link {
+    border-bottom: 0;
+  }
+
+  &.paccordion:not(.paccordion--framed) > &__item:last-child.paccordion__item--open::after {
+    @include -mobile {
+      content: none;
     }
   }
 
-  & .paccordion__item--l1 > .paccordion__panel .paccordion__file-link {
-    @include tablet- {
-      padding-left: 20px;
-    }
+  &__file-text {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 300;
+    font-family: "SofiaPro-Regular", sans-serif;
+    color: #656565;
+    letter-spacing: 0;
   }
 
   & .paccordion__item--l2 > .paccordion__panel .paccordion__file-link {
@@ -566,6 +672,7 @@
   }
 
   & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    justify-content: flex-start;
     @include -mobile {
       padding: 8px 8px 8px 4px;
     }
@@ -576,18 +683,17 @@
 
     @include desktop- {
       padding: 24px 16px;
-      color: #656565;
     }
   }
 
   & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
     @include desktop- {
       padding: 24px 16px;
-      color: #656565;
     }
   }
 
   & .paccordion__item--l3 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    justify-content: flex-start;
     @include tablet- {
       padding-top: 24px;
       padding-bottom: 24px;
@@ -597,6 +703,7 @@
   }
 
   & .paccordion__item--l4 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    justify-content: flex-start;
     @include tablet- {
       padding-top: 24px;
       padding-bottom: 24px;
@@ -612,28 +719,24 @@
 
     @include desktop- {
       padding: 24px 16px;
-      color: #656565;
     }
   }
 
   & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
     @include desktop- {
       padding: 24px 16px;
-      color: #656565;
     }
   }
 
   & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
     @include desktop- {
       padding: 24px 16px;
-      color: #656565;
     }
   }
 
   & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
     @include desktop- {
       padding: 24px 16px;
-      color: #656565;
     }
   }
 }
@@ -660,11 +763,39 @@
   @include -mobile {
     content: "";
     position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 1px;
     background: var(--c-line);
+  }
+}
+
+.paccordion-container__section--stacked > .paccordion.paccordion--framed {
+  border-bottom: 0;
+}
+
+.paccordion-container__section--stacked > .paccordion.paccordion--framed > .paccordion__item:last-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--c-line);
+}
+
+.paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-list {
+  border-bottom: 0;
+}
+
+.paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-item:last-child .paccordion__file-link {
+  border-bottom: 0;
+}
+
+.paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext::after {
+  @include desktop- {
+    content: none;
   }
 }
 
@@ -672,8 +803,8 @@
   @include -mobile {
     content: "";
     position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 1px;
     background: var(--c-line);

@@ -83,6 +83,44 @@
   &__section + &__header {
     @include -mobile {
       margin-top: -1px;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    @include tablet- {
+      margin-top: 0;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    @include desktop- {
+      margin-top: 0;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &__section--stacked + &__header {
+    margin-top: 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    border-left: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__section:has(+ &__header) {
+    @include tablet- {
+      padding-bottom: 0;
+    }
+
+    @include desktop- {
+      padding-bottom: 0;
     }
   }
 
