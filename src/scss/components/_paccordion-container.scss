@@ -13,7 +13,8 @@
 
   @include desktop- {
     --paccordion-gutter: 48px;
-    width: 1632px;
+    width: 100%;
+    max-width: 1632px;
     margin: 0 auto;
   }
 
@@ -179,7 +180,8 @@
   }
   &--thin {
     @include desktop- {
-      width: 1328px;
+      width: 100%;
+      max-width: 1328px;
       margin: 0 auto;
     }
 

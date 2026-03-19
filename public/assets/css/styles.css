@@ -806,7 +806,8 @@ a {
 @media (min-width: 1280px) {
   .paccordion-container {
     --paccordion-gutter: 48px;
-    width: 1632px;
+    width: 100%;
+    max-width: 1632px;
     margin: 0 auto;
   }
 }
@@ -964,7 +965,8 @@ a {
 }
 @media (min-width: 1280px) {
   .paccordion-container--thin {
-    width: 1328px;
+    width: 100%;
+    max-width: 1328px;
     margin: 0 auto;
   }
 }
