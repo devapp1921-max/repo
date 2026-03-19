@@ -44,6 +44,7 @@ $bp-big-min: 1680px;
   }
 }
 
+
 @mixin mobile {
   @media (min-width: $bp-mobile-min) and (max-width: $bp-mobile-max) {
     @content;

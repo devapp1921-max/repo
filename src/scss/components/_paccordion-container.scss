@@ -1,4 +1,4 @@
-@use "../breakpoints" as *;
+@import "../breakpoints";
 
 :root {
   --c-bg: #ffffff;
@@ -17,7 +17,6 @@
 }
 
 .paccordion-container {
-  --pc-max: 356px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -38,7 +37,7 @@
 
   &__header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 48px 0 24px;
@@ -98,6 +97,35 @@
 
 }
 
+@include -mobile {
+  .paccordion-container {
+    &__header {
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    &__section > &__header {
+      align-items: center;
+    }
+
+    &__header--spaced {
+      margin-top: 0;
+    }
+
+    &__section + &__header {
+      margin-top: -1px;
+    }
+
+    &__section:has(+ &__header) {
+      padding-bottom: 0;
+    }
+  }
+}
+
 @include tablet- {
   .paccordion-container {
     &__section {
@@ -140,15 +168,19 @@
 
 @include desktop- {
   .paccordion-container {
-    --pc-max: 1632px;
+    width: calc(100% - 288px);
+    margin: 0 auto;
+  }
+
+  .paccordion-container__header {
     padding-top: 72px;
     padding-bottom: 60px;
+  }
 
-    &__title {
-      font-size: 60px;
-      line-height: 60px;
-      letter-spacing: -0.04em;
-      color: #000000;
-    }
+  .paccordion-container__title {
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -0.04em;
+    color: #000000;
   }
 }

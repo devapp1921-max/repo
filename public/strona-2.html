@@ -355,6 +355,26 @@
         </div>
       </section>
 
+      <section class="paccordion-container__section" aria-label="Przykłady CMS bez obramowania">
+        <header class="paccordion-container__header paccordion-container__header--spaced">
+          <span class="paccordion-container__title paccordion-container__title--small" role="heading" aria-level="1">Przykład: title--small (bez obramowania)</span>
+          <span class="paccordion-container__subtitle paccordion-container__subtitle--big" role="heading" aria-level="2">Przykład: subtitle--big</span>
+        </header>
+        <div class="paccordion" data-paccordion-group>
+          <div class="paccordion__item paccordion__item--l1" id="example-closed-unframed">
+            <div class="paccordion__heading" role="heading" aria-level="3">
+              <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-example-closed-unframed" id="button-example-closed-unframed">
+                <span class="paccordion__label">Przykład: domyślnie zamknięty</span>
+                <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="paccordion__panel" id="panel-example-closed-unframed" role="region" aria-labelledby="button-example-closed-unframed" hidden>
+              <div class="paccordion__richtext"><p>Przykład treści richtext.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <script src="./assets/js/paccordion.js" type="module"></script>
