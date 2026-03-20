@@ -733,13 +733,13 @@
     }
   }
 
-  & .paccordion__item--l2 > .paccordion__heading > .paccordion__button,
-  & .paccordion__item--l3 > .paccordion__heading > .paccordion__button,
-  & .paccordion__item--l4 > .paccordion__heading > .paccordion__button {
+  &.paccordion .paccordion__item--l2 > .paccordion__heading > .paccordion__button,
+  &.paccordion .paccordion__item--l3 > .paccordion__heading > .paccordion__button,
+  &.paccordion .paccordion__item--l4 > .paccordion__heading > .paccordion__button {
     justify-content: flex-start;
   }
 
-  & .paccordion__button:has(.paccordion__icon--plusminus) {
+  &.paccordion .paccordion__button.paccordion__button:has(.paccordion__icon--plusminus) {
     justify-content: flex-start;
   }
 
@@ -861,8 +861,6 @@
     border-bottom: 0;
   }
 }
-
-// @import "../breakpoints";
 
 .paccordion-container {
   --paccordion-gutter: 20px;
