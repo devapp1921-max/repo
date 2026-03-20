@@ -22,5 +22,5 @@ Kotwice:
 
 Kompilacja SCSS (przykład):
 ```bash
-sass src/scss/styles.scss public/assets/css/styles.css --no-source-map
+npx sass --watch src/scss/styles.scss public/assets/css/styles.css
 ```

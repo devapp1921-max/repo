@@ -204,34 +204,15 @@ a {
   }
 }
 .paccordion__item::before {
-  content: "";
-  position: absolute;
-  left: var(--rp-gutter);
-  right: var(--rp-gutter);
-  top: 0;
-  height: 1px;
-  background: var(--c-line);
-}
-@media (max-width: 959px) {
-  .paccordion__item::before {
-    left: 0;
-    right: 0;
-  }
-}
-@media (min-width: 960px) {
-  .paccordion__item::before {
-    left: 0;
-    right: 0;
-  }
-}
-@media (min-width: 1280px) {
-  .paccordion__item::before {
-    left: 0;
-    right: 0;
-  }
+  content: none;
 }
 .paccordion__item--open + .paccordion__item::before {
   content: none;
+  display: none;
+}
+.paccordion__item:has(> .paccordion__heading > .paccordion__button[aria-expanded=true]) + .paccordion__item::before {
+  content: none;
+  display: none;
 }
 .paccordion [id] {
   scroll-margin-top: 16px;
@@ -267,12 +248,14 @@ a {
   justify-content: space-between;
   gap: 10px;
   background: transparent;
+  box-shadow: inset 0 1px 0 var(--c-line);
   border: 0;
   padding: 9px 28px 9px 28px;
   cursor: pointer;
   font: inherit;
   text-align: left;
   position: relative;
+  box-sizing: border-box;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button--startIcon {
   justify-content: flex-start;
@@ -294,10 +277,23 @@ a {
     padding: 24px 16px;
   }
 }
+.paccordion button.paccordion__button.paccordion__button.paccordion__button:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button:focus-visible, .paccordion button.paccordion__button.paccordion__button.paccordion__button:active {
+  background: #E2E2E2;
+  color: inherit;
+}
+.paccordion > .paccordion__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
+  box-shadow: none;
+}
 @media (min-width: 1280px) {
   .paccordion > .paccordion__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
     padding: 24px 16px;
   }
+}
+.paccordion__item--open + .paccordion__item > .paccordion__heading > .paccordion__button {
+  box-shadow: none;
+}
+.paccordion__item:has(> .paccordion__heading > .paccordion__button[aria-expanded=true]) + .paccordion__item > .paccordion__heading > .paccordion__button {
+  box-shadow: none;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]::after {
   content: "";
@@ -320,6 +316,13 @@ a {
     right: 0;
   }
 }
+.paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=false] {
+  background: transparent;
+  color: var(--c-muted);
+}
+.paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
+  background: #E2E2E2;
+}
 @media (min-width: 960px) {
   .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
     padding-top: 24px;
@@ -331,6 +334,10 @@ a {
     padding-top: 24px;
     padding-bottom: 24px;
   }
+}
+.paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:focus-visible, .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:active {
+  background: #E2E2E2;
+  color: var(--c-text);
 }
 .paccordion .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
   font-size: 18px;
@@ -490,11 +497,15 @@ a {
   color: var(--c-text);
   font-family: "SofiaPro-Regular", sans-serif;
   padding: 16px 0;
+  border-bottom: 1px solid var(--c-line);
   font-size: 18px;
   line-height: 18px;
   font-weight: 300;
-  margin-left: calc(-1 * (var(--rp-indent) - var(--rp-gutter)));
-  padding-left: calc(var(--rp-indent) - var(--rp-gutter));
+  margin-left: 0;
+  padding-left: var(--rp-indent);
+  padding-right: var(--rp-gutter);
+  width: 100%;
+  box-sizing: border-box;
 }
 .paccordion__richtext p {
   margin: 14px 0 0 0;
@@ -532,7 +543,8 @@ a {
     line-height: 1.5em;
     font-weight: 100;
     color: #656565;
-    padding-left: calc(var(--rp-indent) - var(--rp-gutter) + 34px);
+    padding-left: calc(var(--rp-indent) + 34px);
+    padding-right: var(--rp-gutter);
   }
 }
 @media (min-width: 1280px) {
@@ -542,10 +554,10 @@ a {
     line-height: 1.5em;
     font-weight: 100;
     color: #656565;
-    padding-left: calc(var(--rp-indent) - var(--rp-gutter) + 34px);
+    padding-left: calc(var(--rp-indent) + 34px);
+    padding-right: var(--rp-gutter);
     position: relative;
     margin-left: 0;
-    padding-right: 0;
     border-bottom: 0;
   }
 }
@@ -764,6 +776,12 @@ a {
     padding-right: 16px;
   }
 }
+.paccordion.paccordion .paccordion__item--l2 > .paccordion__heading > .paccordion__button, .paccordion.paccordion .paccordion__item--l3 > .paccordion__heading > .paccordion__button, .paccordion.paccordion .paccordion__item--l4 > .paccordion__heading > .paccordion__button {
+  justify-content: flex-start;
+}
+.paccordion.paccordion .paccordion__button.paccordion__button:has(.paccordion__icon--plusminus) {
+  justify-content: flex-start;
+}
 @media (min-width: 960px) {
   .paccordion .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
     padding: 24px 16px;
@@ -842,12 +860,6 @@ a {
   border-bottom: 0;
 }
 
-@media (min-width: 1280px) {
-  .paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext::after {
-    content: none;
-  }
-}
-
 @media (max-width: 959px) {
   .paccordion-container__section > .paccordion:not(.paccordion--framed) > .paccordion__item:last-child::after {
     content: "";
@@ -886,24 +898,6 @@ a {
   }
 }
 
-/*
-* BREAKPOINTS
-* nazwa | od | do | opis
-* ------------------------------------------------------------
-*
-* small, -small | 0 | 639 | tylko small
-* -mobile       | 0 | 959 | mobile i mniejsze
-* mobile        | 640 | 959 | tylko mobile
-* mobile-       | 640 | ∞   | mobile i większe
-* -tablet       | 0 | 1279 | tablet i mniejsze
-* tablet        | 960 | 1279 | tylko tablet
-* tablet-       | 960 | ∞   | tablet i większe
-* -desktop      | 0 | 1679 | desktop i mniejsze
-* desktop       | 1280 | 1679 | tylko desktop
-* desktop-      | 1280 | ∞  | desktop i większe
-* big, big-     | 1680 | ∞  | big i większe
-*
-*/
 .paccordion-container {
   --paccordion-gutter: 20px;
   width: 100%;
