@@ -141,6 +141,12 @@
 
     &--open + &::before {
       content: none;
+      display: none;
+    }
+
+    &:has(> .paccordion__heading > .paccordion__button[aria-expanded="true"]) + &::before {
+      content: none;
+      display: none;
     }
   }
 
@@ -187,6 +193,7 @@
     font: inherit;
     text-align: left;
     position: relative;
+    box-sizing: border-box;
 
     &--startIcon {
       justify-content: flex-start;
@@ -205,6 +212,13 @@
     @include desktop- {
       padding: 24px 16px;
     }
+  }
+
+  & button.paccordion__button.paccordion__button.paccordion__button:hover,
+  & button.paccordion__button.paccordion__button.paccordion__button:focus-visible,
+  & button.paccordion__button.paccordion__button.paccordion__button:active {
+    background: transparent;
+    color: inherit;
   }
 
   & > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
@@ -243,6 +257,13 @@
       padding-top: 24px;
       padding-bottom: 24px;
     }
+  }
+
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:hover,
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:focus-visible,
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:active {
+    background: transparent;
+    color: var(--c-text);
   }
 
   & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
@@ -417,7 +438,7 @@
     color: var(--c-text);
     font-family: "SofiaPro-Regular", sans-serif;
     padding: 16px 0;
-    // border-bottom: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--c-line);
     font-size: 18px;
     line-height: 18px;
     font-weight: 300;
@@ -712,6 +733,16 @@
     }
   }
 
+  & .paccordion__item--l2 > .paccordion__heading > .paccordion__button,
+  & .paccordion__item--l3 > .paccordion__heading > .paccordion__button,
+  & .paccordion__item--l4 > .paccordion__heading > .paccordion__button {
+    justify-content: flex-start;
+  }
+
+  & .paccordion__button:has(.paccordion__icon--plusminus) {
+    justify-content: flex-start;
+  }
+
   & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
     @include tablet- {
       padding: 24px 16px;
@@ -793,12 +824,6 @@
   border-bottom: 0;
 }
 
-.paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext::after {
-  @include desktop- {
-    content: none;
-  }
-}
-
 .paccordion-container__section > .paccordion:not(.paccordion--framed) > .paccordion__item:last-child::after {
   @include -mobile {
     content: "";
@@ -834,5 +859,268 @@
 .paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-link {
   @include -mobile {
     border-bottom: 0;
+  }
+}
+
+// @import "../breakpoints";
+
+.paccordion-container {
+  --paccordion-gutter: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+
+  @include tablet- {
+    --paccordion-gutter: 30px;
+  }
+
+  @include desktop- {
+    --paccordion-gutter: 48px;
+    width: 100%;
+    max-width: 1632px;
+    margin: 0 auto;
+  }
+
+  &__section {
+    background: transparent;
+    padding: 0 0 48px;
+    margin: 0;
+    width: 100%;
+
+    @include -mobile {
+      &:has(+ .paccordion-container__header) {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__section > .paccordion {
+    max-width: none;
+    margin: 0;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px var(--paccordion-gutter) 24px;
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 0;
+
+    &--spaced {
+      margin-top: 64px;
+
+      @include -mobile {
+        margin-top: 0;
+      }
+    }
+
+    @include -mobile {
+      align-items: center;
+      padding-left: var(--paccordion-gutter);
+      padding-right: var(--paccordion-gutter);
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    @include tablet- {
+      padding-top: 72px;
+      padding-bottom: 60px;
+    }
+
+    @include desktop- {
+      padding-top: 72px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &__section > &__header {
+    @include -mobile {
+      align-items: center;
+    }
+  }
+
+  &__section + &__header {
+    @include -mobile {
+      margin-top: -1px;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    @include tablet- {
+      margin-top: 0;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+
+    @include desktop- {
+      margin-top: 0;
+      background: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &__section--stacked + &__header {
+    margin-top: 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    border-left: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  &__section:has(+ &__header) {
+    @include tablet- {
+      padding-bottom: 0;
+    }
+
+    @include desktop- {
+      padding-bottom: 0;
+    }
+  }
+
+  &__header:has(.paccordion-container__title--small),
+  &__header:has(.paccordion-container__subtitle--small) {
+    align-items: flex-start;
+    text-align: left;
+    gap: 5px;
+    padding: 48px var(--paccordion-gutter) 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 30px;
+    color: #656565;
+    font-family: "SofiaPro-Bold", sans-serif;
+
+    &--none,
+    &--hide {
+      display: none;
+    }
+
+    &--small {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #000000;
+      font-family: "SofiaPro-Medium", sans-serif;
+
+      @include tablet- {
+        line-height: 1;
+      }
+    }
+
+    &--big {
+      font-size: 40px;
+      line-height: 48px;
+
+      @include tablet- {
+        font-size: 72px;
+      }
+    }
+
+    @include tablet- {
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+
+    @include desktop- {
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    font-family: "SofiaPro-Bold", sans-serif;
+
+    &--none,
+    &--hide {
+      display: none;
+    }
+
+    &--small {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: #656565;
+      font-family: "SofiaPro-Light", sans-serif;
+    }
+
+    &--big {
+      font-size: 32px;
+
+      @include tablet- {
+        font-size: 48px;
+      }
+    }
+
+    @include tablet- {
+      font-size: 40px;
+    }
+  }
+  &--thin {
+    @include desktop- {
+      width: 100%;
+      max-width: 1328px;
+      margin: 0 auto;
+    }
+
+    .paccordion-container__header {
+      align-items: flex-start;
+      text-align: left;
+      gap: 5px;
+      padding: 48px var(--paccordion-gutter) 0;
+
+      @include -mobile {
+        align-items: flex-start;
+        text-align: left;
+        gap: 5px;
+        padding: 48px var(--paccordion-gutter) 0;
+      }
+    }
+
+    .paccordion-container__title {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #000000;
+      font-family: "SofiaPro-Medium", sans-serif;
+
+      @include tablet- {
+        line-height: 1;
+      }
+    }
+
+    .paccordion-container__subtitle {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: #656565;
+      font-family: "SofiaPro-Light", sans-serif;
+    }
   }
 }
