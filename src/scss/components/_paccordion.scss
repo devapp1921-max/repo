@@ -7,7 +7,6 @@
   --c-accent: #d11e25;
   --rp-gutter: 20px;
   --rp-step: 16px;
-  // width: 100%;
 
   @include -mobile {
     --rp-step: 0px;
@@ -51,10 +50,16 @@
   &__item {
     --rp-lvl: 1;
     --rp-indent: calc(var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step));
+    --rp-indent-level: 0px;
     position: relative;
 
     &--l1 {
+      // Wcięcie poziomu 1 (bazowy poziom zagnieżdżenia).
       --rp-lvl: 1;
+
+      @include tablet- {
+        --rp-indent-level: 0px;
+      }
 
       @include -mobile {
         .paccordion__label {
@@ -68,7 +73,12 @@
     }
 
     &--l2 {
+      // Wcięcie poziomu 2 (zagnieżdżenie).
       --rp-lvl: 2;
+
+      @include tablet- {
+        --rp-indent-level: 0px;
+      }
 
       .paccordion__label {
         font-size: 18px;
@@ -87,7 +97,12 @@
     }
 
     &--l3 {
+      // Wcięcie poziomu 3 (zagnieżdżenie).
       --rp-lvl: 3;
+
+      @include tablet- {
+        --rp-indent-level: 34px;
+      }
 
       @include -mobile {
         .paccordion__label {
@@ -101,7 +116,12 @@
     }
 
     &--l4 {
+      // Wcięcie poziomu 4 (zagnieżdżenie).
       --rp-lvl: 4;
+
+      @include tablet- {
+        --rp-indent-level: 68px;
+      }
 
       @include -mobile {
         .paccordion__label {
@@ -126,6 +146,32 @@
     &:has(> .paccordion__heading > .paccordion__button[aria-expanded="true"]) + &::before {
       content: none;
       display: none;
+    }
+  }
+
+  // Przywróć linie między zagnieżdżonymi elementami.
+  &--nested &__item::before {
+    content: "";
+    position: absolute;
+    left: var(--rp-gutter);
+    right: var(--rp-gutter);
+    top: 0;
+    height: 1px;
+    background: var(--c-line);
+
+    @include -mobile {
+      left: 0;
+      right: 0;
+    }
+
+    @include tablet- {
+      left: 0;
+      right: 0;
+    }
+
+    @include desktop- {
+      left: 0;
+      right: 0;
     }
   }
 
@@ -188,12 +234,13 @@
 
     @include tablet- {
       padding: 24px 16px;
-      padding-left: 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
       padding-right: 16px;
     }
 
     @include desktop- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
   }
 
@@ -245,6 +292,14 @@
   & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"] {
     background-color: transparent;
     color: var(--c-muted);
+  }
+
+  // Hover dla zamkniętych elementów (nadpisuje tło transparentne).
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:hover,
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:focus-visible,
+  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:active {
+    background-color: #E2E2E2;
+    color: inherit;
   }
 
   & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
@@ -390,6 +445,7 @@
   }
 
   & .paccordion__panel.paccordion__panel.paccordion__panel {
+    // Wcięcie panelu zależne od poziomu (używa --rp-indent).
     padding: 0 var(--rp-gutter) 0 var(--rp-indent);
     transition: height 220ms ease;
 
@@ -445,8 +501,8 @@
     line-height: 18px;
     font-weight: 300;
     margin-left: 0;
-    padding-left: var(--rp-indent);
-    padding-right: var(--rp-gutter);
+    padding-left: 16px;
+    padding-right: 16px;
     width: 100%;
     box-sizing: border-box;
 
@@ -490,8 +546,8 @@
       line-height: 1.5em;
       font-weight: 100;
       color: #656565;
-      padding-left: calc(var(--rp-indent) + 34px);
-      padding-right: var(--rp-gutter);
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     @include desktop- {
@@ -500,8 +556,8 @@
       line-height: 1.5em;
       font-weight: 100;
       color: #656565;
-      padding-left: calc(var(--rp-indent) + 34px);
-      padding-right: var(--rp-gutter);
+      padding-left: 16px;
+      padding-right: 16px;
       position: relative;
       margin-left: 0;
       border-bottom: 0;
@@ -605,10 +661,6 @@
     }
   }
 
-  // &__item:last-child &__file-item:last-child &__file-link {
-  //   border-bottom: 0;
-  // }
-
   &__item:last-child .paccordion__file-list {
     @include tablet- {
       border-bottom: 0;
@@ -675,26 +727,29 @@
     font-size: 18px;
     line-height: 1;
     font-weight: 300;
-    font-family: "SofiaPro-Regular", sans-serif;
+    font-family: "SofiaPro-Light", sans-serif;
     color: #656565;
     letter-spacing: 0;
   }
 
   & .paccordion__item--l2 > .paccordion__panel .paccordion__file-link {
+    // Wcięcie linków plików dla poziomu 2.
     @include tablet- {
-      padding-left: 20px;
+      padding-left: calc(16px + var(--rp-indent-level) + 34px);
     }
   }
 
   & .paccordion__item--l3 > .paccordion__panel .paccordion__file-link {
+    // Wcięcie linków plików dla poziomu 3.
     @include tablet- {
-      padding-left: 54px;
+      padding-left: calc(16px + var(--rp-indent-level) + 34px);
     }
   }
 
   & .paccordion__item--l4 > .paccordion__panel .paccordion__file-link {
+    // Wcięcie linków plików dla poziomu 4.
     @include tablet- {
-      padding-left: 88px;
+      padding-left: calc(16px + var(--rp-indent-level) + 34px);
     }
   }
 
@@ -706,10 +761,12 @@
 
     @include tablet- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
 
     @include desktop- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
   }
 
@@ -724,7 +781,7 @@
     @include tablet- {
       padding-top: 24px;
       padding-bottom: 24px;
-      padding-left: 50px;
+      padding-left: calc(16px + var(--rp-indent-level));
       padding-right: 16px;
     }
   }
@@ -734,7 +791,7 @@
     @include tablet- {
       padding-top: 24px;
       padding-bottom: 24px;
-      padding-left: 84px;
+      padding-left: calc(16px + var(--rp-indent-level));
       padding-right: 16px;
     }
   }
@@ -752,28 +809,72 @@
   & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
     @include tablet- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
 
     @include desktop- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
   }
 
   & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+    @include tablet- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+
     @include desktop- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
   }
 
   & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include tablet- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+
     @include desktop- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
   }
 
   & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+    @include tablet- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+
     @include desktop- {
       padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+  }
+
+  & .paccordion__panel > .paccordion .paccordion__item--l3 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include tablet- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+
+    @include desktop- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+  }
+
+  & .paccordion__panel > .paccordion .paccordion__item--l4 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+    @include tablet- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
+    }
+
+    @include desktop- {
+      padding: 24px 16px;
+      padding-left: calc(16px + var(--rp-indent-level));
     }
   }
 }

@@ -226,13 +226,19 @@ export class Accordion {
     const openFromHash = () => {
       const hash = window.location.hash.replace("#", "");
       if (!hash) return;
+      const urlWithoutHash = window.location.pathname + window.location.search;
+      history.replaceState(null, "", urlWithoutHash);
       const target = document.getElementById(hash);
       if (!target) return;
       const item = closestItem(target);
-      if (item) {
+      if (!item) return;
+      const behavior = prefersReducedMotion() ? "auto" : "smooth";
+      setTimeout(() => {
         openItemImmediate(item);
         openAncestorsImmediate(item);
-      }
+        target.scrollIntoView({ behavior, block: "start" });
+        history.replaceState(null, "", `${urlWithoutHash}#${hash}`);
+      }, 0);
     };
 
     const setupAnchors = () => {
