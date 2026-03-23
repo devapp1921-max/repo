@@ -196,6 +196,9 @@ export class Accordion {
       panel.setAttribute("aria-labelledby", button.id);
 
       button.addEventListener("click", () => toggleItem(item));
+      button.addEventListener("blur", () => {
+        button.classList.remove("paccordion__button--key-active");
+      });
     };
 
     const setupPanel = (panel) => {
@@ -280,7 +283,16 @@ export class Accordion {
 
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
+        button.classList.add("paccordion__button--key-active");
         toggleItem(item);
+      }
+    };
+
+    const handleKeyup = (event) => {
+      const button = event.target.closest?.(".paccordion__button");
+      if (!button) return;
+      if (event.key === "Enter" || event.key === " ") {
+        button.classList.remove("paccordion__button--key-active");
       }
     };
 
@@ -292,6 +304,7 @@ export class Accordion {
       openFromHash();
       updateOpenTree();
       document.addEventListener("keydown", handleKeydown);
+      document.addEventListener("keyup", handleKeyup);
     };
 
     const updateOpenTree = () => {
