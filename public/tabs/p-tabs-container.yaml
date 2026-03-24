@@ -1,0 +1,11 @@
+templateScript: /pekao-module/templates/components/v2/common/tabs/p-tabs-container.ftl
+renderType: freemarker
+title: Taby uniwersalne
+dialog: pekao-module:components/v2/common/tabs/p-tabs-container
+
+areas:
+  tabs:
+    type: list
+    availableComponents:
+      tab:
+        id: pekao-module:components/v2/common/tabs/p-tab
