@@ -1,6 +1,7 @@
 /* Entry point: imports in strict order (mobile-first). */
 
 @use "base/base";
+@use "base/colors";
 @use "base/fonts";
 @use "components/paccordion";
 // @use "components/paccordion-container";

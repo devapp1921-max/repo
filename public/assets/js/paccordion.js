@@ -60,6 +60,16 @@ export class Accordion {
       button.setAttribute("aria-expanded", expanded ? "true" : "false");
     };
 
+    const setPanelInteractivity = (panel, interactive) => {
+      if (interactive) {
+        panel.removeAttribute("inert");
+        panel.removeAttribute("aria-hidden");
+      } else {
+        panel.setAttribute("inert", "");
+        panel.setAttribute("aria-hidden", "true");
+      }
+    };
+
     const stopRunningTransition = (panel) => {
       const handler = panel._revealTransitionEnd;
       if (handler) panel.removeEventListener("transitionend", handler);
@@ -73,6 +83,7 @@ export class Accordion {
     const animateOpen = (panel) => {
       stopRunningTransition(panel);
       panel.dataset.animating = "1";
+      setPanelInteractivity(panel, true);
       panel.hidden = false;
 
       if (prefersReducedMotion()) {
@@ -103,6 +114,7 @@ export class Accordion {
     const animateClose = (panel) => {
       stopRunningTransition(panel);
       panel.dataset.animating = "1";
+      setPanelInteractivity(panel, false);
 
       if (prefersReducedMotion()) {
         panel.hidden = true;
@@ -159,6 +171,7 @@ export class Accordion {
       if (!button || !panel) return;
       setExpanded(button, true);
       itemEl.classList.add("paccordion__item--open");
+      setPanelInteractivity(panel, true);
       panel.hidden = false;
       panel.style.removeProperty("height");
       panel.style.removeProperty("overflow");
@@ -205,6 +218,7 @@ export class Accordion {
       if (!panel.hasAttribute("hidden")) {
         panel.setAttribute("hidden", "");
       }
+      setPanelInteractivity(panel, false);
     };
 
     const setupItem = (item) => {

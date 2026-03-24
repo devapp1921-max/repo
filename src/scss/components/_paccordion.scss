@@ -1,1284 +1,1446 @@
+@use "../base/colors" as *;
 @import "../breakpoints";
 
 .paccordion {
-  --c-text: #000000;
-  --c-muted: #656565;
-  --c-line: #c0c0c0;
-  --c-accent: #d11e25;
-  --rp-gutter: 20px;
-  --rp-step: 16px;
+    --rp-gutter: 20px;
+    --rp-step: 16px;
 
-  @include -mobile {
-    --rp-step: 0px;
-    padding: 16px var(--rp-gutter);
-  }
-
-  @include tablet- {
-    --rp-step: 20px;
-    --rp-gutter: 30px;
-    padding: 24px var(--rp-gutter);
-  }
-
-  @include desktop- {
-    &.paccordion.paccordion {
-      --rp-gutter: 48px;
-      padding: 48px 48px;
+    @include -mobile {
+        --rp-step: 0px;
+        padding: 16px var(--rp-gutter);
     }
 
-    &.paccordion.paccordion.paccordion--nested {
-      padding: 0;
+    @include tablet- {
+        --rp-step: 20px;
+        --rp-gutter: 30px;
+        padding: 24px var(--rp-gutter);
     }
-  }
 
-  &--framed {
-    border: 1px solid var(--c-line);
-    background: #fff;
-  }
-
-  .paccordion-container__header--spaced + .paccordion-container__section > &--framed {
-    border-top: 0;
-  }
-
-  .paccordion-container__section:has(+ .paccordion-container__header) > &--framed {
-    border-bottom: 0;
-  }
-
-  &--nested {
-    border-top: 0;
-  }
-
-  &__item {
-    --rp-lvl: 1;
-    --rp-indent: calc(var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step));
-    --rp-indent-level: 0px;
-    position: relative;
-
-    &--l1 {
-      // Wcięcie poziomu 1 (bazowy poziom zagnieżdżenia).
-      --rp-lvl: 1;
-
-      @include tablet- {
-        --rp-indent-level: 0px;
-      }
-
-      @include -mobile {
-        .paccordion__label {
-          font-family: "SofiaPro-SemiBold", sans-serif;
-          font-weight: 700;
-          font-size: 18px;
-          line-height: 1;
-          letter-spacing: 0;
+    @include desktop- {
+        &.paccordion.paccordion {
+            --rp-gutter: 48px;
+            padding: 48px 48px;
         }
-      }
+
+        &.paccordion.paccordion.paccordion--nested {
+            padding: 0;
+        }
     }
 
-    &--l2 {
-      // Wcięcie poziomu 2 (zagnieżdżenie).
-      --rp-lvl: 2;
+    &--framed {
+        border: 1px solid $borders-gray;
+        background: #fff;
+    }
 
-      @include tablet- {
+    .paccordion-container__header--spaced
+        + .paccordion-container__section
+        > &--framed {
+        border-top: 0;
+    }
+
+    .paccordion-container__section:has(+ .paccordion-container__header)
+        > &--framed {
+        border-bottom: 0;
+    }
+
+    &--nested {
+        border-top: 0;
+    }
+
+    &__item {
+        --rp-lvl: 1;
+        --rp-indent: calc(
+            var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step)
+        );
         --rp-indent-level: 0px;
-      }
+        position: relative;
 
-      .paccordion__label {
-        font-size: 18px;
-        line-height: 18px;
-        font-weight: 400;
-        letter-spacing: -0.01em;
+        &--l1 {
+            // Wcięcie poziomu 1 (bazowy poziom zagnieżdżenia).
+            --rp-lvl: 1;
+
+            @include tablet- {
+                --rp-indent-level: 0px;
+            }
+
+            @include -mobile {
+                .paccordion__label {
+                    font-family: "SofiaPro-SemiBold", sans-serif;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 1;
+                    letter-spacing: 0;
+                }
+            }
+        }
+
+        &--l2 {
+            // Wcięcie poziomu 2 (zagnieżdżenie).
+            --rp-lvl: 2;
+
+            @include tablet- {
+                --rp-indent-level: 0px;
+            }
+
+            .paccordion__label {
+                font-size: 18px;
+                line-height: 18px;
+                font-weight: 400;
+                letter-spacing: -0.01em;
+
+                @include -mobile {
+                    font-family: "SofiaPro-Regular", sans-serif;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 1;
+                    letter-spacing: -0.01em;
+                }
+            }
+        }
+
+        &--l3 {
+            // Wcięcie poziomu 3 (zagnieżdżenie).
+            --rp-lvl: 3;
+
+            @include tablet- {
+                --rp-indent-level: 34px;
+            }
+
+            @include -mobile {
+                .paccordion__label {
+                    font-family: "SofiaPro-Regular", sans-serif;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 1;
+                    letter-spacing: -0.01em;
+                }
+            }
+        }
+
+        &--l4 {
+            // Wcięcie poziomu 4 (zagnieżdżenie).
+            --rp-lvl: 4;
+
+            @include tablet- {
+                --rp-indent-level: 68px;
+            }
+
+            @include -mobile {
+                .paccordion__label {
+                    font-family: "SofiaPro-Regular", sans-serif;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 1;
+                    letter-spacing: -0.01em;
+                }
+            }
+        }
+
+        &::before {
+            content: none;
+        }
+
+        &--open + &::before {
+            content: none;
+            display: none;
+        }
+
+        &:has(
+                > .paccordion__heading
+                    > .paccordion__button[aria-expanded="true"]
+            )
+            + &::before {
+            content: none;
+            display: none;
+        }
+    }
+
+    // Przywraca linie między zagnieżdżonymi elementami.
+    &--nested &__item::before {
+        content: "";
+        position: absolute;
+        left: var(--rp-gutter);
+        right: var(--rp-gutter);
+        top: 0;
+        height: 1px;
+        background: $borders-gray;
 
         @include -mobile {
-          font-family: "SofiaPro-Regular", sans-serif;
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 1;
-          letter-spacing: -0.01em;
+            left: 0;
+            right: 0;
         }
-      }
-    }
 
-    &--l3 {
-      // Wcięcie poziomu 3 (zagnieżdżenie).
-      --rp-lvl: 3;
-
-      @include tablet- {
-        --rp-indent-level: 34px;
-      }
-
-      @include -mobile {
-        .paccordion__label {
-          font-family: "SofiaPro-Regular", sans-serif;
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 1;
-          letter-spacing: -0.01em;
+        @include tablet- {
+            left: 0;
+            right: 0;
         }
-      }
-    }
 
-    &--l4 {
-      // Wcięcie poziomu 4 (zagnieżdżenie).
-      --rp-lvl: 4;
-
-      @include tablet- {
-        --rp-indent-level: 68px;
-      }
-
-      @include -mobile {
-        .paccordion__label {
-          font-family: "SofiaPro-Regular", sans-serif;
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 1;
-          letter-spacing: -0.01em;
+        @include desktop- {
+            left: 0;
+            right: 0;
         }
-      }
     }
 
-    &::before {
-      content: none;
+    [id] {
+        scroll-margin-top: 16px;
     }
 
-    &--open + &::before {
-      content: none;
-      display: none;
+    & > &__item:first-child::before {
+        content: none;
     }
 
-    &:has(> .paccordion__heading > .paccordion__button[aria-expanded="true"]) + &::before {
-      content: none;
-      display: none;
-    }
-  }
-
-  // Przywróć linie między zagnieżdżonymi elementami.
-  &--nested &__item::before {
-    content: "";
-    position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
-    top: 0;
-    height: 1px;
-    background: var(--c-line);
-
-    @include -mobile {
-      left: 0;
-      right: 0;
+    &__panel > .paccordion > &__item:first-child::before {
+        content: none;
     }
 
-    @include tablet- {
-      left: 0;
-      right: 0;
+    &__item--open > &__panel > .paccordion > &__item:first-child::before {
+        content: none;
     }
 
-    @include desktop- {
-      left: 0;
-      right: 0;
-    }
-  }
+    &__heading {
+        margin: 0;
 
-  [id] {
-    scroll-margin-top: 16px;
-  }
+        @include -mobile {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
-  & > &__item:first-child::before {
-    content: none;
-  }
-
-  &__panel > .paccordion > &__item:first-child::before {
-    content: none;
-  }
-
-  &__item--open > &__panel > .paccordion > &__item:first-child::before {
-    content: none;
-  }
-
-  &__heading {
-    margin: 0;
-
-    @include -mobile {
-      padding-left: 0;
-      padding-right: 0;
+        @include tablet- {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
-    @include tablet- {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
+    & button.paccordion__button.paccordion__button.paccordion__button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        background-color: transparent;
+        background-image: linear-gradient($borders-gray, $borders-gray);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        border: 0;
+        border-radius: 0;
+        padding: 9px 28px 9px 28px;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        position: relative;
+        box-sizing: border-box;
 
-  & button.paccordion__button.paccordion__button.paccordion__button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    background-color: transparent;
-    background-image: linear-gradient(var(--c-line), var(--c-line));
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    border: 0;
-    padding: 9px 28px 9px 28px;
-    cursor: pointer;
-    font: inherit;
-    text-align: left;
-    position: relative;
-    box-sizing: border-box;
+        &--startIcon {
+            justify-content: flex-start;
+        }
 
-    &--startIcon {
-      justify-content: flex-start;
-    }
+        @include -mobile {
+            padding: 8px 8px;
+        }
 
-    @include -mobile {
-      padding: 8px 8px;
-    }
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+            padding-right: 16px;
+        }
 
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-      padding-right: 16px;
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  // Tło na hover/active dla wszystkich poziomów akordeonu.
-  & button.paccordion__button.paccordion__button.paccordion__button:hover,
-  & button.paccordion__button.paccordion__button.paccordion__button:active {
-    background-color: #E2E2E2;
-    color: inherit;
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button:focus-visible {
-    outline: none;
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button:focus-visible::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid #d91918;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  // Keyboard activation should show the same pressed color as mouse.
-  & button.paccordion__button.paccordion__button.paccordion__button:focus-visible {
-    background-color: #c0c0c0;
-  }
-
-  // Ensure bottom line doesn't cover the focus ring on open items.
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:focus-visible::after {
-    background: #d91918;
-  }
-
-  & > &__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
-    background-image: none;
-
-    @include desktop- {
-      padding: 24px 16px;
-    }
-  }
-
-  &__item--open + &__item > &__heading > .paccordion__button {
-    background-image: none;
-  }
-
-  &__item:has(> .paccordion__heading > .paccordion__button[aria-expanded="true"]) + &__item > &__heading > .paccordion__button {
-    background-image: none;
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]::after {
-    content: "";
-    position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
-    bottom: 0;
-    height: 1px;
-    background: var(--c-line);
-
-    @include -mobile {
-      left: 0;
-      right: 0;
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
     }
 
-    @include tablet- {
-      left: 0;
-      right: 0;
-    }
-  }
-
-  // Tło dla otwartego (klikniętego) stanu na wszystkich poziomach.
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"] {
-    background-color: transparent;
-    color: var(--c-muted);
-  }
-
-  // Hover dla zamkniętych elementów (nadpisuje tło transparentne).
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:hover,
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:active {
-    background-color: #E2E2E2;
-    color: inherit;
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-    background-color: #ffffff;
-    background-image: none;
-
-    @include tablet- {
-      padding-top: 24px;
-      padding-bottom: 24px;
+    // Tło na hover/active dla wszystkich poziomów akordeonu.
+    & button.paccordion__button.paccordion__button.paccordion__button:hover,
+    & button.paccordion__button.paccordion__button.paccordion__button:active {
+        background-color: #e2e2e2;
+        color: inherit;
     }
 
-    @include desktop- {
-      padding-top: 24px;
-      padding-bottom: 24px;
-    }
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:hover,
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:active {
-    background-color: #E2E2E2;
-    color: var(--c-text);
-  }
-
-  // Tło tylko w trakcie klikania (pressed).
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:active,
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:active {
-    background-color: #c0c0c0;
-  }
-
-  // Only show pressed color while the key/mouse is held down.
-  & button.paccordion__button.paccordion__button.paccordion__button:active,
-  & button.paccordion__button.paccordion__button.paccordion__button:focus-visible:active {
-    background-color: #c0c0c0;
-  }
-
-  & button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--key-active {
-    background-color: #c0c0c0;
-  }
-
-  & .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 100%;
-    font-family: "SofiaPro-SemiBold", sans-serif;
-    color: inherit;
-    letter-spacing: 0;
-
-    @include tablet- {
-      font-family: "SofiaPro-Light", sans-serif;
-      font-weight: 300;
-      font-size: 18px;
-      line-height: 1;
-      letter-spacing: 0;
+    &
+        button.paccordion__button.paccordion__button.paccordion__button:focus-visible {
+        outline: none;
     }
 
-    @include desktop- {
-      font-family: "SofiaPro-Light", sans-serif;
-      font-weight: 300;
-      font-size: 18px;
-      line-height: 1;
-      letter-spacing: 0;
-    }
-  }
-
-  & .paccordion__item.paccordion__item--l1 > .paccordion__heading > .paccordion__button .paccordion__label {
-    @include -mobile {
-      font-family: "SofiaPro-SemiBold", sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 1;
-      letter-spacing: 0;
-    }
-  }
-
-  & .paccordion__item.paccordion__item--l2 > .paccordion__heading > .paccordion__button .paccordion__label,
-  & .paccordion__item.paccordion__item--l3 > .paccordion__heading > .paccordion__button .paccordion__label,
-  & .paccordion__item.paccordion__item--l4 > .paccordion__heading > .paccordion__button .paccordion__label {
-    @include -mobile {
-      font-family: "SofiaPro-Regular", sans-serif;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 1;
-      letter-spacing: -0.01em;
-    }
-  }
-
-  & .paccordion__button.paccordion__button.paccordion__button .paccordion__icon.paccordion__icon {
-    width: 24px;
-    height: 24px;
-    flex: none;
-    color: var(--c-accent);
-    position: relative;
-
-    &--chevron {
-      width: 24px;
-      height: 24px;
-      transition: transform 160ms ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-
-      &::before {
+    &
+        button.paccordion__button.paccordion__button.paccordion__button:focus-visible::before {
         content: "";
-        width: 15px;
-        height: 9px;
-        background: currentColor;
-        -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='9' viewBox='0 0 15 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41406 1.41418L7.41406 7.41418L13.4141 1.41418' stroke='black' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E") center/15px 9px no-repeat;
-        mask: url("data:image/svg+xml,%3Csvg width='15' height='9' viewBox='0 0 15 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41406 1.41418L7.41406 7.41418L13.4141 1.41418' stroke='black' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E") center/15px 9px no-repeat;
-      }
+        position: absolute;
+        inset: 0;
+        border: 1px solid $primary-red;
+        pointer-events: none;
+        z-index: 1;
     }
 
-    &--plusminus::before,
-    &--plusminus::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 14px;
-      height: 2px;
-      background: currentColor;
-      transform: translate(-50%, -50%);
-      border-radius: 99px;
+    // Klawiatura focus
+    &
+        button.paccordion__button.paccordion__button.paccordion__button:focus-visible {
+        background-color: $borders-gray;
     }
 
-    &--plusminus::after {
-      width: 2px;
-      height: 14px;
-      transition: opacity 140ms ease;
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:focus-visible::after {
+        background: $primary-red;
     }
-  }
 
-  &__item > &__heading > .paccordion__button {
-    color: var(--c-muted);
-  }
+    &
+        > &__item:first-child
+        button.paccordion__button.paccordion__button.paccordion__button {
+        background-image: none;
 
-  &__item--open > &__heading > .paccordion__button {
-    color: var(--c-text);
-  }
+        @include desktop- {
+            padding: 24px 16px;
+        }
+    }
 
-  & .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-    color: var(--c-text);
-  }
+    &__item--open + &__item > &__heading > .paccordion__button {
+        background-image: none;
+    }
 
-  &__item--has-open-child > &__heading > .paccordion__button {
-    color: var(--c-muted);
-  }
+    &__item:has(
+            > .paccordion__heading > .paccordion__button[aria-expanded="true"]
+        )
+        + &__item
+        > &__heading
+        > .paccordion__button {
+        background-image: none;
+    }
 
-  &__item--has-open-child > &__heading > button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-    color: var(--c-muted);
-  }
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]::after {
+        content: "";
+        position: absolute;
+        left: var(--rp-gutter);
+        right: var(--rp-gutter);
+        bottom: 0;
+        height: 1px;
+        background: $borders-gray;
 
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] .paccordion__icon--chevron {
-    transform: rotate(180deg);
-  }
+        @include -mobile {
+            left: 0;
+            right: 0;
+        }
 
-  & button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] .paccordion__icon--plusminus::after {
-    opacity: 0;
-  }
+        @include tablet- {
+            left: 0;
+            right: 0;
+        }
+    }
 
-  & .paccordion__panel.paccordion__panel.paccordion__panel {
-    // Wcięcie panelu zależne od poziomu (używa --rp-indent).
-    padding: 0 var(--rp-gutter) 0 var(--rp-indent);
-    transition: height 220ms ease;
+    // Tło dla otwartego (klikniętego) stanu na wszystkich poziomach.
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"] {
+        background-color: transparent;
+        color: $gray65;
+    }
 
+    // Hover dla zamkniętych elementów (nadpisuje tło transparentne).
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:hover,
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:active {
+        background-color: #e2e2e2;
+        color: inherit;
+    }
+
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+        background-color: #ffffff;
+        background-image: none;
+
+        @include tablet- {
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+
+        @include desktop- {
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+    }
+
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:hover,
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:active {
+        background-color: #e2e2e2;
+        color: $black;
+    }
+
+    // Tło tylko w trakcie klikania (pressed).
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="false"]:active,
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]:active {
+        background-color: $borders-gray;
+    }
+
+    & button.paccordion__button.paccordion__button.paccordion__button:active,
+    &
+        button.paccordion__button.paccordion__button.paccordion__button:focus-visible:active {
+        background-color: $borders-gray;
+    }
+
+    &
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--key-active {
+        background-color: $borders-gray;
+    }
+
+    &
+        .paccordion__button.paccordion__button.paccordion__button
+        .paccordion__label.paccordion__label {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 100%;
+        font-family: "SofiaPro-SemiBold", sans-serif;
+        color: inherit;
+        letter-spacing: 0;
+
+        @include tablet- {
+            font-family: "SofiaPro-Light", sans-serif;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        @include desktop- {
+            font-family: "SofiaPro-Light", sans-serif;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+    }
+
+    &
+        .paccordion__item.paccordion__item--l1
+        > .paccordion__heading
+        > .paccordion__button
+        .paccordion__label {
+        @include -mobile {
+            font-family: "SofiaPro-SemiBold", sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+    }
+
+    &
+        .paccordion__item.paccordion__item--l2
+        > .paccordion__heading
+        > .paccordion__button
+        .paccordion__label,
+    &
+        .paccordion__item.paccordion__item--l3
+        > .paccordion__heading
+        > .paccordion__button
+        .paccordion__label,
+    &
+        .paccordion__item.paccordion__item--l4
+        > .paccordion__heading
+        > .paccordion__button
+        .paccordion__label {
+        @include -mobile {
+            font-family: "SofiaPro-Regular", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: -0.01em;
+        }
+    }
+
+    &
+        .paccordion__button.paccordion__button.paccordion__button
+        .paccordion__icon.paccordion__icon {
+        width: 24px;
+        height: 24px;
+        flex: none;
+        color: $primary-red-alt;
+        position: relative;
+
+        &--chevron {
+            width: 24px;
+            height: 24px;
+            transition: transform 160ms ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 15px;
+                height: 9px;
+                background: currentColor;
+                -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='9' viewBox='0 0 15 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41406 1.41418L7.41406 7.41418L13.4141 1.41418' stroke='black' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E")
+                    center/15px 9px no-repeat;
+                mask: url("data:image/svg+xml,%3Csvg width='15' height='9' viewBox='0 0 15 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41406 1.41418L7.41406 7.41418L13.4141 1.41418' stroke='black' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E")
+                    center/15px 9px no-repeat;
+            }
+        }
+
+        &--plusminus::before,
+        &--plusminus::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 14px;
+            height: 2px;
+            background: currentColor;
+            transform: translate(-50%, -50%);
+            border-radius: 99px;
+        }
+
+        &--plusminus::after {
+            width: 2px;
+            height: 14px;
+            transition: opacity 140ms ease;
+        }
+    }
+
+    &__item > &__heading > .paccordion__button {
+        color: $gray65;
+    }
+
+    &__item--open > &__heading > .paccordion__button {
+        color: $black;
+    }
+
+    &
+        .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+        color: $black;
+    }
+
+    &__item--has-open-child > &__heading > .paccordion__button {
+        color: $gray65;
+    }
+
+    &__item--has-open-child
+        > &__heading
+        > button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+        color: $gray65;
+    }
+
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]
+        .paccordion__icon--chevron {
+        transform: rotate(180deg);
+    }
+
+    &
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"]
+        .paccordion__icon--plusminus::after {
+        opacity: 0;
+    }
+
+    & .paccordion__panel.paccordion__panel.paccordion__panel {
+        // Wcięcie panelu zależne od poziomu (używa --rp-indent).
+        padding: 0 var(--rp-gutter) 0 var(--rp-indent);
+        transition: height 220ms ease;
+
+        @include -mobile {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @include tablet- {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @include desktop- {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    &__panel > .paccordion {
+        margin-left: calc(-1 * var(--rp-indent));
+        margin-right: calc(-1 * var(--rp-gutter));
+        width: calc(100% + var(--rp-indent) + var(--rp-gutter));
+        padding: 0;
+
+        @include -mobile {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+
+        @include tablet- {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+    }
+
+    &__panel > .paccordion.paccordion--nested.paccordion--nested {
+        @include desktop- {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+    }
+
+    &__richtext {
+        color: $black;
+        font-family: "SofiaPro-Regular", sans-serif;
+        padding: 16px 0;
+        border-bottom: 1px solid $borders-gray;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 300;
+        margin-left: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
+        box-sizing: border-box;
+
+        p {
+            margin: 14px 0 0 0;
+        }
+
+        p:first-child {
+            margin-top: 0;
+        }
+
+        ul,
+        ol {
+            margin: 12px 0 12px 20px;
+            padding: 0;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        li::marker {
+            color: $primary-red-alt;
+        }
+
+        strong {
+            font-weight: 650;
+        }
+
+        @include -mobile {
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-left: 0;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        @include tablet- {
+            font-family: "SofiaPro-Light", sans-serif;
+            font-size: 18px;
+            line-height: 1.5em;
+            font-weight: 100;
+            color: $gray65;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        @include desktop- {
+            font-family: "SofiaPro-Light", sans-serif;
+            font-size: 18px;
+            line-height: 1.5em;
+            font-weight: 100;
+            color: $gray65;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            margin-left: 0;
+            border-bottom: 0;
+        }
+    }
+
+    &__richtext::after {
+        @include desktop- {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background: $borders-gray;
+        }
+    }
+
+    &__file-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        &--cols-1 {
+            grid-template-columns: 1fr;
+        }
+
+        &--cols-2 {
+            grid-template-columns: 1fr;
+
+            @include tablet- {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @include tablet- {
+            border-bottom: 1px solid $borders-gray;
+        }
+    }
+
+    &__file-link {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        gap: 10px;
+        align-items: start;
+        padding: 16px 0;
+        text-decoration: none;
+        color: $gray65;
+        border-bottom: 1px solid $borders-gray;
+
+        &::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            display: block;
+            color: $primary-red-alt;
+            background: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+                center/24px 24px no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E")
+                center/24px 24px no-repeat;
+        }
+
+        @include -mobile {
+            grid-template-columns: 24px 1fr;
+            gap: 10px;
+            padding: 16px 0 16px 4px;
+        }
+
+        @include tablet- {
+            padding: 24px 16px 8px;
+            gap: 10px;
+            border-bottom: 0;
+        }
+
+        @include desktop- {
+            padding: 24px 16px 8px;
+        }
+    }
+
+    &
+        .paccordion__item--l1
+        > .paccordion__panel
+        > .paccordion__file-list
+        .paccordion__file-link {
+        @include -mobile {
+            padding-left: 0;
+        }
+    }
+
+    & .paccordion__panel .paccordion__file-link.paccordion__file-link {
+        text-decoration: none;
+        color: $gray65;
+    }
+
+    & .paccordion__panel .paccordion__file-link.paccordion__file-link:hover {
+        text-decoration: none;
+        color: $gray65;
+    }
+
+    &
+        .paccordion__panel
+        .paccordion__file-link.paccordion__file-link:focus-visible {
+        text-decoration: none;
+        color: $gray65;
+        outline: none;
+        box-shadow: inset 0 0 0 1px $primary-red;
+    }
+
+    &__file-item:last-child .paccordion__file-link {
+        @include tablet- {
+            padding: 24px 16px;
+        }
+    }
+
+    &__item:last-child .paccordion__file-list {
+        @include tablet- {
+            border-bottom: 0;
+        }
+    }
+
+    &:not(.paccordion--framed) > &__item:last-child .paccordion__file-list {
+        @include tablet- {
+            border-bottom: 1px solid $borders-gray;
+        }
+
+        @include desktop- {
+            border-bottom: 1px solid $borders-gray;
+        }
+    }
+
+    &__panel > .paccordion .paccordion__item:last-child::after {
+        content: "";
+        position: absolute;
+        left: var(--rp-gutter);
+        right: var(--rp-gutter);
+        bottom: 0;
+        height: 1px;
+        background: $borders-gray;
+
+        @include -mobile {
+            left: 0;
+            right: 0;
+        }
+
+        @include tablet- {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    &.paccordion:not(.paccordion--framed) > &__item:last-child::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: $borders-gray;
+    }
+
+    &.paccordion:not(.paccordion--framed)
+        > &__item:last-child
+        > &__panel
+        > &__file-list {
+        border-bottom: 1px solid $borders-gray;
+    }
+
+    &.paccordion:not(.paccordion--framed)
+        > &__item:last-child
+        .paccordion__file-item:last-child
+        .paccordion__file-link {
+        border-bottom: 0;
+    }
+
+    &.paccordion:not(.paccordion--framed)
+        > &__item:last-child.paccordion__item--open::after {
+        @include -mobile {
+            content: none;
+        }
+    }
+
+    &__file-text {
+        font-size: 18px;
+        line-height: 1;
+        font-weight: 300;
+        font-family: "SofiaPro-Light", sans-serif;
+        color: $gray65;
+        letter-spacing: 0;
+        padding: 3px 0 0;
+    }
+
+    & .paccordion__item--l2 > .paccordion__panel .paccordion__file-link {
+        // Wcięcie linków plików dla poziomu 2.
+        @include tablet- {
+            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+        }
+    }
+
+    & .paccordion__item--l3 > .paccordion__panel .paccordion__file-link {
+        // Wcięcie linków plików dla poziomu 3.
+        @include tablet- {
+            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+        }
+    }
+
+    & .paccordion__item--l4 > .paccordion__panel .paccordion__file-link {
+        // Wcięcie linków plików dla poziomu 4.
+        @include tablet- {
+            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+        }
+    }
+
+    &
+        .paccordion__item--l2
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        justify-content: flex-start;
+        @include -mobile {
+            padding: 8px 8px 8px 4px;
+        }
+
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+
+    &
+        .paccordion__item--l2
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+        @include desktop- {
+            padding: 24px 16px;
+        }
+    }
+
+    &
+        .paccordion__item--l3
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        justify-content: flex-start;
+        @include tablet- {
+            padding-top: 24px;
+            padding-bottom: 24px;
+            padding-left: calc(16px + var(--rp-indent-level));
+            padding-right: 16px;
+        }
+    }
+
+    &
+        .paccordion__item--l4
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        justify-content: flex-start;
+        @include tablet- {
+            padding-top: 24px;
+            padding-bottom: 24px;
+            padding-left: calc(16px + var(--rp-indent-level));
+            padding-right: 16px;
+        }
+    }
+
+    &.paccordion
+        .paccordion__item--l2
+        > .paccordion__heading
+        > .paccordion__button,
+    &.paccordion
+        .paccordion__item--l3
+        > .paccordion__heading
+        > .paccordion__button,
+    &.paccordion
+        .paccordion__item--l4
+        > .paccordion__heading
+        > .paccordion__button {
+        justify-content: flex-start;
+    }
+
+    &.paccordion
+        .paccordion__button.paccordion__button:has(
+            .paccordion__icon--plusminus
+        ) {
+        justify-content: flex-start;
+    }
+
+    &
+        .paccordion__panel
+        > .paccordion
+        .paccordion__item--l2
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+
+    &
+        .paccordion__panel
+        > .paccordion
+        .paccordion__item--l2
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+
+    &
+        .paccordion__panel
+        > .paccordion
+        .paccordion__item--l2:first-child
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+
+    &
+        .paccordion__panel
+        > .paccordion
+        .paccordion__item--l2:first-child
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+
+    &
+        .paccordion__panel
+        > .paccordion
+        .paccordion__item--l3
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+
+    &
+        .paccordion__panel
+        > .paccordion
+        .paccordion__item--l4
+        button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
+        @include tablet- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+
+        @include desktop- {
+            padding: 24px 16px;
+            padding-left: calc(16px + var(--rp-indent-level));
+        }
+    }
+}
+
+.paccordion-container__header--spaced
+    + .paccordion-container__section
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__panel
+    > .paccordion__richtext {
     @include -mobile {
-      padding-left: 0;
-      padding-right: 0;
+        border-bottom: 0;
     }
+}
 
-    @include tablet- {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    @include desktop- {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
-  &__panel > .paccordion {
-    margin-left: calc(-1 * var(--rp-indent));
-    margin-right: calc(-1 * var(--rp-gutter));
-    width: calc(100% + var(--rp-indent) + var(--rp-gutter));
-    padding: 0;
-
+.paccordion-container__section
+    > .paccordion-container__header--spaced
+    + .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__panel
+    > .paccordion__richtext {
     @include -mobile {
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
+        border-bottom: 0;
     }
+}
 
-    @include tablet- {
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
-    }
-  }
-
-  &__panel > .paccordion.paccordion--nested.paccordion--nested {
-    @include desktop- {
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
-    }
-  }
-
-  &__richtext {
-    color: var(--c-text);
-    font-family: "SofiaPro-Regular", sans-serif;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--c-line);
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 300;
-    margin-left: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-    width: 100%;
-    box-sizing: border-box;
-
-    p {
-      margin: 14px 0 0 0;
-    }
-
-    p:first-child {
-      margin-top: 0;
-    }
-
-    ul,
-    ol {
-      margin: 12px 0 12px 20px;
-      padding: 0;
-    }
-
-    li {
-      margin: 6px 0;
-    }
-
-    li::marker {
-      color: var(--c-accent);
-    }
-
-    strong {
-      font-weight: 650;
-    }
-
+.paccordion-container__section:first-of-type:has(
+        + .paccordion-container__header
+    )
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__panel
+    > .paccordion__richtext {
     @include -mobile {
-      padding-left: 8px;
-      padding-right: 8px;
-      margin-left: 0;
-      padding-top: 16px;
-      padding-bottom: 16px;
+        border-bottom: 1px solid $borders-gray;
     }
+}
 
-    @include tablet- {
-      font-family: "SofiaPro-Light", sans-serif;
-      font-size: 18px;
-      line-height: 1.5em;
-      font-weight: 100;
-      color: #656565;
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    @include desktop- {
-      font-family: "SofiaPro-Light", sans-serif;
-      font-size: 18px;
-      line-height: 1.5em;
-      font-weight: 100;
-      color: #656565;
-      padding-left: 16px;
-      padding-right: 16px;
-      position: relative;
-      margin-left: 0;
-      border-bottom: 0;
-    }
-  }
-
-  &__richtext::after {
-    @include desktop- {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: var(--c-line);
-    }
-  }
-
-  &__file-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-
-    &--cols-1 {
-      grid-template-columns: 1fr;
-    }
-
-    &--cols-2 {
-      grid-template-columns: 1fr;
-
-      @include tablet- {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @include tablet- {
-      border-bottom: 1px solid var(--c-line);
-    }
-  }
-
-  &__file-link {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    gap: 10px;
-    align-items: start;
-    padding: 16px 0;
-    text-decoration: none;
-    color: #656565;
-    border-bottom: 1px solid var(--c-line);
-
-    &::before {
-      content: "";
-      width: 24px;
-      height: 24px;
-      display: block;
-      color: var(--c-accent);
-      background: currentColor;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
-      mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
-    }
-
-    @include -mobile {
-      grid-template-columns: 24px 1fr;
-      gap: 10px;
-      padding: 16px 0 16px 4px;
-    }
-
-    @include tablet- {
-      padding: 24px 16px 8px;
-      gap: 10px;
-      border-bottom: 0;
-    }
-
-    @include desktop- {
-      padding: 24px 16px 8px;
-    }
-  }
-
-  & .paccordion__item--l1 > .paccordion__panel > .paccordion__file-list .paccordion__file-link {
-    @include -mobile {
-      padding-left: 0;
-    }
-  }
-
-  & .paccordion__panel .paccordion__file-link.paccordion__file-link {
-    text-decoration: none;
-    color: #656565;
-  }
-
-  & .paccordion__panel .paccordion__file-link.paccordion__file-link:hover {
-    text-decoration: none;
-    color: #656565;
-  }
-
-  & .paccordion__panel .paccordion__file-link.paccordion__file-link:focus-visible {
-    text-decoration: none;
-    color: #656565;
-    outline: none;
-    box-shadow: inset 0 0 0 1px #d91918;
-  }
-
-  &__file-item:last-child .paccordion__file-link {
-    @include tablet- {
-      padding: 24px 16px;
-    }
-  }
-
-  &__item:last-child .paccordion__file-list {
-    @include tablet- {
-      border-bottom: 0;
-    }
-  }
-
-  &:not(.paccordion--framed) > &__item:last-child .paccordion__file-list {
-    @include tablet- {
-      border-bottom: 1px solid var(--c-line);
-    }
-
-    @include desktop- {
-      border-bottom: 1px solid var(--c-line);
-    }
-  }
-
-  &__panel > .paccordion .paccordion__item:last-child::after {
-    content: "";
-    position: absolute;
-    left: var(--rp-gutter);
-    right: var(--rp-gutter);
-    bottom: 0;
-    height: 1px;
-    background: var(--c-line);
-
-    @include -mobile {
-      left: 0;
-      right: 0;
-    }
-
-    @include tablet- {
-      left: 0;
-      right: 0;
-    }
-  }
-
-  &.paccordion:not(.paccordion--framed) > &__item:last-child::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: var(--c-line);
-  }
-
-  &.paccordion:not(.paccordion--framed) > &__item:last-child > &__panel > &__file-list {
-    border-bottom: 1px solid var(--c-line);
-
-
-  }
-
-  &.paccordion:not(.paccordion--framed) > &__item:last-child .paccordion__file-item:last-child .paccordion__file-link {
+.paccordion-container__section
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__panel
+    > .paccordion__richtext {
     border-bottom: 0;
-  }
+}
 
-  &.paccordion:not(.paccordion--framed) > &__item:last-child.paccordion__item--open::after {
+.paccordion-container__section
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__panel
+    > .paccordion__richtext::after {
+    @include desktop- {
+        content: none;
+    }
+}
+
+.paccordion-container__section:has(+ .paccordion-container__header)
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child::after {
     @include -mobile {
-      content: none;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: $borders-gray;
     }
-  }
-
-  &__file-text {
-    font-size: 18px;
-    line-height: 1;
-    font-weight: 300;
-    font-family: "SofiaPro-Light", sans-serif;
-    color: #656565;
-    letter-spacing: 0;
-  }
-
-  & .paccordion__item--l2 > .paccordion__panel .paccordion__file-link {
-    // Wcięcie linków plików dla poziomu 2.
-    @include tablet- {
-      padding-left: calc(16px + var(--rp-indent-level) + 34px);
-    }
-  }
-
-  & .paccordion__item--l3 > .paccordion__panel .paccordion__file-link {
-    // Wcięcie linków plików dla poziomu 3.
-    @include tablet- {
-      padding-left: calc(16px + var(--rp-indent-level) + 34px);
-    }
-  }
-
-  & .paccordion__item--l4 > .paccordion__panel .paccordion__file-link {
-    // Wcięcie linków plików dla poziomu 4.
-    @include tablet- {
-      padding-left: calc(16px + var(--rp-indent-level) + 34px);
-    }
-  }
-
-  & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    justify-content: flex-start;
-    @include -mobile {
-      padding: 8px 8px 8px 4px;
-    }
-
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  & .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
-    @include desktop- {
-      padding: 24px 16px;
-    }
-  }
-
-  & .paccordion__item--l3 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    justify-content: flex-start;
-    @include tablet- {
-      padding-top: 24px;
-      padding-bottom: 24px;
-      padding-left: calc(16px + var(--rp-indent-level));
-      padding-right: 16px;
-    }
-  }
-
-  & .paccordion__item--l4 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    justify-content: flex-start;
-    @include tablet- {
-      padding-top: 24px;
-      padding-bottom: 24px;
-      padding-left: calc(16px + var(--rp-indent-level));
-      padding-right: 16px;
-    }
-  }
-
-  &.paccordion .paccordion__item--l2 > .paccordion__heading > .paccordion__button,
-  &.paccordion .paccordion__item--l3 > .paccordion__heading > .paccordion__button,
-  &.paccordion .paccordion__item--l4 > .paccordion__heading > .paccordion__button {
-    justify-content: flex-start;
-  }
-
-  &.paccordion .paccordion__button.paccordion__button:has(.paccordion__icon--plusminus) {
-    justify-content: flex-start;
-  }
-
-  & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  & .paccordion__panel > .paccordion .paccordion__item--l2 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  & .paccordion__panel > .paccordion .paccordion__item--l2:first-child button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon[aria-expanded="true"] {
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  & .paccordion__panel > .paccordion .paccordion__item--l3 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-
-  & .paccordion__panel > .paccordion .paccordion__item--l4 button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--startIcon {
-    @include tablet- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-
-    @include desktop- {
-      padding: 24px 16px;
-      padding-left: calc(16px + var(--rp-indent-level));
-    }
-  }
-}
-
-.paccordion-container__header--spaced + .paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
-  @include -mobile {
-    border-bottom: 0;
-  }
-}
-
-.paccordion-container__section > .paccordion-container__header--spaced + .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
-  @include -mobile {
-    border-bottom: 0;
-  }
-}
-
-.paccordion-container__section:first-of-type:has(+ .paccordion-container__header) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
-  @include -mobile {
-    border-bottom: 1px solid var(--c-line);
-  }
-}
-
-.paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
-  border-bottom: 0;
-}
-
-.paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext::after {
-  @include desktop- {
-    content: none;
-  }
-}
-
-.paccordion-container__section:has(+ .paccordion-container__header) > .paccordion.paccordion--framed > .paccordion__item:last-child::after {
-  @include -mobile {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: var(--c-line);
-  }
 }
 
 .paccordion-container__section--stacked > .paccordion.paccordion--framed {
-  border-bottom: 0;
+    border-bottom: 0;
 }
 
-.paccordion-container__section--stacked > .paccordion.paccordion--framed > .paccordion__item:last-child::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: var(--c-line);
-}
-
-.paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-list {
-  border-bottom: 0;
-}
-
-.paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-item:last-child .paccordion__file-link {
-  border-bottom: 0;
-}
-
-.paccordion-container__section > .paccordion:not(.paccordion--framed) > .paccordion__item:last-child::after {
-  @include -mobile {
+.paccordion-container__section--stacked
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     height: 1px;
-    background: var(--c-line);
-  }
+    background: $borders-gray;
 }
 
-.paccordion-container__section > .paccordion-container__header--spaced + .paccordion.paccordion--framed > .paccordion__item:last-child::after {
-  @include -mobile {
-    content: none;
-  }
-}
-
-.paccordion-container__header--spaced + .paccordion-container__section > .paccordion > .paccordion__item:first-child::before {
-  @include -mobile {
-    content: none;
-    background: none;
-  }
-}
-
-.paccordion-container__header--spaced + .paccordion-container__section .paccordion__item:first-child::before {
-  @include -mobile {
-    content: none;
-    background: none;
-  }
-}
-
-.paccordion-container__section > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-link {
-  @include -mobile {
+.paccordion-container__section:not(.paccordion-container__section--stacked)
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__file-list {
     border-bottom: 0;
-  }
+}
+
+.paccordion-container__section:not(.paccordion-container__section--stacked)
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__file-item:last-child
+    .paccordion__file-link {
+    border-bottom: 0;
+}
+
+.paccordion-container__section
+    > .paccordion:not(.paccordion--framed)
+    > .paccordion__item:last-child::after {
+    @include -mobile {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: $borders-gray;
+    }
+}
+
+.paccordion-container__section
+    > .paccordion-container__header--spaced
+    + .paccordion.paccordion--framed
+    > .paccordion__item:last-child::after {
+    @include -mobile {
+        content: none;
+    }
+}
+
+.paccordion-container__header--spaced
+    + .paccordion-container__section
+    > .paccordion
+    > .paccordion__item:first-child::before {
+    @include -mobile {
+        content: none;
+        background: none;
+    }
+}
+
+.paccordion-container__header--spaced
+    + .paccordion-container__section
+    .paccordion__item:first-child::before {
+    @include -mobile {
+        content: none;
+        background: none;
+    }
+}
+
+.paccordion-container__section
+    > .paccordion.paccordion--framed
+    > .paccordion__item:last-child
+    .paccordion__file-link {
+    @include -mobile {
+        border-bottom: 0;
+    }
 }
 
 .paccordion-container {
-  --paccordion-gutter: 20px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-
-  @include tablet- {
-    --paccordion-gutter: 30px;
-  }
-
-  @include desktop- {
-    --paccordion-gutter: 48px;
+    --paccordion-gutter: 20px;
     width: 100%;
-    max-width: 1632px;
-    margin: 0 auto;
-  }
-
-  &__section {
-    background: transparent;
-    padding: 0 0 48px;
     margin: 0;
-    width: 100%;
-
-    @include -mobile {
-      &:has(+ .paccordion-container__header) {
-        padding-bottom: 0;
-      }
-    }
-  }
-
-  &__section > .paccordion {
-    max-width: none;
-    margin: 0;
-  }
-
-  &__header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 48px var(--paccordion-gutter) 24px;
-    gap: 10px;
-    text-align: center;
-    margin-bottom: 0;
-
-    &--spaced {
-      margin-top: 64px;
-
-      @include -mobile {
-        margin-top: 0;
-      }
-    }
-
-    @include -mobile {
-      align-items: center;
-      padding-left: var(--paccordion-gutter);
-      padding-right: var(--paccordion-gutter);
-      background: #ffffff;
-      position: relative;
-      z-index: 1;
-    }
-
-    @include tablet- {
-      padding-top: 72px;
-      padding-bottom: 60px;
-    }
-
-    @include desktop- {
-      padding-top: 72px;
-      padding-bottom: 60px;
-    }
-  }
-
-  &__section > &__header {
-    @include -mobile {
-      align-items: center;
-    }
-  }
-
-  &__section + &__header {
-    @include -mobile {
-      margin-top: -1px;
-      background: #ffffff;
-      position: relative;
-      z-index: 1;
-    }
-
-    @include tablet- {
-      margin-top: 0;
-      background: #ffffff;
-      position: relative;
-      z-index: 1;
-    }
-
-    @include desktop- {
-      margin-top: 0;
-      background: #ffffff;
-      position: relative;
-      z-index: 1;
-    }
-  }
-
-  &__section--stacked + &__header {
-    margin-top: 0;
+    padding: 0;
     background: #ffffff;
-    position: relative;
-    z-index: 1;
-    border-left: 1px solid #c0c0c0;
-    border-right: 1px solid #c0c0c0;
-    box-sizing: border-box;
-    width: 100%;
-  }
 
-  &__section:has(+ &__header) {
     @include tablet- {
-      padding-bottom: 0;
+        --paccordion-gutter: 30px;
     }
 
     @include desktop- {
-      padding-bottom: 0;
-    }
-  }
-
-  &__header:has(.paccordion-container__title--small),
-  &__header:has(.paccordion-container__subtitle--small) {
-    align-items: flex-start;
-    text-align: left;
-    gap: 5px;
-    padding: 48px var(--paccordion-gutter) 0;
-  }
-
-  &__title {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 30px;
-    color: #656565;
-    font-family: "SofiaPro-Bold", sans-serif;
-
-    &--none,
-    &--hide {
-      display: none;
+        --paccordion-gutter: 48px;
+        width: 100%;
+        max-width: 1632px;
+        margin: 0 auto;
     }
 
-    &--small {
-      font-size: 26px;
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: #000000;
-      font-family: "SofiaPro-Medium", sans-serif;
+    &__section {
+        background: transparent;
+        padding: 0 0 48px;
+        margin: 0;
+        width: 100%;
 
-      @include tablet- {
-        line-height: 1;
-      }
+        @include -mobile {
+            &:has(+ .paccordion-container__header) {
+                padding-bottom: 0;
+            }
+        }
     }
 
-    &--big {
-      font-size: 40px;
-      line-height: 48px;
-
-      @include tablet- {
-        font-size: 72px;
-      }
+    &__section > .paccordion {
+        max-width: none;
+        margin: 0;
     }
 
-    @include tablet- {
-      font-size: 60px;
-      line-height: 60px;
-      letter-spacing: -0.04em;
-      color: #000000;
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 48px var(--paccordion-gutter) 24px;
+        gap: 10px;
+        text-align: center;
+        margin-bottom: 0;
+
+        &--spaced {
+            margin-top: 64px;
+
+            @include -mobile {
+                margin-top: 0;
+            }
+        }
+
+        @include -mobile {
+            align-items: center;
+            padding-left: var(--paccordion-gutter);
+            padding-right: var(--paccordion-gutter);
+            background: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        @include tablet- {
+            padding-top: 72px;
+            padding-bottom: 60px;
+        }
+
+        @include desktop- {
+            padding-top: 72px;
+            padding-bottom: 60px;
+        }
     }
 
-    @include desktop- {
-      font-size: 60px;
-      line-height: 60px;
-      letter-spacing: -0.04em;
-      color: #000000;
-    }
-  }
-
-  &__subtitle {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 750;
-    letter-spacing: -0.01em;
-    font-family: "SofiaPro-Bold", sans-serif;
-
-    &--none,
-    &--hide {
-      display: none;
+    &__section > &__header {
+        @include -mobile {
+            align-items: center;
+        }
     }
 
-    &--small {
-      font-size: 20px;
-      font-weight: 300;
-      line-height: 1.4;
-      letter-spacing: -0.02em;
-      color: #656565;
-      font-family: "SofiaPro-Light", sans-serif;
+    &__section + &__header {
+        @include -mobile {
+            margin-top: -1px;
+            background: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        @include tablet- {
+            margin-top: 0;
+            background: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        @include desktop- {
+            margin-top: 0;
+            background: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
     }
 
-    &--big {
-      font-size: 32px;
-
-      @include tablet- {
-        font-size: 48px;
-      }
+    &__section--stacked + &__header {
+        margin-top: 0;
+        background: #ffffff;
+        position: relative;
+        z-index: 1;
+        border-left: 1px solid $borders-gray;
+        border-right: 1px solid $borders-gray;
+        box-sizing: border-box;
+        width: 100%;
     }
 
-    @include tablet- {
-      font-size: 40px;
-    }
-  }
-  &--thin {
-    @include desktop- {
-      width: 100%;
-      max-width: 1328px;
-      margin: 0 auto;
+    &__section:has(+ &__header) {
+        @include tablet- {
+            padding-bottom: 0;
+        }
+
+        @include desktop- {
+            padding-bottom: 0;
+        }
     }
 
-    .paccordion-container__header {
-      align-items: flex-start;
-      text-align: left;
-      gap: 5px;
-      padding: 48px var(--paccordion-gutter) 0;
-
-      @include -mobile {
+    &__header:has(.paccordion-container__title--small),
+    &__header:has(.paccordion-container__subtitle--small) {
         align-items: flex-start;
         text-align: left;
         gap: 5px;
         padding: 48px var(--paccordion-gutter) 0;
-      }
     }
 
-    .paccordion-container__title {
-      font-size: 26px;
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: #000000;
-      font-family: "SofiaPro-Medium", sans-serif;
+    &__title {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 30px;
+        color: $gray65;
+        font-family: "SofiaPro-Bold", sans-serif;
 
-      @include tablet- {
-        line-height: 1;
-      }
+        &--none,
+        &--hide {
+            display: none;
+        }
+
+        &--small {
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: $black;
+            font-family: "SofiaPro-Medium", sans-serif;
+
+            @include tablet- {
+                line-height: 1;
+            }
+        }
+
+        &--big {
+            font-size: 40px;
+            line-height: 48px;
+
+            @include tablet- {
+                font-size: 72px;
+            }
+        }
+
+        @include tablet- {
+            font-size: 60px;
+            line-height: 60px;
+            letter-spacing: -0.04em;
+            color: $black;
+        }
+
+        @include desktop- {
+            font-size: 60px;
+            line-height: 60px;
+            letter-spacing: -0.04em;
+            color: $black;
+        }
     }
 
-    .paccordion-container__subtitle {
-      font-size: 20px;
-      font-weight: 300;
-      line-height: 1.4;
-      letter-spacing: -0.02em;
-      color: #656565;
-      font-family: "SofiaPro-Light", sans-serif;
+    &__subtitle {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        font-family: "SofiaPro-Bold", sans-serif;
+
+        &--none,
+        &--hide {
+            display: none;
+        }
+
+        &--small {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            color: $gray65;
+            font-family: "SofiaPro-Light", sans-serif;
+        }
+
+        &--big {
+            font-size: 32px;
+
+            @include tablet- {
+                font-size: 48px;
+            }
+        }
+
+        @include tablet- {
+            font-size: 40px;
+        }
     }
-  }
+    &--thin {
+        @include desktop- {
+            width: 100%;
+            max-width: 1328px;
+            margin: 0 auto;
+        }
+
+        .paccordion-container__header {
+            align-items: flex-start;
+            text-align: left;
+            gap: 5px;
+            padding: 48px var(--paccordion-gutter) 0;
+
+            @include -mobile {
+                align-items: flex-start;
+                text-align: left;
+                gap: 5px;
+                padding: 48px var(--paccordion-gutter) 0;
+            }
+        }
+
+        .paccordion-container__title {
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: $black;
+            font-family: "SofiaPro-Medium", sans-serif;
+
+            @include tablet- {
+                line-height: 1;
+            }
+        }
+
+        .paccordion-container__subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            color: $gray65;
+            font-family: "SofiaPro-Light", sans-serif;
+        }
+    }
 }

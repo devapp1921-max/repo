@@ -18,6 +18,34 @@ a {
   color: inherit;
 }
 
+:root {
+  --primary-color: #D91918;
+  --primary-color-alt: #D11E25;
+  --primary-color-90: #C61B21;
+  --primary-color-alt-90: #BA2025;
+  --primary-color-line: #D21D23;
+  --primary-color-alpha: rgba(213, 0, 0, 0.9019607843);
+  --primary-gradient: linear-gradient(180deg, var(--primary-color), var(--primary-color-alt));
+  --primary-gradient-90: linear-gradient(180deg, var(--primary-color), var(--primary-color-alt));
+  --primary-color-filter: invert(16%) sepia(77%) saturate(3542%) hue-rotate(349deg) brightness(103%) contrast(104%);
+  --primary-color-alt-filter: invert(20%) sepia(88%) saturate(2417%) hue-rotate(342deg) brightness(90%) contrast(104%);
+  --primary-color-90-filter: invert(15%) sepia(94%) saturate(4400%) hue-rotate(351deg) brightness(81%) contrast(90%);
+}
+
+body.bodytype-privatebanking {
+  --primary-color: #B2A163;
+  --primary-color-alt: #AAA668;
+  --primary-color-90: #A59B5D;
+  --primary-color-alt-90: #9A9F62;
+  --primary-color-line: #ABA566;
+  --primary-color-alpha: rgba(178, 161, 0, 0.9019607843);
+  --primary-gradient: linear-gradient(180deg, var(--primary-color), var(--primary-color-alt));
+  --primary-gradient-90: linear-gradient(180deg, var(--primary-color), var(--primary-color-alt));
+  --primary-color-filter: invert(74%) sepia(10%) saturate(1390%) hue-rotate(10deg) brightness(85%) contrast(91%);
+  --primary-color-alt-filter: invert(71%) sepia(15%) saturate(892%) hue-rotate(19deg) brightness(89%) contrast(89%);
+  --primary-color-90-filter: invert(73%) sepia(11%) saturate(1425%) hue-rotate(14deg) brightness(84%) contrast(81%);
+}
+
 @font-face {
   font-family: "Sofia Pro Light";
   src: local("Sofia Pro Light"), url("./fonts/sofia-pro-light.woff2") format("woff2"), url("./fonts/sofia-pro-light.ttf") format("truetype");
@@ -102,10 +130,6 @@ a {
 *
 */
 .paccordion {
-  --c-text: #000000;
-  --c-muted: #656565;
-  --c-line: #c0c0c0;
-  --c-accent: #d11e25;
   --rp-gutter: 20px;
   --rp-step: 16px;
 }
@@ -132,7 +156,7 @@ a {
   }
 }
 .paccordion--framed {
-  border: 1px solid var(--c-line);
+  border: 1px solid #C0C0C0;
   background: #fff;
 }
 .paccordion-container__header--spaced + .paccordion-container__section > .paccordion--framed {
@@ -146,7 +170,9 @@ a {
 }
 .paccordion__item {
   --rp-lvl: 1;
-  --rp-indent: calc(var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step));
+  --rp-indent: calc(
+      var(--rp-gutter) + (var(--rp-lvl) - 1) * var(--rp-step)
+  );
   --rp-indent-level: 0px;
   position: relative;
 }
@@ -242,7 +268,7 @@ a {
   right: var(--rp-gutter);
   top: 0;
   height: 1px;
-  background: var(--c-line);
+  background: #C0C0C0;
 }
 @media (max-width: 959px) {
   .paccordion--nested .paccordion__item::before {
@@ -296,11 +322,12 @@ a {
   justify-content: space-between;
   gap: 10px;
   background-color: transparent;
-  background-image: linear-gradient(var(--c-line), var(--c-line));
+  background-image: linear-gradient(#C0C0C0, #C0C0C0);
   background-size: 100% 1px;
   background-repeat: no-repeat;
   background-position: 0 0;
   border: 0;
+  border-radius: 0;
   padding: 9px 28px 9px 28px;
   cursor: pointer;
   font: inherit;
@@ -330,7 +357,7 @@ a {
   }
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button:active {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   color: inherit;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button:focus-visible {
@@ -340,15 +367,15 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid #d91918;
+  border: 1px solid #D91918;
   pointer-events: none;
   z-index: 1;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button:focus-visible {
-  background-color: #c0c0c0;
+  background-color: #C0C0C0;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:focus-visible::after {
-  background: #d91918;
+  background: #D91918;
 }
 .paccordion > .paccordion__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
   background-image: none;
@@ -371,7 +398,7 @@ a {
   right: var(--rp-gutter);
   bottom: 0;
   height: 1px;
-  background: var(--c-line);
+  background: #C0C0C0;
 }
 @media (max-width: 959px) {
   .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]::after {
@@ -387,10 +414,10 @@ a {
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=false] {
   background-color: transparent;
-  color: var(--c-muted);
+  color: #656565;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=false]:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=false]:active {
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   color: inherit;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
@@ -410,17 +437,17 @@ a {
   }
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:active {
-  background-color: #E2E2E2;
-  color: var(--c-text);
+  background-color: #e2e2e2;
+  color: #000000;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=false]:active, .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]:active {
-  background-color: #c0c0c0;
+  background-color: #C0C0C0;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button:active, .paccordion button.paccordion__button.paccordion__button.paccordion__button:focus-visible:active {
-  background-color: #c0c0c0;
+  background-color: #C0C0C0;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button.paccordion__button--key-active {
-  background-color: #c0c0c0;
+  background-color: #C0C0C0;
 }
 .paccordion .paccordion__button.paccordion__button.paccordion__button .paccordion__label.paccordion__label {
   font-size: 18px;
@@ -470,7 +497,7 @@ a {
   width: 24px;
   height: 24px;
   flex: none;
-  color: var(--c-accent);
+  color: #D11E25;
   position: relative;
 }
 .paccordion .paccordion__button.paccordion__button.paccordion__button .paccordion__icon.paccordion__icon--chevron {
@@ -507,19 +534,19 @@ a {
   transition: opacity 140ms ease;
 }
 .paccordion__item > .paccordion__heading > .paccordion__button {
-  color: var(--c-muted);
+  color: #656565;
 }
 .paccordion__item--open > .paccordion__heading > .paccordion__button {
-  color: var(--c-text);
+  color: #000000;
 }
 .paccordion .paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
-  color: var(--c-text);
+  color: #000000;
 }
 .paccordion__item--has-open-child > .paccordion__heading > .paccordion__button {
-  color: var(--c-muted);
+  color: #656565;
 }
 .paccordion__item--has-open-child > .paccordion__heading > button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
-  color: var(--c-muted);
+  color: #656565;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] .paccordion__icon--chevron {
   transform: rotate(180deg);
@@ -577,10 +604,10 @@ a {
   }
 }
 .paccordion__richtext {
-  color: var(--c-text);
+  color: #000000;
   font-family: "SofiaPro-Regular", sans-serif;
   padding: 16px 0;
-  border-bottom: 1px solid var(--c-line);
+  border-bottom: 1px solid #C0C0C0;
   font-size: 18px;
   line-height: 18px;
   font-weight: 300;
@@ -605,7 +632,7 @@ a {
   margin: 6px 0;
 }
 .paccordion__richtext li::marker {
-  color: var(--c-accent);
+  color: #D11E25;
 }
 .paccordion__richtext strong {
   font-weight: 650;
@@ -652,7 +679,7 @@ a {
     right: 0;
     bottom: 0;
     height: 1px;
-    background: var(--c-line);
+    background: #C0C0C0;
   }
 }
 .paccordion__file-list {
@@ -675,7 +702,7 @@ a {
 }
 @media (min-width: 960px) {
   .paccordion__file-list {
-    border-bottom: 1px solid var(--c-line);
+    border-bottom: 1px solid #C0C0C0;
   }
 }
 .paccordion__file-link {
@@ -686,14 +713,14 @@ a {
   padding: 16px 0;
   text-decoration: none;
   color: #656565;
-  border-bottom: 1px solid var(--c-line);
+  border-bottom: 1px solid #C0C0C0;
 }
 .paccordion__file-link::before {
   content: "";
   width: 24px;
   height: 24px;
   display: block;
-  color: var(--c-accent);
+  color: #D11E25;
   background: currentColor;
   -webkit-mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
   mask: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 10.5L12 15.5L7 10.5' stroke='black' stroke-width='2'/%3E%3Cline x1='12' y1='2' x2='12' y2='15' stroke='black' stroke-width='2'/%3E%3Cpath d='M18 20.5H6' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/24px 24px no-repeat;
@@ -734,7 +761,7 @@ a {
   text-decoration: none;
   color: #656565;
   outline: none;
-  box-shadow: inset 0 0 0 1px #d91918;
+  box-shadow: inset 0 0 0 1px #D91918;
 }
 @media (min-width: 960px) {
   .paccordion__file-item:last-child .paccordion__file-link {
@@ -748,12 +775,12 @@ a {
 }
 @media (min-width: 960px) {
   .paccordion:not(.paccordion--framed) > .paccordion__item:last-child .paccordion__file-list {
-    border-bottom: 1px solid var(--c-line);
+    border-bottom: 1px solid #C0C0C0;
   }
 }
 @media (min-width: 1280px) {
   .paccordion:not(.paccordion--framed) > .paccordion__item:last-child .paccordion__file-list {
-    border-bottom: 1px solid var(--c-line);
+    border-bottom: 1px solid #C0C0C0;
   }
 }
 .paccordion__panel > .paccordion .paccordion__item:last-child::after {
@@ -763,7 +790,7 @@ a {
   right: var(--rp-gutter);
   bottom: 0;
   height: 1px;
-  background: var(--c-line);
+  background: #C0C0C0;
 }
 @media (max-width: 959px) {
   .paccordion__panel > .paccordion .paccordion__item:last-child::after {
@@ -784,10 +811,10 @@ a {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: var(--c-line);
+  background: #C0C0C0;
 }
 .paccordion.paccordion:not(.paccordion--framed) > .paccordion__item:last-child > .paccordion__panel > .paccordion__file-list {
-  border-bottom: 1px solid var(--c-line);
+  border-bottom: 1px solid #C0C0C0;
 }
 .paccordion.paccordion:not(.paccordion--framed) > .paccordion__item:last-child .paccordion__file-item:last-child .paccordion__file-link {
   border-bottom: 0;
@@ -804,6 +831,7 @@ a {
   font-family: "SofiaPro-Light", sans-serif;
   color: #656565;
   letter-spacing: 0;
+  padding: 3px 0 0;
 }
 @media (min-width: 960px) {
   .paccordion .paccordion__item--l2 > .paccordion__panel .paccordion__file-link {
@@ -960,7 +988,7 @@ a {
 
 @media (max-width: 959px) {
   .paccordion-container__section:first-of-type:has(+ .paccordion-container__header) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__panel > .paccordion__richtext {
-    border-bottom: 1px solid var(--c-line);
+    border-bottom: 1px solid #C0C0C0;
   }
 }
 
@@ -982,7 +1010,7 @@ a {
     right: 0;
     bottom: 0;
     height: 1px;
-    background: var(--c-line);
+    background: #C0C0C0;
   }
 }
 
@@ -997,7 +1025,7 @@ a {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: var(--c-line);
+  background: #C0C0C0;
 }
 
 .paccordion-container__section:not(.paccordion-container__section--stacked) > .paccordion.paccordion--framed > .paccordion__item:last-child .paccordion__file-list {
@@ -1016,7 +1044,7 @@ a {
     right: 0;
     bottom: 0;
     height: 1px;
-    background: var(--c-line);
+    background: #C0C0C0;
   }
 }
 
@@ -1155,8 +1183,8 @@ a {
   background: #ffffff;
   position: relative;
   z-index: 1;
-  border-left: 1px solid #c0c0c0;
-  border-right: 1px solid #c0c0c0;
+  border-left: 1px solid #C0C0C0;
+  border-right: 1px solid #C0C0C0;
   box-sizing: border-box;
   width: 100%;
 }
