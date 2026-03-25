@@ -106,7 +106,7 @@
     user-select: none;
     font-weight: 400;
     margin-top: 0;
-    color: $text-gray;
+    color: $text-gray-light;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,7 +257,7 @@
     .ptabs__tab--active .ptabs__label {
       font-family: "SofiaPro-Regular", sans-serif;
       font-size: 18px;
-      line-height: 22px;
+      line-height: 1;
       letter-spacing: -0.01em;
       font-weight: 400;
       text-align: center;
@@ -301,6 +301,45 @@
         margin-top: 0;
       }
     }
+
+    @include tablet {
+      .ptabs__tab {
+        flex: 0 0 var(--ptabs-tab-width-inactive);
+        max-width: var(--ptabs-tab-width-inactive);
+      }
+
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
+        flex: 0 0 var(--ptabs-tab-width-active);
+        max-width: var(--ptabs-tab-width-active);
+      }
+    }
+
+    @include desktop- {
+      --ptabs-tablist-height: 188px;
+      --ptabs-tab-height-inactive: 134px;
+      --ptabs-tab-height-active: 146px;
+
+      .ptabs__tab {
+        flex: 1 1 0;
+        max-width: 408px;
+        min-height: var(--ptabs-tab-height-inactive);
+        padding: 36px 16px;
+        gap: 16px;
+      }
+
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
+        max-width: 408px;
+        min-height: var(--ptabs-tab-height-active);
+        padding: 48px 16px 36px 16px;
+      }
+
+      .ptabs__icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
   }
 
   &--no-icons {
@@ -331,6 +370,70 @@
       .ptabs__tab--active {
         min-height: var(--ptabs-tab-height-active);
         padding: 48px 48px 36px 48px;
+      }
+    }
+
+    @include tablet {
+      .ptabs__tab {
+        flex: 0 0 var(--ptabs-tab-width-inactive);
+        max-width: var(--ptabs-tab-width-inactive);
+      }
+
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
+        flex: 0 0 var(--ptabs-tab-width-active);
+        max-width: var(--ptabs-tab-width-active);
+      }
+    }
+
+    @include desktop- {
+      --ptabs-tablist-height: 126px;
+      --ptabs-tab-height-inactive: 94px;
+      --ptabs-tab-height-active: 106px;
+
+      .ptabs__tab {
+        flex: 1 1 0;
+        max-width: 408px;
+        min-height: var(--ptabs-tab-height-inactive);
+        padding: 36px 16px;
+      }
+
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
+        max-width: 408px;
+        min-height: var(--ptabs-tab-height-active);
+        padding: 48px 16px 36px 16px;
+      }
+    }
+
+    &.ptabs--desktop-carousel {
+      @include desktop- {
+        --ptabs-tab-width: 408px;
+        --ptabs-tab-width-active: 408px;
+        --ptabs-tab-width-inactive: 408px;
+
+        .ptabs__tab {
+          flex: 0 0 408px;
+          max-width: 408px;
+        }
+
+        .ptabs__tab[aria-selected="true"],
+        .ptabs__tab--active {
+          flex: 0 0 408px;
+          max-width: 408px;
+        }
+      }
+    }
+  }
+
+  &--desktop-carousel {
+    @include desktop- {
+      --ptabs-desktop-visible: 4;
+
+      .ptabs__nav {
+        max-width: calc(var(--ptabs-tab-width) * var(--ptabs-desktop-visible));
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   }
@@ -398,7 +501,7 @@
     padding: 10px;
     gap: 10px;
     cursor: pointer;
-    z-index: 3;
+    z-index: 4;
     outline: none;
 
     &::before {
@@ -492,6 +595,20 @@
     opacity: 1;
   }
 
+  &:not(.ptabs--desktop-carousel) {
+    @include desktop- {
+      .ptabs__chevron {
+        display: none;
+      }
+
+      .ptabs__nav--overflow::before,
+      .ptabs__nav--overflow::after {
+        display: none;
+        opacity: 0;
+      }
+    }
+  }
+
   @include -tablet {
     &__nav {
       margin: 0 calc(var(--ptabs-gutter) * -1);
@@ -499,12 +616,12 @@
 
     &__chevron {
       &--prev {
-        left: 0;
+        left: 2px;
         background: linear-gradient(90deg, $white 0%, $white 100%);
       }
 
       &--next {
-        right: 0;
+        right: 20px;
         background: linear-gradient(270deg, $white 0%, $white 100%);
       }
     }
