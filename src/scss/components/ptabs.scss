@@ -7,9 +7,9 @@
   --ptabs-tab-width: 204px;
   --ptabs-tab-width-active: 204px;
   --ptabs-tab-width-inactive: 148px;
-  --ptabs-tab-height-active: 116px;
-  --ptabs-tab-height-inactive: 105px;
-  --ptabs-tablist-height: 116px;
+  --ptabs-tab-height-active: auto;
+  --ptabs-tab-height-inactive: auto;
+  --ptabs-tablist-height: auto;
   --ptabs-edge-padding: 1px;
   width: 100%;
   margin: 0;
@@ -18,12 +18,12 @@
 
   @include tablet- {
     --ptabs-gutter: 30px;
-    --ptabs-tab-width: 260px;
-    --ptabs-tab-width-active: var(--ptabs-tab-width);
-    --ptabs-tab-width-inactive: var(--ptabs-tab-width);
-    --ptabs-tab-height-active: 96px;
-    --ptabs-tab-height-inactive: 96px;
-    --ptabs-tablist-height: 96px;
+    --ptabs-tab-width: 318px;
+    --ptabs-tab-width-active: 318px;
+    --ptabs-tab-width-inactive: 254px;
+    --ptabs-tab-height-active: auto;
+    --ptabs-tab-height-inactive: auto;
+    --ptabs-tablist-height: auto;
     --ptabs-edge-padding: 0px;
   }
 
@@ -32,28 +32,18 @@
     --ptabs-tab-width: 300px;
     --ptabs-tab-width-active: var(--ptabs-tab-width);
     --ptabs-tab-width-inactive: var(--ptabs-tab-width);
-    --ptabs-tab-height-active: 96px;
-    --ptabs-tab-height-inactive: 96px;
-    --ptabs-tablist-height: 96px;
+    --ptabs-tab-height-active: auto;
+    --ptabs-tab-height-inactive: auto;
+    --ptabs-tablist-height: auto;
     --ptabs-edge-padding: 0px;
     width: 100%;
     max-width: 1632px;
     margin: 0 auto;
   }
 
-  &__title {
-    padding: 48px var(--ptabs-gutter) 24px;
-    text-align: center;
-    margin: 0;
-  }
-
-  > .ptabs {
-    padding: 0 0 48px;
-
-    @include tablet- {
-      padding: 0 var(--ptabs-gutter) 48px;
-    }
-  }
+  // > .ptabs {
+  //   padding: 0 0 48px;
+  // }
 }
 
 .ptabs {
@@ -63,19 +53,29 @@
   &__nav {
     position: relative;
     width: 100%;
-    height: var(--ptabs-tablist-height);
+    height: auto;
   }
 
   &__viewport {
     overflow-x: auto;
     overflow-y: hidden;
-    height: 100%;
+    height: auto;
     padding: 0 var(--ptabs-edge-padding);
     scrollbar-width: none;
     position: relative;
 
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+
+  @include tablet- {
+    &__nav {
+      height: var(--ptabs-tablist-height, auto);
+    }
+
+    &__viewport {
+      height: 100%;
     }
   }
 
@@ -86,11 +86,12 @@
     align-items: flex-end;
     padding-left: var(--ptabs-side-padding-left, 0px);
     padding-right: var(--ptabs-side-padding-right, 0px);
-    height: 100%;
+    height: var(--ptabs-tablist-height, auto);
     margin: 0 calc(var(--ptabs-edge-padding) * -1);
+    position: relative;
   }
 
-  & &__tab&__tab&__tab {
+  &__tab {
     font-family: "SofiaPro-Regular", sans-serif;
     font-size: 18px;
     line-height: 1;
@@ -112,7 +113,7 @@
     justify-content: center;
     gap: 6px;
     min-height: var(--ptabs-tab-height-inactive);
-    height: var(--ptabs-tab-height-inactive);
+    height: auto;
     border-radius: 0;
     background-clip: padding-box;
     box-sizing: border-box;
@@ -138,8 +139,8 @@
 
   }
 
-  & &__tab&__tab&__tab[aria-selected="true"],
-  & &__tab--active&__tab--active&__tab--active {
+  &__tab[aria-selected="true"],
+  &__tab--active {
     color: $primary-red;
     background-color: $white;
     padding-top: 20px;
@@ -152,7 +153,7 @@
     position: relative;
     flex: 0 0 var(--ptabs-tab-width-active);
     min-height: var(--ptabs-tab-height-active);
-    height: var(--ptabs-tab-height-active);
+    height: auto;
 
     @include tablet- {
       padding-top: calc(18px + 6px);
@@ -170,6 +171,49 @@
     border-right: 0;
   }
 
+  &__tab + &__tab {
+    border-left: 0;
+  }
+
+  &__tab[aria-selected="true"],
+  &__tab--active {
+    border-left: 1px solid $text-gray-light;
+  }
+
+  &__nav--overflow &__tab {
+    position: relative;
+    border-color: transparent;
+  }
+
+  &__nav--overflow &__tab::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid $text-gray-light;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 3;
+    border-left: 0;
+  }
+
+  &__nav--overflow &__tab:first-child::after {
+    border-left: 1px solid $text-gray-light;
+  }
+
+  &__nav--overflow &__tab--adjacent-right::after {
+    border-right: 0;
+  }
+
+  &__nav--overflow &__tab--adjacent-left::after {
+    border-left: 0;
+  }
+
+  &__nav--overflow &__tab[aria-selected="true"]::after,
+  &__nav--overflow &__tab--active::after {
+    border-left: 1px solid $text-gray-light;
+    border-right: 1px solid $text-gray-light;
+    border-bottom: 0;
+  }
 
   &__label {
     display: block;
@@ -185,23 +229,23 @@
 
     svg {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
       stroke: currentColor;
     }
   }
 
   &--icons {
-    --ptabs-tab-height-active: 126px;
-    --ptabs-tab-height-inactive: 114px;
-    --ptabs-tablist-height: 132px;
+    --ptabs-tab-height-active: auto;
+    --ptabs-tab-height-inactive: auto;
+    --ptabs-tablist-height: auto;
 
     .ptabs__tab {
       padding: 12px 8px;
       gap: 8px;
       justify-content: center;
       min-height: var(--ptabs-tab-height-inactive);
-      height: var(--ptabs-tab-height-inactive);
+      height: auto;
     }
 
     .ptabs__label {
@@ -223,7 +267,7 @@
     .ptabs__tab--active {
       padding: 24px 36px 12px 36px;
       min-height: var(--ptabs-tab-height-active);
-      height: var(--ptabs-tab-height-active);
+      height: auto;
       margin-top: 0;
     }
 
@@ -232,16 +276,28 @@
     }
 
     @include tablet- {
+      --ptabs-tablist-height: 188px;
+      --ptabs-tab-height-inactive: 156px;
+      --ptabs-tab-height-active: 168px;
+
       .ptabs__tab {
-        padding: 18px 24px 16px 24px;
-        gap: 6px;
-        min-height: 96px;
+        font-size: 18px;
+        line-height: 1;
+        padding: 36px 16px;
+        gap: 16px;
+        min-height: var(--ptabs-tab-height-inactive);
+        justify-content: flex-end;
+      }
+
+      .ptabs__icon {
+        width: 24px;
+        height: 24px;
       }
 
       .ptabs__tab[aria-selected="true"],
       .ptabs__tab--active {
-        padding: 18px 24px 16px 24px;
-        min-height: 96px;
+        padding: 48px 48px 36px 48px;
+        min-height: var(--ptabs-tab-height-active);
         margin-top: 0;
       }
     }
@@ -260,12 +316,21 @@
     }
 
     @include tablet- {
+      --ptabs-tablist-height: 132px;
+      --ptabs-tab-height-inactive: 116px;
+      --ptabs-tab-height-active: 128px;
+
       .ptabs__tab {
-        min-height: 96px;
+        font-size: 18px;
+        line-height: 1;
+        min-height: var(--ptabs-tab-height-inactive);
+        padding: 36px 16px;
+        justify-content: flex-end;
       }
       .ptabs__tab[aria-selected="true"],
       .ptabs__tab--active {
-        min-height: 96px;
+        min-height: var(--ptabs-tab-height-active);
+        padding: 48px 48px 36px 48px;
       }
     }
   }
@@ -299,8 +364,8 @@
 
     .ptabs__tab[aria-selected="true"] .ptabs__label,
     .ptabs__tab--active .ptabs__label {
-      font-size: 16px;
-      line-height: 1.2;
+      font-size: 18px;
+      line-height: 1;
     }
   }
 
@@ -317,8 +382,8 @@
 
   &__chevron {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: var(--ptabs-chevron-center-top, 50%);
+    transform: translateY(var(--ptabs-chevron-translate, -50%));
     width: 48px;
     height: 48px;
     border-radius: 999px;
@@ -400,9 +465,10 @@
   &__nav--overflow::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: 1px;
+    bottom: 1px;
     width: 48px;
-    height: 100%;
+    height: auto;
     z-index: 2;
     pointer-events: none;
     opacity: 0;
@@ -442,6 +508,7 @@
         background: linear-gradient(270deg, $white 0%, $white 100%);
       }
     }
+
   }
 
   @include desktop- {
@@ -457,6 +524,12 @@
       &--next {
         right: -24px;
       }
+    }
+  }
+
+  @include tablet {
+    &__nav {
+      margin: 0;
     }
   }
 }

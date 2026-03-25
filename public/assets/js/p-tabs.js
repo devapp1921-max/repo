@@ -318,6 +318,7 @@ class PTabs {
     this.updateChevronState();
     this.updateSidePadding();
     this.ensureTabInView(tab);
+    this.updateChevronCenter();
   }
 
   handleKeydown(event, tab) {
@@ -379,6 +380,7 @@ class PTabs {
       this.resizeObserver = new ResizeObserver(() => {
         this.updateChevronState();
         this.updateSidePadding();
+        this.updateChevronCenter();
       });
       this.resizeObserver.observe(this.viewport);
       this.resizeObserver.observe(this.tablist);
@@ -386,10 +388,12 @@ class PTabs {
       window.addEventListener("resize", () => {
         this.updateChevronState();
         this.updateSidePadding();
+        this.updateChevronCenter();
       });
     }
     this.updateChevronState();
     this.updateSidePadding();
+    this.updateChevronCenter();
   }
 
   scrollByStep(direction) {
@@ -509,6 +513,19 @@ class PTabs {
 
     this.nav?.classList.toggle("ptabs__nav--show-prev", !disablePrev);
     this.nav?.classList.toggle("ptabs__nav--show-next", !disableNext);
+  }
+
+  updateChevronCenter() {
+    if (!this.nav || !this.tablist || this.tabs.length === 0) return;
+    const target =
+      this.tabs.find((tab) => tab.getAttribute("aria-selected") !== "true") || this.tabs[0];
+    if (!target) return;
+    const navRect = this.nav.getBoundingClientRect();
+    const tabRect = target.getBoundingClientRect();
+    const center = tabRect.top - navRect.top + tabRect.height / 2;
+    if (!Number.isFinite(center)) return;
+    this.nav.style.setProperty("--ptabs-chevron-center-top", `${center}px`);
+    this.nav.style.setProperty("--ptabs-chevron-translate", "-50%");
   }
 
   openFromHash() {
