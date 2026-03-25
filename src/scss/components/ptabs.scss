@@ -141,7 +141,7 @@
     }
   }
 
-  // Specificity overrides for global button styles in layout containers
+  // Specyficzność
   .ptabs__list button.ptabs__tab.ptabs__tab {
     box-sizing: border-box;
     background-color: $gray-bg;
@@ -161,6 +161,7 @@
     background-color: $white;
     color: $primary-red;
   }
+  // 
 
   &__tab[aria-selected="true"],
   &__tab--active {
