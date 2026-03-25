@@ -90,7 +90,7 @@
     margin: 0 calc(var(--ptabs-edge-padding) * -1);
   }
 
-  &__tab {
+  & &__tab&__tab&__tab {
     font-family: "SofiaPro-Regular", sans-serif;
     font-size: 18px;
     line-height: 1;
@@ -136,35 +136,10 @@
       outline-offset: 2px;
     }
 
-    &:not([aria-selected="true"]):active {
-      background-color: color.adjust($gray-bg, $lightness: 3%);
-    }
   }
 
-  // Specyficzność
-  .ptabs__list button.ptabs__tab.ptabs__tab {
-    box-sizing: border-box;
-    background-color: $gray-bg;
-    border: 1px solid $text-gray-light;
-    color: $text-gray;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .ptabs__list button.ptabs__tab.ptabs__tab:hover {
-    background-color: $gray-bg;
-    color: $primary-red;
-  }
-
-  .ptabs__list button.ptabs__tab.ptabs__tab[aria-selected="true"],
-  .ptabs__list button.ptabs__tab.ptabs__tab.ptabs__tab--active {
-    background-color: $white;
-    color: $primary-red;
-  }
-  // 
-
-  &__tab[aria-selected="true"],
-  &__tab--active {
+  & &__tab&__tab&__tab[aria-selected="true"],
+  & &__tab--active&__tab--active&__tab--active {
     color: $primary-red;
     background-color: $white;
     padding-top: 20px;
