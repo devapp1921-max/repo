@@ -343,16 +343,6 @@
       margin: 0;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] .ptabs__label {
-      font-family: "SofiaPro-Regular", sans-serif;
-      font-size: 18px;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      font-weight: 400;
-      text-align: center;
-    }
-
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
       padding: 24px 36px 12px 36px;
@@ -387,14 +377,14 @@
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
         padding: 48px 48px 36px 48px;
-    min-height: var(--ptabs-tab-height-active);
-    margin-top: 0;
-  }
+        min-height: var(--ptabs-tab-height-active);
+        margin-top: 0;
+      }
 
-  &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::before,
-  &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::before {
-    display: none;
-  }
+      &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::before,
+      &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::before {
+        display: none;
+      }
     }
 
     @include tablet {

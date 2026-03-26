@@ -1638,15 +1638,6 @@ body.bodytype-privatebanking {
   line-height: 1;
   margin: 0;
 }
-.ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true] .ptabs__label,
-.ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] .ptabs__label {
-  font-family: "SofiaPro-Regular", sans-serif;
-  font-size: 18px;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  text-align: center;
-}
 .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
 .ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
   padding: 24px 36px 12px 36px;
