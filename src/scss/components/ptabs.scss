@@ -156,7 +156,7 @@
     position: relative;
     flex: 0 0 var(--ptabs-tab-width-active);
     min-height: var(--ptabs-tab-height-active);
-    // Ucina 1px od dołu, żeby zniknęły "wypustki" bocznych obramowań aktywnego taba.
+    // Ucina 1px od dołu, żeby zniknęły końcówki bocznych obramowań aktywnego taba.
     -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
     clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
 
@@ -214,12 +214,11 @@
     border-right: 0;
   }
 
-  // Separator między tabami bez podwajania obramowań.
+  // Usuwamy podwójny separator za aktywnym tabem.
   &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
     box-shadow: inset 1px 0 0 $text-gray-light;
   }
-
-  // Usuwamy podwójny separator za aktywnym tabem.
+  
   .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
   .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
     box-shadow: none;
@@ -251,7 +250,6 @@
     border: 0;
   }
 
-  // W overflow wyłączamy separator z reguły sąsiedztwa (dopasowana specyficzność).
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
     box-shadow: none;
   }
@@ -403,7 +401,6 @@
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        max-width: 408px;
         padding: 48px 16px 36px 16px;
       }
     }
@@ -465,7 +462,6 @@
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        max-width: 408px;
         padding: 48px 16px 36px 16px;
       }
     }
@@ -483,8 +479,6 @@
 
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
         .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-          flex: 0 0 408px;
-          max-width: 408px;
         }
       }
     }
@@ -534,7 +528,6 @@
     font-family: "SofiaPro-SemiBold", sans-serif;
     font-weight: 700;
     font-size: 18px;
-    line-height: 1;
     color: $primary-red;
     text-align: center;
   }
@@ -562,7 +555,6 @@
     z-index: 4;
   }
 
-  // Aktywny tab nie traci bocznych krawędzi.
   @include -mobile {
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
       letter-spacing: -0.02em;
@@ -576,18 +568,15 @@
       border-right: 1px solid $text-gray-light;
     }
 
-    // Na mobile nieaktywny tab po lewej stronie aktywnego też nie rysuje separatora,
-    // żeby nie było "pogrubionej" linii przy aktywnym tabie.
     .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
       box-shadow: none;
     }
 
-    // W trybie overflow na mobile: sąsiad po lewej nie rysuje prawej krawędzi ramki.
+    // sąsiad po lewej nie rysuje prawej krawędzi ramki
     .ptabs__nav--overflow .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
       border-right: 0;
     }
 
-    // Wyrównujemy specyficzność z bazowym separatorem, żeby go skutecznie wyłączyć.
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
       + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]),
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
@@ -606,8 +595,6 @@
       border-left: 0;
     }
 
-    // Na mobile zawsze maskujemy wspólną linię i podbijamy aktywny tab
-    // (wcześniej było to tylko przy .paccordion--framed).
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
       border-bottom: 0;
     }

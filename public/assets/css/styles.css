@@ -1694,7 +1694,6 @@ body.bodytype-privatebanking {
   }
   .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
   .ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
-    max-width: 408px;
     padding: 48px 16px 36px 16px;
   }
 }
@@ -1750,7 +1749,6 @@ body.bodytype-privatebanking {
   }
   .ptabs--no-icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
   .ptabs--no-icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
-    max-width: 408px;
     padding: 48px 16px 36px 16px;
   }
 }
@@ -1761,11 +1759,6 @@ body.bodytype-privatebanking {
     --ptabs-tab-width-inactive: 408px;
   }
   .ptabs--no-icons.ptabs--desktop-carousel .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
-    flex: 0 0 408px;
-    max-width: 408px;
-  }
-  .ptabs--no-icons.ptabs--desktop-carousel .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
-  .ptabs--no-icons.ptabs--desktop-carousel .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
     flex: 0 0 408px;
     max-width: 408px;
   }
@@ -1808,7 +1801,6 @@ body.bodytype-privatebanking {
   font-family: "SofiaPro-SemiBold", sans-serif;
   font-weight: 700;
   font-size: 18px;
-  line-height: 1;
   color: #D91918;
   text-align: center;
 }
