@@ -177,39 +177,42 @@
 
   // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
   &:has(.ptabs__panel .paccordion--framed) {
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      border-bottom: 0;
-    }
+    @include tablet- {
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
+        border-bottom: 0;
+      }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-      z-index: 2;
-      -webkit-clip-path: none;
-      clip-path: none;
-    }
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+        z-index: 2;
+        -webkit-clip-path: none;
+        clip-path: none;
+      }
 
-    .ptabs__panel {
-      position: relative;
-      z-index: 1;
-      margin-top: -1px;
-    }
+      .ptabs__panel {
+        position: relative;
+        z-index: 1;
+        margin-top: -1px;
+      }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
-      content: "";
-      position: absolute;
-      left: -1px;
-      right: -1px;
-      bottom: -1px;
-      height: 2px;
-      background: $white;
-      pointer-events: none;
-      z-index: 2;
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
+      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
+        content: "";
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        height: 2px;
+        background: $white;
+        pointer-events: none;
+        z-index: 2;
+      }
     }
   }
 
   &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"] {
     border-left: 0;
+    box-shadow: none;
   }
 
   &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
@@ -217,7 +220,7 @@
   }
 
   // Separator między tabami bez podwajania obramowań.
-  &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"] {
+  &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
     box-shadow: inset 1px 0 0 $text-gray-light;
   }
 
@@ -248,6 +251,11 @@
   }
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
+    box-shadow: none;
+  }
+
+  // W overflow wyłączamy separator z reguły sąsiedztwa (dopasowana specyficzność).
+  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
     box-shadow: none;
   }
 
@@ -308,46 +316,21 @@
   }
 
   @include -mobile {
+    // Mobile: zachowujemy się jak tablet/desktop w trybie overflow (ramki na ::after).
     &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
-      border: 1px solid $text-gray-light;
-      border-left: 0;
-      border-right: 0;
+      border: 0;
       box-shadow: none;
     }
 
     &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
-      content: none;
+      content: "";
     }
 
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"] {
-      box-shadow: inset 1px 0 0 $text-gray-light;
-    }
-
-    &__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
-    &__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
       box-shadow: none;
     }
 
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
-      border-left: 1px solid $text-gray-light;
-    }
-
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-    &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-      border-top: 1px solid $text-gray-light;
-      border-left: 1px solid $text-gray-light;
-      border-right: 1px solid $text-gray-light;
-      border-bottom: 0;
-      box-shadow: none;
-      margin-left: -1px;
-      margin-right: -1px;
-    }
-
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child[aria-selected="true"],
-    &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
-      margin-left: 0;
-      border-left: 1px solid $text-gray-light;
-    }
+    // W mobile overflow ramki rysuje ::after (jak na tablet/desktop).
   }
 
   &__label {
@@ -658,10 +641,74 @@
       border-right: 1px solid $text-gray-light;
     }
 
+    // Na mobile nieaktywny tab po prawej stronie aktywnego nie rysuje separatora.
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+      box-shadow: none;
+    }
+
+    // Na mobile nieaktywny tab po lewej stronie aktywnego też nie rysuje separatora,
+    // żeby nie było "pogrubionej" linii przy aktywnym tabie.
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]),
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]),
+    .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
+      box-shadow: none;
+    }
+
+    // W trybie overflow na mobile: sąsiad po lewej nie rysuje prawej krawędzi ramki.
+    .ptabs__nav--overflow .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
+      border-right: 0;
+    }
+
+    // Wyrównujemy specyficzność z bazowym separatorem, żeby go skutecznie wyłączyć.
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
+      + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]),
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+      + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
+      box-shadow: none;
+    }
+
     .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
     .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
       border-left: 1px solid $text-gray-light;
       border-right: 1px solid $text-gray-light;
+    }
+
+    .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after,
+    .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
+      border-left: 0;
+    }
+
+    // Na mobile zawsze maskujemy wspólną linię i podbijamy aktywny tab
+    // (wcześniej było to tylko przy .paccordion--framed).
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
+      border-bottom: 0;
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+      z-index: 2;
+      -webkit-clip-path: none;
+      clip-path: none;
+    }
+
+    .ptabs__panel {
+      position: relative;
+      z-index: 1;
+      margin-top: -1px;
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
+      content: "";
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      height: 2px;
+      background: $white;
+      pointer-events: none;
+      z-index: 2;
     }
   }
 
@@ -684,7 +731,7 @@
     background-position: 0 0;
   }
 
-  &__chevron {
+  &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
     position: absolute;
     top: var(--ptabs-chevron-center-top, 50%);
     transform: translateY(var(--ptabs-chevron-translate, -50%));
@@ -726,7 +773,7 @@
       outline-offset: 2px;
     }
 
-    &--prev {
+    &.ptabs__chevron--prev {
       left: 0;
       &::before {
         background-image: url("data:image/svg+xml;utf8,<svg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7.41406 1.41431L1.41406 7.41431L7.41406 13.4143' stroke='%23D11E25' stroke-width='2' stroke-linecap='square'/></svg>");
@@ -734,7 +781,7 @@
       }
     }
 
-    &--next {
+    &.ptabs__chevron--next {
       right: 0;
       &::before {
         background-image: url("data:image/svg+xml;utf8,<svg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.41406 13.4143L7.41406 7.41431L1.41406 1.41431' stroke='%23D11E25' stroke-width='2' stroke-linecap='square'/></svg>");
@@ -751,17 +798,17 @@
       display: none;
     }
 
-    &--hidden {
+    &.ptabs__chevron--hidden {
       display: none;
     }
   }
 
-  &__nav--overflow &__chevron {
+  &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
     display: inline-flex;
   }
 
-  &__nav--overflow &__chevron[aria-disabled="true"],
-  &__nav--overflow &__chevron--hidden {
+  &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron[type="button"][aria-disabled="true"],
+  &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron--hidden[type="button"] {
     display: none;
   }
 
@@ -796,9 +843,26 @@
     opacity: 1;
   }
 
+  @include -mobile {
+    &__nav--overflow::before,
+    &__nav--overflow::after {
+      background-repeat: no-repeat;
+      background-size: 100% calc(100% - 2px);
+      background-position: 0 1px;
+    }
+
+    &__nav--overflow::before {
+      background: linear-gradient(90deg, $white 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &__nav--overflow::after {
+      background: linear-gradient(270deg, $white 0%, rgba(255, 255, 255, 0) 100%);
+    }
+  }
+
   &:not(.ptabs--desktop-carousel) {
     @include desktop- {
-      .ptabs__chevron {
+      .ptabs__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
         display: none;
       }
 
@@ -815,13 +879,13 @@
       margin: 0 calc(var(--ptabs-gutter) * -1);
     }
 
-    &__chevron {
-      &--prev {
+    &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+      &.ptabs__chevron--prev {
         left: 2px;
         background: linear-gradient(90deg, $white 0%, $white 100%);
       }
 
-      &--next {
+      &.ptabs__chevron--next {
         right: 2px;
         background: linear-gradient(270deg, $white 0%, $white 100%);
       }
@@ -834,12 +898,12 @@
       margin: 0;
     }
 
-    &__chevron {
-      &--prev {
+    &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+      &.ptabs__chevron--prev {
         left: -24px;
       }
 
-      &--next {
+      &.ptabs__chevron--next {
         right: -24px;
       }
     }
