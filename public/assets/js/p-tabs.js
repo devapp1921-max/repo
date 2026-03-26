@@ -460,28 +460,8 @@ class PTabs {
       this.tablist.style.setProperty("--ptabs-side-padding-right", "0px");
       return;
     }
-    const active = this.tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || this.tabs[0];
-    if (!active) return;
-    const viewportWidth = this.viewport.clientWidth;
-    const tabWidth = active.offsetWidth;
-    const activeIndex = this.tabs.indexOf(active);
-    const remaining = Math.max(0, viewportWidth - tabWidth);
-
-    let leftPadding = 0;
-    let rightPadding = 0;
-    if (activeIndex === 0) {
-      leftPadding = 0;
-      rightPadding = 0;
-    } else if (activeIndex === this.tabs.length - 1) {
-      leftPadding = 0;
-      rightPadding = 0;
-    } else {
-      leftPadding = remaining / 2;
-      rightPadding = remaining / 2;
-    }
-
-    this.tablist.style.setProperty("--ptabs-side-padding-left", `${leftPadding}px`);
-    this.tablist.style.setProperty("--ptabs-side-padding-right", `${rightPadding}px`);
+    this.tablist.style.setProperty("--ptabs-side-padding-left", "0px");
+    this.tablist.style.setProperty("--ptabs-side-padding-right", "0px");
   }
 
   updateChevronState() {
