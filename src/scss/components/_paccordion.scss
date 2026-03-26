@@ -1192,8 +1192,13 @@
     @include desktop- {
         --paccordion-gutter: 48px;
         width: 100%;
-        max-width: 1632px;
+        // max-width: 1632px;
+        max-width: 1280px;
         margin: 0 auto;
+    }
+
+    @include big {
+        max-width: 1632px;
     }
 
     &__section {

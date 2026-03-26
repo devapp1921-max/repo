@@ -1084,8 +1084,13 @@ body.bodytype-privatebanking {
   .paccordion-container {
     --paccordion-gutter: 48px;
     width: 100%;
-    max-width: 1632px;
+    max-width: 1280px;
     margin: 0 auto;
+  }
+}
+@media (min-width: 1680px) {
+  .paccordion-container {
+    max-width: 1632px;
   }
 }
 .paccordion-container__section {
@@ -1377,8 +1382,13 @@ body.bodytype-privatebanking {
     --ptabs-tablist-height: auto;
     --ptabs-edge-padding: 0px;
     width: 100%;
-    max-width: 1632px;
+    max-width: 1280px;
     margin: 0 auto;
+  }
+}
+@media (min-width: 1680px) {
+  .ptabs-container {
+    max-width: 1632px;
   }
 }
 

@@ -37,8 +37,13 @@
     --ptabs-tablist-height: auto;
     --ptabs-edge-padding: 0px;
     width: 100%;
-    max-width: 1632px;
+    // max-width: 1632px;
+    max-width: 1280px;
     margin: 0 auto;
+  }
+
+  @include big {
+    max-width: 1632px;
   }
 
   // > .ptabs {
