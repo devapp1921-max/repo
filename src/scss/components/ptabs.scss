@@ -637,7 +637,6 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 1;
-    letter-spacing: 0;
     color: $primary-red;
     text-align: center;
   }
@@ -667,6 +666,10 @@
 
   // Mobile: pilnujemy, żeby aktywny tab nie tracił bocznych krawędzi.
   @include -mobile {
+    .ptabs__tab:hover .ptabs__label {
+      letter-spacing: -0.02em;
+    }
+
     .ptabs__tab[aria-selected="true"],
     .ptabs__tab--active {
       margin-left: 0;

@@ -1874,7 +1874,6 @@ body.bodytype-privatebanking {
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
-  letter-spacing: 0;
   color: #D91918;
   text-align: center;
 }
@@ -1896,6 +1895,9 @@ body.bodytype-privatebanking {
   z-index: 4;
 }
 @media (max-width: 959px) {
+  .ptabs .ptabs__tab:hover .ptabs__label {
+    letter-spacing: -0.02em;
+  }
   .ptabs .ptabs__tab[aria-selected=true],
   .ptabs .ptabs__tab--active {
     margin-left: 0;
