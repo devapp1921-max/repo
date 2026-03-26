@@ -254,9 +254,31 @@ class PTabs {
 
   bindEvents() {
     this.tabs.forEach((tab) => {
+      // Stan pressed obsługujemy ręcznie, żeby działał dla myszy i klawiatury.
+      const clearPressed = () => tab.classList.remove("ptabs__tab--pressed");
+      const setPressed = () => {
+        if (tab.getAttribute("aria-selected") === "true") return;
+        tab.classList.add("ptabs__tab--pressed");
+      };
+
+      tab.addEventListener("pointerdown", setPressed);
+      tab.addEventListener("pointerup", clearPressed);
+      tab.addEventListener("pointerleave", clearPressed);
+      tab.addEventListener("blur", clearPressed);
+
       tab.addEventListener("click", () => {
         if (tab.getAttribute("aria-selected") === "true") return;
         this.activateTab(tab, { focus: true });
+      });
+      tab.addEventListener("keydown", (event) => {
+        if (event.key === " " || event.key === "Enter") {
+          setPressed();
+        }
+      });
+      tab.addEventListener("keyup", (event) => {
+        if (event.key === " " || event.key === "Enter") {
+          clearPressed();
+        }
       });
       tab.addEventListener("keydown", (event) => this.handleKeydown(event, tab));
     });
