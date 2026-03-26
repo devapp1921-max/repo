@@ -168,6 +168,24 @@
     margin-top: 0;
   }
 
+  &:has(.ptabs__panel .paccordion--framed) {
+    // Gdy taby są łączone z akordeonem framed, nieaktywne nie rysują dolnej linii, a aktywny zakrywa górną linię akordeonu.
+    .ptabs__tab:not([aria-selected="true"]):not(.ptabs__tab--active) {
+      border-bottom: 0;
+    }
+
+    .ptabs__tab[aria-selected="true"],
+    .ptabs__tab--active {
+      z-index: 2;
+    }
+
+    .ptabs__panel {
+      position: relative;
+      z-index: 1;
+      margin-top: -1px;
+    }
+  }
+
   &__tab--adjacent-left {
     border-left: 0;
   }
