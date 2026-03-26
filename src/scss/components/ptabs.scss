@@ -252,16 +252,13 @@
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
     box-shadow: none;
+    position: relative;
+    border: 0;
   }
 
   // W overflow wyłączamy separator z reguły sąsiedztwa (dopasowana specyficzność).
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
     box-shadow: none;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
-    position: relative;
-    border: 0;
   }
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
@@ -305,31 +302,7 @@
     border: 0;
   }
 
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"])::after,
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"])::after {
-    border-right: 0;
-  }
-
-  &__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after,
-  &__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
-    border-left: 0;
-  }
-
   @include -mobile {
-    // Mobile: zachowujemy się jak tablet/desktop w trybie overflow (ramki na ::after).
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
-      border: 0;
-      box-shadow: none;
-    }
-
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
-      content: "";
-    }
-
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      box-shadow: none;
-    }
-
     // W mobile overflow ramki rysuje ::after (jak na tablet/desktop).
   }
 
