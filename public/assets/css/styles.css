@@ -1891,12 +1891,6 @@ body.bodytype-privatebanking {
     border-left: 1px solid #828282;
     border-right: 1px solid #828282;
   }
-  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true] + .ptabs__tab.ptabs__tab.ptabs__tab[role=tab],
-  .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] + .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
-    box-shadow: none;
-  }
-  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]),
-  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]),
   .ptabs .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role=tab] {
     box-shadow: none;
   }

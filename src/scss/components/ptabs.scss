@@ -641,16 +641,8 @@
       border-right: 1px solid $text-gray-light;
     }
 
-    // Na mobile nieaktywny tab po prawej stronie aktywnego nie rysuje separatora.
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-      box-shadow: none;
-    }
-
     // Na mobile nieaktywny tab po lewej stronie aktywnego też nie rysuje separatora,
     // żeby nie było "pogrubionej" linii przy aktywnym tabie.
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]),
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]),
     .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
       box-shadow: none;
     }
