@@ -92,11 +92,12 @@
     position: relative;
   }
 
-  button.ptabs__tab[role="tab"] {
+  &__tab {
     font-family: "SofiaPro-Regular", sans-serif;
     font-size: 18px;
     line-height: 1;
     letter-spacing: -0.01em;
+    cursor: pointer;
     cursor: pointer;
     padding: 16px 20px 12px 20px;
     background-color: $gray-bg;
@@ -143,8 +144,8 @@
 
   }
 
-  button.ptabs__tab[role="tab"][aria-selected="true"],
-  button.ptabs__tab--active[role="tab"] {
+  &__tab[aria-selected="true"],
+  &__tab--active {
     color: $primary-red;
     background-color: $white;
     padding-top: 20px;
@@ -170,18 +171,18 @@
     margin-top: 0;
   }
 
-  button.ptabs__tab[role="tab"]:last-child {
+  &__tab:last-child {
     border-right: 1px solid $text-gray-light;
   }
 
   // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
   &:has(.ptabs__panel .paccordion--framed) {
-    button.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(button.ptabs__tab--active[role="tab"]) {
+    .ptabs__tab:not([aria-selected="true"]):not(.ptabs__tab--active) {
       border-bottom: 0;
     }
 
-    button.ptabs__tab[role="tab"][aria-selected="true"],
-    button.ptabs__tab--active[role="tab"] {
+    .ptabs__tab[aria-selected="true"],
+    .ptabs__tab--active {
       z-index: 2;
       -webkit-clip-path: none;
       clip-path: none;
@@ -193,8 +194,8 @@
       margin-top: -1px;
     }
 
-    button.ptabs__tab[role="tab"][aria-selected="true"]::after,
-    button.ptabs__tab--active[role="tab"]::after {
+    .ptabs__tab[aria-selected="true"]::after,
+    .ptabs__tab--active::after {
       content: "";
       position: absolute;
       left: -1px;
@@ -207,32 +208,32 @@
     }
   }
 
-  button.ptabs__tab--adjacent-left[role="tab"] {
+  &__tab--adjacent-left {
     border-left: 0;
   }
 
-  button.ptabs__tab--adjacent-right[role="tab"] {
+  &__tab--adjacent-right {
     border-right: 0;
   }
 
   // Separator między tabami bez podwajania obramowań.
-  button.ptabs__tab[role="tab"] + button.ptabs__tab[role="tab"] {
+  &__tab + &__tab {
     box-shadow: inset 1px 0 0 $text-gray-light;
   }
 
   // Usuwamy podwójny separator za aktywnym tabem.
-  button.ptabs__tab[role="tab"][aria-selected="true"] + button.ptabs__tab[role="tab"],
-  button.ptabs__tab--active[role="tab"] + button.ptabs__tab[role="tab"] {
+  .ptabs__tab[aria-selected="true"] + .ptabs__tab,
+  .ptabs__tab--active + .ptabs__tab {
     box-shadow: none;
   }
 
   // Rysujemy lewą krawędź tylko na pierwszym tabie.
-  button.ptabs__tab[role="tab"]:first-child {
+  &__tab:first-child {
     border-left: 1px solid $text-gray-light;
   }
 
-  button.ptabs__tab[role="tab"][aria-selected="true"],
-  button.ptabs__tab--active[role="tab"] {
+  &__tab[aria-selected="true"],
+  &__tab--active {
     border-left: 1px solid $text-gray-light;
     border-right: 1px solid $text-gray-light;
     box-shadow: none;
@@ -240,26 +241,26 @@
     margin-right: -1px;
   }
 
-  button.ptabs__tab[role="tab"]:first-child[aria-selected="true"],
-  button.ptabs__tab--active[role="tab"]:first-child {
+  &__tab:first-child[aria-selected="true"],
+  &__tab--active:first-child {
     margin-left: 0;
     border-left: 1px solid $text-gray-light;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"] {
+  &__nav--overflow &__tab {
     box-shadow: none;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"] {
+  &__nav--overflow &__tab {
     position: relative;
     border: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"]:first-child {
+  &__nav--overflow &__tab:first-child {
     border-left: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"]::after {
+  &__nav--overflow &__tab::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -270,69 +271,69 @@
     border-left: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"]:first-child::after {
+  &__nav--overflow &__tab:first-child::after {
     border-left: 1px solid $text-gray-light;
   }
 
-  &__nav--overflow button.ptabs__tab--adjacent-right[role="tab"]::after {
+  &__nav--overflow &__tab--adjacent-right::after {
     border-right: 0;
   }
 
-  &__nav--overflow button.ptabs__tab--adjacent-left[role="tab"]::after {
+  &__nav--overflow &__tab--adjacent-left::after {
     border-left: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"][aria-selected="true"]::after,
-  &__nav--overflow button.ptabs__tab--active[role="tab"]::after {
+  &__nav--overflow &__tab[aria-selected="true"]::after,
+  &__nav--overflow &__tab--active::after {
     border-left: 1px solid $text-gray-light;
     border-right: 1px solid $text-gray-light;
     border-bottom: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"][aria-selected="true"],
-  &__nav--overflow button.ptabs__tab--active[role="tab"] {
+  &__nav--overflow &__tab[aria-selected="true"],
+  &__nav--overflow &__tab--active {
     margin-left: 0;
     margin-right: 0;
     border: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"]:has(+ button.ptabs__tab[role="tab"][aria-selected="true"])::after,
-  &__nav--overflow button.ptabs__tab[role="tab"]:has(+ button.ptabs__tab--active[role="tab"])::after {
+  &__nav--overflow &__tab:has(+ .ptabs__tab[aria-selected="true"])::after,
+  &__nav--overflow &__tab:has(+ .ptabs__tab--active)::after {
     border-right: 0;
   }
 
-  &__nav--overflow button.ptabs__tab[role="tab"][aria-selected="true"] + button.ptabs__tab[role="tab"]::after,
-  &__nav--overflow button.ptabs__tab--active[role="tab"] + button.ptabs__tab[role="tab"]::after {
+  &__nav--overflow .ptabs__tab[aria-selected="true"] + .ptabs__tab::after,
+  &__nav--overflow .ptabs__tab--active + .ptabs__tab::after {
     border-left: 0;
   }
 
   @include -mobile {
-    &__nav--overflow button.ptabs__tab[role="tab"] {
+    &__nav--overflow &__tab {
       border: 1px solid $text-gray-light;
       border-left: 0;
       border-right: 0;
       box-shadow: none;
     }
 
-    &__nav--overflow button.ptabs__tab[role="tab"]::after {
+    &__nav--overflow &__tab::after {
       content: none;
     }
 
-    &__nav--overflow button.ptabs__tab[role="tab"] + button.ptabs__tab[role="tab"] {
+    &__nav--overflow &__tab + &__tab {
       box-shadow: inset 1px 0 0 $text-gray-light;
     }
 
-    &__nav--overflow button.ptabs__tab[role="tab"][aria-selected="true"] + button.ptabs__tab[role="tab"],
-    &__nav--overflow button.ptabs__tab--active[role="tab"] + button.ptabs__tab[role="tab"] {
+    &__nav--overflow .ptabs__tab[aria-selected="true"] + .ptabs__tab,
+    &__nav--overflow .ptabs__tab--active + .ptabs__tab {
       box-shadow: none;
     }
 
-    &__nav--overflow button.ptabs__tab[role="tab"]:first-child {
+    &__nav--overflow &__tab:first-child {
       border-left: 1px solid $text-gray-light;
     }
 
-    &__nav--overflow button.ptabs__tab[role="tab"][aria-selected="true"],
-    &__nav--overflow button.ptabs__tab--active[role="tab"] {
+    &__nav--overflow &__tab[aria-selected="true"],
+    &__nav--overflow &__tab--active {
       border-top: 1px solid $text-gray-light;
       border-left: 1px solid $text-gray-light;
       border-right: 1px solid $text-gray-light;
@@ -342,8 +343,8 @@
       margin-right: -1px;
     }
 
-    &__nav--overflow button.ptabs__tab[role="tab"]:first-child[aria-selected="true"],
-    &__nav--overflow button.ptabs__tab--active[role="tab"]:first-child {
+    &__nav--overflow &__tab:first-child[aria-selected="true"],
+    &__nav--overflow &__tab--active:first-child {
       margin-left: 0;
       border-left: 1px solid $text-gray-light;
     }
@@ -374,7 +375,7 @@
     --ptabs-tab-height-inactive: auto;
     --ptabs-tablist-height: auto;
 
-    button.ptabs__tab[role="tab"] {
+    .ptabs__tab {
       padding: 12px 8px;
       gap: 8px;
       justify-content: center;
@@ -387,8 +388,8 @@
       margin: 0;
     }
 
-    button.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
-    button.ptabs__tab--active[role="tab"] .ptabs__label {
+    .ptabs__tab[aria-selected="true"] .ptabs__label,
+    .ptabs__tab--active .ptabs__label {
       font-family: "SofiaPro-Regular", sans-serif;
       font-size: 18px;
       line-height: 1;
@@ -397,8 +398,8 @@
       text-align: center;
     }
 
-    button.ptabs__tab[role="tab"][aria-selected="true"],
-    button.ptabs__tab--active[role="tab"] {
+    .ptabs__tab[aria-selected="true"],
+    .ptabs__tab--active {
       padding: 24px 36px 12px 36px;
       min-height: var(--ptabs-tab-height-active);
       height: auto;
@@ -414,7 +415,7 @@
       --ptabs-tab-height-inactive: 156px;
       --ptabs-tab-height-active: 168px;
 
-      button.ptabs__tab[role="tab"] {
+      .ptabs__tab {
         font-size: 18px;
         line-height: 1;
         padding: 36px 16px;
@@ -428,27 +429,27 @@
         height: 24px;
       }
 
-      button.ptabs__tab[role="tab"][aria-selected="true"],
-      button.ptabs__tab--active[role="tab"] {
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
         padding: 48px 48px 36px 48px;
     min-height: var(--ptabs-tab-height-active);
     margin-top: 0;
   }
 
-  button.ptabs__tab[role="tab"][aria-selected="true"]::before,
-  button.ptabs__tab--active[role="tab"]::before {
+  &__tab[aria-selected="true"]::before,
+  &__tab--active::before {
     display: none;
   }
     }
 
     @include tablet {
-      button.ptabs__tab[role="tab"] {
+      .ptabs__tab {
         flex: 0 0 var(--ptabs-tab-width-inactive);
         max-width: var(--ptabs-tab-width-inactive);
       }
 
-      button.ptabs__tab[role="tab"][aria-selected="true"],
-      button.ptabs__tab--active[role="tab"] {
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
         flex: 0 0 var(--ptabs-tab-width-active);
         max-width: var(--ptabs-tab-width-active);
       }
@@ -459,7 +460,7 @@
       --ptabs-tab-height-inactive: 134px;
       --ptabs-tab-height-active: 146px;
 
-      button.ptabs__tab[role="tab"] {
+      .ptabs__tab {
         flex: 1 1 0;
         max-width: 408px;
         min-height: var(--ptabs-tab-height-inactive);
@@ -467,8 +468,8 @@
         gap: 16px;
       }
 
-      button.ptabs__tab[role="tab"][aria-selected="true"],
-      button.ptabs__tab--active[role="tab"] {
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
         max-width: 408px;
         min-height: var(--ptabs-tab-height-active);
         padding: 48px 16px 36px 16px;
@@ -482,12 +483,12 @@
   }
 
   &--no-icons {
-    button.ptabs__tab[role="tab"] {
+    .ptabs__tab {
       min-height: 105px;
       padding: 12px 8px;
     }
-    button.ptabs__tab[role="tab"][aria-selected="true"],
-    button.ptabs__tab--active[role="tab"] {
+    .ptabs__tab[aria-selected="true"],
+    .ptabs__tab--active {
       margin-top: 0;
       min-height: 116px;
       padding: 24px 36px 12px 36px;
@@ -498,28 +499,28 @@
       --ptabs-tab-height-inactive: 116px;
       --ptabs-tab-height-active: 128px;
 
-      button.ptabs__tab[role="tab"] {
+      .ptabs__tab {
         font-size: 18px;
         line-height: 1;
         min-height: var(--ptabs-tab-height-inactive);
         padding: 36px 16px;
         justify-content: flex-end;
       }
-      button.ptabs__tab[role="tab"][aria-selected="true"],
-      button.ptabs__tab--active[role="tab"] {
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
         min-height: var(--ptabs-tab-height-active);
         padding: 48px 48px 36px 48px;
       }
     }
 
     @include tablet {
-      button.ptabs__tab[role="tab"] {
+      .ptabs__tab {
         flex: 0 0 var(--ptabs-tab-width-inactive);
         max-width: var(--ptabs-tab-width-inactive);
       }
 
-      button.ptabs__tab[role="tab"][aria-selected="true"],
-      button.ptabs__tab--active[role="tab"] {
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
         flex: 0 0 var(--ptabs-tab-width-active);
         max-width: var(--ptabs-tab-width-active);
       }
@@ -530,15 +531,15 @@
       --ptabs-tab-height-inactive: 94px;
       --ptabs-tab-height-active: 106px;
 
-      button.ptabs__tab[role="tab"] {
+      .ptabs__tab {
         flex: 1 1 0;
         max-width: 408px;
         min-height: var(--ptabs-tab-height-inactive);
         padding: 36px 16px;
       }
 
-      button.ptabs__tab[role="tab"][aria-selected="true"],
-      button.ptabs__tab--active[role="tab"] {
+      .ptabs__tab[aria-selected="true"],
+      .ptabs__tab--active {
         max-width: 408px;
         min-height: var(--ptabs-tab-height-active);
         padding: 48px 16px 36px 16px;
@@ -551,13 +552,13 @@
         --ptabs-tab-width-active: 408px;
         --ptabs-tab-width-inactive: 408px;
 
-        button.ptabs__tab[role="tab"] {
+        .ptabs__tab {
           flex: 0 0 408px;
           max-width: 408px;
         }
 
-        button.ptabs__tab[role="tab"][aria-selected="true"],
-        button.ptabs__tab--active[role="tab"] {
+        .ptabs__tab[aria-selected="true"],
+        .ptabs__tab--active {
           flex: 0 0 408px;
           max-width: 408px;
         }
@@ -577,20 +578,20 @@
     }
   }
 
-  button.ptabs__tab[role="tab"][aria-selected="true"]:has(.ptabs__icon),
-  button.ptabs__tab--active[role="tab"]:has(.ptabs__icon) {
+  .ptabs__tab[aria-selected="true"]:has(.ptabs__icon),
+  .ptabs__tab--active:has(.ptabs__icon) {
     margin-top: 6px;
   }
 
   @include tablet- {
-    button.ptabs__tab[role="tab"][aria-selected="true"]:has(.ptabs__icon),
-    button.ptabs__tab--active[role="tab"]:has(.ptabs__icon) {
+    .ptabs__tab[aria-selected="true"]:has(.ptabs__icon),
+    .ptabs__tab--active:has(.ptabs__icon) {
       margin-top: 0;
     }
   }
 
-  button.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
-  button.ptabs__tab--active[role="tab"] .ptabs__label {
+  .ptabs__tab[aria-selected="true"] .ptabs__label,
+  .ptabs__tab--active .ptabs__label {
     font-family: "SofiaPro-Regular", sans-serif;
     font-size: 18px;
     line-height: 1;
@@ -604,14 +605,14 @@
       max-width: none;
     }
 
-    button.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
-    button.ptabs__tab--active[role="tab"] .ptabs__label {
+    .ptabs__tab[aria-selected="true"] .ptabs__label,
+    .ptabs__tab--active .ptabs__label {
       font-size: 18px;
       line-height: 1;
     }
   }
 
-  button.ptabs__tab[role="tab"]:hover .ptabs__label {
+  .ptabs__tab:hover .ptabs__label {
     font-family: "SofiaPro-SemiBold", sans-serif;
     font-weight: 700;
     font-size: 18px;
@@ -621,13 +622,13 @@
   }
 
   // Stan pressed sterowany w JS
-  button.ptabs__tab--pressed[role="tab"] {
+  .ptabs__tab--pressed {
     background-color: $borders-gray;
   }
 
   // Widoczny fokus dla aktywnego taba 
-  button.ptabs__tab[role="tab"][aria-selected="true"]:focus-visible,
-  button.ptabs__tab--active[role="tab"]:focus-visible {
+  .ptabs__tab[aria-selected="true"]:focus-visible,
+  .ptabs__tab--active:focus-visible {
     outline: none;
     border: 2px solid $primary-red;
     border-bottom: 0;
@@ -635,7 +636,7 @@
   }
 
   // Widoczny fokus dla nieaktywnych tabów 
-  button.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(button.ptabs__tab--active[role="tab"]):focus-visible {
+  .ptabs__tab:not([aria-selected="true"]):not(.ptabs__tab--active):focus-visible {
     outline: none;
     border: 2px solid $primary-red;
     box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
@@ -645,20 +646,20 @@
 
   // Aktywny tab nie traci bocznych krawędzi.
   @include -mobile {
-    button.ptabs__tab[role="tab"]:hover .ptabs__label {
+    .ptabs__tab:hover .ptabs__label {
       letter-spacing: -0.02em;
     }
 
-    button.ptabs__tab[role="tab"][aria-selected="true"],
-    button.ptabs__tab--active[role="tab"] {
+    .ptabs__tab[aria-selected="true"],
+    .ptabs__tab--active {
       margin-left: 0;
       margin-right: 0;
       border-left: 1px solid $text-gray-light;
       border-right: 1px solid $text-gray-light;
     }
 
-    .ptabs__nav--overflow button.ptabs__tab[role="tab"][aria-selected="true"]::after,
-    .ptabs__nav--overflow button.ptabs__tab--active[role="tab"]::after {
+    .ptabs__nav--overflow .ptabs__tab[aria-selected="true"]::after,
+    .ptabs__nav--overflow .ptabs__tab--active::after {
       border-left: 1px solid $text-gray-light;
       border-right: 1px solid $text-gray-light;
     }
