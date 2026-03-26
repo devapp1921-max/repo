@@ -98,7 +98,6 @@
     line-height: 1;
     letter-spacing: -0.01em;
     cursor: pointer;
-    cursor: pointer;
     padding: 16px 20px 12px 20px;
     background-color: $gray-bg;
     border: 1px solid $text-gray-light;
@@ -419,21 +418,12 @@
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
         flex: 1 1 0;
         max-width: 408px;
-        min-height: var(--ptabs-tab-height-inactive);
-        padding: 36px 16px;
-        gap: 16px;
       }
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
         max-width: 408px;
-        min-height: var(--ptabs-tab-height-active);
         padding: 48px 16px 36px 16px;
-      }
-
-      .ptabs__icon {
-        width: 24px;
-        height: 24px;
       }
     }
   }
@@ -490,14 +480,11 @@
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
         flex: 1 1 0;
         max-width: 408px;
-        min-height: var(--ptabs-tab-height-inactive);
-        padding: 36px 16px;
       }
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
         max-width: 408px;
-        min-height: var(--ptabs-tab-height-active);
         padding: 48px 16px 36px 16px;
       }
     }
