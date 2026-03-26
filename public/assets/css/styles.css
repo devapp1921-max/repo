@@ -1446,7 +1446,7 @@ body.bodytype-privatebanking {
   user-select: none;
   font-weight: 400;
   margin-top: 0;
-  color: #828282;
+  color: #656565;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1482,7 +1482,6 @@ body.bodytype-privatebanking {
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true], .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
   color: #D91918;
   background-color: #FFFFFF;
-  padding-top: 20px;
   margin-top: 0;
   border: 1px solid #828282;
   border-bottom: 0;
@@ -1492,7 +1491,6 @@ body.bodytype-privatebanking {
   position: relative;
   flex: 0 0 var(--ptabs-tab-width-active);
   min-height: var(--ptabs-tab-height-active);
-  height: auto;
   -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
   clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
 }
@@ -1503,8 +1501,6 @@ body.bodytype-privatebanking {
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true], .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
   padding: 20px 28px 12px 28px;
-  min-height: var(--ptabs-tab-height-active);
-  margin-top: 0;
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:last-child {
   border-right: 1px solid #828282;
@@ -1642,7 +1638,6 @@ body.bodytype-privatebanking {
 .ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
   padding: 24px 36px 12px 36px;
   min-height: var(--ptabs-tab-height-active);
-  height: auto;
   margin-top: 0;
 }
 .ptabs--icons .ptabs__icon {
@@ -1807,11 +1802,6 @@ body.bodytype-privatebanking {
 @media (min-width: 960px) {
   .ptabs__label {
     max-width: none;
-  }
-  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true] .ptabs__label,
-  .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] .ptabs__label {
-    font-size: 18px;
-    line-height: 1;
   }
 }
 .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover .ptabs__label {
