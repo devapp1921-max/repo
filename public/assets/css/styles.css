@@ -157,7 +157,7 @@ body.bodytype-privatebanking {
 }
 .paccordion--framed {
   border: 1px solid #C0C0C0;
-  background: #fff;
+  background: #FFFFFF;
 }
 .paccordion-container__header--spaced + .paccordion-container__section > .paccordion--framed {
   border-top: 0;
@@ -421,7 +421,7 @@ body.bodytype-privatebanking {
   color: inherit;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   background-image: none;
 }
 @media (min-width: 960px) {
@@ -1073,7 +1073,7 @@ body.bodytype-privatebanking {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  background: #FFFFFF;
 }
 @media (min-width: 960px) {
   .paccordion-container {
@@ -1131,7 +1131,7 @@ body.bodytype-privatebanking {
     align-items: center;
     padding-left: var(--paccordion-gutter);
     padding-right: var(--paccordion-gutter);
-    background: #ffffff;
+    background: #FFFFFF;
     position: relative;
     z-index: 1;
   }
@@ -1156,7 +1156,7 @@ body.bodytype-privatebanking {
 @media (max-width: 959px) {
   .paccordion-container__section + .paccordion-container__header {
     margin-top: -1px;
-    background: #ffffff;
+    background: #FFFFFF;
     position: relative;
     z-index: 1;
   }
@@ -1164,7 +1164,7 @@ body.bodytype-privatebanking {
 @media (min-width: 960px) {
   .paccordion-container__section + .paccordion-container__header {
     margin-top: 0;
-    background: #ffffff;
+    background: #FFFFFF;
     position: relative;
     z-index: 1;
   }
@@ -1172,14 +1172,14 @@ body.bodytype-privatebanking {
 @media (min-width: 1280px) {
   .paccordion-container__section + .paccordion-container__header {
     margin-top: 0;
-    background: #ffffff;
+    background: #FFFFFF;
     position: relative;
     z-index: 1;
   }
 }
 .paccordion-container__section--stacked + .paccordion-container__header {
   margin-top: 0;
-  background: #ffffff;
+  background: #FFFFFF;
   position: relative;
   z-index: 1;
   border-left: 1px solid #C0C0C0;

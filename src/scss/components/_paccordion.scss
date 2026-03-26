@@ -29,7 +29,7 @@
 
     &--framed {
         border: 1px solid $borders-gray;
-        background: #fff;
+        background: $white;
     }
 
     .paccordion-container__header--spaced
@@ -346,7 +346,7 @@
 
     &
         button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-        background-color: #ffffff;
+        background-color: $white;
         background-image: none;
 
         @include tablet- {
@@ -1183,7 +1183,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    background: #ffffff;
+    background: $white;
 
     @include tablet- {
         --paccordion-gutter: 30px;
@@ -1241,7 +1241,7 @@
             align-items: center;
             padding-left: var(--paccordion-gutter);
             padding-right: var(--paccordion-gutter);
-            background: #ffffff;
+            background: $white;
             position: relative;
             z-index: 1;
         }
@@ -1266,21 +1266,21 @@
     &__section + &__header {
         @include -mobile {
             margin-top: -1px;
-            background: #ffffff;
+            background: $white;
             position: relative;
             z-index: 1;
         }
 
         @include tablet- {
             margin-top: 0;
-            background: #ffffff;
+            background: $white;
             position: relative;
             z-index: 1;
         }
 
         @include desktop- {
             margin-top: 0;
-            background: #ffffff;
+            background: $white;
             position: relative;
             z-index: 1;
         }
@@ -1288,7 +1288,7 @@
 
     &__section--stacked + &__header {
         margin-top: 0;
-        background: #ffffff;
+        background: $white;
         position: relative;
         z-index: 1;
         border-left: 1px solid $borders-gray;

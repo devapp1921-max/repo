@@ -45,10 +45,6 @@
   @include big {
     max-width: 1632px;
   }
-
-  // > .ptabs {
-  //   padding: 0 0 48px;
-  // }
 }
 
 .ptabs {
@@ -178,9 +174,8 @@
     border-right: 1px solid $text-gray-light;
   }
 
-  // Gdy taby zawierają akordeon framed, maskujemy wspólną linię, żeby nie było dubli.
+  // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
   &:has(.ptabs__panel .paccordion--framed) {
-    // Gdy taby są łączone z akordeonem framed, nieaktywne nie rysują dolnej linii, a aktywny zakrywa górną linię akordeonu.
     .ptabs__tab:not([aria-selected="true"]):not(.ptabs__tab--active) {
       border-bottom: 0;
     }
@@ -188,7 +183,6 @@
     .ptabs__tab[aria-selected="true"],
     .ptabs__tab--active {
       z-index: 2;
-      // W tym wariancie wyłączamy clip-path, żeby maska mogła przykryć linię akordeonu.
       -webkit-clip-path: none;
       clip-path: none;
     }
@@ -199,7 +193,6 @@
       margin-top: -1px;
     }
 
-    // Maska na dole aktywnego taba, żeby przykryć górną linię akordeonu framed.
     .ptabs__tab[aria-selected="true"]::after,
     .ptabs__tab--active::after {
       content: "";
@@ -222,19 +215,19 @@
     border-right: 0;
   }
 
+  // Separator między tabami bez podwajania obramowań.
   &__tab + &__tab {
-    // Separator między tabami bez podwajania obramowań.
     box-shadow: inset 1px 0 0 $text-gray-light;
   }
 
-  // Usuwamy podwójny separator tuż za aktywnym tabem.
+  // Usuwamy podwójny separator za aktywnym tabem.
   .ptabs__tab[aria-selected="true"] + .ptabs__tab,
   .ptabs__tab--active + .ptabs__tab {
     box-shadow: none;
   }
 
+  // Rysujemy lewą krawędź tylko na pierwszym tabie.
   &__tab:first-child {
-    // Rysujemy lewą krawędź tylko na pierwszym tabie.
     border-left: 1px solid $text-gray-light;
   }
 
@@ -249,29 +242,23 @@
 
   &__tab:first-child[aria-selected="true"],
   &__tab--active:first-child {
-    // Pierwszy aktywny tab nie powinien "uciekać" w lewo.
     margin-left: 0;
     border-left: 1px solid $text-gray-light;
   }
 
-  // W trybie overflow (karuzela) obramowania tabów rysuje pseudo-element.
   &__nav--overflow &__tab {
     box-shadow: none;
   }
 
-  // W overflow kasujemy natywne obramowania, żeby nie dublować linii z pseudo.
   &__nav--overflow &__tab {
     position: relative;
-    // W overflow ramki rysujemy tylko pseudo-elementem.
     border: 0;
   }
 
   &__nav--overflow &__tab:first-child {
-    // Reset lewego obramowania z trybu standardowego.
     border-left: 0;
   }
 
-  // Pseudo-obramowania dla overflow (karuzela).
   &__nav--overflow &__tab::after {
     content: "";
     position: absolute;
@@ -295,7 +282,6 @@
     border-left: 0;
   }
 
-  // Aktywny tab w overflow ma obie krawędzie, a dół jest ukryty.
   &__nav--overflow &__tab[aria-selected="true"]::after,
   &__nav--overflow &__tab--active::after {
     border-left: 1px solid $text-gray-light;
@@ -303,30 +289,23 @@
     border-bottom: 0;
   }
 
-  // Aktywny tab w overflow nie używa prawdziwych obramowań.
   &__nav--overflow &__tab[aria-selected="true"],
   &__nav--overflow &__tab--active {
-    // Bez ujemnych marginesów w overflow, żeby nie pogrubiać linii.
     margin-left: 0;
     margin-right: 0;
-    // W overflow obramowanie rysuje pseudo-element, więc czyścimy realne border-y.
     border: 0;
   }
 
-  // Usuwamy prawą krawędź na tabie tuż przed aktywnym (overflow).
   &__nav--overflow &__tab:has(+ .ptabs__tab[aria-selected="true"])::after,
   &__nav--overflow &__tab:has(+ .ptabs__tab--active)::after {
     border-right: 0;
   }
 
-  // Usuwamy lewą krawędź na tabie tuż za aktywnym (overflow).
   &__nav--overflow .ptabs__tab[aria-selected="true"] + .ptabs__tab::after,
   &__nav--overflow .ptabs__tab--active + .ptabs__tab::after {
     border-left: 0;
   }
 
-  // Na mobile wyłączamy "overflow pseudo-ramki" i wracamy do standardowych separatorów,
-  // żeby uniknąć podwójnych linii przy aktywnym tabie.
   @include -mobile {
     &__nav--overflow &__tab {
       border: 1px solid $text-gray-light;
@@ -641,12 +620,12 @@
     text-align: center;
   }
 
-  // Stan pressed jest sterowany w JS, aby objąć mysz i klawiaturę.
+  // Stan pressed sterowany w JS
   .ptabs__tab--pressed {
-    background-color: #C0C0C0;
+    background-color: $borders-gray;
   }
 
-  // Widoczny fokus dla aktywnego taba (WCAG 2.4.7).
+  // Widoczny fokus dla aktywnego taba 
   .ptabs__tab[aria-selected="true"]:focus-visible,
   .ptabs__tab--active:focus-visible {
     outline: none;
@@ -655,7 +634,7 @@
     box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
   }
 
-  // Widoczny fokus dla nieaktywnych tabów (WCAG 2.4.7).
+  // Widoczny fokus dla nieaktywnych tabów 
   .ptabs__tab:not([aria-selected="true"]):not(.ptabs__tab--active):focus-visible {
     outline: none;
     border: 2px solid $primary-red;
@@ -664,7 +643,7 @@
     z-index: 4;
   }
 
-  // Mobile: pilnujemy, żeby aktywny tab nie tracił bocznych krawędzi.
+  // Aktywny tab nie traci bocznych krawędzi.
   @include -mobile {
     .ptabs__tab:hover .ptabs__label {
       letter-spacing: -0.02em;
@@ -696,7 +675,7 @@
     display: none;
   }
 
-  // W tabach utrzymujemy linię nad otwartym akordeonem (dla kotwic/auto-otwarcia).
+  // W tabach utrzymujemy linię nad otwartym akordeonem (dla kotwic).
   .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
     background-image: linear-gradient($borders-gray, $borders-gray);
     background-size: 100% 1px;
