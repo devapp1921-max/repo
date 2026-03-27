@@ -676,6 +676,36 @@ body.bodytype-privatebanking {
     background: #C0C0C0;
   }
 }
+@media (min-width: 960px) {
+  .paccordion .paccordion__item--l2 > .paccordion__panel > .paccordion__richtext {
+    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+  }
+}
+@media (min-width: 1280px) {
+  .paccordion .paccordion__item--l2 > .paccordion__panel > .paccordion__richtext {
+    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+  }
+}
+@media (min-width: 960px) {
+  .paccordion .paccordion__item--l3 > .paccordion__panel > .paccordion__richtext {
+    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+  }
+}
+@media (min-width: 1280px) {
+  .paccordion .paccordion__item--l3 > .paccordion__panel > .paccordion__richtext {
+    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+  }
+}
+@media (min-width: 960px) {
+  .paccordion .paccordion__item--l4 > .paccordion__panel > .paccordion__richtext {
+    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+  }
+}
+@media (min-width: 1280px) {
+  .paccordion .paccordion__item--l4 > .paccordion__panel > .paccordion__richtext {
+    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+  }
+}
 .paccordion__file-list {
   list-style: none;
   padding: 0;
