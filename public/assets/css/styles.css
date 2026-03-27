@@ -1592,6 +1592,14 @@ body.bodytype-privatebanking {
     pointer-events: none;
     z-index: 2;
   }
+  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child::after,
+  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child::after {
+    left: 0;
+  }
+  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:last-child::after,
+  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:last-child::after {
+    right: 0;
+  }
 }
 .ptabs__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role=tab] {
   border-left: 0;
@@ -1936,6 +1944,14 @@ body.bodytype-privatebanking {
     background: #FFFFFF;
     pointer-events: none;
     z-index: 2;
+  }
+  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child::after,
+  .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child::after {
+    left: 0;
+  }
+  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:last-child::after,
+  .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:last-child::after {
+    right: 0;
   }
 }
 .ptabs__panel,

@@ -202,6 +202,16 @@
         pointer-events: none;
         z-index: 2;
       }
+
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
+      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
+        left: 0;
+      }
+
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
+      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
+        right: 0;
+      }
     }
   }
 
@@ -623,6 +633,16 @@
       background: $white;
       pointer-events: none;
       z-index: 2;
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
+      left: 0;
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
+      right: 0;
     }
   }
 
