@@ -358,9 +358,6 @@ body.bodytype-privatebanking {
     padding-left: calc(16px + var(--rp-indent-level));
   }
 }
-.paccordion button.paccordion__button.paccordion__button.paccordion__button:has(.paccordion__icon--plusminus) {
-  background-image: none;
-}
 .paccordion button.paccordion__button.paccordion__button.paccordion__button:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button:active {
   background-color: #e2e2e2;
   color: inherit;
@@ -398,6 +395,12 @@ body.bodytype-privatebanking {
 }
 .paccordion__item:has(> .paccordion__heading > .paccordion__button[aria-expanded=true]) + .paccordion__item > .paccordion__heading > .paccordion__button {
   background-image: none;
+}
+.paccordion__item:not(:first-child) > .paccordion__heading > .paccordion__button.paccordion__button.paccordion__button:has(.paccordion__icon--plusminus) {
+  background-image: linear-gradient(#C0C0C0, #C0C0C0);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true]::after {
   content: "";
@@ -688,6 +691,20 @@ body.bodytype-privatebanking {
     height: 1px;
     background: #C0C0C0;
   }
+}
+.paccordion__item:has(> .paccordion__heading > .paccordion__button .paccordion__icon--plusminus) > .paccordion__panel > .paccordion__richtext {
+  border-bottom: 0;
+}
+@media (min-width: 1280px) {
+  .paccordion__item:has(> .paccordion__heading > .paccordion__button .paccordion__icon--plusminus) > .paccordion__panel > .paccordion__richtext::after {
+    content: none;
+  }
+}
+.paccordion__item:has(> .paccordion__heading > .paccordion__button .paccordion__icon--plusminus) > .paccordion__panel > .paccordion .paccordion__item:last-child::after {
+  content: none;
+}
+.paccordion__item:has(> .paccordion__heading > .paccordion__button .paccordion__icon--plusminus) > .paccordion__panel > .paccordion__file-list {
+  border-bottom: 0;
 }
 @media (min-width: 960px) {
   .paccordion .paccordion__item--l2 > .paccordion__panel > .paccordion__richtext {

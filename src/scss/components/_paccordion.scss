@@ -253,13 +253,6 @@
         }
     }
 
-    &
-        button.paccordion__button.paccordion__button.paccordion__button:has(
-            .paccordion__icon--plusminus
-        ) {
-        background-image: none;
-    }
-
     // Tło na hover/active dla wszystkich poziomów akordeonu.
     & button.paccordion__button.paccordion__button.paccordion__button:hover,
     & button.paccordion__button.paccordion__button.paccordion__button:active {
@@ -323,6 +316,17 @@
         > &__heading
         > .paccordion__button {
         background-image: none;
+    }
+
+    &__item:not(:first-child)
+        > &__heading
+        > .paccordion__button.paccordion__button.paccordion__button:has(
+            .paccordion__icon--plusminus
+        ) {
+        background-image: linear-gradient($borders-gray, $borders-gray);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
     }
 
     &
@@ -688,6 +692,31 @@
             bottom: 0;
             height: 1px;
             background: $borders-gray;
+        }
+    }
+
+    // Bez dodatkowej dolnej linii 
+    &__item:has(
+            > .paccordion__heading
+                > .paccordion__button
+                .paccordion__icon--plusminus
+        ) {
+        > .paccordion__panel > .paccordion__richtext {
+            border-bottom: 0;
+        }
+
+        > .paccordion__panel > .paccordion__richtext::after {
+            @include desktop- {
+                content: none;
+            }
+        }
+
+        > .paccordion__panel > .paccordion .paccordion__item:last-child::after {
+            content: none;
+        }
+
+        > .paccordion__panel > .paccordion__file-list {
+            border-bottom: 0;
         }
     }
 
