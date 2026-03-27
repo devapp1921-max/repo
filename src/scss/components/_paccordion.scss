@@ -253,6 +253,13 @@
         }
     }
 
+    &
+        button.paccordion__button.paccordion__button.paccordion__button:has(
+            .paccordion__icon--plusminus
+        ) {
+        background-image: none;
+    }
+
     // Tło na hover/active dla wszystkich poziomów akordeonu.
     & button.paccordion__button.paccordion__button.paccordion__button:hover,
     & button.paccordion__button.paccordion__button.paccordion__button:active {
@@ -358,7 +365,6 @@
     &
         button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
         background-color: $white;
-        background-image: none;
 
         @include tablet- {
             padding-top: 24px;

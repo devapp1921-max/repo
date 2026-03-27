@@ -358,6 +358,9 @@ body.bodytype-privatebanking {
     padding-left: calc(16px + var(--rp-indent-level));
   }
 }
+.paccordion button.paccordion__button.paccordion__button.paccordion__button:has(.paccordion__icon--plusminus) {
+  background-image: none;
+}
 .paccordion button.paccordion__button.paccordion__button.paccordion__button:hover, .paccordion button.paccordion__button.paccordion__button.paccordion__button:active {
   background-color: #e2e2e2;
   color: inherit;
@@ -427,7 +430,6 @@ body.bodytype-privatebanking {
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
   background-color: #FFFFFF;
-  background-image: none;
 }
 @media (min-width: 960px) {
   .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
