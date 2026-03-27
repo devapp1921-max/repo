@@ -296,6 +296,15 @@
         }
     }
 
+    // separator w zagnieżdzeniu zapewnia rodzic
+    &__panel
+        > .paccordion
+        > &__item:first-child
+        > &__heading
+        > .paccordion__button.paccordion__button.paccordion__button {
+        background-image: none;
+    }
+
     &__item--open + &__item > &__heading > .paccordion__button {
         background-image: none;
     }
@@ -677,35 +686,35 @@
     }
 
     & .paccordion__item--l2 > .paccordion__panel > .paccordion__richtext {
-        // Wcięcie richtext poziomu 2 
+        // Wcięcie richtext poziomu 2 - jak tekst rodzica.
         @include tablet- {
-            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+            padding-left: calc(16px + var(--rp-indent-level));
         }
 
         @include desktop- {
-            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+            padding-left: calc(16px + var(--rp-indent-level));
         }
     }
 
     & .paccordion__item--l3 > .paccordion__panel > .paccordion__richtext {
-        // Wcięcie richtext poziomu 3 
+        // Wcięcie richtext poziomu 3 - jak tekst rodzica.
         @include tablet- {
-            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+            padding-left: calc(16px + var(--rp-indent-level));
         }
 
         @include desktop- {
-            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+            padding-left: calc(16px + var(--rp-indent-level));
         }
     }
 
     & .paccordion__item--l4 > .paccordion__panel > .paccordion__richtext {
-        // Wcięcie richtext poziomu 4 
+        // Wcięcie richtext poziomu 4 - jak tekst rodzica.
         @include tablet- {
-            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+            padding-left: calc(16px + var(--rp-indent-level));
         }
 
         @include desktop- {
-            padding-left: calc(16px + var(--rp-indent-level) + 34px);
+            padding-left: calc(16px + var(--rp-indent-level));
         }
     }
 

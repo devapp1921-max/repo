@@ -387,6 +387,9 @@ body.bodytype-privatebanking {
     padding: 24px 16px;
   }
 }
+.paccordion__panel > .paccordion > .paccordion__item:first-child > .paccordion__heading > .paccordion__button.paccordion__button.paccordion__button {
+  background-image: none;
+}
 .paccordion__item--open + .paccordion__item > .paccordion__heading > .paccordion__button {
   background-image: none;
 }
@@ -686,32 +689,32 @@ body.bodytype-privatebanking {
 }
 @media (min-width: 960px) {
   .paccordion .paccordion__item--l2 > .paccordion__panel > .paccordion__richtext {
-    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 @media (min-width: 1280px) {
   .paccordion .paccordion__item--l2 > .paccordion__panel > .paccordion__richtext {
-    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 @media (min-width: 960px) {
   .paccordion .paccordion__item--l3 > .paccordion__panel > .paccordion__richtext {
-    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 @media (min-width: 1280px) {
   .paccordion .paccordion__item--l3 > .paccordion__panel > .paccordion__richtext {
-    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 @media (min-width: 960px) {
   .paccordion .paccordion__item--l4 > .paccordion__panel > .paccordion__richtext {
-    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 @media (min-width: 1280px) {
   .paccordion .paccordion__item--l4 > .paccordion__panel > .paccordion__richtext {
-    padding-left: calc(16px + var(--rp-indent-level) + 34px);
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 .paccordion__file-list {
