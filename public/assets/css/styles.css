@@ -132,6 +132,8 @@ body.bodytype-privatebanking {
 .paccordion {
   --rp-gutter: 20px;
   --rp-step: 16px;
+  --paccordion-color-open: #656565;
+  --paccordion-color-current: #000000;
 }
 @media (max-width: 959px) {
   .paccordion {
@@ -537,16 +539,22 @@ body.bodytype-privatebanking {
   color: #656565;
 }
 .paccordion__item--open > .paccordion__heading > .paccordion__button {
-  color: #000000;
+  color: var(--paccordion-color-open);
 }
 .paccordion .paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
-  color: #000000;
+  color: var(--paccordion-color-open);
 }
 .paccordion__item--has-open-child > .paccordion__heading > .paccordion__button {
   color: #656565;
 }
 .paccordion__item--has-open-child > .paccordion__heading > button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
   color: #656565;
+}
+.paccordion__item--current > .paccordion__heading > .paccordion__button {
+  color: var(--paccordion-color-current);
+}
+.paccordion .paccordion__item--current > .paccordion__heading > .paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
+  color: var(--paccordion-color-current);
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] .paccordion__icon--chevron {
   transform: rotate(180deg);

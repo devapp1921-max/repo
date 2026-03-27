@@ -5,6 +5,7 @@ export class Accordion {
 
   init() {
     let autoId = 0;
+    let currentItem = null;
 
     const prefersReducedMotion = () =>
       window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -58,6 +59,24 @@ export class Accordion {
 
     const setExpanded = (button, expanded) => {
       button.setAttribute("aria-expanded", expanded ? "true" : "false");
+    };
+
+    const setCurrentItem = (itemEl) => {
+      if (currentItem === itemEl) return;
+      if (currentItem) currentItem.classList.remove("paccordion__item--current");
+      currentItem = itemEl || null;
+      if (currentItem) currentItem.classList.add("paccordion__item--current");
+    };
+
+    const findNearestOpenAncestor = (itemEl) => {
+      let current = itemEl?.parentElement || null;
+      while (current) {
+        const item = closestItem(current);
+        if (!item) break;
+        if (isOpen(item)) return item;
+        current = item.parentElement;
+      }
+      return null;
     };
 
     const setPanelInteractivity = (panel, interactive) => {
@@ -147,6 +166,7 @@ export class Accordion {
       if (isOpen(itemEl)) return;
       setExpanded(button, true);
       itemEl.classList.add("paccordion__item--open");
+      setCurrentItem(itemEl);
       animateOpen(panel);
       updateOpenTree();
     };
@@ -157,6 +177,9 @@ export class Accordion {
       if (!isOpen(itemEl)) return;
       setExpanded(button, false);
       itemEl.classList.remove("paccordion__item--open");
+      if (currentItem === itemEl) {
+        setCurrentItem(findNearestOpenAncestor(itemEl));
+      }
       animateClose(panel);
       updateOpenTree();
     };
@@ -166,11 +189,13 @@ export class Accordion {
       else openItem(itemEl);
     };
 
-    const openItemImmediate = (itemEl) => {
+    const openItemImmediate = (itemEl, options = {}) => {
+      const { setCurrent = true } = options;
       const { button, panel } = getParts(itemEl);
       if (!button || !panel) return;
       setExpanded(button, true);
       itemEl.classList.add("paccordion__item--open");
+      if (setCurrent) setCurrentItem(itemEl);
       setPanelInteractivity(panel, true);
       panel.hidden = false;
       panel.style.removeProperty("height");
@@ -179,12 +204,13 @@ export class Accordion {
       updateOpenTree();
     };
 
-    const openAncestorsImmediate = (itemEl) => {
+    const openAncestorsImmediate = (itemEl, options = {}) => {
+      const { setCurrent = false } = options;
       let current = itemEl?.parentElement || null;
       while (current) {
         const item = closestItem(current);
         if (!item) break;
-        openItemImmediate(item);
+        openItemImmediate(item, { setCurrent });
         current = item.parentElement;
       }
     };
@@ -231,7 +257,8 @@ export class Accordion {
       ensureItemId(item);
 
       if (item.hasAttribute("data-open")) {
-        openItemImmediate(item);
+        // Domyślnie otwarte bez ustawiania "current".
+        openItemImmediate(item, { setCurrent: false });
       }
     };
 
@@ -251,8 +278,9 @@ export class Accordion {
       if (!item) return;
       const behavior = prefersReducedMotion() ? "auto" : "smooth";
       setTimeout(() => {
-        openItemImmediate(item);
-        openAncestorsImmediate(item);
+        openItemImmediate(item, { setCurrent: true });
+        openAncestorsImmediate(item, { setCurrent: false });
+        setCurrentItem(item);
         target.scrollIntoView({ behavior, block: "start" });
         history.replaceState(null, "", `${urlWithoutHash}#${hash}`);
       }, 0);

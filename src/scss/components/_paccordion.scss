@@ -4,6 +4,8 @@
 .paccordion {
     --rp-gutter: 20px;
     --rp-step: 16px;
+    --paccordion-color-open: #{$gray65};
+    --paccordion-color-current: #{$black};
 
     @include -mobile {
         --rp-step: 0px;
@@ -507,12 +509,12 @@
     }
 
     &__item--open > &__heading > .paccordion__button {
-        color: $black;
+        color: var(--paccordion-color-open);
     }
 
     &
         .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-        color: $black;
+        color: var(--paccordion-color-open);
     }
 
     &__item--has-open-child > &__heading > .paccordion__button {
@@ -523,6 +525,17 @@
         > &__heading
         > button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
         color: $gray65;
+    }
+
+    &__item--current > &__heading > .paccordion__button {
+        color: var(--paccordion-color-current);
+    }
+
+    &
+        .paccordion__item--current
+        > &__heading
+        > .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+        color: var(--paccordion-color-current);
     }
 
     &
