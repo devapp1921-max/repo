@@ -92,6 +92,13 @@
     position: relative;
   }
 
+  @include desktop- {
+    &__list {
+      margin-left: 0;
+      padding-left: 1px;
+    }
+  }
+
   &__tab.ptabs__tab.ptabs__tab[role="tab"] {
     font-family: "SofiaPro-Regular", sans-serif;
     font-size: 18px;
@@ -173,10 +180,6 @@
   // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
   &:has(.ptabs__panel .paccordion--framed) {
     @include tablet- {
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-        border-bottom: 0;
-      }
-
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
         z-index: 2;
@@ -206,6 +209,10 @@
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
         left: 0;
+      }
+
+      .ptabs__panel {
+        padding-left: 1px;
       }
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
@@ -289,6 +296,9 @@
 
   &__nav--overflow &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"]::after {
     border-left: 0;
+  }
+  &__nav--overflow &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"]:first-of-type::after {
+    border-left: 1px solid $text-gray-light;
   }
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,

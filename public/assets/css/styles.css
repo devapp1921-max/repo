@@ -1491,6 +1491,12 @@ body.bodytype-privatebanking {
   margin: 0 calc(var(--ptabs-edge-padding) * -1);
   position: relative;
 }
+@media (min-width: 1280px) {
+  .ptabs__list {
+    margin-left: 0;
+    padding-left: 1px;
+  }
+}
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
   font-family: "SofiaPro-Regular", sans-serif;
   font-size: 18px;
@@ -1566,9 +1572,6 @@ body.bodytype-privatebanking {
   border-right: 1px solid #828282;
 }
 @media (min-width: 960px) {
-  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
-    border-bottom: 0;
-  }
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
     z-index: 2;
@@ -1595,6 +1598,9 @@ body.bodytype-privatebanking {
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child::after,
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child::after {
     left: 0;
+  }
+  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__panel {
+    padding-left: 1px;
   }
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:last-child::after,
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:last-child::after {
@@ -1658,6 +1664,9 @@ body.bodytype-privatebanking {
 }
 .ptabs__nav--overflow .ptabs__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role=tab]::after {
   border-left: 0;
+}
+.ptabs__nav--overflow .ptabs__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role=tab]:first-of-type::after {
+  border-left: 1px solid #828282;
 }
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]::after, .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]::after {
   border-left: 1px solid #828282;

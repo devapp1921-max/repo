@@ -1,0 +1,2582 @@
+       
+       <!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taby uniwersalne - test</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <main class="ptabs-demo">
+       <div class="paccordion-container">
+            <header class="paccordion-container__header">
+                <span
+                    class="paccordion-container__title"
+                    role="heading"
+                    aria-level="1"
+                    >Cennik i regulaminy</span
+                >
+            </header>
+
+            <section class="ptabs-container">
+                <div class="ptabs ptabs--no-icons" data-ptabs>
+                    <div
+                        class="ptabs__list"
+                        role="tablist"
+                        aria-label="Cennik i regulaminy"
+                    >
+                        <button
+                            class="ptabs__tab"
+                            role="tab"
+                            id="cennik-tab-1"
+                            aria-controls="cennik-panel-1"
+                            aria-selected="true"
+                            tabindex="0"
+                        >
+                            <span class="ptabs__label">Cennik</span>
+                        </button>
+                        <button
+                            class="ptabs__tab"
+                            role="tab"
+                            id="cennik-tab-2"
+                            aria-controls="cennik-panel-2"
+                            aria-selected="false"
+                            tabindex="-1"
+                        >
+                            <span class="ptabs__label">Regulaminy</span>
+                        </button>
+                        <button
+                            class="ptabs__tab"
+                            role="tab"
+                            id="cennik-tab-3"
+                            aria-controls="cennik-panel-3"
+                            aria-selected="false"
+                            tabindex="-1"
+                        >
+                            <span class="ptabs__label">Archiwum</span>
+                        </button>
+                    </div>
+                    <div
+                        class="ptabs__panel"
+                        role="tabpanel"
+                        id="cennik-panel-1"
+                        aria-labelledby="cennik-tab-1"
+                        tabindex="-1"
+                    >
+                        <section
+                            class="paccordion-container__section paccordion-container__section--stacked"
+                            aria-label="Cennik i regulaminy"
+                        >
+                            <div class="paccordion paccordion--framed">
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="oprocentowanie"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-oprocentowanie"
+                                            id="button-oprocentowanie"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Oprocentowanie</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-oprocentowanie"
+                                        role="region"
+                                        aria-labelledby="button-oprocentowanie"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="konto-firmowe"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-konto-firmowe"
+                                            id="button-konto-firmowe"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Konto firmowe</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-konto-firmowe"
+                                        role="region"
+                                        aria-labelledby="button-konto-firmowe"
+                                        hidden
+                                    >
+                                        <div
+                                            class="paccordion paccordion--nested"
+                                        >
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                                id="konto-biznes-zubrem"
+                                            >
+                                                <div
+                                                    class="paccordion__heading"
+                                                    role="heading"
+                                                    aria-level="3"
+                                                >
+                                                    <button
+                                                        class="paccordion__button paccordion__button--startIcon"
+                                                        type="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="panel-konto-biznes-zubrem"
+                                                        id="button-konto-biznes-zubrem"
+                                                    >
+                                                        <span
+                                                            class="paccordion__icon paccordion__icon--plusminus"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        <span
+                                                            class="paccordion__label"
+                                                            >Konto Biznes z
+                                                            zubrem</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="paccordion__panel"
+                                                    id="panel-konto-biznes-zubrem"
+                                                    hidden
+                                                >
+                                                    <div
+                                                        class="paccordion paccordion--nested"
+                                                    >
+                                                        <div
+                                                            class="paccordion__item paccordion__item--l3"
+                                                            id="taryfa-oplat-i-prowizji"
+                                                            data-open
+                                                        >
+                                                            <div
+                                                                class="paccordion__heading"
+                                                                role="heading"
+                                                                aria-level="4"
+                                                            >
+                                                                <button
+                                                                    class="paccordion__button paccordion__button--startIcon"
+                                                                    type="button"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="panel-taryfa-oplat-i-prowizji"
+                                                                    id="button-taryfa-oplat-i-prowizji"
+                                                                >
+                                                                    <span
+                                                                        class="paccordion__icon paccordion__icon--plusminus"
+                                                                        aria-hidden="true"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="paccordion__label"
+                                                                        >Taryfa
+                                                                        oplat i
+                                                                        prowizji</span
+                                                                    >
+                                                                </button>
+                                                            </div>
+                                                            <div
+                                                                class="paccordion__panel"
+                                                                id="panel-taryfa-oplat-i-prowizji"
+                                                                hidden
+                                                            >
+                                                                <ul
+                                                                    class="paccordion__file-list paccordion__file-list--cols-1"
+                                                                >
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                        >
+                                                                            <span
+                                                                                class="paccordion__file-text"
+                                                                            >
+                                                                                Tabela
+                                                                                oplat
+                                                                                i
+                                                                                prowizji
+                                                                                dla
+                                                                                Konta
+                                                                                Biznes
+                                                                                z
+                                                                                Zubrem
+                                                                                i
+                                                                                Konta
+                                                                                Oszczednosciowego
+                                                                                Biznes
+                                                                                obowiazujaca
+                                                                                od
+                                                                                1.02.2025
+                                                                                r.do
+                                                                                31.07.2025
+                                                                                r.
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                        >
+                                                                            <span
+                                                                                class="paccordion__file-text"
+                                                                            >
+                                                                                Tabela
+                                                                                oplat
+                                                                                i
+                                                                                prowizji
+                                                                                dla
+                                                                                Konta
+                                                                                Biznes
+                                                                                z
+                                                                                Zubrem
+                                                                                i
+                                                                                Konta
+                                                                                Oszczednosciowego
+                                                                                Biznes
+                                                                                obowiazujaca
+                                                                                od
+                                                                                1.02.2025
+                                                                                r.do
+                                                                                31.07.2025
+                                                                                r.
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="paccordion__item paccordion__item--l3"
+                                                            id="regulaminy-konto-biznes"
+                                                        >
+                                                            <div
+                                                                class="paccordion__heading"
+                                                                role="heading"
+                                                                aria-level="4"
+                                                            >
+                                                                <button
+                                                                    class="paccordion__button paccordion__button--startIcon"
+                                                                    type="button"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="panel-regulaminy-konto-biznes"
+                                                                    id="button-regulaminy-konto-biznes"
+                                                                >
+                                                                    <span
+                                                                        class="paccordion__icon paccordion__icon--plusminus"
+                                                                        aria-hidden="true"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="paccordion__label"
+                                                                        >Regulaminy</span
+                                                                    >
+                                                                </button>
+                                                            </div>
+                                                            <div
+                                                                class="paccordion__panel"
+                                                                id="panel-regulaminy-konto-biznes"
+                                                                hidden
+                                                            >
+                                                                <ul
+                                                                    class="paccordion__file-list paccordion__file-list--cols-1"
+                                                                >
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                            ><span
+                                                                                class="paccordion__file-text"
+                                                                                >Placeholder.</span
+                                                                            ></a
+                                                                        >
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="paccordion__item paccordion__item--l3"
+                                                            id="archiwum-konto-biznes"
+                                                        >
+                                                            <div
+                                                                class="paccordion__heading"
+                                                                role="heading"
+                                                                aria-level="4"
+                                                            >
+                                                                <button
+                                                                    class="paccordion__button paccordion__button--startIcon"
+                                                                    type="button"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="panel-archiwum-konto-biznes"
+                                                                    id="button-archiwum-konto-biznes"
+                                                                >
+                                                                    <span
+                                                                        class="paccordion__icon paccordion__icon--plusminus"
+                                                                        aria-hidden="true"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="paccordion__label"
+                                                                        >Archiwum</span
+                                                                    >
+                                                                </button>
+                                                            </div>
+                                                            <div
+                                                                class="paccordion__panel"
+                                                                id="panel-archiwum-konto-biznes"
+                                                                hidden
+                                                            >
+                                                                <div
+                                                                    class="paccordion paccordion--nested"
+                                                                >
+                                                                    <div
+                                                                        class="paccordion__item paccordion__item--l4"
+                                                                        id="archiwum-taryfa-oplat"
+                                                                    >
+                                                                        <div
+                                                                            class="paccordion__heading"
+                                                                            role="heading"
+                                                                            aria-level="5"
+                                                                        >
+                                                                            <button
+                                                                                class="paccordion__button paccordion__button--startIcon"
+                                                                                type="button"
+                                                                                aria-expanded="false"
+                                                                                aria-controls="panel-archiwum-taryfa-oplat"
+                                                                                id="button-archiwum-taryfa-oplat"
+                                                                            >
+                                                                                <span
+                                                                                    class="paccordion__icon paccordion__icon--plusminus"
+                                                                                    aria-hidden="true"
+                                                                                ></span>
+                                                                                <span
+                                                                                    class="paccordion__label"
+                                                                                    >Taryfa
+                                                                                    oplat
+                                                                                    i
+                                                                                    prowizji</span
+                                                                                >
+                                                                            </button>
+                                                                        </div>
+                                                                        <div
+                                                                            class="paccordion__panel"
+                                                                            id="panel-archiwum-taryfa-oplat"
+                                                                            hidden
+                                                                        >
+                                                                            <ul
+                                                                                class="paccordion__file-list paccordion__file-list--cols-1"
+                                                                            >
+                                                                                <li
+                                                                                    class="paccordion__file-item"
+                                                                                >
+                                                                                    <a
+                                                                                        class="paccordion__file-link"
+                                                                                        href="#"
+                                                                                    >
+                                                                                        <span
+                                                                                            class="paccordion__file-text"
+                                                                                        >
+                                                                                            Tabela
+                                                                                            oplat
+                                                                                            i
+                                                                                            prowizji
+                                                                                            dla
+                                                                                            Konta
+                                                                                            Biznes
+                                                                                            z
+                                                                                            Zubrem
+                                                                                            i
+                                                                                            Konta
+                                                                                            Oszczednosciowego
+                                                                                            Biznes
+                                                                                            obowiazujaca
+                                                                                            od
+                                                                                            1.02.2025
+                                                                                            r.do
+                                                                                            31.07.2025
+                                                                                            r.
+                                                                                        </span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li
+                                                                                    class="paccordion__file-item"
+                                                                                >
+                                                                                    <a
+                                                                                        class="paccordion__file-link"
+                                                                                        href="#"
+                                                                                    >
+                                                                                        <span
+                                                                                            class="paccordion__file-text"
+                                                                                        >
+                                                                                            Tabela
+                                                                                            oplat
+                                                                                            i
+                                                                                            prowizji
+                                                                                            dla
+                                                                                            Konta
+                                                                                            Biznes
+                                                                                            z
+                                                                                            Zubrem
+                                                                                            i
+                                                                                            Konta
+                                                                                            Oszczednosciowego
+                                                                                            Biznes
+                                                                                            obowiazujaca
+                                                                                            od
+                                                                                            1.02.2025
+                                                                                            r.do
+                                                                                            31.07.2025
+                                                                                            r.
+                                                                                        </span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li
+                                                                                    class="paccordion__file-item"
+                                                                                >
+                                                                                    <a
+                                                                                        class="paccordion__file-link"
+                                                                                        href="#"
+                                                                                    >
+                                                                                        <span
+                                                                                            class="paccordion__file-text"
+                                                                                        >
+                                                                                            Tabela
+                                                                                            oplat
+                                                                                            i
+                                                                                            prowizji
+                                                                                            dla
+                                                                                            Konta
+                                                                                            Biznes
+                                                                                            z
+                                                                                            Zubrem
+                                                                                            i
+                                                                                            Konta
+                                                                                            Oszczednosciowego
+                                                                                            Biznes
+                                                                                            obowiazujaca
+                                                                                            od
+                                                                                            1.02.2025
+                                                                                            r.do
+                                                                                            31.07.2025
+                                                                                            r.
+                                                                                        </span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li
+                                                                                    class="paccordion__file-item"
+                                                                                >
+                                                                                    <a
+                                                                                        class="paccordion__file-link"
+                                                                                        href="#"
+                                                                                    >
+                                                                                        <span
+                                                                                            class="paccordion__file-text"
+                                                                                        >
+                                                                                            Tabela
+                                                                                            oplat
+                                                                                            i
+                                                                                            prowizji
+                                                                                            dla
+                                                                                            Konta
+                                                                                            Biznes
+                                                                                            z
+                                                                                            Zubrem
+                                                                                            i
+                                                                                            Konta
+                                                                                            Oszczednosciowego
+                                                                                            Biznes
+                                                                                            obowiazujaca
+                                                                                            od
+                                                                                            1.02.2025
+                                                                                            r.do
+                                                                                            31.07.2025
+                                                                                            r.
+                                                                                        </span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                                id="konto-oszczednosciowe"
+                                            >
+                                                <div
+                                                    class="paccordion__heading"
+                                                    role="heading"
+                                                    aria-level="3"
+                                                >
+                                                    <button
+                                                        class="paccordion__button paccordion__button--startIcon"
+                                                        type="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="panel-konto-oszczednosciowe"
+                                                        id="button-konto-oszczednosciowe"
+                                                    >
+                                                        <span
+                                                            class="paccordion__icon paccordion__icon--plusminus"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        <span
+                                                            class="paccordion__label"
+                                                            >Konto
+                                                            Oszczednosciowe
+                                                            Biznes</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="paccordion__panel"
+                                                    id="panel-konto-oszczednosciowe"
+                                                    hidden
+                                                >
+                                                    <div
+                                                        class="paccordion__richtext"
+                                                    >
+                                                        <p>Placeholder.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                                id="rachunki-biezace"
+                                            >
+                                                <div
+                                                    class="paccordion__heading"
+                                                    role="heading"
+                                                    aria-level="3"
+                                                >
+                                                    <button
+                                                        class="paccordion__button paccordion__button--startIcon"
+                                                        type="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="panel-rachunki-biezace"
+                                                        id="button-rachunki-biezace"
+                                                    >
+                                                        <span
+                                                            class="paccordion__icon paccordion__icon--plusminus"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        <span
+                                                            class="paccordion__label"
+                                                            >Rachunki biezace,
+                                                            walutowe i
+                                                            pomocnicze</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="paccordion__panel"
+                                                    id="panel-rachunki-biezace"
+                                                    hidden
+                                                >
+                                                    <div
+                                                        class="paccordion__richtext"
+                                                    >
+                                                        <p>Placeholder.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="karty-debetowe"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-karty-debetowe"
+                                            id="button-karty-debetowe"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Karty debetowe</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-karty-debetowe"
+                                        role="region"
+                                        aria-labelledby="button-karty-debetowe"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="karty-kredytowe"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-karty-kredytowe"
+                                            id="button-karty-kredytowe"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Karty kredytowe</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-karty-kredytowe"
+                                        role="region"
+                                        aria-labelledby="button-karty-kredytowe"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="kredyty"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-kredyty"
+                                            id="button-kredyty"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Kredyty i pozyczki</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-kredyty"
+                                        role="region"
+                                        aria-labelledby="button-kredyty"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="bankowosc-elektroniczna"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-bankowosc-elektroniczna"
+                                            id="button-bankowosc-elektroniczna"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Bankowosc elektroniczna</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-bankowosc-elektroniczna"
+                                        role="region"
+                                        aria-labelledby="button-bankowosc-elektroniczna"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="godziny-graniczne"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-godziny-graniczne"
+                                            id="button-godziny-graniczne"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Godziny graniczne</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-godziny-graniczne"
+                                        role="region"
+                                        aria-labelledby="button-godziny-graniczne"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <header
+                            class="paccordion-container__header paccordion-container__header--spaced"
+                            id="produkty-wycofane"
+                        >
+                            <span
+                                class="paccordion-container__title"
+                                role="heading"
+                                aria-level="2"
+                                >Produkty wycofane z oferty</span
+                            >
+                        </header>
+
+                        <section
+                            class="paccordion-container__section"
+                            aria-label="Produkty wycofane z oferty"
+                        >
+                            <div class="paccordion paccordion--framed">
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="wycofane-konto-firmowe"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-wycofane-konto-firmowe"
+                                            id="button-wycofane-konto-firmowe"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Konto firmowe</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-wycofane-konto-firmowe"
+                                        role="region"
+                                        aria-labelledby="button-wycofane-konto-firmowe"
+                                        hidden
+                                    >
+                                        <div
+                                            class="paccordion paccordion--nested"
+                                        >
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                                id="wycofane-konto-biznes"
+                                            >
+                                                <div
+                                                    class="paccordion__heading"
+                                                    role="heading"
+                                                    aria-level="4"
+                                                >
+                                                    <button
+                                                        class="paccordion__button paccordion__button--startIcon"
+                                                        type="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="panel-wycofane-konto-biznes"
+                                                        id="button-wycofane-konto-biznes"
+                                                    >
+                                                        <span
+                                                            class="paccordion__icon paccordion__icon--plusminus"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        <span
+                                                            class="paccordion__label"
+                                                            >Konto Biznes z
+                                                            zubrem</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="paccordion__panel"
+                                                    id="panel-wycofane-konto-biznes"
+                                                    hidden
+                                                >
+                                                    <div
+                                                        class="paccordion paccordion--nested"
+                                                    >
+                                                        <div
+                                                            class="paccordion__item paccordion__item--l3"
+                                                            id="wycofane-taryfa-oplat"
+                                                        >
+                                                            <div
+                                                                class="paccordion__heading"
+                                                                role="heading"
+                                                                aria-level="5"
+                                                            >
+                                                                <button
+                                                                    class="paccordion__button paccordion__button--startIcon"
+                                                                    type="button"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="panel-wycofane-taryfa-oplat"
+                                                                    id="button-wycofane-taryfa-oplat"
+                                                                >
+                                                                    <span
+                                                                        class="paccordion__icon paccordion__icon--plusminus"
+                                                                        aria-hidden="true"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="paccordion__label"
+                                                                        >Taryfa
+                                                                        oplat i
+                                                                        prowizji</span
+                                                                    >
+                                                                </button>
+                                                            </div>
+                                                            <div
+                                                                class="paccordion__panel"
+                                                                id="panel-wycofane-taryfa-oplat"
+                                                                hidden
+                                                            >
+                                                                <ul
+                                                                    class="paccordion__file-list paccordion__file-list--cols-1"
+                                                                >
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                            ><span
+                                                                                class="paccordion__file-text"
+                                                                                >Tabela
+                                                                                oplat
+                                                                                i
+                                                                                prowizji
+                                                                                ...</span
+                                                                            ></a
+                                                                        >
+                                                                    </li>
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                            ><span
+                                                                                class="paccordion__file-text"
+                                                                                >Tabela
+                                                                                oplat
+                                                                                i
+                                                                                prowizji
+                                                                                ...</span
+                                                                            ></a
+                                                                        >
+                                                                    </li>
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                            ><span
+                                                                                class="paccordion__file-text"
+                                                                                >Tabela
+                                                                                oplat
+                                                                                i
+                                                                                prowizji
+                                                                                ...</span
+                                                                            ></a
+                                                                        >
+                                                                    </li>
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                            ><span
+                                                                                class="paccordion__file-text"
+                                                                                >Tabela
+                                                                                oplat
+                                                                                i
+                                                                                prowizji
+                                                                                ...</span
+                                                                            ></a
+                                                                        >
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="paccordion__item paccordion__item--l3"
+                                                            id="wycofane-regulaminy"
+                                                        >
+                                                            <div
+                                                                class="paccordion__heading"
+                                                                role="heading"
+                                                                aria-level="5"
+                                                            >
+                                                                <button
+                                                                    class="paccordion__button paccordion__button--startIcon"
+                                                                    type="button"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="panel-wycofane-regulaminy"
+                                                                    id="button-wycofane-regulaminy"
+                                                                >
+                                                                    <span
+                                                                        class="paccordion__icon paccordion__icon--plusminus"
+                                                                        aria-hidden="true"
+                                                                    ></span>
+                                                                    <span
+                                                                        class="paccordion__label"
+                                                                        >Regulaminy</span
+                                                                    >
+                                                                </button>
+                                                            </div>
+                                                            <div
+                                                                class="paccordion__panel"
+                                                                id="panel-wycofane-regulaminy"
+                                                                hidden
+                                                            >
+                                                                <ul
+                                                                    class="paccordion__file-list paccordion__file-list--cols-1"
+                                                                >
+                                                                    <li
+                                                                        class="paccordion__file-item"
+                                                                    >
+                                                                        <a
+                                                                            class="paccordion__file-link"
+                                                                            href="#"
+                                                                            ><span
+                                                                                class="paccordion__file-text"
+                                                                                >Placeholder.</span
+                                                                            ></a
+                                                                        >
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                                id="wycofane-konto-oszczednosciowe"
+                                            >
+                                                <div
+                                                    class="paccordion__heading"
+                                                    role="heading"
+                                                    aria-level="4"
+                                                >
+                                                    <button
+                                                        class="paccordion__button paccordion__button--startIcon"
+                                                        type="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="panel-wycofane-konto-oszczednosciowe"
+                                                        id="button-wycofane-konto-oszczednosciowe"
+                                                    >
+                                                        <span
+                                                            class="paccordion__icon paccordion__icon--plusminus"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        <span
+                                                            class="paccordion__label"
+                                                            >Konto
+                                                            Oszczednosciowe
+                                                            Biznes</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="paccordion__panel"
+                                                    id="panel-wycofane-konto-oszczednosciowe"
+                                                    hidden
+                                                >
+                                                    <div
+                                                        class="paccordion__richtext"
+                                                    >
+                                                        <p>Placeholder.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                                id="wycofane-rachunki"
+                                            >
+                                                <div
+                                                    class="paccordion__heading"
+                                                    role="heading"
+                                                    aria-level="4"
+                                                >
+                                                    <button
+                                                        class="paccordion__button paccordion__button--startIcon"
+                                                        type="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="panel-wycofane-rachunki"
+                                                        id="button-wycofane-rachunki"
+                                                    >
+                                                        <span
+                                                            class="paccordion__icon paccordion__icon--plusminus"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        <span
+                                                            class="paccordion__label"
+                                                            >Rachunki biezace,
+                                                            walutowe i
+                                                            pomocnicze</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="paccordion__panel"
+                                                    id="panel-wycofane-rachunki"
+                                                    hidden
+                                                >
+                                                    <div
+                                                        class="paccordion__richtext"
+                                                    >
+                                                        <p>Placeholder.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="wycofane-karty"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-wycofane-karty"
+                                            id="button-wycofane-karty"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Karty debetowe</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-wycofane-karty"
+                                        role="region"
+                                        aria-labelledby="button-wycofane-karty"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div
+                        class="ptabs__panel"
+                        role="tabpanel"
+                        id="cennik-panel-2"
+                        aria-labelledby="cennik-tab-2"
+                        tabindex="-1"
+                        hidden
+                    >
+                        <p>Treść dla regulaminów.</p>
+                    </div>
+                    <div
+                        class="ptabs__panel"
+                        role="tabpanel"
+                        id="cennik-panel-3"
+                        aria-labelledby="cennik-tab-3"
+                        tabindex="-1"
+                        hidden
+                    >
+                        <p>Treść archiwum.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- <div class="paccordion-container">
+            <header class="paccordion-container__header">
+                <span class="paccordion-container__title" role="heading" aria-level="1">Cennik i regulaminy</span>
+            </header>
+
+            <section class="paccordion-container__section paccordion-container__section--stacked" aria-label="Cennik i regulaminy">
+                <div class="paccordion paccordion--framed">
+                <div class="paccordion__item paccordion__item--l1" id="oprocentowanie">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-oprocentowanie" id="button-oprocentowanie">
+                        <span class="paccordion__label">Oprocentowanie</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-oprocentowanie" role="region" aria-labelledby="button-oprocentowanie" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="konto-firmowe">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-konto-firmowe" id="button-konto-firmowe">
+                        <span class="paccordion__label">Konto firmowe</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-konto-firmowe" role="region" aria-labelledby="button-konto-firmowe" hidden>
+                    <div class="paccordion paccordion--nested">
+                        <div class="paccordion__item paccordion__item--l2" id="konto-biznes-zubrem">
+                        <div class="paccordion__heading" role="heading" aria-level="3">
+                            <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-konto-biznes-zubrem" id="button-konto-biznes-zubrem">
+                            <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                            <span class="paccordion__label">Konto Biznes z zubrem</span>
+                            </button>
+                        </div>
+                        <div class="paccordion__panel" id="panel-konto-biznes-zubrem" hidden>
+                            <div class="paccordion paccordion--nested">
+                            <div class="paccordion__item paccordion__item--l3" id="taryfa-oplat-i-prowizji" data-open>
+                                <div class="paccordion__heading" role="heading" aria-level="4">
+                                <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-taryfa-oplat-i-prowizji" id="button-taryfa-oplat-i-prowizji" >
+                                    <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                                    <span class="paccordion__label">Taryfa oplat i prowizji</span>
+                                </button>
+                                </div>
+                                <div class="paccordion__panel" id="panel-taryfa-oplat-i-prowizji" hidden>
+                                <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                                    <li class="paccordion__file-item">
+                                    <a class="paccordion__file-link" href="#">
+                                        <span class="paccordion__file-text">
+                                        Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes
+                                        obowiazujaca od 1.02.2025 r.do 31.07.2025 r.
+                                        </span>
+                                    </a>
+                                    </li>
+                                    <li class="paccordion__file-item">
+                                    <a class="paccordion__file-link" href="#">
+                                        <span class="paccordion__file-text">
+                                        Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes
+                                        obowiazujaca od 1.02.2025 r.do 31.07.2025 r.
+                                        </span>
+                                    </a>
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+
+                            <div class="paccordion__item paccordion__item--l3" id="regulaminy-konto-biznes">
+                                <div class="paccordion__heading" role="heading" aria-level="4">
+                                <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-regulaminy-konto-biznes" id="button-regulaminy-konto-biznes">
+                                    <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                                    <span class="paccordion__label">Regulaminy</span>
+                                </button>
+                                </div>
+                                <div class="paccordion__panel" id="panel-regulaminy-konto-biznes" hidden>
+                                <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                                    <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Placeholder.</span></a></li>
+                                </ul>
+                                </div>
+                            </div>
+
+                            <div class="paccordion__item paccordion__item--l3" id="archiwum-konto-biznes">
+                                <div class="paccordion__heading" role="heading" aria-level="4">
+                                <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-archiwum-konto-biznes" id="button-archiwum-konto-biznes">
+                                    <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                                    <span class="paccordion__label">Archiwum</span>
+                                </button>
+                                </div>
+                                <div class="paccordion__panel" id="panel-archiwum-konto-biznes" hidden>
+                                <div class="paccordion paccordion--nested">
+                                    <div class="paccordion__item paccordion__item--l4" id="archiwum-taryfa-oplat">
+                                    <div class="paccordion__heading" role="heading" aria-level="5">
+                                        <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-archiwum-taryfa-oplat" id="button-archiwum-taryfa-oplat">
+                                        <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                                        <span class="paccordion__label">Taryfa oplat i prowizji</span>
+                                        </button>
+                                    </div>
+                                    <div class="paccordion__panel" id="panel-archiwum-taryfa-oplat" hidden>
+                                        <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                                        <li class="paccordion__file-item">
+                                            <a class="paccordion__file-link" href="#">
+                                            <span class="paccordion__file-text">
+                                                Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes
+                                                obowiazujaca od 1.02.2025 r.do 31.07.2025 r.
+                                            </span>
+                                            </a>
+                                        </li>
+                                        <li class="paccordion__file-item">
+                                            <a class="paccordion__file-link" href="#">
+                                            <span class="paccordion__file-text">
+                                                Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes
+                                                obowiazujaca od 1.02.2025 r.do 31.07.2025 r.
+                                            </span>
+                                            </a>
+                                        </li>
+                                        <li class="paccordion__file-item">
+                                            <a class="paccordion__file-link" href="#">
+                                            <span class="paccordion__file-text">
+                                                Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes
+                                                obowiazujaca od 1.02.2025 r.do 31.07.2025 r.
+                                            </span>
+                                            </a>
+                                        </li>
+                                        <li class="paccordion__file-item">
+                                            <a class="paccordion__file-link" href="#">
+                                            <span class="paccordion__file-text">
+                                                Tabela oplat i prowizji dla Konta Biznes z Zubrem i Konta Oszczednosciowego Biznes
+                                                obowiazujaca od 1.02.2025 r.do 31.07.2025 r.
+                                            </span>
+                                            </a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="paccordion__item paccordion__item--l2" id="konto-oszczednosciowe">
+                        <div class="paccordion__heading" role="heading" aria-level="3">
+                            <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-konto-oszczednosciowe" id="button-konto-oszczednosciowe">
+                            <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                            <span class="paccordion__label">Konto Oszczednosciowe Biznes</span>
+                            </button>
+                        </div>
+                        <div class="paccordion__panel" id="panel-konto-oszczednosciowe" hidden>
+                            <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                        </div>
+                        </div>
+
+                        <div class="paccordion__item paccordion__item--l2" id="rachunki-biezace">
+                        <div class="paccordion__heading" role="heading" aria-level="3">
+                            <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-rachunki-biezace" id="button-rachunki-biezace">
+                            <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                            <span class="paccordion__label">Rachunki biezace, walutowe i pomocnicze</span>
+                            </button>
+                        </div>
+                        <div class="paccordion__panel" id="panel-rachunki-biezace" hidden>
+                            <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="karty-debetowe">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-karty-debetowe" id="button-karty-debetowe">
+                        <span class="paccordion__label">Karty debetowe</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-karty-debetowe" role="region" aria-labelledby="button-karty-debetowe" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="karty-kredytowe">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-karty-kredytowe" id="button-karty-kredytowe">
+                        <span class="paccordion__label">Karty kredytowe</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-karty-kredytowe" role="region" aria-labelledby="button-karty-kredytowe" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="kredyty">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-kredyty" id="button-kredyty">
+                        <span class="paccordion__label">Kredyty i pozyczki</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-kredyty" role="region" aria-labelledby="button-kredyty" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="bankowosc-elektroniczna">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-bankowosc-elektroniczna" id="button-bankowosc-elektroniczna">
+                        <span class="paccordion__label">Bankowosc elektroniczna</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-bankowosc-elektroniczna" role="region" aria-labelledby="button-bankowosc-elektroniczna" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="godziny-graniczne">
+                    <div class="paccordion__heading" role="heading" aria-level="2">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-godziny-graniczne" id="button-godziny-graniczne">
+                        <span class="paccordion__label">Godziny graniczne</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-godziny-graniczne" role="region" aria-labelledby="button-godziny-graniczne" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <header class="paccordion-container__header paccordion-container__header--spaced" id="produkty-wycofane">
+                <span class="paccordion-container__title" role="heading" aria-level="2">Produkty wycofane z oferty</span>
+            </header>
+
+            <section class="paccordion-container__section" aria-label="Produkty wycofane z oferty">
+                <div class="paccordion paccordion--framed">
+                <div class="paccordion__item paccordion__item--l1" id="wycofane-konto-firmowe">
+                    <div class="paccordion__heading" role="heading" aria-level="3">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-wycofane-konto-firmowe" id="button-wycofane-konto-firmowe">
+                        <span class="paccordion__label">Konto firmowe</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-wycofane-konto-firmowe" role="region" aria-labelledby="button-wycofane-konto-firmowe" hidden>
+                    <div class="paccordion paccordion--nested">
+                        <div class="paccordion__item paccordion__item--l2" id="wycofane-konto-biznes">
+                        <div class="paccordion__heading" role="heading" aria-level="4">
+                            <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-wycofane-konto-biznes" id="button-wycofane-konto-biznes">
+                            <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                            <span class="paccordion__label">Konto Biznes z zubrem</span>
+                            </button>
+                        </div>
+                        <div class="paccordion__panel" id="panel-wycofane-konto-biznes" hidden>
+                            <div class="paccordion paccordion--nested">
+                            <div class="paccordion__item paccordion__item--l3" id="wycofane-taryfa-oplat">
+                                <div class="paccordion__heading" role="heading" aria-level="5">
+                                <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-wycofane-taryfa-oplat" id="button-wycofane-taryfa-oplat">
+                                    <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                                    <span class="paccordion__label">Taryfa oplat i prowizji</span>
+                                </button>
+                                </div>
+                                <div class="paccordion__panel" id="panel-wycofane-taryfa-oplat" hidden>
+                                <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                                    <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Tabela oplat i prowizji ...</span></a></li>
+                                    <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Tabela oplat i prowizji ...</span></a></li>
+                                    <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Tabela oplat i prowizji ...</span></a></li>
+                                    <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Tabela oplat i prowizji ...</span></a></li>
+                                </ul>
+                                </div>
+                            </div>
+
+                            <div class="paccordion__item paccordion__item--l3" id="wycofane-regulaminy">
+                                <div class="paccordion__heading" role="heading" aria-level="5">
+                                <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-wycofane-regulaminy" id="button-wycofane-regulaminy">
+                                    <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                                    <span class="paccordion__label">Regulaminy</span>
+                                </button>
+                                </div>
+                                <div class="paccordion__panel" id="panel-wycofane-regulaminy" hidden>
+                                <ul class="paccordion__file-list paccordion__file-list--cols-1">
+                                    <li class="paccordion__file-item"><a class="paccordion__file-link" href="#"><span class="paccordion__file-text">Placeholder.</span></a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="paccordion__item paccordion__item--l2" id="wycofane-konto-oszczednosciowe">
+                        <div class="paccordion__heading" role="heading" aria-level="4">
+                            <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-wycofane-konto-oszczednosciowe" id="button-wycofane-konto-oszczednosciowe">
+                            <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                            <span class="paccordion__label">Konto Oszczednosciowe Biznes</span>
+                            </button>
+                        </div>
+                        <div class="paccordion__panel" id="panel-wycofane-konto-oszczednosciowe" hidden>
+                            <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                        </div>
+                        </div>
+
+                        <div class="paccordion__item paccordion__item--l2" id="wycofane-rachunki">
+                        <div class="paccordion__heading" role="heading" aria-level="4">
+                            <button class="paccordion__button paccordion__button--startIcon" type="button" aria-expanded="false" aria-controls="panel-wycofane-rachunki" id="button-wycofane-rachunki">
+                            <span class="paccordion__icon paccordion__icon--plusminus" aria-hidden="true"></span>
+                            <span class="paccordion__label">Rachunki biezace, walutowe i pomocnicze</span>
+                            </button>
+                        </div>
+                        <div class="paccordion__panel" id="panel-wycofane-rachunki" hidden>
+                            <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="paccordion__item paccordion__item--l1" id="wycofane-karty">
+                    <div class="paccordion__heading" role="heading" aria-level="3">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-wycofane-karty" id="button-wycofane-karty">
+                        <span class="paccordion__label">Karty debetowe</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-wycofane-karty" role="region" aria-labelledby="button-wycofane-karty" hidden>
+                    <div class="paccordion__richtext"><p>Placeholder.</p></div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="paccordion-container__section" aria-label="Przykłady CMS">
+                <header class="paccordion-container__header paccordion-container__header--spaced">
+                <span class="paccordion-container__title" role="heading" aria-level="1">Przykład: wariant thin</span>
+                <span class="paccordion-container__subtitle paccordion-container__subtitle--big" role="heading" aria-level="2">Przykład: subtitle--big</span>
+                </header>
+                <div class="paccordion paccordion--framed">
+                <div class="paccordion__item paccordion__item--l1" id="example-closed">
+                    <div class="paccordion__heading" role="heading" aria-level="3">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-example-closed" id="button-example-closed">
+                        <span class="paccordion__label">Przykład: domyślnie zamknięty</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-example-closed" role="region" aria-labelledby="button-example-closed" hidden>
+                    <div class="paccordion__richtext"><p>Przykład treści richtext.</p></div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="paccordion-container__section" aria-label="Przykłady CMS bez obramowania">
+                <header class="paccordion-container__header paccordion-container__header--spaced">
+                <span class="paccordion-container__title" role="heading" aria-level="1">Przykład: wariant thin (bez obramowania)</span>
+                <span class="paccordion-container__subtitle paccordion-container__subtitle--big" role="heading" aria-level="2">Przykład: subtitle--big</span>
+                </header>
+                <div class="paccordion">
+                <div class="paccordion__item paccordion__item--l1" id="example-closed-unframed">
+                    <div class="paccordion__heading" role="heading" aria-level="3">
+                    <button class="paccordion__button" type="button" aria-expanded="false" aria-controls="panel-example-closed-unframed" id="button-example-closed-unframed">
+                        <span class="paccordion__label">Przykład: domyślnie zamknięty</span>
+                        <span class="paccordion__icon paccordion__icon--chevron" aria-hidden="true"></span>
+                    </button>
+                    </div>
+                    <div class="paccordion__panel" id="panel-example-closed-unframed" role="region" aria-labelledby="button-example-closed-unframed" hidden>
+                    <div class="paccordion__richtext"><p>Przykład treści richtext.</p></div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            </div> -->
+
+        <!-- taby -->
+        <section class="ptabs-container">
+            <div
+                class="ptabs-container__title"
+                id="ptabs-title-noicons"
+                role="heading"
+                aria-level="2"
+            >
+                Wariant bez ikon
+            </div>
+            <div class="ptabs ptabs--no-icons" data-ptabs>
+                <div
+                    class="ptabs__list"
+                    role="tablist"
+                    aria-labelledby="ptabs-title-noicons"
+                >
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="noicon-tab-1"
+                        aria-controls="noicon-panel-1"
+                        aria-selected="true"
+                        tabindex="0"
+                    >
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="noicon-tab-2"
+                        aria-controls="noicon-panel-2"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="noicon-tab-3"
+                        aria-controls="noicon-panel-3"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="noicon-tab-4"
+                        aria-controls="noicon-panel-4"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="noicon-panel-1"
+                    aria-labelledby="noicon-tab-1"
+                    tabindex="-1"
+                >
+                    <p>Placeholder.</p>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="noicon-panel-2"
+                    aria-labelledby="noicon-tab-2"
+                    tabindex="-1"
+                    hidden
+                >
+                    <p>Placeholder.</p>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="noicon-panel-3"
+                    aria-labelledby="noicon-tab-3"
+                    tabindex="-1"
+                    hidden
+                >
+                    <p>Treść przykładowa.</p>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="noicon-panel-4"
+                    aria-labelledby="noicon-tab-4"
+                    tabindex="-1"
+                    hidden
+                >
+                    <p>Treść przykładowa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ptabs-container">
+            <div
+                class="ptabs-container__title"
+                id="ptabs-title-icons"
+                role="heading"
+                aria-level="2"
+            >
+                Wariant z ikonami
+            </div>
+            <div class="ptabs ptabs--icons" data-ptabs>
+                <div
+                    class="ptabs__list"
+                    role="tablist"
+                    aria-labelledby="ptabs-title-icons"
+                >
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="icon-tab-1"
+                        aria-controls="icon-panel-1"
+                        aria-selected="true"
+                        tabindex="0"
+                    >
+                        <span class="ptabs__icon" aria-hidden="true">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                            >
+                                <path
+                                    d="M14.5914 7.8662C14.5373 6.08719 13.8814 4.5767 12.6239 3.33472C11.3663 2.0926 9.83709 1.44479 8.03615 1.3913V0C9.13171 0.0238068 10.1574 0.245565 11.1132 0.665275C12.0691 1.08514 12.9041 1.64761 13.6181 2.3527C14.3319 3.05793 14.9013 3.88259 15.3262 4.82667C15.7513 5.7709 15.9759 6.78408 16 7.8662H14.5914ZM10.8352 7.8662C10.7811 7.12294 10.4891 6.48819 9.95933 5.96197C9.42955 5.4359 8.78849 5.14906 8.03615 5.10145V3.71014C9.17866 3.75776 10.152 4.18017 10.9561 4.97739C11.7604 5.77476 12.1896 6.7377 12.2438 7.8662H10.8352ZM14.9687 16C13.199 16 11.4212 15.5936 9.63512 14.7808C7.8492 13.9679 6.20681 12.8213 4.70793 11.341C3.21515 9.86048 2.0573 8.23961 1.23438 6.47838C0.41146 4.7173 0 2.96278 0 1.21484C0 0.93658 0.093905 0.70315 0.281715 0.514551C0.469525 0.326106 0.704287 0.231884 0.986002 0.231884H4.04871C4.28582 0.231884 4.495 0.308329 4.67623 0.461218C4.85747 0.613952 4.97274 0.802705 5.02204 1.02748L5.56035 3.75652C5.5976 4.00974 5.58977 4.22732 5.53687 4.40928C5.48382 4.59123 5.38866 4.74404 5.2514 4.86771L3.08267 6.95304C3.43168 7.58439 3.83046 8.18164 4.27902 8.74481C4.72741 9.30783 5.21290 9.84557 5.73548 10.358C6.25071 10.8671 6.79849 11.3398 7.37882 11.7762C7.95915 12.2126 8.58581 12.6187 9.2588 12.9946L11.366 10.8951C11.513 10.744 11.6909 10.6381 11.8999 10.5774C12.1087 10.5168 12.3257 10.502 12.5509 10.5329L15.1584 11.0574C15.3955 11.1192 15.589 11.2387 15.7389 11.4159C15.8889 11.593 15.9638 11.794 15.9638 12.0188V15.0261C15.9638 15.3043 15.8685 15.5362 15.6777 15.7217C15.4867 15.9072 15.2504 16 14.9687 16Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </span>
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="icon-tab-2"
+                        aria-controls="icon-panel-2"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__icon" aria-hidden="true">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                            >
+                                <path
+                                    d="M14.5914 7.8662C14.5373 6.08719 13.8814 4.5767 12.6239 3.33472C11.3663 2.0926 9.83709 1.44479 8.03615 1.3913V0C9.13171 0.0238068 10.1574 0.245565 11.1132 0.665275C12.0691 1.08514 12.9041 1.64761 13.6181 2.3527C14.3319 3.05793 14.9013 3.88259 15.3262 4.82667C15.7513 5.7709 15.9759 6.78408 16 7.8662H14.5914ZM10.8352 7.8662C10.7811 7.12294 10.4891 6.48819 9.95933 5.96197C9.42955 5.4359 8.78849 5.14906 8.03615 5.10145V3.71014C9.17866 3.75776 10.152 4.18017 10.9561 4.97739C11.7604 5.77476 12.1896 6.7377 12.2438 7.8662H10.8352ZM14.9687 16C13.199 16 11.4212 15.5936 9.63512 14.7808C7.8492 13.9679 6.20681 12.8213 4.70793 11.341C3.21515 9.86048 2.0573 8.23961 1.23438 6.47838C0.41146 4.7173 0 2.96278 0 1.21484C0 0.93658 0.093905 0.70315 0.281715 0.514551C0.469525 0.326106 0.704287 0.231884 0.986002 0.231884H4.04871C4.28582 0.231884 4.495 0.308329 4.67623 0.461218C4.85747 0.613952 4.97274 0.802705 5.02204 1.02748L5.56035 3.75652C5.5976 4.00974 5.58977 4.22732 5.53687 4.40928C5.48382 4.59123 5.38866 4.74404 5.2514 4.86771L3.08267 6.95304C3.43168 7.58439 3.83046 8.18164 4.27902 8.74481C4.72741 9.30783 5.21290 9.84557 5.73548 10.358C6.25071 10.8671 6.79849 11.3398 7.37882 11.7762C7.95915 12.2126 8.58581 12.6187 9.2588 12.9946L11.366 10.8951C11.513 10.744 11.6909 10.6381 11.8999 10.5774C12.1087 10.5168 12.3257 10.502 12.5509 10.5329L15.1584 11.0574C15.3955 11.1192 15.589 11.2387 15.7389 11.4159C15.8889 11.593 15.9638 11.794 15.9638 12.0188V15.0261C15.9638 15.3043 15.8685 15.5362 15.6777 15.7217C15.4867 15.9072 15.2504 16 14.9687 16Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </span>
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="icon-tab-3"
+                        aria-controls="icon-panel-3"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__icon" aria-hidden="true">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                            >
+                                <path
+                                    d="M14.5914 7.8662C14.5373 6.08719 13.8814 4.5767 12.6239 3.33472C11.3663 2.0926 9.83709 1.44479 8.03615 1.3913V0C9.13171 0.0238068 10.1574 0.245565 11.1132 0.665275C12.0691 1.08514 12.9041 1.64761 13.6181 2.3527C14.3319 3.05793 14.9013 3.88259 15.3262 4.82667C15.7513 5.7709 15.9759 6.78408 16 7.8662H14.5914ZM10.8352 7.8662C10.7811 7.12294 10.4891 6.48819 9.95933 5.96197C9.42955 5.4359 8.78849 5.14906 8.03615 5.10145V3.71014C9.17866 3.75776 10.152 4.18017 10.9561 4.97739C11.7604 5.77476 12.1896 6.7377 12.2438 7.8662H10.8352ZM14.9687 16C13.199 16 11.4212 15.5936 9.63512 14.7808C7.8492 13.9679 6.20681 12.8213 4.70793 11.341C3.21515 9.86048 2.0573 8.23961 1.23438 6.47838C0.41146 4.7173 0 2.96278 0 1.21484C0 0.93658 0.093905 0.70315 0.281715 0.514551C0.469525 0.326106 0.704287 0.231884 0.986002 0.231884H4.04871C4.28582 0.231884 4.495 0.308329 4.67623 0.461218C4.85747 0.613952 4.97274 0.802705 5.02204 1.02748L5.56035 3.75652C5.5976 4.00974 5.58977 4.22732 5.53687 4.40928C5.48382 4.59123 5.38866 4.74404 5.2514 4.86771L3.08267 6.95304C3.43168 7.58439 3.83046 8.18164 4.27902 8.74481C4.72741 9.30783 5.21290 9.84557 5.73548 10.358C6.25071 10.8671 6.79849 11.3398 7.37882 11.7762C7.95915 12.2126 8.58581 12.6187 9.2588 12.9946L11.366 10.8951C11.513 10.744 11.6909 10.6381 11.8999 10.5774C12.1087 10.5168 12.3257 10.502 12.5509 10.5329L15.1584 11.0574C15.3955 11.1192 15.589 11.2387 15.7389 11.4159C15.8889 11.593 15.9638 11.794 15.9638 12.0188V15.0261C15.9638 15.3043 15.8685 15.5362 15.6777 15.7217C15.4867 15.9072 15.2504 16 14.9687 16Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </span>
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="icon-tab-4"
+                        aria-controls="icon-panel-4"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__icon" aria-hidden="true">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                            >
+                                <path
+                                    d="M14.5914 7.8662C14.5373 6.08719 13.8814 4.5767 12.6239 3.33472C11.3663 2.0926 9.83709 1.44479 8.03615 1.3913V0C9.13171 0.0238068 10.1574 0.245565 11.1132 0.665275C12.0691 1.08514 12.9041 1.64761 13.6181 2.3527C14.3319 3.05793 14.9013 3.88259 15.3262 4.82667C15.7513 5.7709 15.9759 6.78408 16 7.8662H14.5914ZM10.8352 7.8662C10.7811 7.12294 10.4891 6.48819 9.95933 5.96197C9.42955 5.4359 8.78849 5.14906 8.03615 5.10145V3.71014C9.17866 3.75776 10.152 4.18017 10.9561 4.97739C11.7604 5.77476 12.1896 6.7377 12.2438 7.8662H10.8352ZM14.9687 16C13.199 16 11.4212 15.5936 9.63512 14.7808C7.8492 13.9679 6.20681 12.8213 4.70793 11.341C3.21515 9.86048 2.0573 8.23961 1.23438 6.47838C0.41146 4.7173 0 2.96278 0 1.21484C0 0.93658 0.093905 0.70315 0.281715 0.514551C0.469525 0.326106 0.704287 0.231884 0.986002 0.231884H4.04871C4.28582 0.231884 4.495 0.308329 4.67623 0.461218C4.85747 0.613952 4.97274 0.802705 5.02204 1.02748L5.56035 3.75652C5.5976 4.00974 5.58977 4.22732 5.53687 4.40928C5.48382 4.59123 5.38866 4.74404 5.2514 4.86771L3.08267 6.95304C3.43168 7.58439 3.83046 8.18164 4.27902 8.74481C4.72741 9.30783 5.21290 9.84557 5.73548 10.358C6.25071 10.8671 6.79849 11.3398 7.37882 11.7762C7.95915 12.2126 8.58581 12.6187 9.2588 12.9946L11.366 10.8951C11.513 10.744 11.6909 10.6381 11.8999 10.5774C12.1087 10.5168 12.3257 10.502 12.5509 10.5329L15.1584 11.0574C15.3955 11.1192 15.589 11.2387 15.7389 11.4159C15.8889 11.593 15.9638 11.794 15.9638 12.0188V15.0261C15.9638 15.3043 15.8685 15.5362 15.6777 15.7217C15.4867 15.9072 15.2504 16 14.9687 16Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </span>
+                        <span class="ptabs__label"
+                            >Oddziały banku i placówki partnerskie</span
+                        >
+                    </button>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="icon-panel-1"
+                    aria-labelledby="icon-tab-1"
+                    tabindex="-1"
+                >
+                    <p>Treść przykładowa.</p>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="icon-panel-2"
+                    aria-labelledby="icon-tab-2"
+                    tabindex="-1"
+                    hidden
+                >
+                    <p>Treść przykładowa.</p>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="icon-panel-3"
+                    aria-labelledby="icon-tab-3"
+                    tabindex="-1"
+                    hidden
+                >
+                    <p>Treść przykładowa.</p>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="icon-panel-4"
+                    aria-labelledby="icon-tab-4"
+                    tabindex="-1"
+                    hidden
+                >
+                    <p>Treść przykładowa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ptabs-container">
+            <div
+                class="ptabs-container__title"
+                id="ptabs-title-accordions"
+                role="heading"
+                aria-level="2"
+            >
+                Wariant z akordeonami
+            </div>
+            <div class="ptabs ptabs--no-icons" data-ptabs>
+                <div
+                    class="ptabs__list"
+                    role="tablist"
+                    aria-labelledby="ptabs-title-accordions"
+                >
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="acc-tab-1"
+                        aria-controls="acc-panel-1"
+                        aria-selected="true"
+                        tabindex="0"
+                    >
+                        <span class="ptabs__label">Cennik i regulaminy</span>
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="acc-tab-2"
+                        aria-controls="acc-panel-2"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__label">Dokumenty i archiwum</span>
+                    </button>
+                    <button
+                        class="ptabs__tab"
+                        role="tab"
+                        id="acc-tab-3"
+                        aria-controls="acc-panel-3"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        <span class="ptabs__label">Pomoc i kontakt</span>
+                    </button>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="acc-panel-1"
+                    aria-labelledby="acc-tab-1"
+                    tabindex="-1"
+                >
+                    <div class="paccordion-container">
+                        <section
+                            class="paccordion-container__section paccordion-container__section--stacked"
+                            aria-label="Cennik i regulaminy"
+                        >
+                            <div class="paccordion paccordion--framed">
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="acc-1-item-1"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="acc-1-panel-1"
+                                            id="acc-1-button-1"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Oprocentowanie</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="acc-1-panel-1"
+                                        role="region"
+                                        aria-labelledby="acc-1-button-1"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="acc-1-item-2"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="acc-1-panel-2"
+                                            id="acc-1-button-2"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Regulaminy</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="acc-1-panel-2"
+                                        role="region"
+                                        aria-labelledby="acc-1-button-2"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="acc-panel-2"
+                    aria-labelledby="acc-tab-2"
+                    tabindex="-1"
+                    hidden
+                >
+                    <div class="paccordion-container">
+                        <section
+                            class="paccordion-container__section paccordion-container__section--stacked"
+                            aria-label="Dokumenty i archiwum"
+                        >
+                            <div class="paccordion paccordion--framed">
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="acc-2-item-1"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="acc-2-panel-1"
+                                            id="acc-2-button-1"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Dokumenty</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="acc-2-panel-1"
+                                        role="region"
+                                        aria-labelledby="acc-2-button-1"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="acc-2-item-2"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="acc-2-panel-2"
+                                            id="acc-2-button-2"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Archiwum</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="acc-2-panel-2"
+                                        role="region"
+                                        aria-labelledby="acc-2-button-2"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="acc-panel-3"
+                    aria-labelledby="acc-tab-3"
+                    tabindex="-1"
+                    hidden
+                >
+                    <div class="paccordion-container">
+                        <section
+                            class="paccordion-container__section paccordion-container__section--stacked"
+                            aria-label="Pomoc i kontakt"
+                        >
+                            <div class="paccordion paccordion--framed">
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="acc-3-item-1"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="acc-3-panel-1"
+                                            id="acc-3-button-1"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Kontakt z doradcą</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="acc-3-panel-1"
+                                        role="region"
+                                        aria-labelledby="acc-3-button-1"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                    id="acc-3-item-2"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="3"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            type="button"
+                                            aria-expanded="false"
+                                            aria-controls="acc-3-panel-2"
+                                            id="acc-3-button-2"
+                                        >
+                                            <span class="paccordion__label"
+                                                >Godziny infolinii</span
+                                            >
+                                            <span
+                                                class="paccordion__icon paccordion__icon--chevron"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="acc-3-panel-2"
+                                        role="region"
+                                        aria-labelledby="acc-3-button-2"
+                                        hidden
+                                    >
+                                        <div class="paccordion__richtext">
+                                            <p>Placeholder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  -->
+
+        <!-- PEŁNY WZORCOWY HTML Z 7 TABAMI + TREŚĆ W KAŻDYM PANELU (identycznie jak DOM po JS) -->
+
+        <section class="ptabs-container">
+            <div
+                class="ptabs-container__title"
+                id="ptabs-title-7ade8b01-375d-4cbe-9952-3ef3f059eed9"
+                role="heading"
+                aria-level="2"
+            >
+                Taby uniwersalne
+            </div>
+
+            <div class="ptabs ptabs--no-icons" data-ptabs="">
+                <div
+                    class="ptabs__nav"
+                    style="
+                        --ptabs-chevron-center-top: 79px;
+                        --ptabs-chevron-translate: -50%;
+                    "
+                >
+                    <button
+                        type="button"
+                        class="ptabs__chevron ptabs__chevron--prev ptabs__chevron--hidden"
+                        aria-label="Poprzednia zakładka"
+                        aria-disabled="true"
+                        disabled=""
+                    ></button>
+                    <div class="ptabs__viewport">
+                        <div
+                            class="ptabs__list"
+                            role="tablist"
+                            aria-labelledby="ptabs-title-7ade8b01-375d-4cbe-9952-3ef3f059eed9"
+                            style="
+                                --ptabs-side-padding-left: 0px;
+                                --ptabs-side-padding-right: 0px;
+                            "
+                        >
+                            <button
+                                class="ptabs__tab ptabs__tab--active"
+                                role="tab"
+                                id="foo-tab"
+                                aria-controls="foo-panel"
+                                aria-selected="true"
+                                tabindex="0"
+                            >
+                                <span class="ptabs__label">drugi tab</span>
+                            </button>
+                            <button
+                                class="ptabs__tab ptabs__tab--adjacent-left"
+                                role="tab"
+                                id="third-tab"
+                                aria-controls="third-panel"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                <span class="ptabs__label">trzeci</span>
+                            </button>
+                            <button
+                                class="ptabs__tab"
+                                role="tab"
+                                id="tab-1-tab"
+                                aria-controls="tab-1-panel"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                <span class="ptabs__label">tab numer 1</span>
+                            </button>
+                            <button
+                                class="ptabs__tab"
+                                role="tab"
+                                id="tab-4-tab"
+                                aria-controls="tab-4-panel"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                <span class="ptabs__label">tab numer 4</span>
+                            </button>
+                            <button
+                                class="ptabs__tab"
+                                role="tab"
+                                id="tab-5-tab"
+                                aria-controls="tab-5-panel"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                <span class="ptabs__label">tab numer 5</span>
+                            </button>
+                            <button
+                                class="ptabs__tab"
+                                role="tab"
+                                id="tab-6-tab"
+                                aria-controls="tab-6-panel"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                <span class="ptabs__label">tab numer 6</span>
+                            </button>
+                            <button
+                                class="ptabs__tab"
+                                role="tab"
+                                id="tab-7-tab"
+                                aria-controls="tab-7-panel"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                <span class="ptabs__label">tab numer 7</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        class="ptabs__chevron ptabs__chevron--next ptabs__chevron--hidden"
+                        aria-label="Następna zakładka"
+                        aria-disabled="true"
+                        tabindex="4"
+                    ></button>
+                </div>
+
+                <!-- TAB 1: AKTYWNY Z AKORDEONAMI (z twojego DOM) -->
+                <div
+                    class="ptabs__panel ptabs__panel--active"
+                    role="tabpanel"
+                    id="foo-panel"
+                    aria-labelledby="foo-tab"
+                    tabindex="-1"
+                >
+                    <div class="paccordion-container" id="kotwica_in_tab">
+                        <section
+                            class="paccordion-container__section"
+                            aria-label="arial-label"
+                        >
+                            <div
+                                class="paccordion paccordion--framed"
+                                data-paccordion-group=""
+                            >
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                >
+                                    <div
+                                        class="paccordion__heading"
+                                        role="heading"
+                                        aria-level="2"
+                                    >
+                                        <button
+                                            class="paccordion__button"
+                                            aria-expanded="false"
+                                            aria-controls="panel-2025"
+                                        >
+                                            <span class="paccordion__label"
+                                                >2025</span
+                                            >
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="paccordion__panel"
+                                        id="panel-2025"
+                                        hidden
+                                    >
+                                        <ul
+                                            class="paccordion__file-list paccordion__file-list--cols-2"
+                                        >
+                                            <li>
+                                                <a
+                                                    href="#"
+                                                    class="paccordion__file-link"
+                                                    >Raport Q4 2025</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- ... reszta akordeonów 2024-2021 jak w DOM ... -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Nested akordeony (z twojego DOM) -->
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="third-panel"
+                    aria-labelledby="third-tab"
+                    tabindex="-1"
+                    hidden=""
+                    inert=""
+                    aria-hidden="true"
+                >
+                    <div class="paccordion-container" id="kotwica_in_tab3">
+                        <section
+                            class="paccordion-container__section"
+                            aria-label="Nested akordeony"
+                        >
+                            <div
+                                class="paccordion paccordion--framed"
+                                data-paccordion-group=""
+                            >
+                                <div
+                                    class="paccordion__item paccordion__item--l1"
+                                >
+                                    <button
+                                        class="paccordion__button"
+                                        aria-expanded="false"
+                                    >
+                                        [01] pierwszy stopień
+                                    </button>
+                                    <div class="paccordion__panel" hidden>
+                                        <div
+                                            class="paccordion paccordion--nested"
+                                        >
+                                            <div
+                                                class="paccordion__item paccordion__item--l2"
+                                            >
+                                                <button>
+                                                    [02] drugi stopień z 3
+                                                    poziomem
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Prosty textbox -->
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="tab-1-panel"
+                    aria-labelledby="tab-1-tab"
+                    tabindex="-1"
+                    hidden=""
+                    inert=""
+                    aria-hidden="true"
+                >
+                    <section
+                        class="p-textbox p-textbox--onlyText p-textbox--no-media"
+                    >
+                        <div class="p-textbox__inner">
+                            <div class="p-textbox__row">
+                                <div class="p-textbox__content">
+                                    <div class="p-textbox__text">
+                                        <p>
+                                            Lorem ipsum dolor sit amet... Tab 1
+                                            content.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 4: Textbox z nagłówkiem -->
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="tab-4-panel"
+                    aria-labelledby="tab-4-tab"
+                    tabindex="-1"
+                    hidden=""
+                    inert=""
+                    aria-hidden="true"
+                >
+                    <section
+                        class="p-textbox p-textbox--onlyText p-textbox--no-media"
+                    >
+                        <div class="p-textbox__inner">
+                            <div class="p-textbox__row">
+                                <div class="p-textbox__content">
+                                    <h2 class="p-textbox__title">
+                                        Tab 4 z nagłówkiem
+                                    </h2>
+                                    <div class="p-textbox__text">
+                                        <p>Lorem ipsum... z nagłówkiem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 5: Textbox left z obrazkiem -->
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="tab-5-panel"
+                    aria-labelledby="tab-5-tab"
+                    tabindex="-1"
+                    hidden=""
+                    inert=""
+                    aria-hidden="true"
+                >
+                    <section class="p-textbox p-textbox--left">
+                        <div class="p-textbox__inner">
+                            <div class="p-textbox__row">
+                                <figure class="p-textbox__media">
+                                    <img
+                                        class="p-textbox__img"
+                                        src="/placeholder-image.jpg"
+                                        alt="Tab 5"
+                                    />
+                                </figure>
+                                <div class="p-textbox__content">
+                                    <div class="p-textbox__text">
+                                        <p>Tab 5 z obrazkiem po lewej.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 6: Textbox z listą i CTA -->
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="tab-6-panel"
+                    aria-labelledby="tab-6-tab"
+                    tabindex="-1"
+                    hidden=""
+                    inert=""
+                    aria-hidden="true"
+                >
+                    <section
+                        class="p-textbox p-textbox--onlyText p-textbox--no-media"
+                    >
+                        <div class="p-textbox__inner">
+                            <div class="p-textbox__row">
+                                <div class="p-textbox__content">
+                                    <div class="p-textbox__text">
+                                        <p>Tab 6 z listą:</p>
+                                        <ul>
+                                            <li>Punkt 1</li>
+                                            <li>Punkt 2</li>
+                                            <li>Punkt 3</li>
+                                        </ul>
+                                    </div>
+                                    <div class="p-textbox__cta">
+                                        <a
+                                            class="p-button p-textbox__button"
+                                            href="#"
+                                            >CTA Button</a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB 7: 4x textbox z pill (z twojego DOM) -->
+                <div
+                    class="ptabs__panel"
+                    role="tabpanel"
+                    id="tab-7-panel"
+                    aria-labelledby="tab-7-tab"
+                    tabindex="-1"
+                    hidden=""
+                    inert=""
+                    aria-hidden="true"
+                >
+                    <section class="p-textbox p-textbox--left">
+                        <figure class="p-textbox__media">
+                            <img
+                                class="p-textbox__img"
+                                src="/img1.jpg"
+                                alt=""
+                            />
+                        </figure>
+                        <div class="p-textbox__content">
+                            <span class="p-textbox__pill" aria-hidden="true"
+                                >Pill 1</span
+                            >
+                            <div class="p-textbox__text">
+                                <p>Tab 7 - pierwszy textbox.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="p-textbox p-textbox--right">
+                        <figure class="p-textbox__media">
+                            <img
+                                class="p-textbox__img"
+                                src="/img2.jpg"
+                                alt=""
+                            />
+                        </figure>
+                        <div class="p-textbox__content">
+                            <span class="p-textbox__pill" aria-hidden="true"
+                                >Pill 2</span
+                            >
+                            <div class="p-textbox__text">
+                                <p>Drugi textbox right.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- +2 kolejne textboxy jak w DOM -->
+                </div>
+            </div>
+        </section>
+
+ </main>
+
+    <script src="./assets/js/p-tabs.js" type="module"></script>
+    <script src="./assets/js/paccordion.js" type="module"></script>
+  </body>
+</html>
