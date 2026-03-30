@@ -1893,8 +1893,10 @@ body.bodytype-privatebanking {
 .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true] .ptabs__label,
 .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] .ptabs__label {
   font-family: "SofiaPro-Regular", sans-serif;
+  font-size: 18px;
   line-height: 1;
   letter-spacing: -0.01em;
+  font-weight: 400;
   text-align: center;
 }
 @media (min-width: 960px) {
@@ -1903,7 +1905,11 @@ body.bodytype-privatebanking {
   }
 }
 .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover .ptabs__label {
+  font-family: "SofiaPro-SemiBold", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
   color: #D91918;
+  text-align: center;
 }
 .ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab] {
   background-color: #C0C0C0;
@@ -1923,9 +1929,6 @@ body.bodytype-privatebanking {
   z-index: 4;
 }
 @media (max-width: 959px) {
-  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover .ptabs__label {
-    letter-spacing: -0.02em;
-  }
   .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
   .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
     margin-left: 0;

@@ -433,33 +433,70 @@ class PTabs {
       const tab = label.closest(PTABS_SELECTORS.tab);
       if (!tab) return;
 
+      // Reset inline styles.
       label.style.fontSize = "";
       label.style.maxHeight = "";
+      label.style.lineHeight = "";
       label.classList.remove("ptabs__label--scaled");
-      tab.classList.remove("ptabs__tab--dense");
+      tab.style.paddingTop = "";
+      tab.style.paddingBottom = "";
+      tab.style.paddingLeft = "";
+      tab.style.paddingRight = "";
+
       const computedBase = window.getComputedStyle(label);
       const baseSize = parseFloat(computedBase.fontSize) || 16;
 
       const prevWeight = label.style.fontWeight;
-      label.style.fontWeight = "400";
+      const prevFamily = label.style.fontFamily;
+      // Measure with hover font to keep layout stable on hover.
+      label.style.fontWeight = "700";
+      label.style.fontFamily = "SofiaPro-SemiBold, sans-serif";
 
-      const findBestSize = () => {
-        const tabStyles = window.getComputedStyle(tab);
-        const paddingTop = parseFloat(tabStyles.paddingTop) || 0;
-        const paddingBottom = parseFloat(tabStyles.paddingBottom) || 0;
-        const minHeight = parseFloat(tabStyles.minHeight) || 0;
+      const baseTabStyles = window.getComputedStyle(tab);
+      const basePaddingTop = parseFloat(baseTabStyles.paddingTop) || 0;
+      const basePaddingBottom = parseFloat(baseTabStyles.paddingBottom) || 0;
+      const basePaddingLeft = parseFloat(baseTabStyles.paddingLeft) || 0;
+      const basePaddingRight = parseFloat(baseTabStyles.paddingRight) || 0;
+
+      const getAvailableHeight = () => {
+        const styles = window.getComputedStyle(tab);
+        const paddingTop = parseFloat(styles.paddingTop) || 0;
+        const paddingBottom = parseFloat(styles.paddingBottom) || 0;
+        const minHeight = parseFloat(styles.minHeight) || 0;
         const baseHeight = Math.max(minHeight, tab.clientHeight || 0);
-        const availableHeight = Math.max(0, baseHeight - paddingTop - paddingBottom);
+        return Math.max(0, baseHeight - paddingTop - paddingBottom);
+      };
 
+      const fitsAtSize = (size) => {
+        label.style.fontSize = `${size}px`;
+        return label.scrollHeight <= getAvailableHeight();
+      };
+
+      // 1) Najpierw zmniejszaj padding (bez zmiany fontu), aby uzyskać więcej linii.
+      let chosenPaddingRatio = 1;
+      if (!fitsAtSize(baseSize)) {
+        const ratios = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4];
+        for (const ratio of ratios) {
+          tab.style.paddingTop = `${basePaddingTop * ratio}px`;
+          tab.style.paddingBottom = `${basePaddingBottom * ratio}px`;
+          tab.style.paddingLeft = `${basePaddingLeft * ratio}px`;
+          tab.style.paddingRight = `${basePaddingRight * ratio}px`;
+          if (fitsAtSize(baseSize)) {
+            chosenPaddingRatio = ratio;
+            break;
+          }
+        }
+      }
+
+      // 2) Jeśli nadal się nie mieści, dobierz największy font, który się zmieści.
+      let best = baseSize;
+      if (!fitsAtSize(baseSize)) {
         let low = minFontSize;
         let high = baseSize;
-        let best = minFontSize;
         let guard = 0;
-
         while (low <= high && guard < 30) {
-          const mid = Math.floor(((low + high) / 2) * 10) / 10; 
-          label.style.fontSize = `${mid}px`;
-          if (label.scrollHeight <= availableHeight) {
+          const mid = Math.floor(((low + high) / 2) * 10) / 10;
+          if (fitsAtSize(mid)) {
             best = mid;
             low = mid + 0.1;
           } else {
@@ -467,29 +504,22 @@ class PTabs {
           }
           guard += 1;
         }
-        return { best, availableHeight };
-      };
-
-      let { best, availableHeight } = findBestSize();
-
-      if (best < baseSize) {
-        tab.classList.add("ptabs__tab--dense");
-        const result = findBestSize();
-        best = result.best;
-        availableHeight = result.availableHeight;
       }
 
       label.style.fontSize = `${best}px`;
 
+      // Restore weight/family.
       label.style.fontWeight = prevWeight;
-      if (label.scrollHeight > availableHeight && best <= minFontSize) {
-        label.style.lineHeight = "1.0";
-        if (label.scrollHeight > availableHeight) {
-          label.style.lineHeight = "0.95";
-        }
-      }
+      label.style.fontFamily = prevFamily;
+
       if (Math.abs(best - baseSize) < 0.05) {
         label.style.fontSize = "";
+        if (chosenPaddingRatio === 1) {
+          tab.style.paddingTop = "";
+          tab.style.paddingBottom = "";
+          tab.style.paddingLeft = "";
+          tab.style.paddingRight = "";
+        }
       } else {
         label.classList.add("ptabs__label--scaled");
       }

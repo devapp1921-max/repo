@@ -180,7 +180,7 @@
     clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
 
     @include tablet- {
-      padding-top: calc(18px + 6px);
+      padding-top: 24px;
     }
     padding: 20px 28px 12px 28px;
   }
@@ -566,8 +566,10 @@
   .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
   .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] .ptabs__label {
     font-family: "SofiaPro-Regular", sans-serif;
+    font-size: 18px;
     line-height: 1;
     letter-spacing: -0.01em;
+    font-weight: 400;
     text-align: center;
   }
 
@@ -578,7 +580,11 @@
   }
 
   .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
+    font-family: "SofiaPro-SemiBold", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
     color: $primary-red;
+    text-align: center;
   }
 
   // Stan pressed sterowany w JS
@@ -605,9 +611,9 @@
   }
 
   @include -mobile {
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
-      letter-spacing: -0.02em;
-    }
+    // .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
+    //   letter-spacing: -0.02em;
+    // }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
