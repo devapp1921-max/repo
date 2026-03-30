@@ -118,6 +118,7 @@ class PTabs {
     this.openFromHash();
     window.addEventListener("hashchange", () => this.openFromHash());
     this.observeResize();
+    this.scaleLabels();
   }
 
   normalizeLegacyMarkup() {
@@ -254,7 +255,6 @@ class PTabs {
 
   bindEvents() {
     this.tabs.forEach((tab) => {
-      // Stan pressed obsługujemy ręcznie, żeby działał dla myszy i klawiatury.
       const clearPressed = () => tab.classList.remove("ptabs__tab--pressed");
       const setPressed = () => {
         if (tab.getAttribute("aria-selected") === "true") return;
@@ -341,6 +341,7 @@ class PTabs {
     this.updateSidePadding();
     this.ensureTabInView(tab);
     this.updateChevronCenter();
+    this.scaleLabels();
   }
 
   handleKeydown(event, tab) {
@@ -403,6 +404,7 @@ class PTabs {
         this.updateChevronState();
         this.updateSidePadding();
         this.updateChevronCenter();
+        this.scaleLabels();
       });
       this.resizeObserver.observe(this.viewport);
       this.resizeObserver.observe(this.tablist);
@@ -411,11 +413,87 @@ class PTabs {
         this.updateChevronState();
         this.updateSidePadding();
         this.updateChevronCenter();
+        this.scaleLabels();
       });
     }
     this.updateChevronState();
     this.updateSidePadding();
     this.updateChevronCenter();
+    this.scaleLabels();
+  }
+
+  scaleLabels() {
+    if (!this.tabs.length) return;
+    const minFontSize = 7;
+    const labels = this.tabs
+      .map((tab) => tab.querySelector(".ptabs__label"))
+      .filter(Boolean);
+
+    labels.forEach((label) => {
+      const tab = label.closest(PTABS_SELECTORS.tab);
+      if (!tab) return;
+
+      label.style.fontSize = "";
+      label.style.maxHeight = "";
+      label.classList.remove("ptabs__label--scaled");
+      tab.classList.remove("ptabs__tab--dense");
+      const computedBase = window.getComputedStyle(label);
+      const baseSize = parseFloat(computedBase.fontSize) || 16;
+
+      const prevWeight = label.style.fontWeight;
+      label.style.fontWeight = "400";
+
+      const findBestSize = () => {
+        const tabStyles = window.getComputedStyle(tab);
+        const paddingTop = parseFloat(tabStyles.paddingTop) || 0;
+        const paddingBottom = parseFloat(tabStyles.paddingBottom) || 0;
+        const minHeight = parseFloat(tabStyles.minHeight) || 0;
+        const baseHeight = Math.max(minHeight, tab.clientHeight || 0);
+        const availableHeight = Math.max(0, baseHeight - paddingTop - paddingBottom);
+
+        let low = minFontSize;
+        let high = baseSize;
+        let best = minFontSize;
+        let guard = 0;
+
+        while (low <= high && guard < 30) {
+          const mid = Math.floor(((low + high) / 2) * 10) / 10; 
+          label.style.fontSize = `${mid}px`;
+          if (label.scrollHeight <= availableHeight) {
+            best = mid;
+            low = mid + 0.1;
+          } else {
+            high = mid - 0.1;
+          }
+          guard += 1;
+        }
+        return { best, availableHeight };
+      };
+
+      let { best, availableHeight } = findBestSize();
+
+      if (best < baseSize) {
+        tab.classList.add("ptabs__tab--dense");
+        const result = findBestSize();
+        best = result.best;
+        availableHeight = result.availableHeight;
+      }
+
+      label.style.fontSize = `${best}px`;
+
+      label.style.fontWeight = prevWeight;
+      if (label.scrollHeight > availableHeight && best <= minFontSize) {
+        label.style.lineHeight = "1.0";
+        if (label.scrollHeight > availableHeight) {
+          label.style.lineHeight = "0.95";
+        }
+      }
+      if (Math.abs(best - baseSize) < 0.05) {
+        label.style.fontSize = "";
+      } else {
+        label.classList.add("ptabs__label--scaled");
+      }
+    });
   }
 
   scrollByStep(direction) {

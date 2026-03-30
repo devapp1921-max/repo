@@ -92,6 +92,19 @@
     position: relative;
   }
 
+  &__label {
+    line-height: 1.1;
+    white-space: normal;
+    word-break: break-word;
+    hyphens: auto;
+    overflow: hidden;
+    text-align: center;
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    font-weight: 400;
+  }
+
   @include desktop- {
     &__list {
       margin-left: 0;
@@ -163,7 +176,6 @@
     position: relative;
     flex: 0 0 var(--ptabs-tab-width-active);
     min-height: var(--ptabs-tab-height-active);
-    // Ucina 1px od dołu, żeby zniknęły końcówki bocznych obramowań aktywnego taba.
     -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
     clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
 
@@ -431,13 +443,24 @@
   &--no-icons {
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
       min-height: 105px;
+      height: 105px;
       padding: 12px 8px;
     }
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
       margin-top: 0;
       min-height: 116px;
+      height: 116px;
       padding: 24px 36px 12px 36px;
+    }
+
+    // Dostosowanie długich tekstów taba
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
+      padding: 8px 8px;
+    }
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense[aria-selected="true"],
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"].ptabs__tab--dense {
+      padding: 18px 36px 8px 36px;
     }
 
     @include tablet- {
@@ -449,13 +472,23 @@
         font-size: 18px;
         line-height: 1;
         min-height: var(--ptabs-tab-height-inactive);
+        height: var(--ptabs-tab-height-inactive);
         padding: 36px 16px;
         justify-content: flex-end;
       }
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
       .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
         min-height: var(--ptabs-tab-height-active);
+        height: var(--ptabs-tab-height-active);
         padding: 48px 48px 36px 48px;
+      }
+
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
+        padding: 28px 16px;
+      }
+      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense[aria-selected="true"],
+      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"].ptabs__tab--dense {
+        padding: 40px 48px 28px 48px;
       }
     }
 
@@ -533,10 +566,8 @@
   .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
   .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] .ptabs__label {
     font-family: "SofiaPro-Regular", sans-serif;
-    font-size: 18px;
     line-height: 1;
     letter-spacing: -0.01em;
-    font-weight: 400;
     text-align: center;
   }
 
@@ -547,11 +578,7 @@
   }
 
   .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
-    font-family: "SofiaPro-SemiBold", sans-serif;
-    font-weight: 700;
-    font-size: 18px;
     color: $primary-red;
-    text-align: center;
   }
 
   // Stan pressed sterowany w JS
