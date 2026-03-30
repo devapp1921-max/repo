@@ -50,6 +50,8 @@
 .ptabs {
   display: flex;
   flex-direction: column;
+  --ptabs-fade-offset-bottom: 1px;
+  --ptabs-fade-height: var(--ptabs-tab-height-inactive, 0px);
 
   &__nav {
     position: relative;
@@ -289,6 +291,25 @@
     border-left: 0;
   }
 
+  // Górna linia tylko dla nieaktywnych tabów (bez wpływu na aktywne)
+  &__nav--overflow
+  &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
+    border-top-color: transparent;
+  }
+
+  &__nav--overflow
+  &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"])::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: $text-gray-light;
+    pointer-events: none;
+    z-index: 4;
+  }
+
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
     content: none;
   }
@@ -350,9 +371,12 @@
   }
 
   &--icons {
-    --ptabs-tab-height-active: auto;
-    --ptabs-tab-height-inactive: auto;
+    --ptabs-tab-height-active: 78px;
+    --ptabs-tab-height-inactive: 62px;
     --ptabs-tablist-height: auto;
+    @include -mobile {
+      --ptabs-fade-height: calc((var(--ptabs-tab-height-inactive) * 1.7) - 2px);
+    }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
       padding: 12px 8px;
@@ -382,6 +406,7 @@
       --ptabs-tablist-height: 188px;
       --ptabs-tab-height-inactive: 156px;
       --ptabs-tab-height-active: 168px;
+      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
         font-size: 18px;
@@ -427,6 +452,7 @@
       --ptabs-tablist-height: 188px;
       --ptabs-tab-height-inactive: 134px;
       --ptabs-tab-height-active: 146px;
+      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
         flex: 1 1 0;
@@ -441,6 +467,8 @@
   }
 
   &--no-icons {
+    --ptabs-tab-height-active: 116px;
+    --ptabs-tab-height-inactive: 105px;
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
       min-height: 105px;
       height: 105px;
@@ -467,6 +495,7 @@
       --ptabs-tablist-height: 132px;
       --ptabs-tab-height-inactive: 116px;
       --ptabs-tab-height-active: 128px;
+      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
         font-size: 18px;
@@ -509,6 +538,7 @@
       --ptabs-tablist-height: 126px;
       --ptabs-tab-height-inactive: 94px;
       --ptabs-tab-height-active: 106px;
+      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
 
       .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
         flex: 1 1 0;
@@ -611,10 +641,6 @@
   }
 
   @include -mobile {
-    // .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
-    //   letter-spacing: -0.02em;
-    // }
-
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
       margin-left: 0;
@@ -651,7 +677,7 @@
     }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      border-bottom: 0;
+      border-bottom: 1px solid $text-gray-light;
     }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
@@ -807,22 +833,27 @@
   &__nav--overflow::after {
     content: "";
     position: absolute;
-    top: 1px;
-    bottom: 1px;
+    top: auto;
+    bottom: var(--ptabs-fade-offset-bottom, 1px);
     width: 48px;
-    height: auto;
-    z-index: 2;
+    height: calc(
+      var(--ptabs-fade-height, 0px) - (var(--ptabs-fade-offset-bottom, 1px) + 2px)
+    );
+    z-index: 3;
     pointer-events: none;
     opacity: 0;
+    background-repeat: no-repeat;
+    background-size: 100% calc(100% - var(--ptabs-fade-offset-bottom, 1px));
+    background-position: 0 0;
   }
 
   &__nav--overflow::before {
-    left: 0;
+    left: 1px;
     background: linear-gradient(90deg, $white 0%, rgba(255, 255, 255, 0) 100%);
   }
 
   &__nav--overflow::after {
-    right: 0;
+    right: 1px;
     background: linear-gradient(270deg, $white 0%, rgba(255, 255, 255, 0) 100%);
   }
 
@@ -834,14 +865,11 @@
     opacity: 1;
   }
 
-  @include -mobile {
-    &__nav--overflow::before,
-    &__nav--overflow::after {
-      background-repeat: no-repeat;
-      background-size: 100% calc(100% - 2px);
-      background-position: 0 1px;
-    }
+  &__nav--overflow .ptabs__list {
+    z-index: 2;
+  }
 
+  @include -mobile {
     &__nav--overflow::before {
       background: linear-gradient(90deg, $white 0%, rgba(255, 255, 255, 0) 100%);
     }
