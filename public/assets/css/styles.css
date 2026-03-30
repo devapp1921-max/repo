@@ -1638,7 +1638,9 @@ body.bodytype-privatebanking {
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
   box-shadow: none;
   position: relative;
-  border: 0;
+  border: 1px solid #828282;
+  z-index: 1;
+  border-radius: 0;
 }
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] + .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
   box-shadow: none;
@@ -1647,14 +1649,7 @@ body.bodytype-privatebanking {
   border-left: 0;
 }
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid #828282;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 3;
-  border-left: 0;
+  content: none;
 }
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:first-child::after {
   border-left: 1px solid #828282;
@@ -1668,15 +1663,20 @@ body.bodytype-privatebanking {
 .ptabs__nav--overflow .ptabs__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role=tab]:first-of-type::after {
   border-left: 1px solid #828282;
 }
-.ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]::after, .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]::after {
-  border-left: 1px solid #828282;
-  border-right: 1px solid #828282;
-  border-bottom: 0;
-}
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true], .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
+  margin-left: -1px;
+  margin-right: -1px;
+  border-bottom: 0;
+  -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+  clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+  z-index: 4;
+  border-radius: 4px 4px 0 0;
+}
+.ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child, .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child {
   margin-left: 0;
+}
+.ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:last-child, .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:last-child {
   margin-right: 0;
-  border: 0;
 }
 .ptabs__label {
   display: block;
@@ -1961,6 +1961,15 @@ body.bodytype-privatebanking {
   .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:last-child::after,
   .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:last-child::after {
     right: 0;
+  }
+}
+@media (max-width: 1279px) {
+  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:first-child):not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
+    border-left: 0;
+  }
+  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]):has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]),
+  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]):has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
+    border-right: 0;
   }
 }
 .ptabs__panel,

@@ -264,7 +264,9 @@
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
     box-shadow: none;
     position: relative;
-    border: 0;
+    border: 1px solid $text-gray-light;
+    z-index: 1;
+    border-radius: 0;
   }
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
@@ -276,14 +278,7 @@
   }
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid $text-gray-light;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 3;
-    border-left: 0;
+    content: none;
   }
 
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child::after {
@@ -301,18 +296,25 @@
     border-left: 1px solid $text-gray-light;
   }
 
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
-  &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
-    border-left: 1px solid $text-gray-light;
-    border-right: 1px solid $text-gray-light;
-    border-bottom: 0;
-  }
-
   &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
   &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+    margin-left: -1px;
+    margin-right: -1px;
+    border-bottom: 0;
+    -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+    clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+    z-index: 4;
+    border-radius: 4px 4px 0 0;
+  }
+
+  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
+  &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
     margin-left: 0;
+  }
+
+  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child,
+  &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child {
     margin-right: 0;
-    border: 0;
   }
 
   &__label {
@@ -653,6 +655,18 @@
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
       right: 0;
+    }
+  }
+
+  // usunięcie podwójnych separatorów między nieaktywnymi tabami.
+  @include -tablet {
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
+      border-left: 0;
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]):has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]),
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]):has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
+      border-right: 0;
     }
   }
 
