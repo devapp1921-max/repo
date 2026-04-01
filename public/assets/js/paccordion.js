@@ -359,3 +359,5 @@ export class Accordion {
         init();
     }
 }
+
+new Accordion();

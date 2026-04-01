@@ -1118,7 +1118,60 @@
             border-right: 1px solid $text-gray-light;
             border-top: 0;
             border-bottom: 1px solid $text-gray-light;
+            margin-left: 1px;
+            margin-right: 0;
             margin-bottom: 48px;
+            position: relative;
+        }
+
+        // Gdy aktywny jest pierwszy tab, wydłużamy lewą krawędź o 1px w górę.
+        &:has(
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child
+            ),
+        &:has(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child
+            ) {
+            .ptabs__panel::before {
+                content: "";
+                position: absolute;
+                left: -1px;
+                top: -1px;
+                width: 1px;
+                height: 1px;
+                background: $text-gray-light;
+                pointer-events: none;
+            }
+        }
+
+        // Gdy aktywny jest ostatni tab, wydłużamy prawą krawędź o 1px w górę.
+        &:has(
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child
+            ),
+        &:has(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child
+            ) {
+            .ptabs__panel::after {
+                content: "";
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                width: 1px;
+                height: 1px;
+                background: $text-gray-light;
+                pointer-events: none;
+            }
+        }
+
+        &:has(
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child
+            ),
+        &:has(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child
+            ) {
+            .ptabs__panel {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
 
         .paccordion-container__section {
