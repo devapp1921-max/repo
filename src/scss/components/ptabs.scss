@@ -301,8 +301,12 @@
         box-shadow: none;
     }
 
-    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
-        border-left: 0;
+    // W desktop-carousel: pierwszy aktywny tab ma mieć lewą ramkę.
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
+    &__nav--overflow
+        &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
+        border-left: 1px solid $text-gray-light;
     }
 
     // Górna linia tylko dla nieaktywnych tabów (bez wpływu na aktywne)
@@ -338,7 +342,15 @@
 
     &__nav--overflow
         &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child::after {
-        border-left: 1px solid $text-gray-light;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: $text-gray-light;
+        pointer-events: none;
+        z-index: 5;
     }
 
     &__nav--overflow
@@ -380,6 +392,12 @@
     &__nav--overflow
         &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child {
         margin-right: 0;
+    }
+
+    // Wymuszenie lewej krawędzi dla pierwszego taba w trybie overflow.
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
+        border-left: 1px solid $text-gray-light;
     }
 
     &__label {
@@ -568,6 +586,9 @@
                 padding: 36px 16px;
             }
         }
+
+        &.ptabs--desktop-carousel {
+        }
     }
 
     &--no-icons {
@@ -660,26 +681,15 @@
         }
 
         &.ptabs--desktop-carousel {
-            @include desktop- {
-                --ptabs-tab-width: 408px;
-                --ptabs-tab-width-active: 408px;
-                --ptabs-tab-width-inactive: 408px;
-
-                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-                    flex: 0 0 408px;
-                    max-width: 408px;
-                }
-
-                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-                }
-            }
         }
     }
 
     &--desktop-carousel {
         @include desktop- {
             --ptabs-desktop-visible: 4;
+            --ptabs-tab-width: 408px;
+            --ptabs-tab-width-active: 408px;
+            --ptabs-tab-width-inactive: 408px;
 
             .ptabs__nav {
                 max-width: calc(
@@ -687,6 +697,17 @@
                 );
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-inactive);
+                max-width: var(--ptabs-tab-width-inactive);
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-active);
+                max-width: var(--ptabs-tab-width-active);
             }
         }
     }
@@ -1014,7 +1035,8 @@
         left: 1px;
         background: linear-gradient(
             90deg,
-            $white 0%,
+            transparent 0 1px,
+            $white 1px,
             rgba(255, 255, 255, 0) 100%
         );
     }
