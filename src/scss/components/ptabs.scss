@@ -145,6 +145,8 @@
         border-left: 0;
         border-right: 0;
         position: relative;
+        // Domyślny kolor ikon dla nieaktywnych tabów (filtr na <img>).
+        --ptabs-icon-filter: grayscale(1) brightness(0.55) saturate(0);
 
         @include tablet- {
             font-size: 16px;
@@ -158,6 +160,7 @@
 
         &:hover {
             color: $primary-red;
+            --ptabs-icon-filter: none;
         }
 
         &:focus-visible {
@@ -169,6 +172,7 @@
     &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
     &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
         color: $primary-red;
+        --ptabs-icon-filter: none;
         background-color: $white;
         margin-top: 0;
         border: 1px solid $text-gray-light;
@@ -441,6 +445,7 @@
             height: 100%;
             display: block;
             object-fit: contain;
+            filter: var(--ptabs-icon-filter, none);
         }
     }
 
@@ -813,6 +818,38 @@
     // Stan pressed sterowany w JS
     .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"] {
         background-color: $borders-gray;
+        border: 1px solid $text-gray-light;
+        color: $text-black;
+        font-family: "SofiaPro-Regular", sans-serif;
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"]
+        .ptabs__label {
+        color: $text-black;
+        font-family: "SofiaPro-Regular", sans-serif;
+        font-weight: 400;
+    }
+
+    .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"]
+        .ptabs__icon {
+        color: $text-black;
+    }
+
+    .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"] {
+        --ptabs-icon-filter: brightness(0) saturate(100%);
+    }
+
+    // Jeśli pressed + hover, wymuś czarny tekst (override dla hover).
+    .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"]:hover
+        .ptabs__label {
+        color: $text-black;
+        font-family: "SofiaPro-Regular", sans-serif;
+        font-weight: 400;
     }
 
     // Widoczny fokus dla aktywnego taba

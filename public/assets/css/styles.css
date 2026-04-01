@@ -1538,6 +1538,7 @@ body.bodytype-privatebanking {
   border-left: 0;
   border-right: 0;
   position: relative;
+  --ptabs-icon-filter: grayscale(1) brightness(0.55) saturate(0);
 }
 @media (min-width: 960px) {
   .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
@@ -1552,6 +1553,7 @@ body.bodytype-privatebanking {
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover {
   color: #D91918;
+  --ptabs-icon-filter: none;
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:focus-visible {
   outline: 2px solid #D91918;
@@ -1559,6 +1561,7 @@ body.bodytype-privatebanking {
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true], .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
   color: #D91918;
+  --ptabs-icon-filter: none;
   background-color: #FFFFFF;
   margin-top: 0;
   border: 1px solid #828282;
@@ -1742,6 +1745,7 @@ body.bodytype-privatebanking {
   height: 100%;
   display: block;
   object-fit: contain;
+  filter: var(--ptabs-icon-filter, none);
 }
 .ptabs--icons {
   --ptabs-tab-height-active: 78px;
@@ -2021,6 +2025,30 @@ body.bodytype-privatebanking {
 }
 .ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab] {
   background-color: #C0C0C0;
+  border: 1px solid #828282;
+  color: #000000;
+  font-family: "SofiaPro-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  text-align: center;
+}
+.ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab] .ptabs__label {
+  color: #000000;
+  font-family: "SofiaPro-Regular", sans-serif;
+  font-weight: 400;
+}
+.ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab] .ptabs__icon {
+  color: #000000;
+}
+.ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab] {
+  --ptabs-icon-filter: brightness(0) saturate(100%);
+}
+.ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab]:hover .ptabs__label {
+  color: #000000;
+  font-family: "SofiaPro-Regular", sans-serif;
+  font-weight: 400;
 }
 .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:focus-visible,
 .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:focus-visible {
