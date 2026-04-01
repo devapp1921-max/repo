@@ -1718,6 +1718,12 @@ body.bodytype-privatebanking {
   display: block;
   stroke: currentColor;
 }
+.ptabs__icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
 .ptabs--icons {
   --ptabs-tab-height-active: 78px;
   --ptabs-tab-height-inactive: 62px;
