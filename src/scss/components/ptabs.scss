@@ -443,6 +443,28 @@
             margin-top: 0;
         }
 
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:has(.ptabs__icon)) {
+            gap: 0;
+            justify-content: center;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:has(.ptabs__icon))
+            .ptabs__label {
+            margin: 0 auto;
+            max-width: 132px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:not(
+                :has(.ptabs__icon)
+            ),
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:not(
+                :has(.ptabs__icon)
+            ) {
+            padding: 12px 8px;
+        }
+
         @include tablet- {
             --ptabs-tablist-height: 188px;
             --ptabs-tab-height-inactive: 156px;
@@ -470,6 +492,29 @@
                 padding: 48px 48px 36px 48px;
                 min-height: var(--ptabs-tab-height-active);
                 margin-top: 0;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                    :has(.ptabs__icon)
+                ) {
+                justify-content: center;
+                padding: 36px 16px;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:not(
+                    :has(.ptabs__icon)
+                ),
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:not(
+                    :has(.ptabs__icon)
+                ) {
+                padding: 36px 16px;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                    :has(.ptabs__icon)
+                )
+                .ptabs__label {
+                max-width: none;
             }
 
             &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::before,
@@ -507,6 +552,15 @@
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
             .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
                 padding: 48px 16px 36px 16px;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:not(
+                    :has(.ptabs__icon)
+                ),
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:not(
+                    :has(.ptabs__icon)
+                ) {
+                padding: 36px 16px;
             }
         }
     }

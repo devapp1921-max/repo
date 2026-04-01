@@ -1756,6 +1756,20 @@ body.bodytype-privatebanking {
 .ptabs--icons .ptabs__icon {
   margin-top: 0;
 }
+.ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:has(.ptabs__icon)) {
+  gap: 0;
+  justify-content: center;
+}
+.ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:has(.ptabs__icon)) .ptabs__label {
+  margin: 0 auto;
+  max-width: 132px;
+  width: 100%;
+  text-align: center;
+}
+.ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:not(:has(.ptabs__icon)),
+.ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:not(:has(.ptabs__icon)) {
+  padding: 12px 8px;
+}
 @media (min-width: 960px) {
   .ptabs--icons {
     --ptabs-tablist-height: 188px;
@@ -1782,6 +1796,17 @@ body.bodytype-privatebanking {
     padding: 48px 48px 36px 48px;
     min-height: var(--ptabs-tab-height-active);
     margin-top: 0;
+  }
+  .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:has(.ptabs__icon)) {
+    justify-content: center;
+    padding: 36px 16px;
+  }
+  .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:not(:has(.ptabs__icon)),
+  .ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:not(:has(.ptabs__icon)) {
+    padding: 36px 16px;
+  }
+  .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:has(.ptabs__icon)) .ptabs__label {
+    max-width: none;
   }
   .ptabs--icons__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]::before, .ptabs--icons__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]::before {
     display: none;
@@ -1814,6 +1839,10 @@ body.bodytype-privatebanking {
   .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
   .ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
     padding: 48px 16px 36px 16px;
+  }
+  .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:not(:has(.ptabs__icon)),
+  .ptabs--icons .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:not(:has(.ptabs__icon)) {
+    padding: 36px 16px;
   }
 }
 .ptabs--no-icons {
