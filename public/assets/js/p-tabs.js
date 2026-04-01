@@ -533,8 +533,20 @@ class PTabs {
                 const paddingTop = parseFloat(styles.paddingTop) || 0;
                 const paddingBottom = parseFloat(styles.paddingBottom) || 0;
                 const minHeight = parseFloat(styles.minHeight) || 0;
-                const baseHeight = Math.max(minHeight, tab.clientHeight || 0);
-                return Math.max(0, baseHeight - paddingTop - paddingBottom);
+                const isIconsVariant = Boolean(tab.closest(".ptabs--icons"));
+                const baseHeight = isIconsVariant
+                    ? minHeight || tab.clientHeight || 0
+                    : Math.max(minHeight, tab.clientHeight || 0);
+                const iconEl = tab.querySelector(".ptabs__icon");
+                const iconHeight = iconEl
+                    ? iconEl.getBoundingClientRect().height || 0
+                    : 0;
+                const gap = parseFloat(styles.rowGap || styles.gap) || 0;
+                const iconOffset = iconEl ? iconHeight + gap : 0;
+                return Math.max(
+                    0,
+                    baseHeight - paddingTop - paddingBottom - iconOffset
+                );
             };
 
             const fitsAtSize = (size) => {
