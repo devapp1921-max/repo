@@ -443,11 +443,13 @@
             margin-top: 0;
         }
 
+        // Tab bez ikony w wariancie z ikonami: wyśrodkuj tekst pionowo i poziomo.
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:has(.ptabs__icon)) {
             gap: 0;
             justify-content: center;
         }
 
+        // Label bez ikony ma zachowywać się jak w no-icons (centrowanie w osi X).
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:has(.ptabs__icon))
             .ptabs__label {
             margin: 0 auto;
@@ -494,6 +496,7 @@
                 margin-top: 0;
             }
 
+            // Tab bez ikony: w tablet+ nie dociskaj tekstu do dołu.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
                     :has(.ptabs__icon)
                 ) {
@@ -510,6 +513,7 @@
                 padding: 36px 16px;
             }
 
+            // Na tablet+ label bez ikony nie potrzebuje maks. szerokości.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
                     :has(.ptabs__icon)
                 )
@@ -554,6 +558,7 @@
                 padding: 48px 16px 36px 16px;
             }
 
+            // Desktop: aktywny tab bez ikony ma symetryczny padding.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:not(
                     :has(.ptabs__icon)
                 ),
