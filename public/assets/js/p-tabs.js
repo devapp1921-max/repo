@@ -730,7 +730,8 @@ class PTabs {
     updateChevronCenter() {
         if (!this.nav || !this.tablist || this.tabs.length === 0) return;
         const target =
-            this.tabs.find((tab) => tab.getAttribute("aria-selected") !== "true") || this.tabs[0];
+            this.tabs.find((tab) => tab.getAttribute("aria-selected") !== "true") ||
+            this.tabs[0];
         if (!target) return;
         const navRect = this.nav.getBoundingClientRect();
         const tabRect = target.getBoundingClientRect();
