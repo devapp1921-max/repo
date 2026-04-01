@@ -710,6 +710,16 @@
                 max-width: var(--ptabs-tab-width-active);
             }
         }
+
+        // W desktop-carousel usuwamy podwójne linie między nieaktywnymi tabami.
+        .ptabs__nav--overflow
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:last-child):not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ) {
+            border-right: 0;
+        }
     }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:has(
