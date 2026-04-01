@@ -309,6 +309,31 @@
         border-left: 1px solid $text-gray-light;
     }
 
+    // desktop-carousel + icons: pierwszy aktywny tab ma jedną, nie podwójną, lewą linię
+    &.ptabs--desktop-carousel.ptabs--icons {
+        .ptabs__nav--overflow
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
+        .ptabs__nav--overflow
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
+            border-left: 0;
+        }
+
+        .ptabs__nav--overflow
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::before,
+        .ptabs__nav--overflow
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: $text-gray-light;
+            pointer-events: none;
+            z-index: 5;
+        }
+    }
+
     // Górna linia tylko dla nieaktywnych tabów (bez wpływu na aktywne)
     &__nav--overflow
         &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(

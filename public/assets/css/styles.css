@@ -1657,6 +1657,22 @@ body.bodytype-privatebanking {
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child, .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child {
   border-left: 1px solid #828282;
 }
+.ptabs.ptabs--desktop-carousel.ptabs--icons .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child,
+.ptabs.ptabs--desktop-carousel.ptabs--icons .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child {
+  border-left: 0;
+}
+.ptabs.ptabs--desktop-carousel.ptabs--icons .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child::before,
+.ptabs.ptabs--desktop-carousel.ptabs--icons .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #828282;
+  pointer-events: none;
+  z-index: 5;
+}
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
   border-top-color: transparent;
 }
