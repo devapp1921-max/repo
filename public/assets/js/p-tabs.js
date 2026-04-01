@@ -640,6 +640,28 @@ class PTabs {
             return;
         }
 
+        if (this.root.classList.contains("ptabs--desktop-carousel")) {
+            const tabWidth = tab.offsetWidth || 0;
+            const visible = parseInt(
+                getComputedStyle(this.root).getPropertyValue("--ptabs-desktop-visible"),
+                10
+            ) || 4;
+            const activeIndex = this.tabs.indexOf(tab);
+            const maxScroll = Math.max(0, this.tablist.scrollWidth - this.viewport.clientWidth);
+            const desiredSlot = Math.max(1, Math.min(2, visible - 2)); // 2nd/3rd slot
+            let targetScroll = Math.max(0, tab.offsetLeft - tabWidth * desiredSlot);
+
+            if (activeIndex === this.tabs.length - 1) {
+                targetScroll = maxScroll;
+            }
+
+            this.viewport.scrollTo({
+                left: Math.min(targetScroll, maxScroll),
+                behavior: prefersReducedMotion() ? "auto" : "smooth",
+            });
+            return;
+        }
+
         const tabRect = tab.getBoundingClientRect();
         const viewportRect = this.viewport.getBoundingClientRect();
         const leftOverflow = tabRect.left < viewportRect.left;

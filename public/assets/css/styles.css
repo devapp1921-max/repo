@@ -1691,15 +1691,7 @@ body.bodytype-privatebanking {
   content: none;
 }
 .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:first-child::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: #828282;
-  pointer-events: none;
-  z-index: 5;
+  content: none;
 }
 .ptabs__nav--overflow .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role=tab]::after {
   border-right: 0;
@@ -1976,9 +1968,25 @@ body.bodytype-privatebanking {
     flex: 0 0 var(--ptabs-tab-width-active);
     max-width: var(--ptabs-tab-width-active);
   }
+  .ptabs--desktop-carousel .ptabs__list {
+    padding-left: 0.1px;
+  }
 }
-.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:last-child):not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
+.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
+  border-left: 1px solid #828282;
   border-right: 0;
+}
+.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:last-child {
+  border-right: 1px solid #828282;
+}
+.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
+.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
+  border-left: 1px solid #828282;
+  border-right: 1px solid #828282;
+}
+.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true] + .ptabs__tab.ptabs__tab.ptabs__tab[role=tab],
+.ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] + .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
+  border-left: 0;
 }
 .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:has(.ptabs__icon),
 .ptabs .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:has(.ptabs__icon) {
@@ -2190,7 +2198,7 @@ body.bodytype-privatebanking {
   bottom: var(--ptabs-fade-offset-bottom, 1px);
   width: 48px;
   height: calc(var(--ptabs-fade-height, 0px) - (var(--ptabs-fade-offset-bottom, 1px) + 2px));
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
   opacity: 0;
   background-repeat: no-repeat;
@@ -2266,7 +2274,7 @@ body.bodytype-privatebanking {
   border-right: 1px solid #828282;
   border-top: 0;
   border-bottom: 1px solid #828282;
-  margin-left: 1px;
+  margin-left: 0.1px;
   margin-right: 0;
   margin-bottom: 48px;
   position: relative;
