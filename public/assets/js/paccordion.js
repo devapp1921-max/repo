@@ -1,365 +1,361 @@
 export class Accordion {
-  constructor() {
-    this.init();
-  }
+    constructor() {
+        this.init();
+    }
 
-  init() {
-    let autoId = 0;
-    let currentItem = null;
+    init() {
+        let autoId = 0;
+        let currentItem = null;
 
-    const prefersReducedMotion = () =>
-      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const prefersReducedMotion = () =>
+            window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const closestItem = (node) => node?.closest?.(".paccordion__item") || null;
+        const closestItem = (node) => node?.closest?.(".paccordion__item") || null;
 
-    const getParts = (itemEl) => {
-      const button = itemEl.querySelector(":scope > .paccordion__heading > .paccordion__button");
-      const panelId = button?.getAttribute("aria-controls") || "";
-      const panel = panelId ? document.getElementById(panelId) : itemEl.querySelector(":scope > .paccordion__panel");
-      return { button, panel };
-    };
+        const getParts = (itemEl) => {
+            const button = itemEl.querySelector(":scope > .paccordion__heading > .paccordion__button");
+            const panelId = button?.getAttribute("aria-controls") || "";
+            const panel = panelId ? document.getElementById(panelId) : itemEl.querySelector(":scope > .paccordion__panel");
+            return { button, panel };
+        };
 
-    const slugify = (text) => {
-      const base = (text || "")
-        .toString()
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "")
-        .replace(/-+/g, "-");
-      return base || "sekcja";
-    };
+        const slugify = (text) => {
+            const base = (text || "")
+                .toString()
+                .trim()
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "")
+                .replace(/-+/g, "-");
+            return base || "sekcja";
+        };
 
-    const ensureUniqueId = (base) => {
-      let candidate = base;
-      let i = 2;
-      while (document.getElementById(candidate)) {
-        candidate = `${base}-${i}`;
-        i += 1;
-      }
-      return candidate;
-    };
+        const ensureUniqueId = (base) => {
+            let candidate = base;
+            let i = 2;
+            while (document.getElementById(candidate)) {
+                candidate = `${base}-${i}`;
+                i += 1;
+            }
+            return candidate;
+        };
 
-    const ensureItemId = (itemEl) => {
-      if (itemEl.id) return itemEl.id;
-      const label = itemEl.querySelector(".paccordion__label");
-      const base = slugify(label?.textContent || "");
-      const unique = ensureUniqueId(base);
-      itemEl.id = unique;
-      return unique;
-    };
+        const ensureItemId = (itemEl) => {
+            if (itemEl.id) return itemEl.id;
+            const label = itemEl.querySelector(".paccordion__label");
+            const base = slugify(label?.textContent || "");
+            const unique = ensureUniqueId(base);
+            itemEl.id = unique;
+            return unique;
+        };
 
-    const isOpen = (itemEl) => {
-      const { button, panel } = getParts(itemEl);
-      if (!button || !panel) return false;
-      return button.getAttribute("aria-expanded") === "true" && !panel.hasAttribute("hidden");
-    };
+        const isOpen = (itemEl) => {
+            const { button, panel } = getParts(itemEl);
+            if (!button || !panel) return false;
+            return button.getAttribute("aria-expanded") === "true" && !panel.hasAttribute("hidden");
+        };
 
-    const setExpanded = (button, expanded) => {
-      button.setAttribute("aria-expanded", expanded ? "true" : "false");
-    };
+        const setExpanded = (button, expanded) => {
+            button.setAttribute("aria-expanded", expanded ? "true" : "false");
+        };
 
-    const setCurrentItem = (itemEl) => {
-      if (currentItem === itemEl) return;
-      if (currentItem) currentItem.classList.remove("paccordion__item--current");
-      currentItem = itemEl || null;
-      if (currentItem) currentItem.classList.add("paccordion__item--current");
-    };
+        const setCurrentItem = (itemEl) => {
+            if (currentItem === itemEl) return;
+            if (currentItem) currentItem.classList.remove("paccordion__item--current");
+            currentItem = itemEl || null;
+            if (currentItem) currentItem.classList.add("paccordion__item--current");
+        };
 
-    const findNearestOpenAncestor = (itemEl) => {
-      let current = itemEl?.parentElement || null;
-      while (current) {
-        const item = closestItem(current);
-        if (!item) break;
-        if (isOpen(item)) return item;
-        current = item.parentElement;
-      }
-      return null;
-    };
+        const findNearestOpenAncestor = (itemEl) => {
+            let current = itemEl?.parentElement || null;
+            while (current) {
+                const item = closestItem(current);
+                if (!item) break;
+                if (isOpen(item)) return item;
+                current = item.parentElement;
+            }
+            return null;
+        };
 
-    const setPanelInteractivity = (panel, interactive) => {
-      if (interactive) {
-        panel.removeAttribute("inert");
-        panel.removeAttribute("aria-hidden");
-      } else {
-        panel.setAttribute("inert", "");
-        panel.setAttribute("aria-hidden", "true");
-      }
-    };
+        const setPanelInteractivity = (panel, interactive) => {
+            if (interactive) {
+                panel.removeAttribute("inert");
+                panel.removeAttribute("aria-hidden");
+            } else {
+                panel.setAttribute("inert", "");
+                panel.setAttribute("aria-hidden", "true");
+            }
+        };
 
-    const stopRunningTransition = (panel) => {
-      const handler = panel._revealTransitionEnd;
-      if (handler) panel.removeEventListener("transitionend", handler);
-      panel._revealTransitionEnd = null;
-      panel.style.removeProperty("height");
-      panel.style.removeProperty("overflow");
-      panel.style.removeProperty("will-change");
-      delete panel.dataset.animating;
-    };
+        const stopRunningTransition = (panel) => {
+            const handler = panel._revealTransitionEnd;
+            if (handler) panel.removeEventListener("transitionend", handler);
+            panel._revealTransitionEnd = null;
+            panel.style.removeProperty("height");
+            panel.style.removeProperty("overflow");
+            panel.style.removeProperty("will-change");
+            delete panel.dataset.animating;
+        };
 
-    const animateOpen = (panel) => {
-      stopRunningTransition(panel);
-      panel.dataset.animating = "1";
-      setPanelInteractivity(panel, true);
-      panel.hidden = false;
+        const animateOpen = (panel) => {
+            stopRunningTransition(panel);
+            panel.dataset.animating = "1";
+            setPanelInteractivity(panel, true);
+            panel.hidden = false;
 
-      if (prefersReducedMotion()) {
-        panel.style.removeProperty("height");
-        panel.style.removeProperty("overflow");
-        panel.style.removeProperty("will-change");
-        delete panel.dataset.animating;
-        return;
-      }
+            if (prefersReducedMotion()) {
+                panel.style.removeProperty("height");
+                panel.style.removeProperty("overflow");
+                panel.style.removeProperty("will-change");
+                delete panel.dataset.animating;
+                return;
+            }
 
-      panel.style.willChange = "height";
-      panel.style.overflow = "hidden";
-    panel.style.height = "0px";
+            panel.style.willChange = "height";
+            panel.style.overflow = "hidden";
+            panel.style.height = "0px";
 
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        panel.style.height = `${panel.scrollHeight}px`;
-      });
-    });
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    panel.style.height = `${panel.scrollHeight}px`;
+                });
+            });
 
-      panel._revealTransitionEnd = (ev) => {
-        if (ev.target !== panel) return;
-        stopRunningTransition(panel);
-      };
-      panel.addEventListener("transitionend", panel._revealTransitionEnd);
-    };
+            panel._revealTransitionEnd = (ev) => {
+                if (ev.target !== panel) return;
+                stopRunningTransition(panel);
+            };
+            panel.addEventListener("transitionend", panel._revealTransitionEnd);
+        };
 
-    const animateClose = (panel) => {
-      stopRunningTransition(panel);
-      panel.dataset.animating = "1";
-      setPanelInteractivity(panel, false);
+        const animateClose = (panel) => {
+            stopRunningTransition(panel);
+            panel.dataset.animating = "1";
+            setPanelInteractivity(panel, false);
 
-      if (prefersReducedMotion()) {
-        panel.hidden = true;
-        panel.style.removeProperty("height");
-        panel.style.removeProperty("overflow");
-        panel.style.removeProperty("will-change");
-        delete panel.dataset.animating;
-        return;
-      }
+            if (prefersReducedMotion()) {
+                panel.hidden = true;
+                panel.style.removeProperty("height");
+                panel.style.removeProperty("overflow");
+                panel.style.removeProperty("will-change");
+                delete panel.dataset.animating;
+                return;
+            }
 
-      panel.style.willChange = "height";
-      panel.style.overflow = "hidden";
-    panel.style.height = `${panel.scrollHeight}px`;
+            panel.style.willChange = "height";
+            panel.style.overflow = "hidden";
+            panel.style.height = `${panel.scrollHeight}px`;
 
-    requestAnimationFrame(() => {
-      panel.style.height = "0px";
-    });
+            requestAnimationFrame(() => {
+                panel.style.height = "0px";
+            });
 
-      panel._revealTransitionEnd = (ev) => {
-        if (ev.target !== panel) return;
-        panel.hidden = true;
-        stopRunningTransition(panel);
-      };
-      panel.addEventListener("transitionend", panel._revealTransitionEnd);
-    };
+            panel._revealTransitionEnd = (ev) => {
+                if (ev.target !== panel) return;
+                panel.hidden = true;
+                stopRunningTransition(panel);
+            };
+            panel.addEventListener("transitionend", panel._revealTransitionEnd);
+        };
 
-    const openItem = (itemEl) => {
-      const { button, panel } = getParts(itemEl);
-      if (!button || !panel) return;
-      if (isOpen(itemEl)) return;
-      setExpanded(button, true);
-      itemEl.classList.add("paccordion__item--open");
-      setCurrentItem(itemEl);
-      animateOpen(panel);
-      updateOpenTree();
-    };
+        const openItem = (itemEl) => {
+            const { button, panel } = getParts(itemEl);
+            if (!button || !panel) return;
+            if (isOpen(itemEl)) return;
+            setExpanded(button, true);
+            itemEl.classList.add("paccordion__item--open");
+            setCurrentItem(itemEl);
+            animateOpen(panel);
+            updateOpenTree();
+        };
 
-    const closeItem = (itemEl) => {
-      const { button, panel } = getParts(itemEl);
-      if (!button || !panel) return;
-      if (!isOpen(itemEl)) return;
-      setExpanded(button, false);
-      itemEl.classList.remove("paccordion__item--open");
-      if (currentItem === itemEl) {
-        setCurrentItem(findNearestOpenAncestor(itemEl));
-      }
-      animateClose(panel);
-      updateOpenTree();
-    };
+        const closeItem = (itemEl) => {
+            const { button, panel } = getParts(itemEl);
+            if (!button || !panel) return;
+            if (!isOpen(itemEl)) return;
+            setExpanded(button, false);
+            itemEl.classList.remove("paccordion__item--open");
+            if (currentItem === itemEl) {
+                setCurrentItem(findNearestOpenAncestor(itemEl));
+            }
+            animateClose(panel);
+            updateOpenTree();
+        };
 
-    const toggleItem = (itemEl) => {
-      if (isOpen(itemEl)) closeItem(itemEl);
-      else openItem(itemEl);
-    };
+        const toggleItem = (itemEl) => {
+            if (isOpen(itemEl)) closeItem(itemEl);
+            else openItem(itemEl);
+        };
 
-    const openItemImmediate = (itemEl, options = {}) => {
-      const { setCurrent = true } = options;
-      const { button, panel } = getParts(itemEl);
-      if (!button || !panel) return;
-      setExpanded(button, true);
-      itemEl.classList.add("paccordion__item--open");
-      if (setCurrent) setCurrentItem(itemEl);
-      setPanelInteractivity(panel, true);
-      panel.hidden = false;
-      panel.style.removeProperty("height");
-      panel.style.removeProperty("overflow");
-      delete panel.dataset.animating;
-      updateOpenTree();
-    };
+        const openItemImmediate = (itemEl, options = {}) => {
+            const { setCurrent = true } = options;
+            const { button, panel } = getParts(itemEl);
+            if (!button || !panel) return;
+            setExpanded(button, true);
+            itemEl.classList.add("paccordion__item--open");
+            if (setCurrent) setCurrentItem(itemEl);
+            setPanelInteractivity(panel, true);
+            panel.hidden = false;
+            panel.style.removeProperty("height");
+            panel.style.removeProperty("overflow");
+            delete panel.dataset.animating;
+            updateOpenTree();
+        };
 
-    const openAncestorsImmediate = (itemEl, options = {}) => {
-      const { setCurrent = false } = options;
-      let current = itemEl?.parentElement || null;
-      while (current) {
-        const item = closestItem(current);
-        if (!item) break;
-        openItemImmediate(item, { setCurrent });
-        current = item.parentElement;
-      }
-    };
+        const openAncestorsImmediate = (itemEl, options = {}) => {
+            const { setCurrent = false } = options;
+            let current = itemEl?.parentElement || null;
+            while (current) {
+                const item = closestItem(current);
+                if (!item) break;
+                openItemImmediate(item, { setCurrent });
+                current = item.parentElement;
+            }
+        };
 
-    const setupButton = (button) => {
-      const item = closestItem(button);
-      if (!item) return;
-      const { panel } = getParts(item);
-      if (!panel) return;
+        const setupButton = (button) => {
+            const item = closestItem(button);
+            if (!item) return;
+            const { panel } = getParts(item);
+            if (!panel) return;
 
-      if (!button.id) {
-        autoId += 1;
-        button.id = `button-${autoId}`;
-      }
+            if (!button.id) {
+                autoId += 1;
+                button.id = `button-${autoId}`;
+            }
 
-      if (!panel.id) {
-        autoId += 1;
-        panel.id = `panel-${autoId}`;
-      }
+            if (!panel.id) {
+                autoId += 1;
+                panel.id = `panel-${autoId}`;
+            }
 
-      button.setAttribute("aria-controls", panel.id);
-      panel.setAttribute("aria-labelledby", button.id);
+            button.setAttribute("aria-controls", panel.id);
+            panel.setAttribute("aria-labelledby", button.id);
 
-      button.addEventListener("click", () => toggleItem(item));
-      button.addEventListener("blur", () => {
-        button.classList.remove("paccordion__button--key-active");
-      });
-    };
+            button.addEventListener("click", () => toggleItem(item));
+            button.addEventListener("blur", () => {
+                button.classList.remove("paccordion__button--key-active");
+            });
+        };
 
-    const setupPanel = (panel) => {
-      if (!panel.hasAttribute("hidden")) {
-        panel.setAttribute("hidden", "");
-      }
-      setPanelInteractivity(panel, false);
-    };
+        const setupPanel = (panel) => {
+            if (!panel.hasAttribute("hidden")) {
+                panel.setAttribute("hidden", "");
+            }
+            setPanelInteractivity(panel, false);
+        };
 
-    const setupItem = (item) => {
-      const { button, panel } = getParts(item);
-      if (!button || !panel) return;
+        const setupItem = (item) => {
+            const { button, panel } = getParts(item);
+            if (!button || !panel) return;
 
-      setupButton(button);
-      setupPanel(panel);
+            setupButton(button);
+            setupPanel(panel);
 
-      ensureItemId(item);
+            ensureItemId(item);
 
-      if (item.hasAttribute("data-open")) {
-        // Domyślnie otwarte bez ustawiania "current".
-        openItemImmediate(item, { setCurrent: false });
-      }
-    };
+            if (item.hasAttribute("data-open")) {
+                openItemImmediate(item, { setCurrent: false });
+            }
+        };
 
-    const setupAll = () => {
-      const items = Array.from(document.querySelectorAll(".paccordion__item"));
-      items.forEach(setupItem);
-    };
+        const setupAll = () => {
+            const items = Array.from(document.querySelectorAll(".paccordion__item"));
+            items.forEach(setupItem);
+        };
 
-    const openFromHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (!hash) return;
-      const urlWithoutHash = window.location.pathname + window.location.search;
-      history.replaceState(null, "", urlWithoutHash);
-      const target = document.getElementById(hash);
-      if (!target) return;
-      const item = closestItem(target);
-      if (!item) return;
-      const behavior = prefersReducedMotion() ? "auto" : "smooth";
-      setTimeout(() => {
-        openItemImmediate(item, { setCurrent: true });
-        openAncestorsImmediate(item, { setCurrent: false });
-        setCurrentItem(item);
-        target.scrollIntoView({ behavior, block: "start" });
-        history.replaceState(null, "", `${urlWithoutHash}#${hash}`);
-      }, 0);
-    };
+        const openFromHash = () => {
+            const hash = window.location.hash.replace("#", "");
+            if (!hash) return;
 
-    const setupAnchors = () => {
-      const items = Array.from(document.querySelectorAll(".paccordion__item"));
-      items.forEach((item) => {
-        if (item.id) return;
-        const label = item.querySelector(".paccordion__label");
-        const base = slugify(label?.textContent || "");
-        const unique = ensureUniqueId(base);
-        item.id = unique;
-      });
-    };
+            const target = document.getElementById(hash);
+            if (!target) return;
 
-    const setupRegions = () => {
-      const items = Array.from(document.querySelectorAll(".paccordion__item"));
-      items.forEach((item) => {
-        const { panel } = getParts(item);
-        if (!panel) return;
-        const level = item.className.match(/paccordion__item--l(\d)/)?.[1];
-        if (level === "1") {
-          panel.setAttribute("role", "region");
-        } else {
-          panel.removeAttribute("role");
-        }
-      });
-    };
+            const item = closestItem(target);
+            if (!item) return;
 
-    const applyDefaultOpen = () => {
-      const openItems = Array.from(document.querySelectorAll(".paccordion__item[data-open]"));
-      openItems.forEach((item) => openAncestorsImmediate(item));
-    };
+            setTimeout(() => {
+                openItemImmediate(item, { setCurrent: true });
+                openAncestorsImmediate(item, { setCurrent: false });
+                setCurrentItem(item);
+            }, 300);
+        };
 
-    const handleKeydown = (event) => {
-      const button = event.target.closest?.(".paccordion__button");
-      if (!button) return;
+        const setupAnchors = () => {
+            const items = Array.from(document.querySelectorAll(".paccordion__item"));
+            items.forEach((item) => {
+                if (item.id) return;
+                const label = item.querySelector(".paccordion__label");
+                const base = slugify(label?.textContent || "");
+                const unique = ensureUniqueId(base);
+                item.id = unique;
+            });
+        };
 
-      const item = closestItem(button);
-      if (!item) return;
+        const setupRegions = () => {
+            const items = Array.from(document.querySelectorAll(".paccordion__item"));
+            items.forEach((item) => {
+                const { panel } = getParts(item);
+                if (!panel) return;
+                const level = item.className.match(/paccordion__item--l(\d)/)?.[1];
+                if (level === "1") {
+                    panel.setAttribute("role", "region");
+                } else {
+                    panel.removeAttribute("role");
+                }
+            });
+        };
 
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        button.classList.add("paccordion__button--key-active");
-        toggleItem(item);
-      }
-    };
+        const applyDefaultOpen = () => {
+            const openItems = Array.from(document.querySelectorAll(".paccordion__item[data-open]"));
+            openItems.forEach((item) => openAncestorsImmediate(item));
+        };
 
-    const handleKeyup = (event) => {
-      const button = event.target.closest?.(".paccordion__button");
-      if (!button) return;
-      if (event.key === "Enter" || event.key === " ") {
-        button.classList.remove("paccordion__button--key-active");
-      }
-    };
+        const handleKeydown = (event) => {
+            const button = event.target.closest?.(".paccordion__button");
+            if (!button) return;
 
-    const init = () => {
-      setupAll();
-      setupAnchors();
-      setupRegions();
-      applyDefaultOpen();
-      openFromHash();
-      updateOpenTree();
-      document.addEventListener("keydown", handleKeydown);
-      document.addEventListener("keyup", handleKeyup);
-    };
+            const item = closestItem(button);
+            if (!item) return;
 
-    const updateOpenTree = () => {
-      const items = Array.from(document.querySelectorAll(".paccordion__item"));
-      items.forEach((item) => {
-        const openDescendant = item.querySelector(".paccordion__item--open");
-        const hasOpenChild = !!openDescendant && openDescendant !== item;
-        item.classList.toggle("paccordion__item--has-open-child", hasOpenChild);
-      });
-    };
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                button.classList.add("paccordion__button--key-active");
+                toggleItem(item);
+            }
+        };
 
-    init();
-  }
+        const handleKeyup = (event) => {
+            const button = event.target.closest?.(".paccordion__button");
+            if (!button) return;
+            if (event.key === "Enter" || event.key === " ") {
+                button.classList.remove("paccordion__button--key-active");
+            }
+        };
+
+        const init = () => {
+            setupAll();
+            setupAnchors();
+            setupRegions();
+            applyDefaultOpen();
+            openFromHash();
+            updateOpenTree();
+            document.addEventListener("keydown", handleKeydown);
+            document.addEventListener("keyup", handleKeyup);
+            window.addEventListener('hashchange', openFromHash);
+        };
+
+        const updateOpenTree = () => {
+            const items = Array.from(document.querySelectorAll(".paccordion__item"));
+            items.forEach((item) => {
+                const openDescendant = item.querySelector(".paccordion__item--open");
+                const hasOpenChild = !!openDescendant && openDescendant !== item;
+                item.classList.toggle("paccordion__item--has-open-child", hasOpenChild);
+            });
+        };
+
+        init();
+    }
 }
-
-new Accordion();

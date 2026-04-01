@@ -1,11 +1,8 @@
 @use "../base/colors" as *;
 @import "../breakpoints";
-
 .paccordion {
     --rp-gutter: 20px;
     --rp-step: 16px;
-    --paccordion-color-open: #{$gray65};
-    --paccordion-color-current: #{$black};
 
     @include -mobile {
         --rp-step: 0px;
@@ -528,12 +525,12 @@
     }
 
     &__item--open > &__heading > .paccordion__button {
-        color: var(--paccordion-color-open);
+        color: $gray65;
     }
 
     &
         .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-        color: var(--paccordion-color-open);
+        color: $gray65;
     }
 
     &__item--has-open-child > &__heading > .paccordion__button {
@@ -547,14 +544,14 @@
     }
 
     &__item--current > &__heading > .paccordion__button {
-        color: var(--paccordion-color-current);
+        color: $black;
     }
 
     &
         .paccordion__item--current
         > &__heading
         > .paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-        color: var(--paccordion-color-current);
+        color: $black;
     }
 
     &
@@ -695,7 +692,7 @@
         }
     }
 
-    // Bez dodatkowej dolnej linii 
+    // Bez dodatkowej dolnej linii
     &__item:has(
             > .paccordion__heading
                 > .paccordion__button

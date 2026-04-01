@@ -1,936 +1,1125 @@
 @use "../base/colors" as *;
-@use "sass:color";
 @import "../breakpoints";
 
 .ptabs-container {
-  --ptabs-gutter: 0px;
-  --ptabs-tab-width: 204px;
-  --ptabs-tab-width-active: 204px;
-  --ptabs-tab-width-inactive: 148px;
-  --ptabs-tab-height-active: auto;
-  --ptabs-tab-height-inactive: auto;
-  --ptabs-tablist-height: auto;
-  --ptabs-edge-padding: 1px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background: $white;
-
-  @include tablet- {
-    --ptabs-gutter: 30px;
-    --ptabs-tab-width: 318px;
-    --ptabs-tab-width-active: 318px;
-    --ptabs-tab-width-inactive: 254px;
+    --ptabs-gutter: 0px;
+    --ptabs-tab-width: 204px;
+    --ptabs-tab-width-active: 204px;
+    --ptabs-tab-width-inactive: 148px;
     --ptabs-tab-height-active: auto;
     --ptabs-tab-height-inactive: auto;
     --ptabs-tablist-height: auto;
-    --ptabs-edge-padding: 0px;
-  }
-
-  @include desktop- {
-    --ptabs-gutter: 48px;
-    --ptabs-tab-width: 300px;
-    --ptabs-tab-width-active: var(--ptabs-tab-width);
-    --ptabs-tab-width-inactive: var(--ptabs-tab-width);
-    --ptabs-tab-height-active: auto;
-    --ptabs-tab-height-inactive: auto;
-    --ptabs-tablist-height: auto;
-    --ptabs-edge-padding: 0px;
+    --ptabs-edge-padding: 1px;
     width: 100%;
-    // max-width: 1632px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
+    margin: 0;
+    padding: 0;
+    background: $white;
 
-  @include big {
-    max-width: 1632px;
-  }
+    @include tablet- {
+        --ptabs-gutter: 30px;
+        --ptabs-tab-width: 318px;
+        --ptabs-tab-width-active: 318px;
+        --ptabs-tab-width-inactive: 254px;
+        --ptabs-tab-height-active: auto;
+        --ptabs-tab-height-inactive: auto;
+        --ptabs-tablist-height: auto;
+        --ptabs-edge-padding: 0px;
+    }
+
+    @include desktop- {
+        --ptabs-gutter: 48px;
+        --ptabs-tab-width: 300px;
+        --ptabs-tab-width-active: var(--ptabs-tab-width);
+        --ptabs-tab-width-inactive: var(--ptabs-tab-width);
+        --ptabs-tab-height-active: auto;
+        --ptabs-tab-height-inactive: auto;
+        --ptabs-tablist-height: auto;
+        --ptabs-edge-padding: 0px;
+        width: 100%;
+        // max-width: 1632px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    @include big {
+        max-width: 1632px;
+    }
 }
 
 .ptabs {
-  display: flex;
-  flex-direction: column;
-  --ptabs-fade-offset-bottom: 1px;
-  --ptabs-fade-height: var(--ptabs-tab-height-inactive, 0px);
+    display: flex;
+    flex-direction: column;
+    --ptabs-fade-offset-bottom: 1px;
+    --ptabs-fade-height: var(--ptabs-tab-height-inactive, 0px);
 
-  &__nav {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-
-  &__viewport {
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: auto;
-    padding: 0 var(--ptabs-edge-padding);
-    scrollbar-width: none;
-    position: relative;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  @include tablet- {
     &__nav {
-      height: var(--ptabs-tablist-height, auto);
+        position: relative;
+        width: 100%;
+        height: auto;
     }
 
     &__viewport {
-      height: 100%;
-    }
-  }
-
-  &__list {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0;
-    align-items: flex-end;
-    padding-left: var(--ptabs-side-padding-left, 0px);
-    padding-right: var(--ptabs-side-padding-right, 0px);
-    height: var(--ptabs-tablist-height, auto);
-    margin: 0 calc(var(--ptabs-edge-padding) * -1);
-    position: relative;
-  }
-
-  &__label {
-    line-height: 1.1;
-    white-space: normal;
-    word-break: break-word;
-    hyphens: auto;
-    overflow: hidden;
-    text-align: center;
-    max-width: 100%;
-    display: block;
-    width: 100%;
-    font-weight: 400;
-  }
-
-  @include desktop- {
-    &__list {
-      margin-left: 0;
-      padding-left: 1px;
-    }
-  }
-
-  &__tab.ptabs__tab.ptabs__tab[role="tab"] {
-    font-family: "SofiaPro-Regular", sans-serif;
-    font-size: 18px;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    cursor: pointer;
-    padding: 16px 20px 12px 20px;
-    background-color: $gray-bg;
-    border: 1px solid $text-gray-light;
-    transition: border-color 0.3s, color 0.3s, background-color 0.3s;
-    flex: 0 0 var(--ptabs-tab-width-inactive);
-    text-align: center;
-    user-select: none;
-    font-weight: 400;
-    margin-top: 0;
-    color: $gray65;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-height: var(--ptabs-tab-height-inactive);
-    height: auto;
-    border-radius: 0;
-    background-clip: padding-box;
-    box-sizing: border-box;
-    border-left: 0;
-    border-right: 0;
-    position: relative;
-
-    @include tablet- {
-      font-size: 16px;
-      line-height: 1.2;
-      margin-top: 6px;
-      min-height: 96px;
-      padding: 18px 24px 16px 24px;
-      border-radius: 0;
-      justify-content: flex-start;
-    }
-
-    &:hover {
-      color: $primary-red;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $primary-red;
-      outline-offset: 2px;
-    }
-
-  }
-
-  &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-  &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-    color: $primary-red;
-    background-color: $white;
-    margin-top: 0;
-    border: 1px solid $text-gray-light;
-    border-bottom: 0;
-    border-radius: 4px 4px 0 0;
-    cursor: default;
-    z-index: 1;
-    position: relative;
-    flex: 0 0 var(--ptabs-tab-width-active);
-    min-height: var(--ptabs-tab-height-active);
-    -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
-    clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
-
-    @include tablet- {
-      padding-top: 24px;
-    }
-    padding: 20px 28px 12px 28px;
-  }
-
-  &__tab.ptabs__tab.ptabs__tab[role="tab"]:last-child {
-    border-right: 1px solid $text-gray-light;
-  }
-
-  // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
-  &:has(.ptabs__panel .paccordion--framed) {
-    @include tablet- {
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        z-index: 2;
-        -webkit-clip-path: none;
-        clip-path: none;
-      }
-
-      .ptabs__panel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: auto;
+        padding: 0 var(--ptabs-edge-padding);
+        scrollbar-width: none;
         position: relative;
-        z-index: 1;
-        margin-top: -1px;
-      }
 
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    @include tablet- {
+        &__nav {
+            height: var(--ptabs-tablist-height, auto);
+        }
+
+        &__viewport {
+            height: 100%;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0;
+        align-items: flex-end;
+        padding-left: var(--ptabs-side-padding-left, 0px);
+        padding-right: var(--ptabs-side-padding-right, 0px);
+        height: var(--ptabs-tablist-height, auto);
+        margin: 0 calc(var(--ptabs-edge-padding) * -1);
+        position: relative;
+    }
+
+    &__label {
+        line-height: 1.1;
+        white-space: normal;
+        word-break: break-word;
+        hyphens: auto;
+        overflow: hidden;
+        text-align: center;
+        max-width: 100%;
+        display: block;
+        width: 100%;
+        font-weight: 400;
+    }
+
+    @include desktop- {
+        &__list {
+            margin-left: 0;
+            padding-left: 1px;
+        }
+    }
+
+    &__tab.ptabs__tab.ptabs__tab[role="tab"] {
+        font-family: "SofiaPro-Regular", sans-serif;
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        cursor: pointer;
+        padding: 16px 20px 12px 20px;
+        background-color: $gray-bg;
+        border: 1px solid $text-gray-light;
+        transition:
+            border-color 0.3s,
+            color 0.3s,
+            background-color 0.3s;
+        flex: 0 0 var(--ptabs-tab-width-inactive);
+        text-align: center;
+        user-select: none;
+        font-weight: 400;
+        margin-top: 0;
+        color: $gray65;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-height: var(--ptabs-tab-height-inactive);
+        height: auto;
+        border-radius: 0;
+        background-clip: padding-box;
+        box-sizing: border-box;
+        border-left: 0;
+        border-right: 0;
+        position: relative;
+
+        @include tablet- {
+            font-size: 16px;
+            line-height: 1.2;
+            margin-top: 6px;
+            min-height: 96px;
+            padding: 18px 24px 16px 24px;
+            border-radius: 0;
+            justify-content: flex-start;
+        }
+
+        &:hover {
+            color: $primary-red;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $primary-red;
+            outline-offset: 2px;
+        }
+    }
+
+    &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+    &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+        color: $primary-red;
+        background-color: $white;
+        margin-top: 0;
+        border: 1px solid $text-gray-light;
+        border-bottom: 0;
+        border-radius: 4px 4px 0 0;
+        cursor: default;
+        z-index: 1;
+        position: relative;
+        flex: 0 0 var(--ptabs-tab-width-active);
+        min-height: var(--ptabs-tab-height-active);
+        -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+        clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+
+        @include tablet- {
+            padding-top: 24px;
+        }
+        padding: 20px 28px 12px 28px;
+    }
+
+    &__tab.ptabs__tab.ptabs__tab[role="tab"]:last-child {
+        border-right: 1px solid $text-gray-light;
+    }
+
+    // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
+    &:has(.ptabs__panel .paccordion--framed) {
+        @include tablet- {
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                z-index: 2;
+                -webkit-clip-path: none;
+                clip-path: none;
+            }
+
+            .ptabs__panel {
+                position: relative;
+                z-index: 1;
+                margin-top: -1px;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
+                content: "";
+                position: absolute;
+                left: -1px;
+                right: -1px;
+                bottom: -1px;
+                height: 2px;
+                background: $white;
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
+                left: 0;
+            }
+
+            // .ptabs__panel {
+            //     padding-left: 1px;
+            // }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
+                right: 0;
+            }
+        }
+    }
+
+    &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"] {
+        border-left: 0;
+        box-shadow: none;
+    }
+
+    &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
+        border-right: 0;
+    }
+
+    // Usuwamy podwójny separator za aktywnym tabem.
+    &__tab.ptabs__tab.ptabs__tab[role="tab"]
+        + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+            [aria-selected="true"]
+        ):not(
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+        ) {
+        box-shadow: inset 1px 0 0 $text-gray-light;
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
+        + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+        + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+        box-shadow: none;
+    }
+
+    // Rysujemy lewą krawędź tylko na pierwszym tabie.
+    &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
+        border-left: 1px solid $text-gray-light;
+    }
+
+    &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+    &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+        border-left: 1px solid $text-gray-light;
+        border-right: 1px solid $text-gray-light;
+        box-shadow: none;
+        margin-left: -1px;
+        margin-right: -1px;
+    }
+
+    &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child[aria-selected="true"],
+    &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
+        margin-left: 0;
+        border-left: 1px solid $text-gray-light;
+    }
+
+    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
+        box-shadow: none;
+        position: relative;
+        border: 1px solid $text-gray-light;
+        z-index: 1;
+        border-radius: 0;
+    }
+
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"]
+        + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+            [aria-selected="true"]
+        ):not(
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+        ) {
+        box-shadow: none;
+    }
+
+    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
+        border-left: 0;
+    }
+
+    // Górna linia tylko dla nieaktywnych tabów (bez wpływu na aktywne)
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+            [aria-selected="true"]
+        ):not(
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+        ) {
+        border-top-color: transparent;
+    }
+
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+            [aria-selected="true"]
+        ):not(
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+        )::before {
         content: "";
         position: absolute;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        height: 2px;
-        background: $white;
-        pointer-events: none;
-        z-index: 2;
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
         left: 0;
-      }
-
-      .ptabs__panel {
-        padding-left: 1px;
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
         right: 0;
-      }
-    }
-  }
-
-  &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"] {
-    border-left: 0;
-    box-shadow: none;
-  }
-
-  &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
-    border-right: 0;
-  }
-
-  // Usuwamy podwójny separator za aktywnym tabem.
-  &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-    box-shadow: inset 1px 0 0 $text-gray-light;
-  }
-  
-  .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
-  .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-    box-shadow: none;
-  }
-
-  // Rysujemy lewą krawędź tylko na pierwszym tabie.
-  &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
-    border-left: 1px solid $text-gray-light;
-  }
-
-  &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-  &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-    border-left: 1px solid $text-gray-light;
-    border-right: 1px solid $text-gray-light;
-    box-shadow: none;
-    margin-left: -1px;
-    margin-right: -1px;
-  }
-
-  &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child[aria-selected="true"],
-  &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
-    margin-left: 0;
-    border-left: 1px solid $text-gray-light;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] {
-    box-shadow: none;
-    position: relative;
-    border: 1px solid $text-gray-light;
-    z-index: 1;
-    border-radius: 0;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"] + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-    box-shadow: none;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
-    border-left: 0;
-  }
-
-  // Górna linia tylko dla nieaktywnych tabów (bez wpływu na aktywne)
-  &__nav--overflow
-  &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-    border-top-color: transparent;
-  }
-
-  &__nav--overflow
-  &__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"])::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 1px;
-    background: $text-gray-light;
-    pointer-events: none;
-    z-index: 4;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
-    content: none;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child::after {
-    border-left: 1px solid $text-gray-light;
-  }
-
-  &__nav--overflow &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
-    border-right: 0;
-  }
-
-  &__nav--overflow &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"]::after {
-    border-left: 0;
-  }
-  &__nav--overflow &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"]:first-of-type::after {
-    border-left: 1px solid $text-gray-light;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-  &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-    margin-left: -1px;
-    margin-right: -1px;
-    border-bottom: 0;
-    -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
-    clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
-    z-index: 4;
-    border-radius: 4px 4px 0 0;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
-  &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
-    margin-left: 0;
-  }
-
-  &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child,
-  &__nav--overflow &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child {
-    margin-right: 0;
-  }
-
-  &__label {
-    display: block;
-    max-width: 132px;
-    margin: 0 auto;
-    line-height: 1;
-  }
-
-  &__icon {
-    width: 16px;
-    height: 16px;
-    color: inherit;
-
-    svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      stroke: currentColor;
-    }
-  }
-
-  &--icons {
-    --ptabs-tab-height-active: 78px;
-    --ptabs-tab-height-inactive: 62px;
-    --ptabs-tablist-height: auto;
-    @include -mobile {
-      --ptabs-fade-height: calc((var(--ptabs-tab-height-inactive) * 1.7) - 2px);
+        top: 0;
+        height: 1px;
+        background: $text-gray-light;
+        pointer-events: none;
+        z-index: 4;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-      padding: 12px 8px;
-      gap: 8px;
-      justify-content: center;
-      min-height: var(--ptabs-tab-height-inactive);
-      height: auto;
+    &__nav--overflow &__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
+        content: none;
     }
 
-    .ptabs__label {
-      line-height: 1;
-      margin: 0;
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child::after {
+        border-left: 1px solid $text-gray-light;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-      padding: 24px 36px 12px 36px;
-      min-height: var(--ptabs-tab-height-active);
-      margin-top: 0;
+    &__nav--overflow
+        &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
+        border-right: 0;
     }
 
-    .ptabs__icon {
-      margin-top: 0;
+    &__nav--overflow
+        &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"]::after {
+        border-left: 0;
+    }
+    &__nav--overflow
+        &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"]:first-of-type::after {
+        border-left: 1px solid $text-gray-light;
     }
 
-    @include tablet- {
-      --ptabs-tablist-height: 188px;
-      --ptabs-tab-height-inactive: 156px;
-      --ptabs-tab-height-active: 168px;
-      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+    &__nav--overflow
+        &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+        margin-left: -1px;
+        margin-right: -1px;
+        border-bottom: 0;
+        -webkit-clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+        clip-path: inset(0 0 1px 0 round 4px 4px 0 0);
+        z-index: 4;
+        border-radius: 4px 4px 0 0;
+    }
 
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-        font-size: 18px;
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
+    &__nav--overflow
+        &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
+        margin-left: 0;
+    }
+
+    &__nav--overflow
+        &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child,
+    &__nav--overflow
+        &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child {
+        margin-right: 0;
+    }
+
+    &__label {
+        display: block;
+        max-width: 132px;
+        margin: 0 auto;
         line-height: 1;
-        padding: 36px 16px;
-        gap: 16px;
-        min-height: var(--ptabs-tab-height-inactive);
-        justify-content: flex-end;
-      }
-
-      .ptabs__icon {
-        width: 24px;
-        height: 24px;
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        padding: 48px 48px 36px 48px;
-        min-height: var(--ptabs-tab-height-active);
-        margin-top: 0;
-      }
-
-      &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::before,
-      &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::before {
-        display: none;
-      }
     }
 
-    @include tablet {
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-        flex: 0 0 var(--ptabs-tab-width-inactive);
-        max-width: var(--ptabs-tab-width-inactive);
-      }
+    &__icon {
+        width: 16px;
+        height: 16px;
+        color: inherit;
 
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        flex: 0 0 var(--ptabs-tab-width-active);
-        max-width: var(--ptabs-tab-width-active);
-      }
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            stroke: currentColor;
+        }
     }
 
-    @include desktop- {
-      --ptabs-tablist-height: 188px;
-      --ptabs-tab-height-inactive: 134px;
-      --ptabs-tab-height-active: 146px;
-      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-        flex: 1 1 0;
-        max-width: 408px;
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        padding: 48px 16px 36px 16px;
-      }
-    }
-  }
-
-  &--no-icons {
-    --ptabs-tab-height-active: 116px;
-    --ptabs-tab-height-inactive: 105px;
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-      min-height: 105px;
-      height: 105px;
-      padding: 12px 8px;
-    }
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-      margin-top: 0;
-      min-height: 116px;
-      height: 116px;
-      padding: 24px 36px 12px 36px;
-    }
-
-    // Dostosowanie długich tekstów
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
-      padding: 8px 8px;
-    }
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense[aria-selected="true"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"].ptabs__tab--dense {
-      padding: 18px 36px 8px 36px;
-    }
-
-    @include tablet- {
-      --ptabs-tablist-height: 132px;
-      --ptabs-tab-height-inactive: 116px;
-      --ptabs-tab-height-active: 128px;
-      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-        font-size: 18px;
-        line-height: 1;
-        min-height: var(--ptabs-tab-height-inactive);
-        height: var(--ptabs-tab-height-inactive);
-        padding: 36px 16px;
-        justify-content: flex-end;
-      }
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        min-height: var(--ptabs-tab-height-active);
-        height: var(--ptabs-tab-height-active);
-        padding: 48px 48px 36px 48px;
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
-        padding: 28px 16px;
-      }
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense[aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"].ptabs__tab--dense {
-        padding: 40px 48px 28px 48px;
-      }
-    }
-
-    @include tablet {
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-        flex: 0 0 var(--ptabs-tab-width-inactive);
-        max-width: var(--ptabs-tab-width-inactive);
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        flex: 0 0 var(--ptabs-tab-width-active);
-        max-width: var(--ptabs-tab-width-active);
-      }
-    }
-
-    @include desktop- {
-      --ptabs-tablist-height: 126px;
-      --ptabs-tab-height-inactive: 94px;
-      --ptabs-tab-height-active: 106px;
-      --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-        flex: 1 1 0;
-        max-width: 408px;
-      }
-
-      .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-      .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-        padding: 48px 16px 36px 16px;
-      }
-    }
-
-    &.ptabs--desktop-carousel {
-      @include desktop- {
-        --ptabs-tab-width: 408px;
-        --ptabs-tab-width-active: 408px;
-        --ptabs-tab-width-inactive: 408px;
+    &--icons {
+        --ptabs-tab-height-active: 78px;
+        --ptabs-tab-height-inactive: 62px;
+        --ptabs-tablist-height: auto;
+        @include -mobile {
+            --ptabs-fade-height: calc(
+                (var(--ptabs-tab-height-inactive) * 1.7) - 2px
+            );
+        }
 
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-          flex: 0 0 408px;
-          max-width: 408px;
+            padding: 12px 8px;
+            gap: 8px;
+            justify-content: center;
+            min-height: var(--ptabs-tab-height-inactive);
+            height: auto;
+        }
+
+        .ptabs__label {
+            line-height: 1;
+            margin: 0;
         }
 
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
         .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+            padding: 24px 36px 12px 36px;
+            min-height: var(--ptabs-tab-height-active);
+            margin-top: 0;
         }
-      }
-    }
-  }
 
-  &--desktop-carousel {
-    @include desktop- {
-      --ptabs-desktop-visible: 4;
+        .ptabs__icon {
+            margin-top: 0;
+        }
 
-      .ptabs__nav {
-        max-width: calc(var(--ptabs-tab-width) * var(--ptabs-desktop-visible));
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
+        @include tablet- {
+            --ptabs-tablist-height: 188px;
+            --ptabs-tab-height-inactive: 156px;
+            --ptabs-tab-height-active: 168px;
+            --ptabs-fade-top: calc(
+                var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+            );
 
-  .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:has(.ptabs__icon),
-  .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:has(.ptabs__icon) {
-    margin-top: 6px;
-  }
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                font-size: 18px;
+                line-height: 1;
+                padding: 36px 16px;
+                gap: 16px;
+                min-height: var(--ptabs-tab-height-inactive);
+                justify-content: flex-end;
+            }
 
-  @include tablet- {
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:has(.ptabs__icon),
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:has(.ptabs__icon) {
-      margin-top: 0;
-    }
-  }
+            .ptabs__icon {
+                width: 24px;
+                height: 24px;
+            }
 
-  .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] .ptabs__label,
-  .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] .ptabs__label {
-    font-family: "SofiaPro-Regular", sans-serif;
-    font-size: 18px;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    font-weight: 400;
-    text-align: center;
-  }
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                padding: 48px 48px 36px 48px;
+                min-height: var(--ptabs-tab-height-active);
+                margin-top: 0;
+            }
 
-  @include tablet- {
-    &__label {
-      max-width: none;
-    }
-  }
+            &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::before,
+            &__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::before {
+                display: none;
+            }
+        }
 
-  .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
-    font-family: "SofiaPro-SemiBold", sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: $primary-red;
-    text-align: center;
-  }
+        @include tablet {
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-inactive);
+                max-width: var(--ptabs-tab-width-inactive);
+            }
 
-  // Stan pressed sterowany w JS
-  .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"] {
-    background-color: $borders-gray;
-  }
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-active);
+                max-width: var(--ptabs-tab-width-active);
+            }
+        }
 
-  // Widoczny fokus dla aktywnego taba 
-  .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:focus-visible,
-  .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:focus-visible {
-    outline: none;
-    border: 2px solid $primary-red;
-    border-bottom: 0;
-    box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
-  }
+        @include desktop- {
+            --ptabs-tablist-height: 188px;
+            --ptabs-tab-height-inactive: 134px;
+            --ptabs-tab-height-active: 146px;
+            --ptabs-fade-top: calc(
+                var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+            );
 
-  // Widoczny fokus dla nieaktywnych tabów 
-  .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]):focus-visible {
-    outline: none;
-    border: 2px solid $primary-red;
-    box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
-    position: relative;
-    z-index: 4;
-  }
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 1 1 0;
+                max-width: 408px;
+            }
 
-  @include -mobile {
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-      margin-left: 0;
-      margin-right: 0;
-      border-left: 1px solid $text-gray-light;
-      border-right: 1px solid $text-gray-light;
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                padding: 48px 16px 36px 16px;
+            }
+        }
     }
 
-    .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
-      box-shadow: none;
+    &--no-icons {
+        --ptabs-tab-height-active: 116px;
+        --ptabs-tab-height-inactive: 105px;
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+            min-height: 105px;
+            height: 105px;
+            padding: 12px 8px;
+        }
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+            margin-top: 0;
+            min-height: 116px;
+            height: 116px;
+            padding: 24px 36px 12px 36px;
+        }
+
+        // Dostosowanie długich tekstów
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
+            padding: 8px 8px;
+        }
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense[aria-selected="true"],
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"].ptabs__tab--dense {
+            padding: 18px 36px 8px 36px;
+        }
+
+        @include tablet- {
+            --ptabs-tablist-height: 132px;
+            --ptabs-tab-height-inactive: 116px;
+            --ptabs-tab-height-active: 128px;
+            --ptabs-fade-top: calc(
+                var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+            );
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                font-size: 18px;
+                line-height: 1;
+                min-height: var(--ptabs-tab-height-inactive);
+                height: var(--ptabs-tab-height-inactive);
+                padding: 36px 16px;
+                justify-content: flex-end;
+            }
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                min-height: var(--ptabs-tab-height-active);
+                height: var(--ptabs-tab-height-active);
+                padding: 48px 48px 36px 48px;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
+                padding: 28px 16px;
+            }
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense[aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"].ptabs__tab--dense {
+                padding: 40px 48px 28px 48px;
+            }
+        }
+
+        @include tablet {
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-inactive);
+                max-width: var(--ptabs-tab-width-inactive);
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-active);
+                max-width: var(--ptabs-tab-width-active);
+            }
+        }
+
+        @include desktop- {
+            --ptabs-tablist-height: 126px;
+            --ptabs-tab-height-inactive: 94px;
+            --ptabs-tab-height-active: 106px;
+            --ptabs-fade-top: calc(
+                var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+            );
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 1 1 0;
+                max-width: 408px;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                padding: 48px 16px 36px 16px;
+            }
+        }
+
+        &.ptabs--desktop-carousel {
+            @include desktop- {
+                --ptabs-tab-width: 408px;
+                --ptabs-tab-width-active: 408px;
+                --ptabs-tab-width-inactive: 408px;
+
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                    flex: 0 0 408px;
+                    max-width: 408px;
+                }
+
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                }
+            }
+        }
     }
 
-    // sąsiad po lewej nie rysuje prawej krawędzi ramki
-    .ptabs__nav--overflow .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
-      border-right: 0;
+    &--desktop-carousel {
+        @include desktop- {
+            --ptabs-desktop-visible: 4;
+
+            .ptabs__nav {
+                max-width: calc(
+                    var(--ptabs-tab-width) * var(--ptabs-desktop-visible)
+                );
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:has(
+            .ptabs__icon
+        ),
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:has(
+            .ptabs__icon
+        ) {
+        margin-top: 6px;
+    }
+
+    @include tablet- {
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:has(
+                .ptabs__icon
+            ),
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:has(
+                .ptabs__icon
+            ) {
+            margin-top: 0;
+        }
     }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
-      + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]),
+        .ptabs__label,
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
-      + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      box-shadow: none;
+        .ptabs__label {
+        font-family: "SofiaPro-Regular", sans-serif;
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+        text-align: center;
     }
 
-    .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
-    .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
-      border-left: 1px solid $text-gray-light;
-      border-right: 1px solid $text-gray-light;
+    @include tablet- {
+        &__label {
+            max-width: none;
+        }
     }
 
-    .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after,
-    .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
-      border-left: 0;
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
+        font-family: "SofiaPro-SemiBold", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: $primary-red;
+        text-align: center;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      border-bottom: 1px solid $text-gray-light;
+    // Stan pressed sterowany w JS
+    .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"] {
+        background-color: $borders-gray;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-      z-index: 2;
-      -webkit-clip-path: none;
-      clip-path: none;
+    // Widoczny fokus dla aktywnego taba
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:focus-visible,
+    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:focus-visible {
+        outline: none;
+        border: 2px solid $primary-red;
+        border-bottom: 0;
+        box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
     }
 
-    .ptabs__panel {
-      position: relative;
-      z-index: 1;
-      margin-top: -1px;
+    // Widoczny fokus dla nieaktywnych tabów
+    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+            [aria-selected="true"]
+        ):not(
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+        ):focus-visible {
+        outline: none;
+        border: 2px solid $primary-red;
+        box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
+        position: relative;
+        z-index: 4;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
-      content: "";
-      position: absolute;
-      left: -1px;
-      right: -1px;
-      bottom: -1px;
-      height: 2px;
-      background: $white;
-      pointer-events: none;
-      z-index: 2;
+    @include -mobile {
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+            margin-left: 0;
+            margin-right: 0;
+            border-left: 1px solid $text-gray-light;
+            border-right: 1px solid $text-gray-light;
+        }
+
+        .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
+            box-shadow: none;
+        }
+
+        // sąsiad po lewej nie rysuje prawej krawędzi ramki
+        .ptabs__nav--overflow
+            .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
+            border-right: 0;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
+            + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ),
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ) {
+            box-shadow: none;
+        }
+
+        .ptabs__nav--overflow
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
+        .ptabs__nav--overflow
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
+            border-left: 1px solid $text-gray-light;
+            border-right: 1px solid $text-gray-light;
+        }
+
+        .ptabs__nav--overflow
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
+            + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after,
+        .ptabs__nav--overflow
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]::after {
+            border-left: 0;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ) {
+            border-bottom: 1px solid $text-gray-light;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+            z-index: 2;
+            -webkit-clip-path: none;
+            clip-path: none;
+        }
+
+        .ptabs__panel {
+            position: relative;
+            z-index: 1;
+            margin-top: -1px;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]::after,
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]::after {
+            content: "";
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            height: 2px;
+            background: $white;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
+            left: 0;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
+        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
+            right: 0;
+        }
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::after,
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::after {
-      left: 0;
+    // usunięcie podwójnych separatorów między nieaktywnymi tabami.
+    @include -tablet {
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ) {
+            border-left: 0;
+        }
+
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ):has(
+                + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
+            ),
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
+                [aria-selected="true"]
+            ):not(
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ):has(
+                + .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+            ) {
+            border-right: 0;
+        }
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
-    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
-      right: 0;
-    }
-  }
-
-  // usunięcie podwójnych separatorów między nieaktywnymi tabami.
-  @include -tablet {
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      border-left: 0;
+    &__panel,
+    .ptab {
+        background-color: transparent;
+        padding: 0;
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]):has(+ .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]),
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not([aria-selected="true"]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]):has(+ .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]) {
-      border-right: 0;
-    }
-  }
-
-  &__panel,
-  .ptab {
-    background-color: transparent;
-    padding: 0;
-  }
-
-  &__panel[hidden],
-  .ptab[hidden] {
-    display: none;
-  }
-
-  // W tabach utrzymujemy linię nad otwartym akordeonem (dla kotwic).
-  .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
-    background-image: linear-gradient($borders-gray, $borders-gray);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-  }
-
-  &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
-    position: absolute;
-    top: var(--ptabs-chevron-center-top, 50%);
-    transform: translateY(var(--ptabs-chevron-translate, -50%));
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    border: 0;
-    background: $white;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
-    color: $primary-red;
-    background-image: none;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    gap: 10px;
-    cursor: pointer;
-    z-index: 4;
-    outline: none;
-
-    &::before {
-      content: "";
-      display: block;
-      width: 9px;
-      height: 15px;
-      border: 0;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      transform: translateZ(0);
+    &__panel[hidden],
+    .ptab[hidden] {
+        display: none;
     }
 
-    svg {
-      display: none;
+    // W tabach utrzymujemy linię nad otwartym akordeonem (dla kotwic).
+    .paccordion
+        button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
+        background-image: linear-gradient($borders-gray, $borders-gray);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
     }
 
-    &:focus-visible {
-      outline: 2px solid $primary-red;
-      outline-offset: 2px;
+    &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+        position: absolute;
+        top: var(--ptabs-chevron-center-top, 50%);
+        transform: translateY(var(--ptabs-chevron-translate, -50%));
+        width: 48px;
+        height: 48px;
+        border-radius: 999px;
+        border: 0;
+        background: $white;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+        color: $primary-red;
+        background-image: none;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        gap: 10px;
+        cursor: pointer;
+        z-index: 4;
+        outline: none;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 9px;
+            height: 15px;
+            border: 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            transform: translateZ(0);
+        }
+
+        svg {
+            display: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $primary-red;
+            outline-offset: 2px;
+        }
+
+        &.ptabs__chevron--prev {
+            left: 0;
+            &::before {
+                background-image: url("data:image/svg+xml;utf8,<svg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7.41406 1.41431L1.41406 7.41431L7.41406 13.4143' stroke='%23D11E25' stroke-width='2' stroke-linecap='square'/></svg>");
+                transform: none;
+            }
+        }
+
+        &.ptabs__chevron--next {
+            right: 0;
+            &::before {
+                background-image: url("data:image/svg+xml;utf8,<svg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.41406 13.4143L7.41406 7.41431L1.41406 1.41431' stroke='%23D11E25' stroke-width='2' stroke-linecap='square'/></svg>");
+                transform: rotate(0deg);
+            }
+        }
+
+        &[disabled] {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        &[aria-disabled="true"] {
+            display: none;
+        }
+
+        &.ptabs__chevron--hidden {
+            display: none;
+        }
     }
 
-    &.ptabs__chevron--prev {
-      left: 0;
-      &::before {
-        background-image: url("data:image/svg+xml;utf8,<svg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7.41406 1.41431L1.41406 7.41431L7.41406 13.4143' stroke='%23D11E25' stroke-width='2' stroke-linecap='square'/></svg>");
-        transform: none;
-      }
+    &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+        display: inline-flex;
     }
 
-    &.ptabs__chevron--next {
-      right: 0;
-      &::before {
-        background-image: url("data:image/svg+xml;utf8,<svg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.41406 13.4143L7.41406 7.41431L1.41406 1.41431' stroke='%23D11E25' stroke-width='2' stroke-linecap='square'/></svg>");
-        transform: rotate(0deg);
-      }
+    &__nav--overflow
+        &__chevron.ptabs__chevron.ptabs__chevron[type="button"][aria-disabled="true"],
+    &__nav--overflow
+        &__chevron.ptabs__chevron.ptabs__chevron--hidden[type="button"] {
+        display: none;
     }
 
-    &[disabled] {
-      opacity: 0.35;
-      cursor: default;
+    &__nav--overflow::before,
+    &__nav--overflow::after {
+        content: "";
+        position: absolute;
+        top: auto;
+        bottom: var(--ptabs-fade-offset-bottom, 1px);
+        width: 48px;
+        height: calc(
+            var(--ptabs-fade-height, 0px) -
+                (var(--ptabs-fade-offset-bottom, 1px) + 2px)
+        );
+        z-index: 3;
+        pointer-events: none;
+        opacity: 0;
+        background-repeat: no-repeat;
+        background-size: 100% calc(100% - var(--ptabs-fade-offset-bottom, 1px));
+        background-position: 0 0;
     }
 
-    &[aria-disabled="true"] {
-      display: none;
-    }
-
-    &.ptabs__chevron--hidden {
-      display: none;
-    }
-  }
-
-  &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
-    display: inline-flex;
-  }
-
-  &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron[type="button"][aria-disabled="true"],
-  &__nav--overflow &__chevron.ptabs__chevron.ptabs__chevron--hidden[type="button"] {
-    display: none;
-  }
-
-  &__nav--overflow::before,
-  &__nav--overflow::after {
-    content: "";
-    position: absolute;
-    top: auto;
-    bottom: var(--ptabs-fade-offset-bottom, 1px);
-    width: 48px;
-    height: calc(
-      var(--ptabs-fade-height, 0px) - (var(--ptabs-fade-offset-bottom, 1px) + 2px)
-    );
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0;
-    background-repeat: no-repeat;
-    background-size: 100% calc(100% - var(--ptabs-fade-offset-bottom, 1px));
-    background-position: 0 0;
-  }
-
-  &__nav--overflow::before {
-    left: 1px;
-    background: linear-gradient(90deg, $white 0%, rgba(255, 255, 255, 0) 100%);
-  }
-
-  &__nav--overflow::after {
-    right: 1px;
-    background: linear-gradient(270deg, $white 0%, rgba(255, 255, 255, 0) 100%);
-  }
-
-  &__nav--overflow.ptabs__nav--show-prev::before {
-    opacity: 1;
-  }
-
-  &__nav--overflow.ptabs__nav--show-next::after {
-    opacity: 1;
-  }
-
-  &__nav--overflow .ptabs__list {
-    z-index: 2;
-  }
-
-  @include -mobile {
     &__nav--overflow::before {
-      background: linear-gradient(90deg, $white 0%, rgba(255, 255, 255, 0) 100%);
+        left: 1px;
+        background: linear-gradient(
+            90deg,
+            $white 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
     }
 
     &__nav--overflow::after {
-      background: linear-gradient(270deg, $white 0%, rgba(255, 255, 255, 0) 100%);
+        right: 1px;
+        background: linear-gradient(
+            270deg,
+            $white 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
     }
-  }
 
-  &:not(.ptabs--desktop-carousel) {
+    &__nav--overflow.ptabs__nav--show-prev::before {
+        opacity: 1;
+    }
+
+    &__nav--overflow.ptabs__nav--show-next::after {
+        opacity: 1;
+    }
+
+    &__nav--overflow .ptabs__list {
+        z-index: 2;
+    }
+
+    @include -mobile {
+        &__nav--overflow::before {
+            background: linear-gradient(
+                90deg,
+                $white 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+        }
+
+        &__nav--overflow::after {
+            background: linear-gradient(
+                270deg,
+                $white 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+        }
+    }
+
+    &:not(.ptabs--desktop-carousel) {
+        @include desktop- {
+            .ptabs__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+                display: none;
+            }
+
+            .ptabs__nav--overflow::before,
+            .ptabs__nav--overflow::after {
+                display: none;
+                opacity: 0;
+            }
+        }
+    }
+
+    @include -tablet {
+        &__nav {
+            margin: 0 calc(var(--ptabs-gutter) * -1);
+        }
+
+        &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+            &.ptabs__chevron--prev {
+                left: 2px;
+                background: linear-gradient(90deg, $white 0%, $white 100%);
+            }
+
+            &.ptabs__chevron--next {
+                right: 2px;
+                background: linear-gradient(270deg, $white 0%, $white 100%);
+            }
+        }
+    }
+
     @include desktop- {
-      .ptabs__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
-        display: none;
-      }
+        &__nav {
+            margin: 0;
+        }
 
-      .ptabs__nav--overflow::before,
-      .ptabs__nav--overflow::after {
-        display: none;
-        opacity: 0;
-      }
-    }
-  }
+        &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
+            &.ptabs__chevron--prev {
+                left: -24px;
+            }
 
-  @include -tablet {
-    &__nav {
-      margin: 0 calc(var(--ptabs-gutter) * -1);
+            &.ptabs__chevron--next {
+                right: -24px;
+            }
+        }
     }
 
-    &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
-      &.ptabs__chevron--prev {
-        left: 2px;
-        background: linear-gradient(90deg, $white 0%, $white 100%);
-      }
-
-      &.ptabs__chevron--next {
-        right: 2px;
-        background: linear-gradient(270deg, $white 0%, $white 100%);
-      }
+    @include tablet {
+        &__nav {
+            margin: 0;
+        }
     }
 
-  }
+    &--framed {
+        .ptabs__panel {
+            border-left: 1px solid $text-gray-light;
+            border-right: 1px solid $text-gray-light;
+            border-top: 0;
+            border-bottom: 1px solid $text-gray-light;
+            margin-bottom: 48px;
+        }
 
-  @include desktop- {
-    &__nav {
-      margin: 0;
+        .paccordion-container__section {
+            padding-bottom: 0;
+            margin-bottom: 0px;
+        }
     }
-
-    &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
-      &.ptabs__chevron--prev {
-        left: -24px;
-      }
-
-      &.ptabs__chevron--next {
-        right: -24px;
-      }
-    }
-  }
-
-  @include tablet {
-    &__nav {
-      margin: 0;
-    }
-  }
 }
+
+// .ptabs {
+//     display: flex;
+//     flex-direction: column;
+//     .ptabs-labels {
+//         display: flex;
+//     }
+
+//     .ptabs-radio {
+//         display: none;
+//     }
+
+//     .ptab {
+//         @include sofia-light();
+//         font-size: 16px;
+//         @include tablet- {
+//             @include sofia();
+//             font-size: 20px;
+//         }
+//         cursor: pointer;
+//         padding: 18px 20px 14px 20px;
+//         background-color: #F2F2F2;
+//         border: 1px solid #c6c6c6;
+
+//         transition: border-bottom-color 0.3s;
+//         flex: 1;
+//         text-align: center;
+//         max-width: 368px;
+//         user-select: none;
+//         font-weight: 400;
+//         margin-top: 10px;
+//         color: $black;
+//         @include tablet- {
+//             margin-top: 6px;
+//         }
+
+//         &:hover {
+//             color: $primary-red;
+//         }
+
+//     }
+
+//     .ptabs-content {
+//         background-color: #F2F2F2;
+//         padding: 20px;
+//     }
+
+//     .ptabs-radio:checked + .ptab {
+//         color: $primary-red;
+//         background-color: $white;
+//         padding-top: calc(18px + 10px);
+//         margin-top: 0;
+//         border-color: transparent;
+//         @include tablet- {
+//             padding-top: calc(18px + 6px);
+//         }
+//     }
+
+//     .ptabs-pane {
+//         display: none;
+//     }
+// }

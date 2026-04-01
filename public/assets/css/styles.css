@@ -132,8 +132,6 @@ body.bodytype-privatebanking {
 .paccordion {
   --rp-gutter: 20px;
   --rp-step: 16px;
-  --paccordion-color-open: #656565;
-  --paccordion-color-current: #000000;
 }
 @media (max-width: 959px) {
   .paccordion {
@@ -547,10 +545,10 @@ body.bodytype-privatebanking {
   color: #656565;
 }
 .paccordion__item--open > .paccordion__heading > .paccordion__button {
-  color: var(--paccordion-color-open);
+  color: #656565;
 }
 .paccordion .paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
-  color: var(--paccordion-color-open);
+  color: #656565;
 }
 .paccordion__item--has-open-child > .paccordion__heading > .paccordion__button {
   color: #656565;
@@ -559,10 +557,10 @@ body.bodytype-privatebanking {
   color: #656565;
 }
 .paccordion__item--current > .paccordion__heading > .paccordion__button {
-  color: var(--paccordion-color-current);
+  color: #000000;
 }
 .paccordion .paccordion__item--current > .paccordion__heading > .paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] {
-  color: var(--paccordion-color-current);
+  color: #000000;
 }
 .paccordion button.paccordion__button.paccordion__button.paccordion__button[aria-expanded=true] .paccordion__icon--chevron {
   transform: rotate(180deg);
@@ -1613,9 +1611,6 @@ body.bodytype-privatebanking {
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child::after {
     left: 0;
   }
-  .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__panel {
-    padding-left: 1px;
-  }
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:last-child::after,
   .ptabs:has(.ptabs__panel .paccordion--framed) .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:last-child::after {
     right: 0;
@@ -1730,7 +1725,9 @@ body.bodytype-privatebanking {
 }
 @media (max-width: 959px) {
   .ptabs--icons {
-    --ptabs-fade-height: calc((var(--ptabs-tab-height-inactive) * 1.7) - 2px);
+    --ptabs-fade-height: calc(
+        (var(--ptabs-tab-height-inactive) * 1.7) - 2px
+    );
   }
 }
 .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
@@ -1758,7 +1755,9 @@ body.bodytype-privatebanking {
     --ptabs-tablist-height: 188px;
     --ptabs-tab-height-inactive: 156px;
     --ptabs-tab-height-active: 168px;
-    --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
+    --ptabs-fade-top: calc(
+        var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+    );
   }
   .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
     font-size: 18px;
@@ -1798,7 +1797,9 @@ body.bodytype-privatebanking {
     --ptabs-tablist-height: 188px;
     --ptabs-tab-height-inactive: 134px;
     --ptabs-tab-height-active: 146px;
-    --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
+    --ptabs-fade-top: calc(
+        var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+    );
   }
   .ptabs--icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
     flex: 1 1 0;
@@ -1837,7 +1838,9 @@ body.bodytype-privatebanking {
     --ptabs-tablist-height: 132px;
     --ptabs-tab-height-inactive: 116px;
     --ptabs-tab-height-active: 128px;
-    --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
+    --ptabs-fade-top: calc(
+        var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+    );
   }
   .ptabs--no-icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
     font-size: 18px;
@@ -1877,7 +1880,9 @@ body.bodytype-privatebanking {
     --ptabs-tablist-height: 126px;
     --ptabs-tab-height-inactive: 94px;
     --ptabs-tab-height-active: 106px;
-    --ptabs-fade-top: calc(var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive));
+    --ptabs-fade-top: calc(
+        var(--ptabs-tablist-height) - var(--ptabs-tab-height-inactive)
+    );
   }
   .ptabs--no-icons .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
     flex: 1 1 0;
@@ -2189,6 +2194,17 @@ body.bodytype-privatebanking {
   .ptabs__nav {
     margin: 0;
   }
+}
+.ptabs--framed .ptabs__panel {
+  border-left: 1px solid #828282;
+  border-right: 1px solid #828282;
+  border-top: 0;
+  border-bottom: 1px solid #828282;
+  margin-bottom: 48px;
+}
+.ptabs--framed .paccordion-container__section {
+  padding-bottom: 0;
+  margin-bottom: 0px;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,15 @@
+templateScript: /pekao-module/templates/components/v2/common/tabs/p-tab.ftl
+renderType: freemarker
+title: Tab
+dialog: pekao-module:components/v2/common/tabs/p-tab
+
+areas:
+  content:
+    type: list
+    availableComponents:
+      textbox:
+        id: pekao-module:components/v2/common/textbox/p-textbox
+      accordions-container:
+        id: pekao-module:components/v2/common/accordions/accordions-container
+      segment-product-files:
+        id: pekao-module:components/v2/common/segment-product-files/segment-product-files
