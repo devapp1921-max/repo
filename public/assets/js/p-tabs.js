@@ -589,14 +589,15 @@ class PTabs {
 
     scrollByStep(direction) {
         if (!this.viewport) return;
-        const active = this.tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || this.tabs[0];
-        const currentIndex = this.tabs.indexOf(active);
-        const targetIndex = Math.min(
-            this.tabs.length - 1,
-            Math.max(0, currentIndex + direction)
-        );
-        const target = this.tabs[targetIndex];
-        this.activateTab(target, { focus: true });
+        const style = getComputedStyle(this.root);
+        const varWidth = parseFloat(style.getPropertyValue("--ptabs-tab-width")) || 0;
+        const fallbackTab = this.tabs[0];
+        const step = varWidth > 0 ? varWidth : (fallbackTab ? fallbackTab.offsetWidth : 0);
+        if (!step) return;
+        this.viewport.scrollBy({
+            left: direction * step,
+            behavior: prefersReducedMotion() ? "auto" : "smooth",
+        });
     }
 
     ensureTabInView(tab) {
