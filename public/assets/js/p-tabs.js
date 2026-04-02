@@ -370,7 +370,7 @@ class PTabs {
         });
 
         tab.setAttribute("aria-selected", "true");
-        tab.setAttribute("tabindex", "0");
+        tab.setAttribute("tabindex", "4");
         tab.classList.add("ptabs__tab--active");
 
         const activeIndex = this.tabs.indexOf(tab);

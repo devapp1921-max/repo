@@ -41,7 +41,7 @@
                 id="${baseId}-tab"
                 aria-controls="${baseId}-panel"
                 aria-selected="${(tab?index == 0)?string('true', 'false')}"
-                tabindex="${(tab?index == 0)?string('0', '-1')}">
+                tabindex="${(tab?index == 0)?string('4', '-1')}">
             [#if iconSrc?has_content]
                 <span class="ptabs__icon" aria-hidden="true">
                     <img src="${iconSrc}" alt="" />
