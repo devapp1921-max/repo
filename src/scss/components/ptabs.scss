@@ -36,7 +36,6 @@
         --ptabs-tablist-height: auto;
         --ptabs-edge-padding: 0px;
         width: 100%;
-        // max-width: 1632px;
         max-width: 1280px;
         margin: 0 auto;
     }
@@ -145,7 +144,7 @@
         border-left: 0;
         border-right: 0;
         position: relative;
-        // Domyślny kolor ikon dla nieaktywnych tabów (filtr na <img>).
+        // Domyślny kolor ikon dla nieaktywnych tabów.
         --ptabs-icon-filter: grayscale(1) brightness(0.55) saturate(0);
 
         @include tablet- {
@@ -196,7 +195,7 @@
         border-right: 1px solid $text-gray-light;
     }
 
-    // Gdy taby zawierają akordeon framed, maskujemy wspólną linię
+    // Maskuje wspólną linię dla akordeonu framed.
     &:has(.ptabs__panel .paccordion--framed) {
         @include tablet- {
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
@@ -230,9 +229,6 @@
                 left: 0;
             }
 
-            // .ptabs__panel {
-            //     padding-left: 1px;
-            // }
 
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child::after,
             .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:last-child::after {
@@ -250,7 +246,7 @@
         border-right: 0;
     }
 
-    // Usuwamy podwójny separator za aktywnym tabem.
+    // Usuwa podwójny separator za aktywnym tabem.
     &__tab.ptabs__tab.ptabs__tab[role="tab"]
         + &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
             [aria-selected="true"]
@@ -267,7 +263,7 @@
         box-shadow: none;
     }
 
-    // Rysujemy lewą krawędź tylko na pierwszym tabie.
+    // Rysuje lewą krawędź tylko na pierwszym tabie.
     &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
         border-left: 1px solid $text-gray-light;
     }
@@ -305,7 +301,7 @@
         box-shadow: none;
     }
 
-    // W desktop-carousel: pierwszy aktywny tab ma mieć lewą ramkę.
+    // Desktop-carousel: pierwszy aktywny tab ma lewą ramkę.
     &__nav--overflow
         &__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
     &__nav--overflow
@@ -313,32 +309,7 @@
         border-left: 1px solid $text-gray-light;
     }
 
-    // desktop-carousel + icons: pierwszy aktywny tab ma jedną, nie podwójną, lewą linię
-    &.ptabs--desktop-carousel.ptabs--icons {
-        .ptabs__nav--overflow
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child,
-        .ptabs__nav--overflow
-            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child {
-            border-left: 0;
-        }
-
-        .ptabs__nav--overflow
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child::before,
-        .ptabs__nav--overflow
-            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: $text-gray-light;
-            pointer-events: none;
-            z-index: 5;
-        }
-    }
-
-    // Górna linia tylko dla nieaktywnych tabów (bez wpływu na aktywne)
+    // Górna linia tylko dla nieaktywnych tabów.
     &__nav--overflow
         &__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
             [aria-selected="true"]
@@ -415,7 +386,7 @@
         margin-right: 0;
     }
 
-    // Wymuszenie lewej krawędzi dla pierwszego taba w trybie overflow.
+    // Wymusza lewą krawędź dla pierwszego taba w overflow.
     &__nav--overflow
         &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
         border-left: 1px solid $text-gray-light;
@@ -450,12 +421,14 @@
     }
 
     &--icons {
-        --ptabs-tab-height-active: 78px;
-        --ptabs-tab-height-inactive: 62px;
+        --ptabs-tab-height-active: 126px;
+        --ptabs-tab-height-inactive: 114px;
         --ptabs-tablist-height: auto;
         @include -mobile {
+            // <960: stała wysokość listy oparta o aktywny tab.
+            --ptabs-tablist-height: var(--ptabs-tab-height-active);
             --ptabs-fade-height: calc(
-                (var(--ptabs-tab-height-inactive) * 1.7) - 2px
+                (var(--ptabs-tab-height-inactive) ) - 2px
             );
         }
 
@@ -464,7 +437,7 @@
             gap: 8px;
             justify-content: center;
             min-height: var(--ptabs-tab-height-inactive);
-            height: auto;
+            height: var(--ptabs-tab-height-inactive);
         }
 
         .ptabs__label {
@@ -476,6 +449,7 @@
         .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
             padding: 24px 36px 12px 36px;
             min-height: var(--ptabs-tab-height-active);
+            height: var(--ptabs-tab-height-active);
             margin-top: 0;
         }
 
@@ -483,13 +457,11 @@
             margin-top: 0;
         }
 
-        // Tab bez ikony w wariancie z ikonami: wyśrodkuj tekst pionowo i poziomo.
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:has(.ptabs__icon)) {
             gap: 0;
             justify-content: center;
         }
 
-        // Label bez ikony ma zachowywać się jak w no-icons (centrowanie w osi X).
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:has(.ptabs__icon))
             .ptabs__label {
             margin: 0 auto;
@@ -536,7 +508,7 @@
                 margin-top: 0;
             }
 
-            // Tab bez ikony: w tablet+ nie dociskaj tekstu do dołu.
+            // Tab bez ikony: w tablet centruje tekst.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
                     :has(.ptabs__icon)
                 ) {
@@ -553,7 +525,6 @@
                 padding: 36px 16px;
             }
 
-            // Na tablet+ label bez ikony nie potrzebuje maks. szerokości.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
                     :has(.ptabs__icon)
                 )
@@ -598,7 +569,7 @@
                 padding: 48px 16px 36px 16px;
             }
 
-            // Desktop: aktywny tab bez ikony ma symetryczny padding.
+            // Desktop: aktywny tab bez ikony - symetryczny padding.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:not(
                     :has(.ptabs__icon)
                 ),
@@ -609,8 +580,7 @@
             }
         }
 
-        &.ptabs--desktop-carousel {
-        }
+      
     }
 
     &--no-icons {
@@ -629,7 +599,7 @@
             padding: 24px 36px 12px 36px;
         }
 
-        // Dostosowanie długich tekstów
+        // Dostosowanie długich tekstów.
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--dense {
             padding: 8px 8px;
         }
@@ -707,16 +677,55 @@
     }
 
     &--desktop-carousel {
+        @include mobile {
+            .ptabs__nav {
+                max-width: var(--ptabs-nav-max-width, none);
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-inactive);
+                max-width: var(--ptabs-tab-width-inactive);
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-active);
+                max-width: var(--ptabs-tab-width-active);
+            }
+        }
+
+        @include tablet {
+            .ptabs__nav {
+                max-width: var(--ptabs-nav-max-width, none);
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-inactive);
+                max-width: var(--ptabs-tab-width-inactive);
+            }
+
+            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                flex: 0 0 var(--ptabs-tab-width-active);
+                max-width: var(--ptabs-tab-width-active);
+            }
+        }
+
         @include desktop- {
             --ptabs-desktop-visible: 4;
             --ptabs-tab-width: 408px;
             --ptabs-tab-width-active: 408px;
             --ptabs-tab-width-inactive: 408px;
+            --ptabs-nav-max-width: calc(
+                var(--ptabs-tab-width) * var(--ptabs-desktop-visible)
+            );
 
             .ptabs__nav {
-                max-width: calc(
-                    var(--ptabs-tab-width) * var(--ptabs-desktop-visible)
-                );
+                max-width: var(--ptabs-nav-max-width, none);
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -735,38 +744,41 @@
             .ptabs__list {
                 padding-left: 0.1px;
             }
+
+            // Desktop+: usuwa podwójne linie między nieaktywnymi tabami w karuzeli.
+            .ptabs__nav--overflow
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not(
+                    [aria-selected="true"]
+                ):not(
+                    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
+                ) {
+                border-left: 0;
+            }
         }
 
-        // W desktop-carousel: spójne linie (jedna linia między tabami).
-        .ptabs__nav--overflow
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-            border-left: 1px solid $text-gray-light;
-            border-right: 0;
+        @include desktop {
+            --ptabs-tab-width: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-tab-width-active: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-tab-width-inactive: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-nav-max-width: 100%;
         }
 
-        .ptabs__nav--overflow
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:last-child {
-            border-right: 1px solid $text-gray-light;
+        @include tablet {
+            --ptabs-desktop-visible: 4;
+            --ptabs-tab-width: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-tab-width-active: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-tab-width-inactive: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-nav-max-width: 100%;
         }
 
-        // Aktywny tab ma pełną ramkę.
-        .ptabs__nav--overflow
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-        .ptabs__nav--overflow
-            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-            border-left: 1px solid $text-gray-light;
-            border-right: 1px solid $text-gray-light;
+        @include mobile {
+            --ptabs-desktop-visible: 4;
+            --ptabs-tab-width: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-tab-width-active: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-tab-width-inactive: calc(100% / var(--ptabs-desktop-visible));
+            --ptabs-nav-max-width: 100%;
         }
 
-        // Tab bezpośrednio po aktywnym nie rysuje lewej krawędzi (żeby nie było dubla).
-        .ptabs__nav--overflow
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]
-            + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"],
-        .ptabs__nav--overflow
-            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
-            + .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
-            border-left: 0;
-        }
     }
 
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:has(
@@ -815,7 +827,7 @@
         text-align: center;
     }
 
-    // Stan pressed sterowany w JS
+    // Stan pressed sterowany w JS.
     .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"] {
         background-color: $borders-gray;
         border: 1px solid $text-gray-light;
@@ -844,7 +856,7 @@
         --ptabs-icon-filter: brightness(0) saturate(100%);
     }
 
-    // Jeśli pressed + hover, wymuś czarny tekst (override dla hover).
+    // Pressed + hover: wymuza czarny tekst.
     .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"]:hover
         .ptabs__label {
         color: $text-black;
@@ -852,7 +864,7 @@
         font-weight: 400;
     }
 
-    // Widoczny fokus dla aktywnego taba
+    // Widoczny fokus dla aktywnego taba.
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:focus-visible,
     .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:focus-visible {
         outline: none;
@@ -861,7 +873,7 @@
         box-shadow: 0 0 4px 0 rgba(217, 25, 24, 0.6);
     }
 
-    // Widoczny fokus dla nieaktywnych tabów
+    // Widoczny fokus dla nieaktywnych tabów.
     .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(
             [aria-selected="true"]
         ):not(
@@ -887,7 +899,7 @@
             box-shadow: none;
         }
 
-        // sąsiad po lewej nie rysuje prawej krawędzi ramki
+        // Sąsiad po lewej nie rysuje prawej krawędzi ramki.
         .ptabs__nav--overflow
             .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"]::after {
             border-right: 0;
@@ -970,7 +982,7 @@
         }
     }
 
-    // usunięcie podwójnych separatorów między nieaktywnymi tabami.
+    // Usuwa podwójne separatory między nieaktywnymi tabami.
     @include -tablet {
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not(
                 [aria-selected="true"]
@@ -1009,7 +1021,7 @@
         display: none;
     }
 
-    // W tabach utrzymujemy linię nad otwartym akordeonem (dla kotwic).
+    // Linia nad otwartym akordeonem (dla kotwic).
     .paccordion
         button.paccordion__button.paccordion__button.paccordion__button[aria-expanded="true"] {
         background-image: linear-gradient($borders-gray, $borders-gray);
@@ -1185,7 +1197,12 @@
 
     @include -tablet {
         &__nav {
-            margin: 0 calc(var(--ptabs-gutter) * -1);
+            margin: 0;
+        }
+
+        &__nav--overflow::before,
+        &__nav--overflow::after {
+            z-index: 3;
         }
 
         &__chevron.ptabs__chevron.ptabs__chevron[type="button"] {
@@ -1230,12 +1247,11 @@
             border-top: 0;
             border-bottom: 1px solid $text-gray-light;
             margin-left: 0.1px;
-            margin-right: 0;
             margin-bottom: 48px;
             position: relative;
         }
 
-        // Gdy aktywny jest pierwszy tab, wydłużamy lewą krawędź o 1px w górę.
+        // Aktywny pierwszy tab: wydłuża lewą krawędź o 1px w górę.
         &:has(
                 .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child
             ),
@@ -1254,7 +1270,7 @@
             }
         }
 
-        // Gdy aktywny jest ostatni tab, wydłużamy prawą krawędź o 1px w górę.
+        // Aktywny ostatni tab: wydłuża prawą krawędź o 1px w górę.
         &:has(
                 .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child
             ),
@@ -1291,65 +1307,3 @@
         }
     }
 }
-
-// .ptabs {
-//     display: flex;
-//     flex-direction: column;
-//     .ptabs-labels {
-//         display: flex;
-//     }
-
-//     .ptabs-radio {
-//         display: none;
-//     }
-
-//     .ptab {
-//         @include sofia-light();
-//         font-size: 16px;
-//         @include tablet- {
-//             @include sofia();
-//             font-size: 20px;
-//         }
-//         cursor: pointer;
-//         padding: 18px 20px 14px 20px;
-//         background-color: #F2F2F2;
-//         border: 1px solid #c6c6c6;
-
-//         transition: border-bottom-color 0.3s;
-//         flex: 1;
-//         text-align: center;
-//         max-width: 368px;
-//         user-select: none;
-//         font-weight: 400;
-//         margin-top: 10px;
-//         color: $black;
-//         @include tablet- {
-//             margin-top: 6px;
-//         }
-
-//         &:hover {
-//             color: $primary-red;
-//         }
-
-//     }
-
-//     .ptabs-content {
-//         background-color: #F2F2F2;
-//         padding: 20px;
-//     }
-
-//     .ptabs-radio:checked + .ptab {
-//         color: $primary-red;
-//         background-color: $white;
-//         padding-top: calc(18px + 10px);
-//         margin-top: 0;
-//         border-color: transparent;
-//         @include tablet- {
-//             padding-top: calc(18px + 6px);
-//         }
-//     }
-
-//     .ptabs-pane {
-//         display: none;
-//     }
-// }

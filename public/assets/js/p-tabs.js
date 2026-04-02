@@ -155,25 +155,6 @@ class PTabs {
         this.init();
     }
 
-    // init() {
-    //     this.normalizeLegacyMarkup();
-    //     this.tablist = this.root.querySelector(PTABS_SELECTORS.tablist);
-    //     this.tabs = Array.from(this.root.querySelectorAll(PTABS_SELECTORS.tab));
-    //     this.panels = Array.from(this.root.querySelectorAll(PTABS_SELECTORS.panel));
-
-    //     if (!this.tablist || this.tabs.length === 0) return;
-
-    //     this.ensureNav();
-    //     this.setupRoles();
-    //     this.setupTablistLabel();
-    //     this.bindEvents();
-    //     this.activateInitialTab();
-    //     this.openFromHash();
-
-    //     window.addEventListener("hashchange", () => this.openFromHash());
-    //     this.observeResize();
-    //     this.scaleLabels();
-    // }
     init() {
         this.normalizeLegacyMarkup();
         this.tablist = this.root.querySelector(PTABS_SELECTORS.tablist);
@@ -648,7 +629,7 @@ class PTabs {
             ) || 4;
             const activeIndex = this.tabs.indexOf(tab);
             const maxScroll = Math.max(0, this.tablist.scrollWidth - this.viewport.clientWidth);
-            const desiredSlot = Math.max(1, Math.min(2, visible - 2)); // 2nd/3rd slot
+            const desiredSlot = Math.max(1, Math.min(2, visible - 2)); 
             let targetScroll = Math.max(0, tab.offsetLeft - tabWidth * desiredSlot);
 
             if (activeIndex === this.tabs.length - 1) {
@@ -698,7 +679,8 @@ class PTabs {
 
     updateChevronState() {
         if (!this.viewport || !this.prevButton || !this.nextButton) return;
-        const overflow = this.tablist.scrollWidth > this.viewport.clientWidth + 1;
+        const maxScroll = this.viewport.scrollWidth - this.viewport.clientWidth;
+        const overflow = maxScroll > 1;
         this.nav?.classList.toggle("ptabs__nav--overflow", overflow);
 
         if (!overflow) {
@@ -710,11 +692,10 @@ class PTabs {
             return;
         }
 
-        const active = this.tabs.find((tab) => tab.getAttribute("aria-selected") === "true");
-        const activeIndex = active ? this.tabs.indexOf(active) : 0;
-
-        const disablePrev = activeIndex === 0;
-        const disableNext = activeIndex === this.tabs.length - 1;
+        const atStart = this.viewport.scrollLeft <= 1;
+        const atEnd = this.viewport.scrollLeft >= maxScroll - 1;
+        const disablePrev = atStart;
+        const disableNext = atEnd;
 
         this.prevButton.toggleAttribute("disabled", disablePrev);
         this.nextButton.toggleAttribute("disabled", disableNext);
@@ -729,47 +710,37 @@ class PTabs {
 
     updateChevronCenter() {
         if (!this.nav || !this.tablist || this.tabs.length === 0) return;
-        const target =
+        const navRect = this.nav.getBoundingClientRect();
+        const listRect = this.tablist.getBoundingClientRect();
+        const style = getComputedStyle(this.root);
+        const inactiveHeight = Number.parseFloat(
+            style.getPropertyValue("--ptabs-tab-height-inactive")
+        );
+        const tablistHeight = Number.parseFloat(
+            style.getPropertyValue("--ptabs-tablist-height")
+        );
+        if (Number.isFinite(inactiveHeight) && inactiveHeight > 0 &&
+            Number.isFinite(tablistHeight) && tablistHeight > 0) {
+            const offsetTop = tablistHeight - inactiveHeight;
+            const center = listRect.top - navRect.top + offsetTop + inactiveHeight / 2;
+            if (Number.isFinite(center)) {
+                this.nav.style.setProperty("--ptabs-chevron-center-top", `${center}px`);
+                this.nav.style.setProperty("--ptabs-chevron-translate", "-50%");
+                return;
+            }
+        }
+
+        const refTab =
             this.tabs.find((tab) => tab.getAttribute("aria-selected") !== "true") ||
             this.tabs[0];
-        if (!target) return;
-        const navRect = this.nav.getBoundingClientRect();
-        const tabRect = target.getBoundingClientRect();
+        if (!refTab) return;
+        const tabRect = refTab.getBoundingClientRect();
         const center = tabRect.top - navRect.top + tabRect.height / 2;
         if (!Number.isFinite(center)) return;
         this.nav.style.setProperty("--ptabs-chevron-center-top", `${center}px`);
         this.nav.style.setProperty("--ptabs-chevron-translate", "-50%");
     }
 
-    // openFromHash() {
-    //     const hash = window.location.hash.replace("#", "");
-    //     if (!hash) return;
-
-    //     const target = document.getElementById(hash);
-    //     if (!target) return;
-
-    //     if (!this.root.contains(target)) return;
-
-    //     const tab = target.closest("[role='tab']");
-    //     const panel = target.closest("[role='tabpanel']");
-
-    //     if (tab) {
-    //         this.activateTab(tab, { focus: true, scroll: true });
-    //         return;
-    //     }
-
-    //     if (panel) {
-    //         const labelledBy = panel.getAttribute("aria-labelledby");
-    //         const ownerTab = labelledBy ? this.root.querySelector(`#${CSS.escape(labelledBy)}`) : null;
-    //         this.activateTab(ownerTab, { focus: false, scroll: false });
-    //     }
-
-    //     const behavior = prefersReducedMotion() ? "auto" : "smooth";
-    //     setTimeout(() => {
-    //         openAccordionChain(target);
-    //         target.scrollIntoView({ behavior, block: "start" });
-    //     }, 0);
-    // }
     openFromHash() {
         const hash = window.location.hash.replace("#", "");
         if (!hash) return;
