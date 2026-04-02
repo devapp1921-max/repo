@@ -10,7 +10,7 @@ const PTABS_SELECTORS = {
 window.scrollToAnchorWithOffset = (anchorId, attempt = 1) => {
     const anchorEl = document.getElementById(anchorId);
     if (!anchorEl) {
-        console.warn('❌ Brak elementu #' + anchorId);
+        console.warn('Brak #' + anchorId);
         return;
     }
 
