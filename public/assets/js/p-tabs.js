@@ -152,6 +152,7 @@ class PTabs {
         this.tabs = [];
         this.panels = [];
         this.resizeObserver = null;
+        this.tabindexObserver = null;
         this.init();
     }
 
@@ -167,6 +168,7 @@ class PTabs {
         this.setupRoles();
         this.setupTablistLabel();
         this.normalizeTabindex();
+        this.observeTabindex();
         this.bindEvents();
         this.activateInitialTab();
         this.openFromHash();
@@ -318,6 +320,33 @@ class PTabs {
             if (value > 0) {
                 el.setAttribute("tabindex", "0");
             }
+        });
+    }
+
+    observeTabindex() {
+        if (!("MutationObserver" in window)) return;
+        if (this.tabindexObserver) return;
+        this.tabindexObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes" && mutation.attributeName === "tabindex") {
+                    const target = mutation.target;
+                    if (!(target instanceof HTMLElement)) continue;
+                    const raw = target.getAttribute("tabindex");
+                    const value = Number.parseInt(raw ?? "", 10);
+                    if (Number.isFinite(value) && value > 0) {
+                        target.setAttribute("tabindex", "0");
+                    }
+                } else if (mutation.type === "childList" && mutation.addedNodes.length) {
+                    this.normalizeTabindex();
+                    break;
+                }
+            }
+        });
+        this.tabindexObserver.observe(this.root, {
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["tabindex"],
+            childList: true,
         });
     }
 
