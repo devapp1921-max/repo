@@ -17,7 +17,7 @@
     [/#if]
 [/#list]
 
-<div class="ptabs ${iconClass} ptabs--desktop-carousel" data-ptabs>
+<div class="ptabs ${iconClass} ptabs--framed ptabs--desktop-carousel" data-ptabs>
     <div class="ptabs__list"
          role="tablist"
     [#if tabsTitleId?has_content]

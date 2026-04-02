@@ -166,6 +166,7 @@ class PTabs {
         this.ensureNav();
         this.setupRoles();
         this.setupTablistLabel();
+        this.normalizeTabindex();
         this.bindEvents();
         this.activateInitialTab();
         this.openFromHash();
@@ -304,6 +305,20 @@ class PTabs {
         }
 
         this.tablist.setAttribute("aria-label", "Zakładki");
+    }
+
+    normalizeTabindex() {
+        // Zabezpieczenie WCAG: brak dodatnich tabindex (>0).
+        const elements = Array.from(this.root.querySelectorAll("[tabindex]"));
+        elements.forEach((el) => {
+            const raw = el.getAttribute("tabindex");
+            if (raw == null) return;
+            const value = Number.parseInt(raw, 10);
+            if (!Number.isFinite(value)) return;
+            if (value > 0) {
+                el.setAttribute("tabindex", "0");
+            }
+        });
     }
 
     bindEvents() {
