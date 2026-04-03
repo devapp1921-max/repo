@@ -1626,11 +1626,11 @@ body.bodytype-privatebanking {
     right: 0;
   }
 }
-.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role=tab] {
+.ptabs.ptabs--active-visible .ptabs__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role=tab] {
   border-left: 0;
   box-shadow: none;
 }
-.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role=tab] {
+.ptabs.ptabs--active-visible .ptabs__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role=tab] {
   border-right: 0;
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] + .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
@@ -1988,15 +1988,55 @@ body.bodytype-privatebanking {
   }
   .ptabs--desktop-carousel .ptabs__nav {
     max-width: var(--ptabs-nav-max-width, none);
+    width: var(--ptabs-nav-max-width, none);
     margin-left: auto;
     margin-right: auto;
+  }
+  .ptabs--desktop-carousel .ptabs__viewport {
+    width: calc(100% + 1px);
+    margin-right: -1px;
+    box-sizing: border-box;
+  }
+  .ptabs--desktop-carousel .ptabs__list {
+    margin: 0;
   }
   .ptabs--desktop-carousel .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
     flex: 0 0 var(--ptabs-tab-width-inactive);
     max-width: var(--ptabs-tab-width-inactive);
   }
-  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:first-child):not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
-    border-left: 0;
+  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
+    border-left-color: #828282;
+    border-right: 0;
+    box-shadow: none;
+  }
+  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:last-child {
+    border-right: 1px solid #828282;
+  }
+  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
+  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
+    border-right: 1px solid #828282;
+  }
+  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab].ptabs__tab--visible-first {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #828282;
+    box-shadow: none;
+  }
+  .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab].ptabs__tab--visible-first.ptabs__tab--adjacent-left {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #828282;
+    box-shadow: none;
+  }
+  .ptabs--desktop-carousel.ptabs--framed .ptabs__panel {
+    width: calc(100% + 1px);
+    max-width: var(--ptabs-nav-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(0);
+  }
+  .ptabs--desktop-carousel.ptabs--framed:has(.ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child) .ptabs__panel, .ptabs--desktop-carousel.ptabs--framed:has(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child) .ptabs__panel {
+    transform: translateX(1px);
   }
 }
 @media (min-width: 1280px) and (max-width: 1679px) {
@@ -2005,6 +2045,11 @@ body.bodytype-privatebanking {
     --ptabs-tab-width-active: calc(100% / var(--ptabs-desktop-visible));
     --ptabs-tab-width-inactive: calc(100% / var(--ptabs-desktop-visible));
     --ptabs-nav-max-width: 100%;
+  }
+}
+@media (min-width: 1680px) {
+  .ptabs--desktop-carousel .ptabs__nav {
+    width: var(--ptabs-nav-max-width, 100%);
   }
 }
 @media (min-width: 960px) and (max-width: 1279px) {
@@ -2340,10 +2385,12 @@ body.bodytype-privatebanking {
   border-right: 1px solid #828282;
   border-top: 0;
   border-bottom: 1px solid #828282;
-  margin-left: 0.1px;
-  margin-right: 0.1px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   margin-bottom: 48px;
   position: relative;
+  box-sizing: border-box;
 }
 .ptabs--framed:has(.ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true]:first-child) .ptabs__panel::before, .ptabs--framed:has(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]:first-child) .ptabs__panel::before {
   content: "";

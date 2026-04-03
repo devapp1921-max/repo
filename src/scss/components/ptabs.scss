@@ -144,7 +144,6 @@
         border-left: 0;
         border-right: 0;
         position: relative;
-        // Domyślny kolor ikon dla nieaktywnych tabów.
         --ptabs-icon-filter: grayscale(1) brightness(0.55) saturate(0);
 
         @include tablet- {
@@ -244,12 +243,14 @@
         }
     }
 
-    &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"] {
+    &.ptabs--active-visible
+        &__tab--adjacent-left.ptabs__tab--adjacent-left.ptabs__tab--adjacent-left[role="tab"] {
         border-left: 0;
         box-shadow: none;
     }
 
-    &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
+    &.ptabs--active-visible
+        &__tab--adjacent-right.ptabs__tab--adjacent-right.ptabs__tab--adjacent-right[role="tab"] {
         border-right: 0;
     }
 
@@ -270,7 +271,6 @@
         box-shadow: none;
     }
 
-    // Rysuje lewą krawędź tylko na pierwszym tabie.
     &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
         border-left: 1px solid $text-gray-light;
     }
@@ -393,7 +393,6 @@
         margin-right: 0;
     }
 
-    // Wymusza lewą krawędź dla pierwszego taba w overflow.
     &__nav--overflow
         &__tab.ptabs__tab.ptabs__tab[role="tab"]:first-child {
         border-left: 1px solid $text-gray-light;
@@ -432,7 +431,6 @@
         --ptabs-tab-height-inactive: 114px;
         --ptabs-tablist-height: auto;
         @include -mobile {
-            // <960: stała wysokość listy oparta o aktywny tab.
             --ptabs-tablist-height: var(--ptabs-tab-height-active);
             --ptabs-fade-height: calc(
                 (var(--ptabs-tab-height-inactive) ) - 2px
@@ -576,7 +574,6 @@
                 padding: 48px 16px 36px 16px;
             }
 
-            // Desktop: aktywny tab bez ikony - symetryczny padding.
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:not(
                     :has(.ptabs__icon)
                 ),
@@ -733,8 +730,19 @@
 
             .ptabs__nav {
                 max-width: var(--ptabs-nav-max-width, none);
+                width: var(--ptabs-nav-max-width, none);
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .ptabs__viewport {
+                width: calc(100% + 1px);
+                margin-right: -1px;
+                box-sizing: border-box;
+            }
+
+            .ptabs__list {
+                margin: 0;
             }
 
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
@@ -742,14 +750,61 @@
                 max-width: var(--ptabs-tab-width-inactive);
             }
 
-            // Desktop+: usuwa podwójne linie między nieaktywnymi tabami w karuzeli.
             .ptabs__nav--overflow
-                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not(
-                    [aria-selected="true"]
-                ):not(
-                    .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]
-                ) {
-                border-left: 0;
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
+                border-left-color: $text-gray-light;
+                border-right: 0;
+                box-shadow: none;
+            }
+
+            .ptabs__nav--overflow
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:last-child {
+                border-right: 1px solid $text-gray-light;
+            }
+
+            .ptabs__nav--overflow
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
+            .ptabs__nav--overflow
+                .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
+                border-right: 1px solid $text-gray-light;
+            }
+
+            // Pierwszy widoczny tab zawsze ma lewą krawędź.
+            .ptabs__nav--overflow
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--visible-first {
+                border-left-width: 1px;
+                border-left-style: solid;
+                border-left-color: $text-gray-light;
+                box-shadow: none;
+            }
+
+            .ptabs__nav--overflow
+                .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"].ptabs__tab--visible-first.ptabs__tab--adjacent-left {
+                border-left-width: 1px;
+                border-left-style: solid;
+                border-left-color: $text-gray-light;
+                box-shadow: none;
+            }
+
+            &.ptabs--framed {
+                .ptabs__panel {
+                    width: calc(100% + 1px);
+                    max-width: var(--ptabs-nav-max-width);
+                    margin-left: auto;
+                    margin-right: auto;
+                    transform: translateX(0);
+                }
+
+                &:has(
+                        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child
+                    ),
+                &:has(
+                        .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"]:first-child
+                    ) {
+                    .ptabs__panel {
+                        transform: translateX(1px);
+                    }
+                }
             }
         }
 
@@ -758,6 +813,12 @@
             --ptabs-tab-width-active: calc(100% / var(--ptabs-desktop-visible));
             --ptabs-tab-width-inactive: calc(100% / var(--ptabs-desktop-visible));
             --ptabs-nav-max-width: 100%;
+        }
+
+        @include big {
+            .ptabs__nav {
+                width: var(--ptabs-nav-max-width, 100%);
+            }
         }
 
         @include tablet {
@@ -855,7 +916,7 @@
         --ptabs-icon-filter: brightness(0) saturate(100%);
     }
 
-    // Pressed + hover: wymuza czarny tekst.
+    // Pressed + hover
     .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role="tab"]:hover
         .ptabs__label {
         color: $text-black;
@@ -981,7 +1042,6 @@
         }
     }
 
-    // Usuwa podwójne separatory między nieaktywnymi tabami.
     @include -tablet {
         .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:not(:first-child):not(
                 [aria-selected="true"]
@@ -1245,13 +1305,14 @@
             border-right: 1px solid $text-gray-light;
             border-top: 0;
             border-bottom: 1px solid $text-gray-light;
-            margin-left: 0.1px;
-            margin-right: 0.1px;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
             margin-bottom: 48px;
             position: relative;
+            box-sizing: border-box;
         }
 
-        // Aktywny pierwszy tab: wydłuża lewą krawędź o 1px w górę.
         &:has(
                 .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:first-child
             ),
@@ -1270,7 +1331,6 @@
             }
         }
 
-        // Aktywny ostatni tab: wydłuża prawą krawędź o 1px w górę.
         &:has(
                 .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child
             ),
@@ -1288,13 +1348,6 @@
                 pointer-events: none;
             }
         }
-
-        // Desktop carousel: gdy jest strzałka w prawo, domykamy prawą krawędź ramki.
-        // &:has(.ptabs__nav--overflow.ptabs__nav--show-next) {
-        //     .ptabs__panel {
-        //         margin-right: -0.5px;
-        //     }
-        // }
 
         &:has(
                 .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child

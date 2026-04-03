@@ -596,6 +596,51 @@ class PTabs {
 
     scrollByStep(direction) {
         if (!this.viewport) return;
+        if (this.root.classList.contains("ptabs--desktop-carousel")) {
+            const viewportRect = this.viewport.getBoundingClientRect();
+            const leftEdge = viewportRect.left;
+            const epsilon = 0.9;
+            let firstIndex = -1;
+
+            for (let i = 0; i < this.tabs.length; i += 1) {
+                const rect = this.tabs[i].getBoundingClientRect();
+                if (rect.left >= leftEdge - epsilon) {
+                    firstIndex = i;
+                    break;
+                }
+            }
+
+            if (firstIndex === -1) {
+                for (let i = 0; i < this.tabs.length; i += 1) {
+                    const rect = this.tabs[i].getBoundingClientRect();
+                    if (rect.right > leftEdge + epsilon) {
+                        firstIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (firstIndex === -1) firstIndex = 0;
+            const targetIndex = Math.max(
+                0,
+                Math.min(this.tabs.length - 1, firstIndex + direction)
+            );
+            const target = this.tabs[targetIndex];
+            if (!target) return;
+            const maxScroll = Math.max(0, this.tablist.scrollWidth - this.viewport.clientWidth);
+            const targetRect = target.getBoundingClientRect();
+            const delta = targetRect.left - leftEdge;
+            const targetLeft = Math.min(
+                maxScroll,
+                Math.max(0, this.viewport.scrollLeft + delta)
+            );
+            this.viewport.scrollTo({
+                left: targetLeft,
+                behavior: prefersReducedMotion() ? "auto" : "smooth",
+            });
+            return;
+        }
+
         const style = getComputedStyle(this.root);
         const varWidth = parseFloat(style.getPropertyValue("--ptabs-tab-width")) || 0;
         const fallbackTab = this.tabs[0];
@@ -718,16 +763,26 @@ class PTabs {
 
     updateVisibleFirstTab() {
         if (!this.viewport || !this.tabs.length) return;
-        const scrollLeft = this.viewport.scrollLeft;
-        const threshold = 1;
+        const viewportRect = this.viewport.getBoundingClientRect();
+        const leftEdge = viewportRect.left;
+        const epsilon = 0.9;
         let firstVisible = null;
 
         for (const tab of this.tabs) {
-            const left = tab.offsetLeft;
-            const right = left + tab.offsetWidth;
-            if (right > scrollLeft + threshold) {
+            const rect = tab.getBoundingClientRect();
+            if (rect.left >= leftEdge - epsilon) {
                 firstVisible = tab;
                 break;
+            }
+        }
+
+        if (!firstVisible) {
+            for (const tab of this.tabs) {
+                const rect = tab.getBoundingClientRect();
+                if (rect.right > leftEdge + epsilon) {
+                    firstVisible = tab;
+                    break;
+                }
             }
         }
 
@@ -865,7 +920,6 @@ if (document.readyState === "loading") {
     initPTabs();
 }
 
-// Globalna funkcja do otwierania łańcucha akordeonów
 window.openAccordionChain = (target) => {
     if (!window.AccordionInstance) return;
 
