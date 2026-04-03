@@ -339,7 +339,10 @@ class PTabs {
         if (this.prevButton && this.nextButton && this.viewport) {
             this.prevButton.addEventListener("click", () => this.scrollByStep(-1));
             this.nextButton.addEventListener("click", () => this.scrollByStep(1));
-            this.viewport.addEventListener("scroll", () => this.updateChevronState());
+            this.viewport.addEventListener("scroll", () => {
+                this.updateChevronState();
+                this.updateVisibleFirstTab();
+            });
         }
     }
 
@@ -395,6 +398,7 @@ class PTabs {
         this.ensureTabInView(tab);
         this.updateChevronCenter();
         this.scaleLabels();
+        this.updateVisibleFirstTab();
     }
 
     handleKeydown(event, tab) {
@@ -458,6 +462,7 @@ class PTabs {
                 this.updateSidePadding();
                 this.updateChevronCenter();
                 this.scaleLabels();
+                this.updateVisibleFirstTab();
             });
             this.resizeObserver.observe(this.viewport);
             this.resizeObserver.observe(this.tablist);
@@ -467,12 +472,14 @@ class PTabs {
                 this.updateSidePadding();
                 this.updateChevronCenter();
                 this.scaleLabels();
+                this.updateVisibleFirstTab();
             });
         }
         this.updateChevronState();
         this.updateSidePadding();
         this.updateChevronCenter();
         this.scaleLabels();
+        this.updateVisibleFirstTab();
     }
 
     scaleLabels() {
@@ -707,6 +714,26 @@ class PTabs {
 
         this.nav?.classList.toggle("ptabs__nav--show-prev", !disablePrev);
         this.nav?.classList.toggle("ptabs__nav--show-next", !disableNext);
+    }
+
+    updateVisibleFirstTab() {
+        if (!this.viewport || !this.tabs.length) return;
+        const scrollLeft = this.viewport.scrollLeft;
+        const threshold = 1;
+        let firstVisible = null;
+
+        for (const tab of this.tabs) {
+            const left = tab.offsetLeft;
+            const right = left + tab.offsetWidth;
+            if (right > scrollLeft + threshold) {
+                firstVisible = tab;
+                break;
+            }
+        }
+
+        this.tabs.forEach((tab) => {
+            tab.classList.toggle("ptabs__tab--visible-first", tab === firstVisible);
+        });
     }
 
     updateChevronCenter() {

@@ -157,9 +157,16 @@
             justify-content: flex-start;
         }
 
-        &:hover {
-            color: $primary-red;
-            --ptabs-icon-filter: none;
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: $primary-red;
+                --ptabs-icon-filter: none;
+            }
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+            box-shadow: none;
         }
 
         &:focus-visible {
@@ -718,7 +725,7 @@
         @include desktop- {
             --ptabs-desktop-visible: 4;
             --ptabs-tab-width: 408px;
-            --ptabs-tab-width-active: 408px;
+            --ptabs-tab-width-active: var(--ptabs-tab-width);
             --ptabs-tab-width-inactive: 408px;
             --ptabs-nav-max-width: calc(
                 var(--ptabs-tab-width) * var(--ptabs-desktop-visible)
@@ -733,16 +740,6 @@
             .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"] {
                 flex: 0 0 var(--ptabs-tab-width-inactive);
                 max-width: var(--ptabs-tab-width-inactive);
-            }
-
-            .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"],
-            .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role="tab"] {
-                flex: 0 0 var(--ptabs-tab-width-active);
-                max-width: var(--ptabs-tab-width-active);
-            }
-
-            .ptabs__list {
-                padding-left: 0.1px;
             }
 
             // Desktop+: usuwa podwójne linie między nieaktywnymi tabami w karuzeli.
@@ -819,12 +816,14 @@
         }
     }
 
-    .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
-        font-family: "SofiaPro-SemiBold", sans-serif;
-        font-weight: 700;
-        font-size: 18px;
-        color: $primary-red;
-        text-align: center;
+    @media (hover: hover) and (pointer: fine) {
+        .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"]:hover .ptabs__label {
+            font-family: "SofiaPro-SemiBold", sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: $primary-red;
+            text-align: center;
+        }
     }
 
     // Stan pressed sterowany w JS.
@@ -1247,6 +1246,7 @@
             border-top: 0;
             border-bottom: 1px solid $text-gray-light;
             margin-left: 0.1px;
+            margin-right: 0.1px;
             margin-bottom: 48px;
             position: relative;
         }
@@ -1288,6 +1288,13 @@
                 pointer-events: none;
             }
         }
+
+        // Desktop carousel: gdy jest strzałka w prawo, domykamy prawą krawędź ramki.
+        // &:has(.ptabs__nav--overflow.ptabs__nav--show-next) {
+        //     .ptabs__panel {
+        //         margin-right: -0.5px;
+        //     }
+        // }
 
         &:has(
                 .ptabs__tab.ptabs__tab.ptabs__tab[role="tab"][aria-selected="true"]:last-child

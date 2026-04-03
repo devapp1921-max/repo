@@ -383,6 +383,7 @@ body.bodytype-privatebanking {
 @media (min-width: 1280px) {
   .paccordion > .paccordion__item:first-child button.paccordion__button.paccordion__button.paccordion__button {
     padding: 24px 16px;
+    padding-left: calc(16px + var(--rp-indent-level));
   }
 }
 .paccordion__panel > .paccordion > .paccordion__item:first-child > .paccordion__heading > .paccordion__button.paccordion__button.paccordion__button {
@@ -1551,9 +1552,15 @@ body.bodytype-privatebanking {
     justify-content: flex-start;
   }
 }
-.ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover {
-  color: #D91918;
-  --ptabs-icon-filter: none;
+@media (hover: hover) and (pointer: fine) {
+  .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover {
+    color: #D91918;
+    --ptabs-icon-filter: none;
+  }
+}
+.ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
 .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:focus-visible {
   outline: 2px solid #D91918;
@@ -1973,7 +1980,7 @@ body.bodytype-privatebanking {
   .ptabs--desktop-carousel {
     --ptabs-desktop-visible: 4;
     --ptabs-tab-width: 408px;
-    --ptabs-tab-width-active: 408px;
+    --ptabs-tab-width-active: var(--ptabs-tab-width);
     --ptabs-tab-width-inactive: 408px;
     --ptabs-nav-max-width: calc(
         var(--ptabs-tab-width) * var(--ptabs-desktop-visible)
@@ -1987,14 +1994,6 @@ body.bodytype-privatebanking {
   .ptabs--desktop-carousel .ptabs__tab.ptabs__tab.ptabs__tab[role=tab] {
     flex: 0 0 var(--ptabs-tab-width-inactive);
     max-width: var(--ptabs-tab-width-inactive);
-  }
-  .ptabs--desktop-carousel .ptabs__tab.ptabs__tab.ptabs__tab[role=tab][aria-selected=true],
-  .ptabs--desktop-carousel .ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab] {
-    flex: 0 0 var(--ptabs-tab-width-active);
-    max-width: var(--ptabs-tab-width-active);
-  }
-  .ptabs--desktop-carousel .ptabs__list {
-    padding-left: 0.1px;
   }
   .ptabs--desktop-carousel .ptabs__nav--overflow .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:not(:first-child):not([aria-selected=true]):not(.ptabs__tab--active.ptabs__tab--active.ptabs__tab--active[role=tab]) {
     border-left: 0;
@@ -2050,12 +2049,14 @@ body.bodytype-privatebanking {
     max-width: none;
   }
 }
-.ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover .ptabs__label {
-  font-family: "SofiaPro-SemiBold", sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: #D91918;
-  text-align: center;
+@media (hover: hover) and (pointer: fine) {
+  .ptabs .ptabs__tab.ptabs__tab.ptabs__tab[role=tab]:hover .ptabs__label {
+    font-family: "SofiaPro-SemiBold", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #D91918;
+    text-align: center;
+  }
 }
 .ptabs .ptabs__tab--pressed.ptabs__tab--pressed.ptabs__tab--pressed[role=tab] {
   background-color: #C0C0C0;
@@ -2340,6 +2341,7 @@ body.bodytype-privatebanking {
   border-top: 0;
   border-bottom: 1px solid #828282;
   margin-left: 0.1px;
+  margin-right: 0.1px;
   margin-bottom: 48px;
   position: relative;
 }

@@ -61,3 +61,5 @@ export class wcag {
     }
 }
 
+new wcag();
+
